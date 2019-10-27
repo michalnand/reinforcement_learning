@@ -5,16 +5,16 @@ import agents.dqn
 import numpy
 import time
 
-import models.atari_pong_dqn.src.model
-import models.atari_pong_dqn.src.config
+import models.atari_invaders_dqn.src.model
+import models.atari_invaders_dqn.src.config
 
 
-model  = models.atari_pong_dqn.src.model
-config = models.atari_pong_dqn.src.config.Config()
+model  = models.atari_invaders_dqn.src.model
+config = models.atari_invaders_dqn.src.config.Config()
 
-save_path = "./models/atari_pong_dqn/"
+save_path = "./models/atari_invaders_dqn/"
 
-env = gym.make("Pong-v0") 
+env = gym.make("SpaceInvaders-v0") 
 env = common.atari_wrapper.Create(env, 96, 96, 4) 
 
 env.reset()
@@ -45,9 +45,3 @@ while True:
     env.render()
     time.sleep(0.1)
 '''
-
-#env = common.env_atari.Create("MsPacman-v0")
-#env = common.env_atari.Create("SpaceInvaders-v0")
-
-#env = common.env_atari.Create("Enduro-v0")
-#env = common.env_atari.Create("Seaquest-v0")

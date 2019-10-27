@@ -10,8 +10,9 @@ def loss_mse(y_target, y_hat):
     #return torch.sqrt(torch.mean((y_target - y_hat).pow(2)))
  
 class Agent():
-    def __init__(self, env, model, config):
+    def __init__(self, env, model, config, save_path):
         self.env = env
+        self.save_path = save_path
 
         self.action = 0
 
@@ -39,6 +40,10 @@ class Agent():
         self.actions_stats  = numpy.zeros(self.actions_count)
 
         self.enable_training()
+
+        f = open(self.save_path + "result/training.log", "w")
+        f.close()
+
 
 
     def enable_training(self):
@@ -130,14 +135,14 @@ class Agent():
         return result
 
     def _print(self):
-        f = open("training.log", "a+")
+        f = open(self.save_path + "result/training.log", "a+")
         s = str(self.iterations) + " " + str(self.games_played) + " " + str(self.score) + " " + str(self.epsilon) + "\n"
         f.write(s)
         print(s)
 
 
-    def save(self, path):
-        self.model.save(path)
+    def save(self):
+        self.model.save(self.save_path)
 
-    def load(self, path):
-        self.model.load(path)
+    def load(self):
+        self.model.load(self.save_path)
