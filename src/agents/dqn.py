@@ -1,6 +1,8 @@
 import numpy
 import torch
 
+import agents.agent_stats
+
 import common.experience_replay
 
 
@@ -10,7 +12,7 @@ def loss_mse(y_target, y_hat):
     #return torch.sqrt(torch.mean((y_target - y_hat).pow(2)))
  
 class Agent():
-    def __init__(self, env, model, config, save_path):
+    def __init__(self, env, model, config, save_path, save_stats = True):
         self.env = env
         self.save_path = save_path
 
@@ -25,10 +27,6 @@ class Agent():
 
         self.experience_replay = common.experience_replay.Buffer(config.experience_replay_size)
 
-        self.iterations     = 0
-        self.games_played   = 0
-        self.score          = 0.0
-
         self.observation_shape = self.env.observation_space.shape
         self.actions_count     = self.env.env.action_space.n
 
@@ -37,12 +35,13 @@ class Agent():
         self.loss       = torch.nn.MSELoss()
 
         self.observation    = env.reset()
-        self.actions_stats  = numpy.zeros(self.actions_count)
-
         self.enable_training()
 
-        f = open(self.save_path + "result/training.log", "w")
-        f.close()
+        self.iterations = 0
+
+        if save_stats:
+            self.training_stats = agents.agent_stats.AgentStats(self.save_path + "result/training")
+            self.testing_stats  = agents.agent_stats.AgentStats(self.save_path + "result/testing")
 
 
 
@@ -71,32 +70,33 @@ class Agent():
                 self.experience_replay.add(self.observation, q_values, self.action, self.reward, self.done)
             else:   
                 self.train_model()
-           
 
         self.observation = observation_new
-            
-        self.actions_stats[self.action]+= 1
-        self.iterations+= 1
-        self.score+= self.reward
 
+        if hasattr(self, "training_stats") and hasattr(self, "testing_stats"):
+            if self.enabled_training:
+                self.training_stats.add(self.reward, self.done)
+            else:
+                self.testing_stats.add(self.reward, self.done)
+            
+            
         if self.done:
             self.env.reset()
-            self.games_played+= 1
 
+        self.iterations+= 1
+        
         
     def train_model(self):
         self.experience_replay.compute(self.gamma)
                 
         batches_count = self.experience_replay.length()//self.batch_size
 
-        loss_sum = 0
-        for i in range(0, batches_count):
+        for _ in range(0, batches_count):
             input, target = self.experience_replay.get_random_batch(self.batch_size, self.model.device)
             
             output = self.model.forward(input)
 
             loss   = loss_mse(target, output)
-            loss_sum+= torch.sum(loss).detach().to("cpu")
     
             self.optimizer.zero_grad()
             loss.backward()
@@ -106,40 +106,15 @@ class Agent():
 
         self.experience_replay.clear()                
 
-        print(self.iterations, self.games_played, self.score, self.epsilon, loss_sum/batches_count)
         
-
-
-
-    def softmax(self, values):
-        m = numpy.max(values)
-
-        result = numpy.exp(values - m)
-        result/= numpy.sum(result)
-
-        return result
-
-    def choose_action(self, q_values):
-        probs = self.softmax(q_values)
-        actions = list(range(len(probs)))
-        return numpy.random.choice(actions, p = probs)
-
+    
     def choose_action_e_greedy(self, q_values, epsilon):
         result = numpy.argmax(q_values)
         
-
         if numpy.random.random() < epsilon:
             result = numpy.random.randint(len(q_values))
-
         
         return result
-
-    def _print(self):
-        f = open(self.save_path + "result/training.log", "a+")
-        s = str(self.iterations) + " " + str(self.games_played) + " " + str(self.score) + " " + str(self.epsilon) + "\n"
-        f.write(s)
-        print(s)
-
 
     def save(self):
         self.model.save(self.save_path)

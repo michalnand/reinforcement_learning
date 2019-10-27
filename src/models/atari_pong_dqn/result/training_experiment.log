@@ -1,0 +1,1640 @@
+iterations                = 269
+game_id                   = 1
+score                     = -21.0
+game_iterations           = 269
+game_iterations_smooth    = 269.0
+game_score                = -21.0
+game_score_smooth         = -21.000000000000004
+
+
+
+iterations                = 618
+game_id                   = 2
+score                     = -42.0
+game_iterations           = 349
+game_iterations_smooth    = 277.0
+game_score                = -21.0
+game_score_smooth         = -21.000000000000004
+
+
+
+iterations                = 907
+game_id                   = 3
+score                     = -63.0
+game_iterations           = 289
+game_iterations_smooth    = 278.2
+game_score                = -21.0
+game_score_smooth         = -21.000000000000004
+
+
+
+iterations                = 1222
+game_id                   = 4
+score                     = -84.0
+game_iterations           = 315
+game_iterations_smooth    = 281.88
+game_score                = -21.0
+game_score_smooth         = -21.000000000000004
+
+
+
+iterations                = 1520
+game_id                   = 5
+score                     = -104.0
+game_iterations           = 298
+game_iterations_smooth    = 283.492
+game_score                = -20.0
+game_score_smooth         = -20.900000000000002
+
+
+
+iterations                = 1800
+game_id                   = 6
+score                     = -125.0
+game_iterations           = 280
+game_iterations_smooth    = 283.1428
+game_score                = -21.0
+game_score_smooth         = -20.910000000000004
+
+
+
+iterations                = 2106
+game_id                   = 7
+score                     = -146.0
+game_iterations           = 306
+game_iterations_smooth    = 285.42852000000005
+game_score                = -21.0
+game_score_smooth         = -20.919000000000004
+
+
+
+iterations                = 2365
+game_id                   = 8
+score                     = -167.0
+game_iterations           = 259
+game_iterations_smooth    = 282.78566800000004
+game_score                = -21.0
+game_score_smooth         = -20.927100000000006
+
+
+
+iterations                = 2686
+game_id                   = 9
+score                     = -187.0
+game_iterations           = 321
+game_iterations_smooth    = 286.60710120000005
+game_score                = -20.0
+game_score_smooth         = -20.834390000000006
+
+
+
+iterations                = 2978
+game_id                   = 10
+score                     = -208.0
+game_iterations           = 292
+game_iterations_smooth    = 287.14639108000006
+game_score                = -21.0
+game_score_smooth         = -20.85095100000001
+
+
+
+iterations                = 3332
+game_id                   = 11
+score                     = -228.0
+game_iterations           = 354
+game_iterations_smooth    = 293.83175197200006
+game_score                = -20.0
+game_score_smooth         = -20.76585590000001
+
+
+
+iterations                = 3614
+game_id                   = 12
+score                     = -248.0
+game_iterations           = 282
+game_iterations_smooth    = 292.64857677480006
+game_score                = -20.0
+game_score_smooth         = -20.68927031000001
+
+
+
+iterations                = 3893
+game_id                   = 13
+score                     = -269.0
+game_iterations           = 279
+game_iterations_smooth    = 291.28371909732004
+game_score                = -21.0
+game_score_smooth         = -20.72034327900001
+
+
+
+iterations                = 4282
+game_id                   = 14
+score                     = -287.0
+game_iterations           = 389
+game_iterations_smooth    = 301.05534718758804
+game_score                = -18.0
+game_score_smooth         = -20.44830895110001
+
+
+
+iterations                = 4576
+game_id                   = 15
+score                     = -308.0
+game_iterations           = 294
+game_iterations_smooth    = 300.3498124688292
+game_score                = -21.0
+game_score_smooth         = -20.503478055990012
+
+
+
+iterations                = 4858
+game_id                   = 16
+score                     = -329.0
+game_iterations           = 282
+game_iterations_smooth    = 298.5148312219463
+game_score                = -21.0
+game_score_smooth         = -20.553130250391014
+
+
+
+iterations                = 5108
+game_id                   = 17
+score                     = -350.0
+game_iterations           = 250
+game_iterations_smooth    = 293.66334809975166
+game_score                = -21.0
+game_score_smooth         = -20.597817225351914
+
+
+
+iterations                = 5373
+game_id                   = 18
+score                     = -371.0
+game_iterations           = 265
+game_iterations_smooth    = 290.7970132897765
+game_score                = -21.0
+game_score_smooth         = -20.638035502816724
+
+
+
+iterations                = 5645
+game_id                   = 19
+score                     = -392.0
+game_iterations           = 272
+game_iterations_smooth    = 288.9173119607988
+game_score                = -21.0
+game_score_smooth         = -20.674231952535052
+
+
+
+iterations                = 5936
+game_id                   = 20
+score                     = -412.0
+game_iterations           = 291
+game_iterations_smooth    = 289.12558076471896
+game_score                = -20.0
+game_score_smooth         = -20.60680875728155
+
+
+
+iterations                = 6185
+game_id                   = 21
+score                     = -433.0
+game_iterations           = 249
+game_iterations_smooth    = 285.11302268824704
+game_score                = -21.0
+game_score_smooth         = -20.646127881553397
+
+
+
+iterations                = 6451
+game_id                   = 22
+score                     = -454.0
+game_iterations           = 266
+game_iterations_smooth    = 283.2017204194224
+game_score                = -21.0
+game_score_smooth         = -20.68151509339806
+
+
+
+iterations                = 6740
+game_id                   = 23
+score                     = -475.0
+game_iterations           = 289
+game_iterations_smooth    = 283.78154837748014
+game_score                = -21.0
+game_score_smooth         = -20.713363584058254
+
+
+
+iterations                = 7019
+game_id                   = 24
+score                     = -495.0
+game_iterations           = 279
+game_iterations_smooth    = 283.3033935397321
+game_score                = -20.0
+game_score_smooth         = -20.642027225652427
+
+
+
+iterations                = 7280
+game_id                   = 25
+score                     = -516.0
+game_iterations           = 261
+game_iterations_smooth    = 281.0730541857589
+game_score                = -21.0
+game_score_smooth         = -20.677824503087187
+
+
+
+iterations                = 7623
+game_id                   = 26
+score                     = -535.0
+game_iterations           = 343
+game_iterations_smooth    = 287.265748767183
+game_score                = -19.0
+game_score_smooth         = -20.510042052778466
+
+
+
+iterations                = 7892
+game_id                   = 27
+score                     = -556.0
+game_iterations           = 269
+game_iterations_smooth    = 285.4391738904647
+game_score                = -21.0
+game_score_smooth         = -20.559037847500623
+
+
+
+iterations                = 8205
+game_id                   = 28
+score                     = -576.0
+game_iterations           = 313
+game_iterations_smooth    = 288.19525650141827
+game_score                = -20.0
+game_score_smooth         = -20.50313406275056
+
+
+
+iterations                = 8533
+game_id                   = 29
+score                     = -596.0
+game_iterations           = 328
+game_iterations_smooth    = 292.17573085127646
+game_score                = -20.0
+game_score_smooth         = -20.452820656475506
+
+
+
+iterations                = 8821
+game_id                   = 30
+score                     = -616.0
+game_iterations           = 288
+game_iterations_smooth    = 291.7581577661488
+game_score                = -20.0
+game_score_smooth         = -20.407538590827954
+
+
+
+iterations                = 9194
+game_id                   = 31
+score                     = -636.0
+game_iterations           = 373
+game_iterations_smooth    = 299.882341989534
+game_score                = -20.0
+game_score_smooth         = -20.36678473174516
+
+
+
+iterations                = 9476
+game_id                   = 32
+score                     = -656.0
+game_iterations           = 282
+game_iterations_smooth    = 298.0941077905806
+game_score                = -20.0
+game_score_smooth         = -20.330106258570645
+
+
+
+iterations                = 9739
+game_id                   = 33
+score                     = -677.0
+game_iterations           = 263
+game_iterations_smooth    = 294.58469701152256
+game_score                = -21.0
+game_score_smooth         = -20.397095632713583
+
+
+
+iterations                = 10014
+game_id                   = 34
+score                     = -698.0
+game_iterations           = 275
+game_iterations_smooth    = 292.6262273103703
+game_score                = -21.0
+game_score_smooth         = -20.457386069442226
+
+
+
+iterations                = 10297
+game_id                   = 35
+score                     = -719.0
+game_iterations           = 283
+game_iterations_smooth    = 291.6636045793333
+game_score                = -21.0
+game_score_smooth         = -20.511647462498004
+
+
+
+iterations                = 10577
+game_id                   = 36
+score                     = -740.0
+game_iterations           = 280
+game_iterations_smooth    = 290.4972441214
+game_score                = -21.0
+game_score_smooth         = -20.560482716248206
+
+
+
+iterations                = 10823
+game_id                   = 37
+score                     = -761.0
+game_iterations           = 246
+game_iterations_smooth    = 286.04751970926003
+game_score                = -21.0
+game_score_smooth         = -20.604434444623386
+
+
+
+iterations                = 11087
+game_id                   = 38
+score                     = -782.0
+game_iterations           = 264
+game_iterations_smooth    = 283.84276773833403
+game_score                = -21.0
+game_score_smooth         = -20.64399100016105
+
+
+
+iterations                = 11335
+game_id                   = 39
+score                     = -803.0
+game_iterations           = 248
+game_iterations_smooth    = 280.25849096450065
+game_score                = -21.0
+game_score_smooth         = -20.67959190014495
+
+
+
+iterations                = 11585
+game_id                   = 40
+score                     = -824.0
+game_iterations           = 250
+game_iterations_smooth    = 277.23264186805056
+game_score                = -21.0
+game_score_smooth         = -20.711632710130456
+
+
+
+iterations                = 11848
+game_id                   = 41
+score                     = -845.0
+game_iterations           = 263
+game_iterations_smooth    = 275.8093776812455
+game_score                = -21.0
+game_score_smooth         = -20.740469439117412
+
+
+
+iterations                = 12105
+game_id                   = 42
+score                     = -866.0
+game_iterations           = 257
+game_iterations_smooth    = 273.92843991312094
+game_score                = -21.0
+game_score_smooth         = -20.766422495205674
+
+
+
+iterations                = 12399
+game_id                   = 43
+score                     = -886.0
+game_iterations           = 294
+game_iterations_smooth    = 275.93559592180884
+game_score                = -20.0
+game_score_smooth         = -20.689780245685107
+
+
+
+iterations                = 12666
+game_id                   = 44
+score                     = -907.0
+game_iterations           = 267
+game_iterations_smooth    = 275.042036329628
+game_score                = -21.0
+game_score_smooth         = -20.7208022211166
+
+
+
+iterations                = 12972
+game_id                   = 45
+score                     = -928.0
+game_iterations           = 306
+game_iterations_smooth    = 278.1378326966652
+game_score                = -21.0
+game_score_smooth         = -20.748721999004943
+
+
+
+iterations                = 13260
+game_id                   = 46
+score                     = -949.0
+game_iterations           = 288
+game_iterations_smooth    = 279.1240494269987
+game_score                = -21.0
+game_score_smooth         = -20.77384979910445
+
+
+
+iterations                = 13518
+game_id                   = 47
+score                     = -970.0
+game_iterations           = 258
+game_iterations_smooth    = 277.0116444842988
+game_score                = -21.0
+game_score_smooth         = -20.796464819194007
+
+
+
+iterations                = 13787
+game_id                   = 48
+score                     = -991.0
+game_iterations           = 269
+game_iterations_smooth    = 276.21048003586895
+game_score                = -21.0
+game_score_smooth         = -20.816818337274608
+
+
+
+iterations                = 14058
+game_id                   = 49
+score                     = -1012.0
+game_iterations           = 271
+game_iterations_smooth    = 275.68943203228207
+game_score                = -21.0
+game_score_smooth         = -20.835136503547147
+
+
+
+iterations                = 14311
+game_id                   = 50
+score                     = -1033.0
+game_iterations           = 253
+game_iterations_smooth    = 273.42048882905385
+game_score                = -21.0
+game_score_smooth         = -20.851622853192435
+
+
+
+iterations                = 14565
+game_id                   = 51
+score                     = -1054.0
+game_iterations           = 254
+game_iterations_smooth    = 271.47843994614846
+game_score                = -21.0
+game_score_smooth         = -20.866460567873194
+
+
+
+iterations                = 14939
+game_id                   = 52
+score                     = -1072.0
+game_iterations           = 374
+game_iterations_smooth    = 281.7305959515336
+game_score                = -18.0
+game_score_smooth         = -20.579814511085875
+
+
+
+iterations                = 15227
+game_id                   = 53
+score                     = -1092.0
+game_iterations           = 288
+game_iterations_smooth    = 282.35753635638025
+game_score                = -20.0
+game_score_smooth         = -20.521833059977286
+
+
+
+iterations                = 15489
+game_id                   = 54
+score                     = -1113.0
+game_iterations           = 262
+game_iterations_smooth    = 280.32178272074225
+game_score                = -21.0
+game_score_smooth         = -20.569649753979558
+
+
+
+iterations                = 15765
+game_id                   = 55
+score                     = -1134.0
+game_iterations           = 276
+game_iterations_smooth    = 279.889604448668
+game_score                = -21.0
+game_score_smooth         = -20.612684778581603
+
+
+
+iterations                = 16029
+game_id                   = 56
+score                     = -1155.0
+game_iterations           = 264
+game_iterations_smooth    = 278.3006440038012
+game_score                = -21.0
+game_score_smooth         = -20.651416300723444
+
+
+
+iterations                = 16299
+game_id                   = 57
+score                     = -1176.0
+game_iterations           = 270
+game_iterations_smooth    = 277.47057960342113
+game_score                = -21.0
+game_score_smooth         = -20.686274670651102
+
+
+
+iterations                = 16595
+game_id                   = 58
+score                     = -1196.0
+game_iterations           = 296
+game_iterations_smooth    = 279.323521643079
+game_score                = -20.0
+game_score_smooth         = -20.617647203585992
+
+
+
+iterations                = 16979
+game_id                   = 59
+score                     = -1217.0
+game_iterations           = 384
+game_iterations_smooth    = 289.7911694787711
+game_score                = -21.0
+game_score_smooth         = -20.655882483227394
+
+
+
+iterations                = 17234
+game_id                   = 60
+score                     = -1238.0
+game_iterations           = 255
+game_iterations_smooth    = 286.312052530894
+game_score                = -21.0
+game_score_smooth         = -20.690294234904655
+
+
+
+iterations                = 17510
+game_id                   = 61
+score                     = -1259.0
+game_iterations           = 276
+game_iterations_smooth    = 285.28084727780464
+game_score                = -21.0
+game_score_smooth         = -20.72126481141419
+
+
+
+iterations                = 17771
+game_id                   = 62
+score                     = -1280.0
+game_iterations           = 261
+game_iterations_smooth    = 282.8527625500242
+game_score                = -21.0
+game_score_smooth         = -20.749138330272775
+
+
+
+iterations                = 18093
+game_id                   = 63
+score                     = -1299.0
+game_iterations           = 322
+game_iterations_smooth    = 286.7674862950218
+game_score                = -19.0
+game_score_smooth         = -20.574224497245496
+
+
+
+iterations                = 18442
+game_id                   = 64
+score                     = -1320.0
+game_iterations           = 349
+game_iterations_smooth    = 292.9907376655196
+game_score                = -21.0
+game_score_smooth         = -20.61680204752095
+
+
+
+iterations                = 18708
+game_id                   = 65
+score                     = -1341.0
+game_iterations           = 266
+game_iterations_smooth    = 290.29166389896767
+game_score                = -21.0
+game_score_smooth         = -20.655121842768857
+
+
+
+iterations                = 19006
+game_id                   = 66
+score                     = -1362.0
+game_iterations           = 298
+game_iterations_smooth    = 291.0624975090709
+game_score                = -21.0
+game_score_smooth         = -20.689609658491975
+
+
+
+iterations                = 19260
+game_id                   = 67
+score                     = -1383.0
+game_iterations           = 254
+game_iterations_smooth    = 287.3562477581638
+game_score                = -21.0
+game_score_smooth         = -20.72064869264278
+
+
+
+iterations                = 19508
+game_id                   = 68
+score                     = -1404.0
+game_iterations           = 248
+game_iterations_smooth    = 283.4206229823475
+game_score                = -21.0
+game_score_smooth         = -20.748583823378503
+
+
+
+iterations                = 19757
+game_id                   = 69
+score                     = -1425.0
+game_iterations           = 249
+game_iterations_smooth    = 279.9785606841127
+game_score                = -21.0
+game_score_smooth         = -20.773725441040654
+
+
+
+iterations                = 20040
+game_id                   = 70
+score                     = -1446.0
+game_iterations           = 283
+game_iterations_smooth    = 280.28070461570144
+game_score                = -21.0
+game_score_smooth         = -20.79635289693659
+
+
+
+iterations                = 20292
+game_id                   = 71
+score                     = -1467.0
+game_iterations           = 252
+game_iterations_smooth    = 277.4526341541313
+game_score                = -21.0
+game_score_smooth         = -20.816717607242932
+
+
+
+iterations                = 20549
+game_id                   = 72
+score                     = -1488.0
+game_iterations           = 257
+game_iterations_smooth    = 275.4073707387182
+game_score                = -21.0
+game_score_smooth         = -20.83504584651864
+
+
+
+iterations                = 20809
+game_id                   = 73
+score                     = -1509.0
+game_iterations           = 260
+game_iterations_smooth    = 273.8666336648464
+game_score                = -21.0
+game_score_smooth         = -20.851541261866778
+
+
+
+iterations                = 21135
+game_id                   = 74
+score                     = -1527.0
+game_iterations           = 326
+game_iterations_smooth    = 279.0799702983618
+game_score                = -18.0
+game_score_smooth         = -20.566387135680102
+
+
+
+iterations                = 21452
+game_id                   = 75
+score                     = -1546.0
+game_iterations           = 317
+game_iterations_smooth    = 282.8719732685256
+game_score                = -19.0
+game_score_smooth         = -20.40974842211209
+
+
+
+iterations                = 21719
+game_id                   = 76
+score                     = -1567.0
+game_iterations           = 267
+game_iterations_smooth    = 281.28477594167305
+game_score                = -21.0
+game_score_smooth         = -20.468773579900883
+
+
+
+iterations                = 22042
+game_id                   = 77
+score                     = -1587.0
+game_iterations           = 323
+game_iterations_smooth    = 285.45629834750576
+game_score                = -20.0
+game_score_smooth         = -20.421896221910796
+
+
+
+iterations                = 22293
+game_id                   = 78
+score                     = -1608.0
+game_iterations           = 251
+game_iterations_smooth    = 282.0106685127552
+game_score                = -21.0
+game_score_smooth         = -20.47970659971972
+
+
+
+iterations                = 22544
+game_id                   = 79
+score                     = -1629.0
+game_iterations           = 251
+game_iterations_smooth    = 278.9096016614797
+game_score                = -21.0
+game_score_smooth         = -20.53173593974775
+
+
+
+iterations                = 22793
+game_id                   = 80
+score                     = -1650.0
+game_iterations           = 249
+game_iterations_smooth    = 275.9186414953317
+game_score                = -21.0
+game_score_smooth         = -20.578562345772976
+
+
+
+iterations                = 23063
+game_id                   = 81
+score                     = -1671.0
+game_iterations           = 270
+game_iterations_smooth    = 275.3267773457985
+game_score                = -21.0
+game_score_smooth         = -20.62070611119568
+
+
+
+iterations                = 23344
+game_id                   = 82
+score                     = -1692.0
+game_iterations           = 281
+game_iterations_smooth    = 275.8940996112187
+game_score                = -21.0
+game_score_smooth         = -20.658635500076116
+
+
+
+iterations                = 23595
+game_id                   = 83
+score                     = -1713.0
+game_iterations           = 251
+game_iterations_smooth    = 273.4046896500968
+game_score                = -21.0
+game_score_smooth         = -20.692771950068508
+
+
+
+iterations                = 23878
+game_id                   = 84
+score                     = -1734.0
+game_iterations           = 283
+game_iterations_smooth    = 274.36422068508716
+game_score                = -21.0
+game_score_smooth         = -20.723494755061658
+
+
+
+iterations                = 24161
+game_id                   = 85
+score                     = -1755.0
+game_iterations           = 283
+game_iterations_smooth    = 275.22779861657847
+game_score                = -21.0
+game_score_smooth         = -20.751145279555494
+
+
+
+iterations                = 24432
+game_id                   = 86
+score                     = -1776.0
+game_iterations           = 271
+game_iterations_smooth    = 274.80501875492064
+game_score                = -21.0
+game_score_smooth         = -20.776030751599947
+
+
+
+iterations                = 24705
+game_id                   = 87
+score                     = -1797.0
+game_iterations           = 273
+game_iterations_smooth    = 274.6245168794286
+game_score                = -21.0
+game_score_smooth         = -20.798427676439953
+
+
+
+iterations                = 24962
+game_id                   = 88
+score                     = -1818.0
+game_iterations           = 257
+game_iterations_smooth    = 272.8620651914857
+game_score                = -21.0
+game_score_smooth         = -20.81858490879596
+
+
+
+iterations                = 25214
+game_id                   = 89
+score                     = -1839.0
+game_iterations           = 252
+game_iterations_smooth    = 270.77585867233716
+game_score                = -21.0
+game_score_smooth         = -20.836726417916363
+
+
+
+iterations                = 25577
+game_id                   = 90
+score                     = -1858.0
+game_iterations           = 363
+game_iterations_smooth    = 279.99827280510345
+game_score                = -19.0
+game_score_smooth         = -20.653053776124725
+
+
+
+iterations                = 25858
+game_id                   = 91
+score                     = -1879.0
+game_iterations           = 281
+game_iterations_smooth    = 280.0984455245931
+game_score                = -21.0
+game_score_smooth         = -20.687748398512255
+
+
+
+iterations                = 26111
+game_id                   = 92
+score                     = -1900.0
+game_iterations           = 253
+game_iterations_smooth    = 277.3886009721338
+game_score                = -21.0
+game_score_smooth         = -20.71897355866103
+
+
+
+iterations                = 26383
+game_id                   = 93
+score                     = -1921.0
+game_iterations           = 272
+game_iterations_smooth    = 276.8497408749204
+game_score                = -21.0
+game_score_smooth         = -20.74707620279493
+
+
+
+iterations                = 26633
+game_id                   = 94
+score                     = -1942.0
+game_iterations           = 250
+game_iterations_smooth    = 274.1647667874284
+game_score                = -21.0
+game_score_smooth         = -20.772368582515437
+
+
+
+iterations                = 26919
+game_id                   = 95
+score                     = -1963.0
+game_iterations           = 286
+game_iterations_smooth    = 275.34829010868555
+game_score                = -21.0
+game_score_smooth         = -20.795131724263896
+
+
+
+iterations                = 27168
+game_id                   = 96
+score                     = -1984.0
+game_iterations           = 249
+game_iterations_smooth    = 272.713461097817
+game_score                = -21.0
+game_score_smooth         = -20.81561855183751
+
+
+
+iterations                = 27467
+game_id                   = 97
+score                     = -2005.0
+game_iterations           = 299
+game_iterations_smooth    = 275.3421149880353
+game_score                = -21.0
+game_score_smooth         = -20.83405669665376
+
+
+
+iterations                = 27743
+game_id                   = 98
+score                     = -2026.0
+game_iterations           = 276
+game_iterations_smooth    = 275.4079034892318
+game_score                = -21.0
+game_score_smooth         = -20.850651026988388
+
+
+
+iterations                = 27999
+game_id                   = 99
+score                     = -2047.0
+game_iterations           = 256
+game_iterations_smooth    = 273.46711314030864
+game_score                = -21.0
+game_score_smooth         = -20.86558592428955
+
+
+
+iterations                = 28281
+game_id                   = 100
+score                     = -2068.0
+game_iterations           = 282
+game_iterations_smooth    = 274.32040182627776
+game_score                = -21.0
+game_score_smooth         = -20.8790273318606
+
+
+
+iterations                = 28535
+game_id                   = 101
+score                     = -2089.0
+game_iterations           = 254
+game_iterations_smooth    = 272.28836164365
+game_score                = -21.0
+game_score_smooth         = -20.89112459867454
+
+
+
+iterations                = 28783
+game_id                   = 102
+score                     = -2110.0
+game_iterations           = 248
+game_iterations_smooth    = 269.85952547928497
+game_score                = -21.0
+game_score_smooth         = -20.902012138807088
+
+
+
+iterations                = 29032
+game_id                   = 103
+score                     = -2131.0
+game_iterations           = 249
+game_iterations_smooth    = 267.77357293135645
+game_score                = -21.0
+game_score_smooth         = -20.91181092492638
+
+
+
+iterations                = 29337
+game_id                   = 104
+score                     = -2151.0
+game_iterations           = 305
+game_iterations_smooth    = 271.4962156382208
+game_score                = -20.0
+game_score_smooth         = -20.820629832433745
+
+
+
+iterations                = 29590
+game_id                   = 105
+score                     = -2172.0
+game_iterations           = 253
+game_iterations_smooth    = 269.6465940743987
+game_score                = -21.0
+game_score_smooth         = -20.83856684919037
+
+
+
+iterations                = 29896
+game_id                   = 106
+score                     = -2192.0
+game_iterations           = 306
+game_iterations_smooth    = 273.2819346669589
+game_score                = -20.0
+game_score_smooth         = -20.754710164271334
+
+
+
+iterations                = 30151
+game_id                   = 107
+score                     = -2213.0
+game_iterations           = 255
+game_iterations_smooth    = 271.453741200263
+game_score                = -21.0
+game_score_smooth         = -20.7792391478442
+
+
+
+iterations                = 30477
+game_id                   = 108
+score                     = -2233.0
+game_iterations           = 326
+game_iterations_smooth    = 276.9083670802367
+game_score                = -20.0
+game_score_smooth         = -20.70131523305978
+
+
+
+iterations                = 30739
+game_id                   = 109
+score                     = -2254.0
+game_iterations           = 262
+game_iterations_smooth    = 275.41753037221304
+game_score                = -21.0
+game_score_smooth         = -20.731183709753804
+
+
+
+iterations                = 31094
+game_id                   = 110
+score                     = -2272.0
+game_iterations           = 355
+game_iterations_smooth    = 283.37577733499177
+game_score                = -18.0
+game_score_smooth         = -20.458065338778425
+
+
+
+iterations                = 31345
+game_id                   = 111
+score                     = -2293.0
+game_iterations           = 251
+game_iterations_smooth    = 280.1381996014926
+game_score                = -21.0
+game_score_smooth         = -20.512258804900586
+
+
+
+iterations                = 31640
+game_id                   = 112
+score                     = -2313.0
+game_iterations           = 295
+game_iterations_smooth    = 281.62437964134335
+game_score                = -20.0
+game_score_smooth         = -20.461032924410528
+
+
+
+iterations                = 31892
+game_id                   = 113
+score                     = -2334.0
+game_iterations           = 252
+game_iterations_smooth    = 278.66194167720903
+game_score                = -21.0
+game_score_smooth         = -20.514929631969476
+
+
+
+iterations                = 32166
+game_id                   = 114
+score                     = -2355.0
+game_iterations           = 274
+game_iterations_smooth    = 278.1957475094881
+game_score                = -21.0
+game_score_smooth         = -20.563436668772532
+
+
+
+iterations                = 32417
+game_id                   = 115
+score                     = -2376.0
+game_iterations           = 251
+game_iterations_smooth    = 275.4761727585393
+game_score                = -21.0
+game_score_smooth         = -20.60709300189528
+
+
+
+iterations                = 32693
+game_id                   = 116
+score                     = -2397.0
+game_iterations           = 276
+game_iterations_smooth    = 275.52855548268536
+game_score                = -21.0
+game_score_smooth         = -20.646383701705755
+
+
+
+iterations                = 32962
+game_id                   = 117
+score                     = -2418.0
+game_iterations           = 269
+game_iterations_smooth    = 274.87569993441684
+game_score                = -21.0
+game_score_smooth         = -20.681745331535183
+
+
+
+iterations                = 33221
+game_id                   = 118
+score                     = -2439.0
+game_iterations           = 259
+game_iterations_smooth    = 273.2881299409752
+game_score                = -21.0
+game_score_smooth         = -20.713570798381667
+
+
+
+iterations                = 33564
+game_id                   = 119
+score                     = -2457.0
+game_iterations           = 343
+game_iterations_smooth    = 280.2593169468777
+game_score                = -18.0
+game_score_smooth         = -20.442213718543503
+
+
+
+iterations                = 33817
+game_id                   = 120
+score                     = -2478.0
+game_iterations           = 253
+game_iterations_smooth    = 277.53338525218993
+game_score                = -21.0
+game_score_smooth         = -20.497992346689156
+
+
+
+iterations                = 34134
+game_id                   = 121
+score                     = -2498.0
+game_iterations           = 317
+game_iterations_smooth    = 281.48004672697095
+game_score                = -20.0
+game_score_smooth         = -20.448193112020242
+
+
+
+iterations                = 34426
+game_id                   = 122
+score                     = -2519.0
+game_iterations           = 292
+game_iterations_smooth    = 282.53204205427386
+game_score                = -21.0
+game_score_smooth         = -20.50337380081822
+
+
+
+iterations                = 34738
+game_id                   = 123
+score                     = -2539.0
+game_iterations           = 312
+game_iterations_smooth    = 285.47883784884647
+game_score                = -20.0
+game_score_smooth         = -20.4530364207364
+
+
+
+iterations                = 34984
+game_id                   = 124
+score                     = -2560.0
+game_iterations           = 246
+game_iterations_smooth    = 281.5309540639619
+game_score                = -21.0
+game_score_smooth         = -20.50773277866276
+
+
+
+iterations                = 35233
+game_id                   = 125
+score                     = -2581.0
+game_iterations           = 249
+game_iterations_smooth    = 278.2778586575657
+game_score                = -21.0
+game_score_smooth         = -20.556959500796484
+
+
+
+iterations                = 35509
+game_id                   = 126
+score                     = -2602.0
+game_iterations           = 276
+game_iterations_smooth    = 278.0500727918091
+game_score                = -21.0
+game_score_smooth         = -20.601263550716837
+
+
+
+iterations                = 35770
+game_id                   = 127
+score                     = -2623.0
+game_iterations           = 261
+game_iterations_smooth    = 276.3450655126282
+game_score                = -21.0
+game_score_smooth         = -20.641137195645154
+
+
+
+iterations                = 36025
+game_id                   = 128
+score                     = -2644.0
+game_iterations           = 255
+game_iterations_smooth    = 274.2105589613654
+game_score                = -21.0
+game_score_smooth         = -20.67702347608064
+
+
+
+iterations                = 36282
+game_id                   = 129
+score                     = -2665.0
+game_iterations           = 257
+game_iterations_smooth    = 272.48950306522886
+game_score                = -21.0
+game_score_smooth         = -20.70932112847258
+
+
+
+iterations                = 36532
+game_id                   = 130
+score                     = -2686.0
+game_iterations           = 250
+game_iterations_smooth    = 270.240552758706
+game_score                = -21.0
+game_score_smooth         = -20.738389015625327
+
+
+
+iterations                = 36789
+game_id                   = 131
+score                     = -2707.0
+game_iterations           = 257
+game_iterations_smooth    = 268.9164974828354
+game_score                = -21.0
+game_score_smooth         = -20.764550114062796
+
+
+
+iterations                = 37062
+game_id                   = 132
+score                     = -2728.0
+game_iterations           = 273
+game_iterations_smooth    = 269.32484773455184
+game_score                = -21.0
+game_score_smooth         = -20.78809510265652
+
+
+
+iterations                = 37363
+game_id                   = 133
+score                     = -2748.0
+game_iterations           = 301
+game_iterations_smooth    = 272.49236296109666
+game_score                = -20.0
+game_score_smooth         = -20.70928559239087
+
+
+
+iterations                = 37617
+game_id                   = 134
+score                     = -2769.0
+game_iterations           = 254
+game_iterations_smooth    = 270.643126664987
+game_score                = -21.0
+game_score_smooth         = -20.738357033151786
+
+
+
+iterations                = 37912
+game_id                   = 135
+score                     = -2790.0
+game_iterations           = 295
+game_iterations_smooth    = 273.0788139984883
+game_score                = -21.0
+game_score_smooth         = -20.764521329836608
+
+
+
+iterations                = 38188
+game_id                   = 136
+score                     = -2811.0
+game_iterations           = 276
+game_iterations_smooth    = 273.37093259863946
+game_score                = -21.0
+game_score_smooth         = -20.78806919685295
+
+
+
+iterations                = 38491
+game_id                   = 137
+score                     = -2832.0
+game_iterations           = 303
+game_iterations_smooth    = 276.33383933877553
+game_score                = -21.0
+game_score_smooth         = -20.809262277167655
+
+
+
+iterations                = 38742
+game_id                   = 138
+score                     = -2853.0
+game_iterations           = 251
+game_iterations_smooth    = 273.800455404898
+game_score                = -21.0
+game_score_smooth         = -20.82833604945089
+
+
+
+iterations                = 38990
+game_id                   = 139
+score                     = -2874.0
+game_iterations           = 248
+game_iterations_smooth    = 271.2204098644082
+game_score                = -21.0
+game_score_smooth         = -20.845502444505804
+
+
+
+iterations                = 39314
+game_id                   = 140
+score                     = -2893.0
+game_iterations           = 324
+game_iterations_smooth    = 276.4983688779674
+game_score                = -19.0
+game_score_smooth         = -20.660952200055224
+
+
+
+iterations                = 39587
+game_id                   = 141
+score                     = -2914.0
+game_iterations           = 273
+game_iterations_smooth    = 276.1485319901706
+game_score                = -21.0
+game_score_smooth         = -20.694856980049703
+
+
+
+iterations                = 39862
+game_id                   = 142
+score                     = -2935.0
+game_iterations           = 275
+game_iterations_smooth    = 276.03367879115353
+game_score                = -21.0
+game_score_smooth         = -20.725371282044733
+
+
+
+iterations                = 40136
+game_id                   = 143
+score                     = -2956.0
+game_iterations           = 274
+game_iterations_smooth    = 275.83031091203816
+game_score                = -21.0
+game_score_smooth         = -20.75283415384026
+
+
+
+iterations                = 40392
+game_id                   = 144
+score                     = -2977.0
+game_iterations           = 256
+game_iterations_smooth    = 273.84727982083433
+game_score                = -21.0
+game_score_smooth         = -20.777550738456238
+
+
+
+iterations                = 40700
+game_id                   = 145
+score                     = -2997.0
+game_iterations           = 308
+game_iterations_smooth    = 277.2625518387509
+game_score                = -20.0
+game_score_smooth         = -20.699795664610615
+
+
+
+iterations                = 40953
+game_id                   = 146
+score                     = -3018.0
+game_iterations           = 253
+game_iterations_smooth    = 274.8362966548758
+game_score                = -21.0
+game_score_smooth         = -20.729816098149556
+
+
+
+iterations                = 41217
+game_id                   = 147
+score                     = -3039.0
+game_iterations           = 264
+game_iterations_smooth    = 273.7526669893882
+game_score                = -21.0
+game_score_smooth         = -20.7568344883346
+
+
+
+iterations                = 41548
+game_id                   = 148
+score                     = -3059.0
+game_iterations           = 331
+game_iterations_smooth    = 279.4774002904494
+game_score                = -20.0
+game_score_smooth         = -20.68115103950114
+
+
+
+iterations                = 41802
+game_id                   = 149
+score                     = -3080.0
+game_iterations           = 254
+game_iterations_smooth    = 276.9296602614045
+game_score                = -21.0
+game_score_smooth         = -20.71303593555103
+
+
+
+iterations                = 42069
+game_id                   = 150
+score                     = -3101.0
+game_iterations           = 267
+game_iterations_smooth    = 275.93669423526404
+game_score                = -21.0
+game_score_smooth         = -20.741732341995927
+
+
+
+iterations                = 42344
+game_id                   = 151
+score                     = -3122.0
+game_iterations           = 275
+game_iterations_smooth    = 275.8430248117377
+game_score                = -21.0
+game_score_smooth         = -20.767559107796338
+
+
+
+iterations                = 42591
+game_id                   = 152
+score                     = -3143.0
+game_iterations           = 247
+game_iterations_smooth    = 272.95872233056394
+game_score                = -21.0
+game_score_smooth         = -20.790803197016707
+
+
+
+iterations                = 42892
+game_id                   = 153
+score                     = -3164.0
+game_iterations           = 301
+game_iterations_smooth    = 275.76285009750757
+game_score                = -21.0
+game_score_smooth         = -20.811722877315038
+
+
+
+iterations                = 43141
+game_id                   = 154
+score                     = -3185.0
+game_iterations           = 249
+game_iterations_smooth    = 273.0865650877568
+game_score                = -21.0
+game_score_smooth         = -20.830550589583535
+
+
+
+iterations                = 43394
+game_id                   = 155
+score                     = -3206.0
+game_iterations           = 253
+game_iterations_smooth    = 271.0779085789811
+game_score                = -21.0
+game_score_smooth         = -20.84749553062518
+
+
+
+iterations                = 43661
+game_id                   = 156
+score                     = -3227.0
+game_iterations           = 267
+game_iterations_smooth    = 270.67011772108305
+game_score                = -21.0
+game_score_smooth         = -20.862745977562664
+
+
+
+iterations                = 43940
+game_id                   = 157
+score                     = -3247.0
+game_iterations           = 279
+game_iterations_smooth    = 271.50310594897473
+game_score                = -20.0
+game_score_smooth         = -20.7764713798064
+
+
+
+iterations                = 44214
+game_id                   = 158
+score                     = -3268.0
+game_iterations           = 274
+game_iterations_smooth    = 271.75279535407725
+game_score                = -21.0
+game_score_smooth         = -20.79882424182576
+
+
+
+iterations                = 44465
+game_id                   = 159
+score                     = -3289.0
+game_iterations           = 251
+game_iterations_smooth    = 269.6775158186695
+game_score                = -21.0
+game_score_smooth         = -20.818941817643186
+
+
+
+iterations                = 44740
+game_id                   = 160
+score                     = -3309.0
+game_iterations           = 275
+game_iterations_smooth    = 270.2097642368026
+game_score                = -20.0
+game_score_smooth         = -20.737047635878866
+
+
+
+iterations                = 44991
+game_id                   = 161
+score                     = -3330.0
+game_iterations           = 251
+game_iterations_smooth    = 268.2887878131223
+game_score                = -21.0
+game_score_smooth         = -20.76334287229098
+
+
+
+iterations                = 45244
+game_id                   = 162
+score                     = -3351.0
+game_iterations           = 253
+game_iterations_smooth    = 266.7599090318101
+game_score                = -21.0
+game_score_smooth         = -20.787008585061884
+
+
+
+iterations                = 45493
+game_id                   = 163
+score                     = -3372.0
+game_iterations           = 249
+game_iterations_smooth    = 264.98391812862906
+game_score                = -21.0
+game_score_smooth         = -20.808307726555697
+
+
+
+iterations                = 45765
+game_id                   = 164
+score                     = -3392.0
+game_iterations           = 272
+game_iterations_smooth    = 265.68552631576614
+game_score                = -20.0
+game_score_smooth         = -20.727476953900126
+
+
+

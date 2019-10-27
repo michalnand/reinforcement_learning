@@ -21,10 +21,20 @@ set key left top
 set ylabel "score"
 
 set xlabel "iterations"
-set output 'progress_training_iterations.png'
-plot 'training.log' using 1:3 notitle  with lines lw 2 lc 'red'
-     
+set output 'training_score_iterations.png'
+plot 'training_progress.log' using 1:3 notitle  with lines lw 2 lc 'red'
 
-set xlabel "games played"
-set output 'progress_training_games_played.png'
-plot 'training.log' using 2:3 notitle  with lines lw 2 lc 'red'
+set xlabel "games"
+set output 'training_score_games.png'
+plot 'training_progress.log' using 2:3 notitle  with lines lw 2 lc 'red'
+
+set xlabel "games"
+set output 'training_score_per_game.png'
+plot 'training_progress.log' using 2:6 title 'raw'  with lines lw 2 lc 'red', \
+     'training_progress.log' using 2:7 title 'smoothed'  with lines lw 3 lc 'blue'
+
+set ylabel "iterations per game"
+set xlabel "games"
+set output 'training_iterations_per_game.png'
+plot 'training_progress.log' using 2:4 title 'raw'  with lines lw 2 lc 'red', \
+     'training_progress.log' using 2:5 title 'smoothed'  with lines lw 2 lc 'blue'
