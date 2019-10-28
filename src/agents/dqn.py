@@ -70,6 +70,7 @@ class Agent():
                 self.experience_replay.add(self.observation, q_values, self.action, self.reward, self.done)
             else:   
                 self.train_model()
+                #print(self.iterations, epsilon)
 
         self.observation = observation_new
 
