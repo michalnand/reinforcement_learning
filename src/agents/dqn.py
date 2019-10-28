@@ -66,8 +66,6 @@ class Agent():
 
         observation_new, self.reward, self.done, self.info = self.env.step(self.action)
 
-        common.atari_wrapper.observation_show(observation_new)
-
         if self.enabled_training:
             if self.experience_replay.is_full() == False:
                 self.experience_replay.add(self.observation, q_values, self.action, self.reward, self.done)

@@ -1,0 +1,20 @@
+iterations                = 328
+game_id                   = 1
+score                     = -20.0
+game_iterations           = 328
+game_iterations_smooth    = 328.0
+game_score                = -20.0
+game_score_smooth         = -20.0
+
+
+
+iterations                = 635
+game_id                   = 2
+score                     = -41.0
+game_iterations           = 307
+game_iterations_smooth    = 325.9
+game_score                = -21.0
+game_score_smooth         = -20.1
+
+
+
