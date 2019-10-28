@@ -188,7 +188,7 @@ def Create(env, width = 96, height = 96, frame_stacking = 4):
     env = SetDimensions(env, width, height, frame_stacking)
     env = NoopResetEnv(env)
     env = FireResetEnv(env)
-    env = MaxAndSkipEnv(env) 
+    env = SkipEnv(env)
     env = ClipRewardEnv(env)
     env = ResizeFrameEnv(env)
     env = FrameStack(env)
