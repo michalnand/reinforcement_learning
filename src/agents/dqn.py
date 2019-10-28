@@ -6,6 +6,7 @@ import agents.agent_stats
 import common.experience_replay
 
 
+import common.atari_wrapper
 
 def loss_mse(y_target, y_hat):
     return torch.mean( (y_target - y_hat).pow(2) )
@@ -64,6 +65,8 @@ class Agent():
         self.action = self.choose_action_e_greedy(q_values, epsilon)
 
         observation_new, self.reward, self.done, self.info = self.env.step(self.action)
+
+        common.atari_wrapper.observation_show(observation_new)
 
         if self.enabled_training:
             if self.experience_replay.is_full() == False:
