@@ -54,7 +54,7 @@ class Agent():
     def main(self):
         if self.enabled_training:
             if self.epsilon > self.epsilon_end:
-                self.epsilon*= self.epsilon_decay
+                self.epsilon-= 1.0/self.epsilon_decay
                 
             epsilon = self.epsilon
         else:
