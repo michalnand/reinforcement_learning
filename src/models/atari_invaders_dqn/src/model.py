@@ -12,6 +12,8 @@ class Model(torch.nn.Module):
 
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
+        print("computing device ", self.device)
+
         self.input_shape    = input_shape
         self.outputs_count  = outputs_count
 
@@ -20,13 +22,13 @@ class Model(torch.nn.Module):
         fc_input_width  = self.input_shape[2]
        
 
-        ratio           = 2**4
+        ratio           = 2**5
 
         fc_inputs_count = ((fc_input_width)//ratio)*((fc_input_height)//ratio)
 
         input_channels = self.input_shape[0]
 
-        self.layers = [
+        self.layers = [ 
                         nn.Conv2d(input_channels, 64, kernel_size=3, stride=1, padding=1),
                         nn.ReLU(), 
                         nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
@@ -43,11 +45,15 @@ class Model(torch.nn.Module):
                         nn.ReLU(),
                         nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
 
+                        nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=1),
+                        nn.ReLU(),
+			            nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
+
                         Flatten(), 
-                        nn.Linear(fc_inputs_count*64, 512),
+                        nn.Linear(fc_inputs_count*64, 256),
                         nn.ReLU(),                      
 
-                        nn.Linear(512, outputs_count)
+                        nn.Linear(256, outputs_count)
                     ]
 
         for i in range(len(self.layers)):
