@@ -1,4 +1,4 @@
-
+import time
 
 class AgentStats():
     def __init__(self, log_file_name_prefix):
@@ -20,6 +20,10 @@ class AgentStats():
         
         self.game_id     = 0
 
+        self.time_now    = time.time()
+        self.time_prev   = self.time_now - 1.0
+        self.fps_smooth  = 0.0
+
         f = open(self.log_file_name_prefix + "_progress.log", "w")
         f.close()
 
@@ -34,8 +38,14 @@ class AgentStats():
         self.game_iterations_+= 1
         self.game_score_+= reward
 
+        k = 0.1
+        self.time_prev   = self.time_now
+        self.time_now    = time.time()
+
+        self.fps_smooth = (1.0 - k)*self.fps_smooth + k*1.0/(self.time_now - self.time_prev)
+
+
         if done:
-            k = 0.1
             self.game_id+= 1
 
             self.game_iterations  = self.game_iterations_
@@ -54,6 +64,7 @@ class AgentStats():
 
             self.game_score_smooth = (1.0 - k)*self.game_score_smooth + k*self.game_score
 
+           
         if self.iterations%1000 == 0:
             s = str(self.iterations) + " "
             s+= str(self.game_id)   + " " 
@@ -62,6 +73,7 @@ class AgentStats():
             s+= str(self.game_iterations_smooth) + " "
             s+= str(self.game_score) + " "
             s+= str(self.game_score_smooth) + " "
+            s+= str(self.fps_smooth) + " "
             s+= "\n"
             
             f = open(self.log_file_name_prefix + "_progress.log", "a+")
@@ -75,7 +87,8 @@ class AgentStats():
             s+= "game_iterations_smooth    = " + str(self.game_iterations_smooth) + "\n"
             s+= "game_score                = " + str(self.game_score) + "\n"
             s+= "game_score_smooth         = " + str(self.game_score_smooth) + "\n"
-            
+            s+= "fps_smooth                = " + str(self.fps_smooth) + "\n"
+
             s+= "\n\n\n"
 
             f = open(self.log_file_name_prefix + "_experiment.log", "a+")
