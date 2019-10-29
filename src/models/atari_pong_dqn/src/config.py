@@ -9,7 +9,7 @@ class Config():
         self.learning_rate  = 0.0001
  
         self.epsilon        = 1.0
-        self.epsilon_end    = 0.05
-        self.epsilon_decay  = 150000
+        self.epsilon_end    = 0.01
+        self.epsilon_decay  = 100000
         self.experience_replay_size = 10000
  
