@@ -38,14 +38,15 @@ class AgentStats():
         self.game_iterations_+= 1
         self.game_score_+= reward
 
-        k = 0.1
+        
         self.time_prev   = self.time_now
         self.time_now    = time.time()
-
+        k = 0.01
         self.fps_smooth = (1.0 - k)*self.fps_smooth + k*1.0/(self.time_now - self.time_prev)
 
 
         if done:
+            k = 0.1
             self.game_id+= 1
 
             self.game_iterations  = self.game_iterations_
