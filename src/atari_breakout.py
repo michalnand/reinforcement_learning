@@ -21,6 +21,7 @@ env.reset()
 
 agent = agents.dqn.Agent(env, model, config, save_path)
 
+
 while agent.iterations < 10000000:
     agent.main()
 
@@ -39,10 +40,12 @@ print("training done")
 agent.load()
 agent.disable_training()
 
+agent.iterations = 0
 while agent.iterations < 1000000:
     agent.main()
 
 print("testing done")
+
 
 '''
 agent = agents.dqn.Agent(env, model, config, save_path, save_stats=False)

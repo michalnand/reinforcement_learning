@@ -39,6 +39,7 @@ print("training done")
 agent.load()
 agent.disable_training()
 
+agent.iterations = 0
 while agent.iterations < 1000000:
     agent.main()
 
