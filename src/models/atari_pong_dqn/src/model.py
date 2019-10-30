@@ -55,17 +55,17 @@ class Model(torch.nn.Module):
         '''
 
         self.layers = [ 
-                        nn.Conv2d(input_channels, 32, kernel_size=8, stride=4, padding=1),
+                        nn.Conv2d(input_channels, 32, kernel_size=8, stride=4, padding=0),
                         nn.ReLU(), 
 
-                        nn.Conv2d(32, 64, kernel_size=4, stride=2, padding=1),
+                        nn.Conv2d(32, 64, kernel_size=4, stride=2, padding=0),
                         nn.ReLU(),
  
-                        nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=1),
+                        nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=0),
                         nn.ReLU(),
             
                         Flatten(), 
-                        nn.Linear(100*64, 512),
+                        nn.Linear(7*7*64, 512),
                         nn.ReLU(),                      
 
                         nn.Linear(512, outputs_count)
