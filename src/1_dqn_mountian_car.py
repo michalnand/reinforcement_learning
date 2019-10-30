@@ -14,9 +14,6 @@ gym.envs.register(
 )
 
 env = gym.make("MountainCarMyEasyVersion-v0")
-#env = gym.make("CartPole-v0")
-#env = gym.make("Pong-v0")
-
 
 obs             = env.observation_space
 actions_count   = env.action_space.n
