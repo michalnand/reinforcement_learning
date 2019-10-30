@@ -20,6 +20,7 @@ env = common.atari_wrapper.Create(env, 96, 96, 4)
 
 env.reset() 
 
+'''
 agent = agents.dqn.Agent(env, model, config, save_path)
 
 while agent.iterations < 10000000:
@@ -44,7 +45,6 @@ while agent.iterations < 1000000:
     agent.main()
 
 print("testing done")
-
 '''
 
 agent = agents.dqn.Agent(env, model, config, save_path, save_stats=False)
@@ -58,4 +58,3 @@ while True:
 
 #env = common.env_atari.Create("Enduro-v0")
 #env = common.env_atari.Create("Seaquest-v0")
-'''
