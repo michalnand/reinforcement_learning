@@ -14,7 +14,7 @@ config = models.atari_invaders_dqn.src.config.Config()
 
 save_path = "./models/atari_invaders_dqn/"
 
-env = gym.make("SpaceInvaders-v4") 
+env = gym.make("SpaceInvaders-v0") 
 env = common.atari_wrapper.Create(env, 96, 96, 4) 
 
 env.reset()

@@ -22,22 +22,23 @@ class Model(torch.nn.Module):
         fc_input_width  = self.input_shape[2]
        
 
-        ratio           = 2**5
+        ratio           = 2**4
 
         fc_inputs_count = ((fc_input_width)//ratio)*((fc_input_height)//ratio)
 
         input_channels = self.input_shape[0]
 
+
         self.layers = [ 
-                        nn.Conv2d(input_channels, 64, kernel_size=3, stride=1, padding=1),
+                        nn.Conv2d(input_channels, 32, kernel_size=3, stride=1, padding=1),
                         nn.ReLU(), 
                         nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
 
-                        nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=1),
+                        nn.Conv2d(32, 32, kernel_size=3, stride=1, padding=1),
                         nn.ReLU(),
                         nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
  
-                        nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=1),
+                        nn.Conv2d(32, 64, kernel_size=3, stride=1, padding=1),
                         nn.ReLU(),
                         nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
             
@@ -47,14 +48,32 @@ class Model(torch.nn.Module):
 
                         nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=1),
                         nn.ReLU(),
-			            nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
 
                         Flatten(), 
-                        nn.Linear(fc_inputs_count*64, 256),
+                        nn.Linear(fc_inputs_count*64, 512),
                         nn.ReLU(),                      
 
-                        nn.Linear(256, outputs_count)
+                        nn.Linear(512, outputs_count)
                     ]
+  
+        '''
+        self.layers = [ 
+                        nn.Conv2d(input_channels, 32, kernel_size=8, stride=4, padding=0),
+                        nn.ReLU(), 
+
+                        nn.Conv2d(32, 64, kernel_size=4, stride=2, padding=0),
+                        nn.ReLU(),
+ 
+                        nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=0),
+                        nn.ReLU(),
+            
+                        Flatten(), 
+                        nn.Linear(7*7*64, 512),
+                        nn.ReLU(),                      
+
+                        nn.Linear(512, outputs_count)
+                    ]
+        '''
 
         for i in range(len(self.layers)):
             if hasattr(self.layers[i], "weight"):
