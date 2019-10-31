@@ -122,7 +122,9 @@ class ClipRewardEnv(gym.RewardWrapper):
 
     def step(self, action):
         obs, reward, done, info = self.env.step(action)
-        reward = np.clip(reward, -10.0, 10.0)
+        if done:
+            reward = -1.0
+        reward = np.clip(reward, -1.0, 1.0)
         return obs, reward, done, info
 
 class ResizeFrameEnv(gym.ObservationWrapper):

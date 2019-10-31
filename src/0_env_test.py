@@ -1,9 +1,16 @@
 import gym
 import numpy
 
-env = gym.make("MountainCar-v0")
-#env = gym.make("Pong-v0")
-#env = gym.make("Breakout-v0")
+import common.atari_wrapper
+
+#env = gym.make("MountainCar-v0")
+#env = gym.make("Pong-v4")
+#env = gym.make("Breakout-v4")
+#env = gym.make("SpaceInvaders-v4")
+#env = gym.make("MsPacman-v0")
+
+env = common.atari_wrapper.Create(env)
+
 env.reset()
 
 obs             = env.observation_space
@@ -18,5 +25,7 @@ while True:
     observation, reward, done, info = env.step(action)
     env.render()
 
+    if reward != 0:
+        print(reward)
     if done:
         env.reset()
