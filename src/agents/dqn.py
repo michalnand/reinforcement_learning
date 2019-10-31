@@ -55,7 +55,7 @@ class Agent():
             self.epsilon.process()
             epsilon = self.epsilon.get()
         else:
-            epsilon = self.epsilon.get_end()
+            epsilon = self.epsilon.get_testing()
 
         q_values = self.model.get_q_values(self.observation)
         self.action = self.choose_action_e_greedy(q_values, epsilon)

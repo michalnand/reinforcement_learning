@@ -2,10 +2,11 @@
 
 
 class Linear():
-    def __init__(self, iterations, start_value = 1.0, end_value = 0.1):
+    def __init__(self, iterations, start_value = 1.0, end_value = 0.1, testing_value = 0.02):
         self.decay = (start_value - end_value)*1.0/iterations   
         self.start_value = start_value
         self.end_value = end_value
+        self.testing_value = testing_value
 
         self.epsilon = self.start_value
 
@@ -23,12 +24,16 @@ class Linear():
     def get_end(self):
         return self.end_value
 
+    def get_testing(self):
+        return self.testing_value
+
 
 class Exponential():
-    def __init__(self, q = 0.999999, start_value = 1.0, end_value = 0.1):
+    def __init__(self, q = 0.999999, start_value = 1.0, end_value = 0.1, testing_value = 0.02):
         self.q = q
         self.start_value = start_value
         self.end_value = end_value
+        self.testing_value = testing_value
 
         self.epsilon = self.start_value
 
@@ -45,3 +50,6 @@ class Exponential():
 
     def get_end(self):
         return self.end_value
+
+    def get_testing(self):
+        return self.testing_value
