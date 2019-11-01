@@ -53,7 +53,11 @@ class Buffer():
     def get_random_batch(self, batch_size, device):
         
         observation_shape = self.buffer[0].observation.shape
-        state_shape   = (batch_size, ) + observation_shape[1:]
+
+        if len(observation_shape) == 1:
+            state_shape   = (batch_size, ) + observation_shape[0:]
+        else:
+            state_shape   = (batch_size, ) + observation_shape[1:]
         actions_count = len(self.buffer[0].q_values)
 
         q_values_shape = (batch_size, ) + (actions_count, )

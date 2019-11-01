@@ -50,9 +50,5 @@ class Model(torch.nn.Module):
             network_output  = self.model.forward(state_dev)
 
             return network_output[0].to("cpu").detach().numpy()
-    
-    def save(self, path):
-        name = path + "trained/model.pt"
-        print("saving", name)
-        torch.save(self.model.state_dict(), name)
+
     
