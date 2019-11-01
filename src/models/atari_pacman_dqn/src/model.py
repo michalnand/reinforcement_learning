@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+import torchviz
 
 
 class Flatten(nn.Module):
@@ -93,6 +94,8 @@ class Model(torch.nn.Module):
         print("saving", name)
         torch.save(self.model.state_dict(), name)
 
+        self.render(path)
+
     def load(self, path):
         name = path + "trained/model.pt"
         print("loading", name)
@@ -100,3 +103,14 @@ class Model(torch.nn.Module):
         self.model.load_state_dict(torch.load(name))
         self.model.eval() 
     
+
+    def render(self, path):
+
+        print("rendering ", path)
+
+        x = torch.zeros(1, self.input_shape[0], self.input_shape[1], self.input_shape[2], dtype=torch.float, requires_grad=False).to(self.device)
+        out = self.forward(x)
+        dot = torchviz.make_dot(out)
+         
+        dot.format = "svg"
+        dot.render(path + "trained/model")

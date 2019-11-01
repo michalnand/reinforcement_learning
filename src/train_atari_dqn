@@ -1,4 +1,4 @@
-python3 atari_breakout.py
-python3 atari_pong.py
-python3 atari_invaders.py
-python3 atari_pacman.py 
+python3 atari_breakout_dqn.py
+python3 atari_pong_dqn.py
+python3 atari_invaders_dqn.py
+python3 atari_pacman_dqn.py 
