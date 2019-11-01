@@ -1,2 +1,8 @@
-pip3 install numpy matplotlib noise torch gym opencv-python
-pip3 install gym[atari]
+numpy 
+matplotlib 
+noise
+opencv-python
+torch 
+torchviz
+gym  
+gym[atari]

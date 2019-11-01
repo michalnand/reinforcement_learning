@@ -18,7 +18,7 @@ env = gym.make("Breakout-v4")
 env = common.atari_wrapper.Create(env, 96, 96, 4) 
 
 env.reset()
-
+'''
 
 agent = agents.dqn.Agent(env, model, config, save_path)
 
@@ -46,15 +46,14 @@ while agent.iterations < 1000000:
     agent.main()
 
 print("testing done")
-
-
 '''
+
+
 agent = agents.dqn.Agent(env, model, config, save_path, save_stats=False)
-agent.load()
+#agent.load()
 agent.disable_training()
 
 while True:
     agent.main()
     env.render()
     time.sleep(0.1)
-'''
