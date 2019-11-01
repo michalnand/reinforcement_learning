@@ -53,3 +53,4 @@ class Exponential():
 
     def get_testing(self):
         return self.testing_value
+

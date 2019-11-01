@@ -59,8 +59,4 @@ while True:
     agent.main()
     env.render()
     time.sleep(0.1)
-
-#env = common.env_atari.Create("Enduro-v0")
-#env = common.env_atari.Create("Seaquest-v0")
-
 '''
