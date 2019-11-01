@@ -3,13 +3,12 @@ import torch
 
 import agents.agent_stats
 
-import common.experience_replay
+import common.policy_state_value_replay
 
 
 import common.atari_wrapper
 
-def loss_mse(y_target, y_hat):
-    return torch.mean( (y_target - y_hat).pow(2) )
+
  
 class Agent():
     def __init__(self, env, model, config, save_path = None, save_stats = True):
@@ -20,18 +19,16 @@ class Agent():
 
         self.batch_size     = config.batch_size
 
-        self.epsilon        = config.epsilon
         self.gamma          = config.gamma
 
-        self.experience_replay = common.experience_replay.Buffer(config.experience_replay_size)
+        self.experience_replay =  common.policy_state_value_replay.Buffer(config.experience_replay_size)
 
         self.observation_shape = self.env.observation_space.shape
         self.actions_count     = self.env.env.action_space.n
 
         self.model      = model.Model(self.observation_shape, self.actions_count)
         self.optimizer  = torch.optim.Adam(self.model.parameters(), lr= config.learning_rate)
-        self.loss       = torch.nn.MSELoss()
-
+        
         self.observation    = env.reset()
         self.enable_training()
 
@@ -52,23 +49,17 @@ class Agent():
         self.enabled_training = False
     
     def main(self):
-        if self.enabled_training:
-            self.epsilon.process()
-            epsilon = self.epsilon.get()
-        else:
-            epsilon = self.epsilon.get_testing()
-
-        q_values = self.model.get_q_values(self.observation)
-        self.action = self.choose_action_e_greedy(q_values, epsilon)
+        logits  = self.model.get_q_values(self.observation)
+        probs   = self.softmax(logits)
+        self.action = self.choose_action(probs)
 
         observation_new, self.reward, self.done, self.info = self.env.step(self.action)
 
         if self.enabled_training:
             if self.experience_replay.is_full() == False:
-                self.experience_replay.add(self.observation, q_values, self.action, self.reward, self.done)
+                self.experience_replay.add(self.observation, self.action, self.reward, self.done)
             else:   
                 self.train_model()
-                #print(self.iterations, epsilon)
 
         self.observation = observation_new
 
@@ -88,15 +79,18 @@ class Agent():
         
     def train_model(self):
         self.experience_replay.compute(self.gamma)
-                
+        
+
         batches_count = self.experience_replay.length()//self.batch_size
 
         for _ in range(0, batches_count):
-            input, target = self.experience_replay.get_random_batch(self.batch_size, self.model.device)
+            observation, state_value, actions = self.experience_replay.get_random_batch(self.batch_size, self.model.device)
             
-            output = self.model.forward(input)
+            output = self.model.forward(observation)
+            log_prob_v = torch.log_softmax(output, dim=1)
+            log_prob_actions_v = state_value*log_prob_v[range(self.batch_size), actions]
 
-            loss   = loss_mse(target, output)
+            loss   = -log_prob_actions_v.mean()
     
             self.optimizer.zero_grad()
             loss.backward()
@@ -104,18 +98,18 @@ class Agent():
                 param.grad.data.clamp_(-10.0, 10.0)
             self.optimizer.step()
 
+
         self.experience_replay.clear()                
 
         
-    
-    def choose_action_e_greedy(self, q_values, epsilon):
-        result = numpy.argmax(q_values)
-        
-        if numpy.random.random() < epsilon:
-            result = numpy.random.randint(len(q_values))
-        
-        return result
+    def softmax(self, logits):
+        m = numpy.max(logits)
+        l = numpy.exp(logits - m)
+        return l/numpy.sum(l)
 
+    def choose_action(self, probs):
+        return numpy.random.choice(range(len(probs)), p=probs)
+        
     def save(self):
         self.model.save(self.save_path)
 
