@@ -11,6 +11,6 @@ class Config():
 
         self.epsilon        = common.decay.Exponential(0.99999, 1.0, 0.1, 0.02)
         
-        self.experience_replay_size = 256 #8192
+        self.experience_replay_size = 128 #8192
 
 
