@@ -87,10 +87,17 @@ class Agent():
             observation, state_value, actions = self.experience_replay.get_random_batch(self.batch_size, self.model.device)
             
             output = self.model.forward(observation)
+            probs = torch.softmax(output, dim = 1)
             log_prob_v = torch.log_softmax(output, dim=1)
             log_prob_actions_v = state_value*log_prob_v[range(self.batch_size), actions]
 
-            loss   = -log_prob_actions_v.mean()
+            policy_loss = -log_prob_actions_v.mean()
+            
+            entropy = -(probs*torch.log(probs)).sum(dim = 1)
+            entropy_loss = -0.01*entropy.mean()
+
+
+            loss   = policy_loss + entropy_loss
     
             self.optimizer.zero_grad()
             loss.backward()
