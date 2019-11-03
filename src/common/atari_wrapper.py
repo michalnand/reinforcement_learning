@@ -72,7 +72,43 @@ class FireResetEnv(gym.Wrapper):
 
         return obs
 
+'''
+Make end-of-life == end-of-episode, but only reset on true game over.
+Done by DeepMind for the DQN and co. since it helps value estimation.
+'''
+class EpisodicLifeEnv(gym.Wrapper):
+    def __init__(self, env):
+        gym.Wrapper.__init__(self, env)
+        self.initial_lives = 0 
+        self.was_real_done  = True
+    
+    def step(self, action):
+        obs, reward, done, info = self.env.step(action)
+        self.was_real_done = done
+        lives = self.env.unwrapped.ale.lives()
 
+        if self.initial_lives > 0:
+            if lives == 0:
+                done = True
+                reward = -1.0
+            else:
+                done = False
+
+        return obs, reward, done, info
+    
+    def reset(self):
+        '''
+        Reset only when lives are exhausted.
+        This way all states are still reachable even though lives are episodic,
+        and the learner need not know about any of this behind-the-scenes.
+        '''
+        if self.was_real_done:
+            obs = self.env.reset()
+        else:
+            obs, _, _, _ = self.env.step(0)
+        
+        self.initial_lives = self.env.unwrapped.ale.lives()
+        return obs
 
 class MaxAndSkipEnv(gym.Wrapper):
     def __init__(self, env, skip=4):
@@ -116,16 +152,14 @@ class SkipEnv(gym.Wrapper):
 
 
 
+
 class ClipRewardEnv(gym.RewardWrapper):
     def __init__(self, env):
         gym.RewardWrapper.__init__(self, env)
 
     def step(self, action):
         obs, reward, done, info = self.env.step(action)
-        
-        if done:
-            reward = -1.0
-        
+                
         if reward > 0.0:
             reward = 1.0
         
@@ -184,14 +218,21 @@ class MakeTensorEnv(gym.ObservationWrapper):
 
 
 def observation_show(observation):
-    image = np.zeros((observation.shape[3],  observation.shape[2], 3))
+    frames = np.zeros((observation.shape[1], observation.shape[3],  observation.shape[2]))
 
-    for ch in range(3):
+    for frame in range(observation.shape[1]):
         for y in range(observation.shape[3]):
             for x in range(observation.shape[2]):
-                image[y][x][ch] = observation[0][0][y][x]
+                frames[frame][y][x] = observation[0][frame][y][x]
 
-    plt.imshow(image, interpolation='none')
+    f, axarr = plt.subplots(2,2)
+    
+    axarr[0,0].imshow(frames[0])
+    axarr[0,1].imshow(frames[1])
+    axarr[1,0].imshow(frames[2])
+    axarr[1,1].imshow(frames[3])
+
+    #plt.imshow(frames[0], interpolation='none')
     plt.show()
 
 
@@ -199,8 +240,8 @@ def Create(env, width = 96, height = 96, frame_stacking = 4):
     env = SetDimensions(env, width, height, frame_stacking)
     env = NoopResetEnv(env)
     env = FireResetEnv(env)
-    env = SkipEnv(env)
-    #env = MaxAndSkipEnv(env)
+    env = EpisodicLifeEnv(env)
+    env = MaxAndSkipEnv(env)
     env = ClipRewardEnv(env)
     env = ResizeFrameEnv(env)
     env = FrameStack(env)
