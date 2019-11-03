@@ -12,9 +12,9 @@ import models.atari_enduro_dqn.src.config
 model  = models.atari_enduro_dqn.src.model
 config = models.atari_enduro_dqn.src.config.Config()
 
-save_path = "./models/atari_enduro_dqn/"
+save_path = "./models/atari_qbert_dqn/"
 
-env = gym.make("Enduro-v4") 
+env = gym.make("Qbert-v4") 
 env = common.atari_wrapper.Create(env, 96, 96, 4) 
 
 env.reset()
