@@ -66,6 +66,7 @@ class Model(torch.nn.Module):
             if isinstance(self.layers_features[i], nn.Conv2d):
                 torch.nn.init.kaiming_uniform_(self.layers_features[i].weight, nonlinearity="relu")
 
+
         self.model_features = nn.Sequential(*self.layers_features)
         self.model_features.to(self.device)
 
