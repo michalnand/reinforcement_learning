@@ -48,9 +48,9 @@ while agent.iterations  < 1000000:
     agent.main()
 
 print("testing done")
-
-
 '''
+
+
 agent = agents.dqn.Agent(env, model, config, save_path, save_stats=False)
 agent.load()
 agent.disable_training()
