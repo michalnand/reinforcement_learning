@@ -19,6 +19,7 @@ env = common.atari_wrapper.Create(env, 96, 96, 4)
 
 env.reset()
 
+
 agent = agents.dqn.Agent(env, model, config, save_path)
 
 
