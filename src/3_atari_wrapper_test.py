@@ -34,7 +34,7 @@ while True:
         print("reward = ", reward)
 
     if done:
-        print("\n\nDONE\n\n")
+        print("\n\nGAME DONE\n\n")
         env.reset()
         time.sleep(0.5)
 

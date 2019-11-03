@@ -72,43 +72,45 @@ class FireResetEnv(gym.Wrapper):
 
         return obs
 
-'''
-Make end-of-life == end-of-episode, but only reset on true game over.
-Done by DeepMind for the DQN and co. since it helps value estimation.
-'''
+
 class EpisodicLifeEnv(gym.Wrapper):
     def __init__(self, env):
+        """Make end-of-life == end-of-episode, but only reset on true game over.
+        Done by DeepMind for the DQN and co. since it helps value estimation.
+        """
         gym.Wrapper.__init__(self, env)
-        self.initial_lives = 0 
+        self.lives = 0
         self.was_real_done  = True
-    
+
     def step(self, action):
         obs, reward, done, info = self.env.step(action)
         self.was_real_done = done
+        # check current lives, make loss of life terminal,
+        # then update lives to handle bonus lives
         lives = self.env.unwrapped.ale.lives()
-
-        if self.initial_lives > 0:
-            if lives == 0:
-                done = True
-                reward = -1.0
-            else:
-                done = False
-
+        if lives < self.lives and lives > 0:
+            # for Qbert sometimes we stay in lives == 0 condition for a few frames
+            # so it's important to keep lives > 0, so that we only reset once
+            # the environment advertises done.
+            done = True
+            reward = -1.0
+            
+        self.lives = lives
         return obs, reward, done, info
-    
-    def reset(self):
-        '''
-        Reset only when lives are exhausted.
+
+    def reset(self, **kwargs):
+        """Reset only when lives are exhausted.
         This way all states are still reachable even though lives are episodic,
         and the learner need not know about any of this behind-the-scenes.
-        '''
+        """
         if self.was_real_done:
-            obs = self.env.reset()
+            obs = self.env.reset(**kwargs)
         else:
+            # no-op step to advance from terminal/lost life state
             obs, _, _, _ = self.env.step(0)
-        
-        self.initial_lives = self.env.unwrapped.ale.lives()
+        self.lives = self.env.unwrapped.ale.lives()
         return obs
+
 
 class MaxAndSkipEnv(gym.Wrapper):
     def __init__(self, env, skip=4):
@@ -233,7 +235,7 @@ def observation_show(observation):
     axarr[1,1].imshow(frames[3])
 
     #plt.imshow(frames[0], interpolation='none')
-    plt.show()
+    plt.show() 
 
 
 def Create(env, width = 96, height = 96, frame_stacking = 4):
