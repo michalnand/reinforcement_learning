@@ -93,7 +93,7 @@ class EpisodicLifeEnv(gym.Wrapper):
             # so it's important to keep lives > 0, so that we only reset once
             # the environment advertises done.
             done = True
-            reward = -1.0
+            reward = -10.0
             
         self.lives = lives
         return obs, reward, done, info
@@ -161,13 +161,8 @@ class ClipRewardEnv(gym.RewardWrapper):
 
     def step(self, action):
         obs, reward, done, info = self.env.step(action)
-                
-        if reward > 0.0:
-            reward = 1.0
-        
-        if reward < 0.0:
-            reward = -1.0
-        
+
+        reward = np.clip(reward, -1.0, 1.0)
         return obs, reward, done, info
 
 class ResizeFrameEnv(gym.ObservationWrapper):
@@ -242,9 +237,9 @@ def Create(env, width = 96, height = 96, frame_stacking = 4):
     env = SetDimensions(env, width, height, frame_stacking)
     env = NoopResetEnv(env)
     env = FireResetEnv(env)
+    env = ClipRewardEnv(env)
     env = EpisodicLifeEnv(env)
     env = MaxAndSkipEnv(env)
-    env = ClipRewardEnv(env)
     env = ResizeFrameEnv(env)
     env = FrameStack(env)
     env = MakeTensorEnv(env)

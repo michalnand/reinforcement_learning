@@ -24,9 +24,9 @@ class Model(torch.nn.Module):
         fc_input_width  = self.input_shape[2]
        
 
-        #ratio           = 2**4
-        #fc_inputs_count = ((fc_input_width)//ratio)*((fc_input_height)//ratio)
-        fc_inputs_count = 5*5
+        ratio           = 2**4
+        fc_inputs_count = ((fc_input_width)//ratio)*((fc_input_height)//ratio)
+        
 
         input_channels = self.input_shape[0]
 

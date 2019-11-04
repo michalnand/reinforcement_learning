@@ -15,7 +15,7 @@ config = models.atari_breakout_dqn.src.config.Config()
 save_path = "./models/atari_breakout_dqn/"
 
 env = gym.make("Breakout-v4") 
-env = common.atari_wrapper.Create(env, 84, 84, 4) 
+env = common.atari_wrapper.Create(env, 96, 96, 4) 
 
 env.reset()
 
