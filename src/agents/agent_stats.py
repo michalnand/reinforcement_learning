@@ -66,7 +66,7 @@ class AgentStats():
             self.game_score_smooth = (1.0 - k)*self.game_score_smooth + k*self.game_score
 
            
-        if self.iterations%1000 == 0:
+        if self.iterations%2000 == 0:
             s = str(self.iterations) + " "
             s+= str(self.game_id)   + " " 
             s+= str(self.total_score) + " " 
