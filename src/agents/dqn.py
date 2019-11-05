@@ -8,10 +8,6 @@ import common.experience_replay
 
 import common.atari_wrapper
 
-def loss_mse(y_target, y_predicted):
-
-    error = y_target - y_predicted
-    return (error ** 2).mean() 
  
 class Agent():
     def __init__(self, env, model, config, save_path = None, save_stats = True):
@@ -98,11 +94,10 @@ class Agent():
             
             output = self.model.forward(input)
 
-            #loss   = loss_mse(target, output)
-
-            self.loss(output, target)
+            loss = self.loss(output, target)
     
             self.optimizer.zero_grad()
+
             loss.backward()
  
             for param in self.model.parameters():
