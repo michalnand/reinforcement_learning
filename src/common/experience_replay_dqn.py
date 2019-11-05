@@ -60,12 +60,10 @@ class Buffer():
             else: 
                 gamma_ = gamma
     
-            q_new = self.buffer[n].reward + gamma_*numpy.max(self.buffer[n+1].q_values)
-
             q_values    = self.buffer[n].q_values.copy()
             action      = self.buffer[n].action
 
-            q_values[action] = q_new
+            q_values[action] = self.buffer[n].reward + gamma_*numpy.max(self.buffer[n+1].q_values)
             
             input[i]  = torch.from_numpy(self.buffer[n].observation).to(device)
             target[i] = torch.from_numpy(q_values).to(device)

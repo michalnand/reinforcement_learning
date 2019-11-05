@@ -43,12 +43,9 @@ class Buffer():
             else: 
                 gamma_ = gamma
 
-            action_next = self.buffer[n+1].action
             action = self.buffer[n].action
 
-            #q_next = numpy.max(self.buffer[n+1].q_values[])
-            q_next = self.buffer[n+1].q_values[action_next]
-
+            q_next = numpy.max(self.buffer[n+1].q_values)
             self.buffer[n].q_values[action] = self.buffer[n].reward + gamma_*q_next
 
     def get_random_batch(self, batch_size, device):
