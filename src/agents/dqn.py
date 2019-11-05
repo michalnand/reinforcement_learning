@@ -102,8 +102,10 @@ class Agent():
     
             self.optimizer.zero_grad()
             loss.backward()
+ 
             for param in self.model.parameters():
-                param.grad.data.clamp_(-10.0, 10.0)
+                param.grad.data.clamp_(max=1.0)
+            
             self.optimizer.step()
 
         self.experience_replay.clear()                
