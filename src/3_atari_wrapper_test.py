@@ -28,7 +28,7 @@ while True:
     observation, reward, done, info = env.step(action)
     env.render()
 
-    #common.atari_wrapper.observation_show(observation)    
+    common.atari_wrapper.observation_show(observation)    
 
     if reward != 0:
         print("reward = ", reward)

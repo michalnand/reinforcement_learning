@@ -33,6 +33,8 @@ from gym import spaces
 
 from matplotlib import pyplot as plt
 
+
+
 #cv2.ocl.setUseOpenCL(False)
 
 class SetDimensions(gym.Wrapper):
@@ -58,6 +60,7 @@ class NoopResetEnv(gym.Wrapper):
         noops = np.random.randint(1, self.noop_max + 1)
         for _ in range(noops):
             obs, _, _, _ = self.env.step(0)
+            
         return obs
 
 
@@ -93,7 +96,7 @@ class EpisodicLifeEnv(gym.Wrapper):
             # so it's important to keep lives > 0, so that we only reset once
             # the environment advertises done.
             done = True
-            reward = -10.0
+            reward = -1.0
             
         self.lives = lives
         return obs, reward, done, info

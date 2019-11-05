@@ -8,8 +8,10 @@ import common.experience_replay
 
 import common.atari_wrapper
 
-def loss_mse(y_target, y_hat):
-    return torch.mean( (y_target - y_hat).pow(2) )
+def loss_mse(y_target, y_predicted):
+
+    error = y_target - y_predicted
+    return (error ** 2).mean() 
  
 class Agent():
     def __init__(self, env, model, config, save_path = None, save_stats = True):
@@ -61,7 +63,7 @@ class Agent():
         q_values = self.model.get_q_values(self.observation)
         self.action = self.choose_action_e_greedy(q_values, epsilon)
 
-        observation_new, self.reward, self.done, self.info = self.env.step(self.action)
+        self.observation, self.reward, self.done, self.info = self.env.step(self.action)
 
         if self.enabled_training:
             if self.experience_replay.is_full() == False:
@@ -70,7 +72,6 @@ class Agent():
                 self.train_model()
                 #print(self.iterations, epsilon)
 
-        self.observation = observation_new
 
         if hasattr(self, "training_stats") and hasattr(self, "testing_stats"):
             if self.enabled_training:
@@ -88,7 +89,8 @@ class Agent():
         
     def train_model(self):
         self.experience_replay.compute(self.gamma)
-                
+        #self.experience_replay._print()
+                 
         batches_count = self.experience_replay.length()//self.batch_size
 
         for _ in range(0, batches_count):

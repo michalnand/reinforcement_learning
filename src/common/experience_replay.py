@@ -6,7 +6,6 @@ import torch
 Transition = collections.namedtuple("Transition", ("observation", "q_values", "action", "reward", "done"))
 
 
-
 class Buffer():
 
     def __init__(self, size):
@@ -25,11 +24,11 @@ class Buffer():
         return False
 
     def add(self, observation, q_values, action, reward, done):
-        self.buffer.append(Transition(observation, q_values, action, reward, done))
+        self.buffer.append(Transition(observation.copy(), q_values.copy(), action, reward, done))
 
     def _print(self):
         for i in range(self.length()):
-            print(self.buffer[i].observation, end = " ")
+            #print(self.buffer[i].observation, end = " ")
             print(self.buffer[i].q_values, end = " ")
             print(self.buffer[i].action, end = " ")
             print(self.buffer[i].reward, end = " ")
@@ -38,17 +37,19 @@ class Buffer():
 
     def compute(self, gamma = 0.99):
         for n in reversed(range(self.length() - 1)):
+          
             if self.buffer[n].done:
                 gamma_ = 0.0
-            else:
+            else: 
                 gamma_ = gamma
 
-            q_next = numpy.max(self.buffer[n+1].q_values)
-            q_new  = self.buffer[n].reward + gamma_*q_next
-
+            action_next = self.buffer[n+1].action
             action = self.buffer[n].action
 
-            self.buffer[n].q_values[action] = q_new
+            #q_next = numpy.max(self.buffer[n+1].q_values[])
+            q_next = self.buffer[n+1].q_values[action_next]
+
+            self.buffer[n].q_values[action] = self.buffer[n].reward + gamma_*q_next
 
     def get_random_batch(self, batch_size, device):
         
