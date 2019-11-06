@@ -2,7 +2,6 @@ import numpy
 import time
 import random
 
-import common.state
 
 class Create():
 
@@ -19,13 +18,12 @@ class Create():
         self.width          = size
         self.height         = size
         self.depth          = 3
+        
+        self.board_init()
 
-        #self.shape          = (1, self.depth, self.height, self.width)
+        print("\n\nshape = ", self.observation_space.shape, "\n\n")
 
-        self.state = common.state.State((self.width, self.height, self.depth), (self.width, self.height), 4)
-        self.shape = self.state.get_shape()
-
-        print("\n\nshape = ", self.shape, "\n\n")
+        
 
         #init state, as 1D vector (tensor with size depth*height*width)
         self.board_init()
@@ -43,7 +41,7 @@ class Create():
 
     def board_init(self):
         self.board = numpy.zeros( (self.width, self.height, self.depth) )
-        self.state.clear()
+        self.observation_space = numpy.zeros((3, self.height, self.width))
 
 
     def reset(self):
@@ -69,7 +67,7 @@ class Create():
 
         self.__position_to_state()
 
-        return self.observation
+        return self.observation_space
 
   
     def render(self):
@@ -78,7 +76,7 @@ class Create():
 
         for y in range(self.height):
             for x in range(self.width):
-                v = self.observation[0][0][y][x]
+                v = self.observation_space[0][y][x]
                 if v > 0:
                     print("* ", end = "")
                 else:
@@ -89,16 +87,14 @@ class Create():
 
       
 
+        
+
+
+
     def step(self, action):
-        self.do_action(action)
-        self.info = "pong"
-        return (self.observation, self.reward, self.done, self.info)
-
-
-
-    def do_action(self, action):
         self.reward = 0.0
         self.done = False
+        self.info = "pong"
 
         if action == 0:
             player_0_dx = 1
@@ -170,6 +166,8 @@ class Create():
 
         self.__position_to_state()
 
+        return (self.observation_space, self.reward, self.done, self.info)
+
     def __position_to_state(self):
         ball_x = self.__saturate(int(self.ball_x), 0, self.width-1)
         ball_y = self.__saturate(int(self.ball_y), 0, self.height-1)
@@ -179,12 +177,11 @@ class Create():
 
         self.board.fill(0.0)
 
-        self.board[ball_y][ball_x][0]                  = 255.0
-        self.board[player_0][0][0]                     = 255.0
-        self.board[player_1][self.width-1][0]          = 255.0
+        self.observation_space = numpy.zeros((3, self.height, self.width))
+        self.observation_space[0][ball_y][ball_x]                 = 1.0
+        self.observation_space[1][player_0][0]                     = 1.0
+        self.observation_space[2][player_1][self.width-1]          = 1.0
 
-        self.state.update_state(self.board)
-        self.observation = self.state.get()
 
     def __saturate(self, value, min, max):
         if value > max:

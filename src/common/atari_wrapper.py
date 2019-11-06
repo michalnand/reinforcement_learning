@@ -85,7 +85,6 @@ class FrameStack(gym.Wrapper):
             
         return self.slices, reward, done, info
 
-        return self.slices
 
 
 class MakeTensorEnv(gym.ObservationWrapper):
@@ -93,10 +92,11 @@ class MakeTensorEnv(gym.ObservationWrapper):
         gym.ObservationWrapper.__init__(self, env)
 
     def observation(self, observation):
-        #swaped = np.moveaxis(observation, 0, 0)
-        #result = np.reshape(swaped, (1, observation.shape[2], self.height, self.width))
-        result = observation/255.0
-        return result
+        #result = np.moveaxis(observation, 1, 2)
+        #result = np.reshape(swaped, (1, observation.shape[1], self.height, self.width))
+        #result = observation/255.0
+
+        return observation/255.0
 
 class Reward(gym.Wrapper):
     def __init__(self, env=None):

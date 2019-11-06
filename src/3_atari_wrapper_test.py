@@ -20,7 +20,7 @@ obs             = env.observation_space
 actions_count   = env.action_space.n
 
 
-print(obs, actions_count)
+print(obs, obs.shape, actions_count)
 
 
 while True:
@@ -28,7 +28,7 @@ while True:
     observation, reward, done, info = env.step(action)
     env.render()
 
-    #common.atari_wrapper.observation_show(observation)    
+    common.atari_wrapper.observation_show(observation)    
 
     if reward != 0:
         print("reward = ", reward)
