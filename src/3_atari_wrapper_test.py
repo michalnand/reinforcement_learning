@@ -4,8 +4,8 @@ import time
 
 import common.atari_wrapper
 
-env = gym.make("Pong-v4")
-#env = gym.make("Breakout-v4")
+#env = gym.make("Pong-v4")
+env = gym.make("Breakout-v4")
 #env = gym.make("SpaceInvaders-v4")
 #env = gym.make("MsPacman-v4")
 #env = gym.make("Seaquest-v4") 

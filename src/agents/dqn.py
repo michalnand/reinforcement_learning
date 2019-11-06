@@ -22,8 +22,8 @@ class Agent():
         self.epsilon        = config.epsilon
         self.gamma          = config.gamma
 
-        #self.experience_replay = common.experience_replay.Buffer(config.experience_replay_size)
-        self.experience_replay = common.experience_replay_dqn.Buffer(config.experience_replay_size)
+        self.experience_replay = common.experience_replay.Buffer(config.experience_replay_size)
+        #self.experience_replay = common.experience_replay_dqn.Buffer(config.experience_replay_size)
 
         self.observation_shape = self.env.observation_space.shape
         self.actions_count     = self.env.env.action_space.n
@@ -86,13 +86,13 @@ class Agent():
         
         
     def train_model(self):
-        #self.experience_replay.compute(self.gamma)
+        self.experience_replay.compute(self.gamma)
                  
         batches_count = self.experience_replay.length()//self.batch_size
 
         for _ in range(0, batches_count):
-            #input, target = self.experience_replay.get_random_batch(self.batch_size, self.model.device)
-            input, target = self.experience_replay.get_random_batch(self.gamma, self.batch_size, self.model.device)
+            input, target = self.experience_replay.get_random_batch(self.batch_size, self.model.device)
+            #input, target = self.experience_replay.get_random_batch(self.gamma, self.batch_size, self.model.device)
             
             output = self.model.forward(input)
 
