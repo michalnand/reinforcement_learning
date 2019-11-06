@@ -155,6 +155,26 @@ class SkipEnv(gym.Wrapper):
         return obs, total_reward, done, info
 
 
+class LiveLostRewardEnv(gym.Wrapper):
+    def __init__(self, env):
+        gym.Wrapper.__init__(self, env)
+    
+    def reset(self):
+        observation = self.env.reset()
+        self.lives = self.env.unwrapped.ale.lives()
+
+        return observation
+
+    def step(self, action):
+        observation, reward, done, info = self.env.step(action)
+
+        lives_current = self.env.unwrapped.ale.lives()
+
+        if lives_current < self.lives:
+            self.lives = lives_current
+            reward = -1.0
+
+        return observation, reward, done, info
 
 
 
@@ -165,7 +185,11 @@ class ClipRewardEnv(gym.RewardWrapper):
     def step(self, action):
         obs, reward, done, info = self.env.step(action)
 
-        reward = np.clip(reward, -1.0, 1.0)
+        if reward > 1.0:
+            reward = 1.0
+        if reward < -1.0:
+            reward = -1.0
+
         return obs, reward, done, info
 
 class ResizeFrameEnv(gym.ObservationWrapper):
@@ -241,7 +265,9 @@ def Create(env, width = 96, height = 96, frame_stacking = 4):
     env = NoopResetEnv(env)
     env = FireResetEnv(env)
     env = ClipRewardEnv(env)
-    env = EpisodicLifeEnv(env)
+    
+    #env = EpisodicLifeEnv(env)
+    env = LiveLostRewardEnv(env)
     
     env = SkipEnv(env)
 
