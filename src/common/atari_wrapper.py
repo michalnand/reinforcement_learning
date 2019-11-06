@@ -58,9 +58,9 @@ class ResizeFrameEnv(gym.ObservationWrapper):
         self.observation_space = spaces.Box(low=0, high=255, shape=(self.height, self.width, 1), dtype=np.uint8)
         
     def observation(self, frame):
-        frame = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY)
-        frame = cv2.resize(frame, (self.width, self.height), interpolation=cv2.INTER_AREA)
-        return frame
+        result = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY)
+        result = cv2.resize(result, (self.width, self.height), interpolation=cv2.INTER_AREA)
+        return result
 
 
 class FrameStack(gym.Wrapper):
@@ -90,13 +90,17 @@ class FrameStack(gym.Wrapper):
 class MakeTensorEnv(gym.ObservationWrapper):
     def __init__(self, env):
         gym.ObservationWrapper.__init__(self, env)
+        self.observation_space = spaces.Box(low=0, high=1.0, shape=(1, self.frame_stacking, self.height, self.width), dtype=np.float32)
+
 
     def observation(self, observation):
+        result = np.array(observation).astype(np.float32)/255.0
+
         #result = np.moveaxis(observation, 1, 2)
-        #result = np.reshape(swaped, (1, observation.shape[1], self.height, self.width))
+        #result = np.reshape(result, (1, observation.shape[1], self.height, self.width))
         #result = observation/255.0
 
-        return observation/255.0
+        return result
 
 class Reward(gym.Wrapper):
     def __init__(self, env=None):
@@ -159,7 +163,6 @@ def Create(env, width = 96, height = 96, frame_stacking = 4):
 
     env = Reward(env)
 
-    env.observation_space.shape = (env.shape[1], env.shape[2], env.shape[3])
     return env
     
 

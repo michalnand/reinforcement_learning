@@ -16,7 +16,7 @@ save_path = "./models/atari_pong_dqn/"
 
 
 env = gym.make("Pong-v4") 
-env = common.atari_wrapper.Create(env, 64, 64, 4) 
+env = common.atari_wrapper.Create(env, 96, 96, 4) 
 
 env.reset() 
 
@@ -27,7 +27,7 @@ while agent.iterations < 10000000:
     if agent.iterations%100000 == 0:
         agent.save()
  
-    agent.main()
+    agent.main()    
 
     if agent.iterations%1000 == 0:
         pass

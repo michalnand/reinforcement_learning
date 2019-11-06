@@ -26,7 +26,7 @@ class Agent():
         #self.experience_replay = common.experience_replay_dqn.Buffer(config.experience_replay_size)
 
         self.observation_shape = self.env.observation_space.shape
-        self.actions_count     = 3 #self.env.action_space.n
+        self.actions_count     = self.env.action_space.n
 
         self.model      = model.Model(self.observation_shape, self.actions_count)
         self.optimizer  = torch.optim.Adam(self.model.parameters(), lr= config.learning_rate)

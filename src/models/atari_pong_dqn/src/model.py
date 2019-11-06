@@ -14,32 +14,35 @@ class Model(torch.nn.Module):
 
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-        print("computing device ", self.device)
-
         self.input_shape    = input_shape
         self.outputs_count  = outputs_count
 
+
+        print("computing device ", self.device)
+        print("input_shape ", self.input_shape)
+        print("outputs_count ", self.outputs_count)
+
         
-        fc_input_height = self.input_shape[1]
-        fc_input_width  = self.input_shape[2]
+        fc_input_height = self.input_shape[2]
+        fc_input_width  = self.input_shape[3]
        
 
         ratio           = 2**4
 
         fc_inputs_count = ((fc_input_width)//ratio)*((fc_input_height)//ratio)
 
-        input_channels = self.input_shape[0]
+        input_channels = self.input_shape[1]
 
         self.layers = [ 
-                        nn.Conv2d(input_channels, 64, kernel_size=3, stride=1, padding=1),
+                        nn.Conv2d(input_channels, 32, kernel_size=3, stride=1, padding=1),
                         nn.ReLU(), 
                         nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
-
-                        nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=1),
+ 
+                        nn.Conv2d(32, 32, kernel_size=3, stride=1, padding=1),
                         nn.ReLU(),
                         nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
  
-                        nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=1),
+                        nn.Conv2d(32, 64, kernel_size=3, stride=1, padding=1),
                         nn.ReLU(),
                         nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
             
@@ -79,7 +82,7 @@ class Model(torch.nn.Module):
         name = path + "trained/model.pt"
         print("saving", name)
         torch.save(self.model.state_dict(), name)
-
+ 
         self.render(path)
 
     def load(self, path):
@@ -94,7 +97,7 @@ class Model(torch.nn.Module):
 
         print("rendering ", path)
 
-        x = torch.zeros(1, self.input_shape[0], self.input_shape[1], self.input_shape[2], dtype=torch.float, requires_grad=False).to(self.device)
+        x = torch.zeros(1, self.input_shape[1], self.input_shape[2], self.input_shape[3], dtype=torch.float32, requires_grad=False).to(self.device)
         out = self.forward(x)
         dot = torchviz.make_dot(out)
          
