@@ -242,7 +242,9 @@ def Create(env, width = 96, height = 96, frame_stacking = 4):
     env = FireResetEnv(env)
     env = ClipRewardEnv(env)
     env = EpisodicLifeEnv(env)
-    env = MaxAndSkipEnv(env)
+    
+    env = SkipEnv(env)
+
     env = ResizeFrameEnv(env)
     env = FrameStack(env)
     env = MakeTensorEnv(env)
