@@ -110,7 +110,6 @@ class Reward(gym.Wrapper):
         return observation
 
     def step(self, action):
-        
         observation, reward, done, info = self.env.step(action)
 
 
@@ -161,7 +160,6 @@ def Create(env, width = 96, height = 96, frame_stacking = 4):
     env = Reward(env)
 
     env.observation_space.shape = (env.shape[1], env.shape[2], env.shape[3])
-
     return env
     
 
