@@ -47,10 +47,10 @@ class Model(torch.nn.Module):
                         nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
 
                         Flatten(),  
-                        nn.Linear(fc_inputs_count*32, 256),
+                        nn.Linear(fc_inputs_count*32, 64),
                         nn.ReLU(),                      
 
-                        nn.Linear(256, outputs_count)
+                        nn.Linear(64, outputs_count)
                     ]
   
 
@@ -72,7 +72,9 @@ class Model(torch.nn.Module):
             state_dev       = torch.tensor(state, dtype=torch.float32).detach().to(self.device)
             network_output  = self.model.forward(state_dev)
 
-            return network_output[0].to("cpu").detach().numpy()
+            q_values = network_output[0].to("cpu").detach().numpy()
+
+            return q_values
     
     def save(self, path):
         name = path + "trained/model.pt"
