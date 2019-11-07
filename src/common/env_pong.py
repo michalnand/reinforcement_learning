@@ -41,7 +41,7 @@ class Create():
 
     def board_init(self):
         self.board = numpy.zeros( (self.width, self.height, self.depth) )
-        self.observation_space = numpy.zeros((3, self.height, self.width))
+        self.observation_space = numpy.zeros((1, 3, self.height, self.width))
 
 
     def reset(self):
@@ -166,6 +166,7 @@ class Create():
 
         self.__position_to_state()
 
+
         return (self.observation_space, self.reward, self.done, self.info)
 
     def __position_to_state(self):
@@ -177,10 +178,10 @@ class Create():
 
         self.board.fill(0.0)
 
-        self.observation_space = numpy.zeros((3, self.height, self.width))
-        self.observation_space[0][ball_y][ball_x]                 = 1.0
-        self.observation_space[1][player_0][0]                     = 1.0
-        self.observation_space[2][player_1][self.width-1]          = 1.0
+        self.observation_space = numpy.zeros((1, 3, self.height, self.width))
+        self.observation_space[0][0][ball_y][ball_x]                 = 1.0
+        self.observation_space[0][1][player_0][0]                     = 1.0
+        self.observation_space[0][2][player_1][self.width-1]          = 1.0
 
 
     def __saturate(self, value, min, max):

@@ -52,20 +52,12 @@ class FireReset(gym.Wrapper):
         
  
 
-class ResizeFrameEnv(gym.Wrapper):
-    def __init__(self, env):
-        gym.Wrapper.__init__(self, env)
+class ResizeFrameEnv(gym.ObservationWrapper):
+    def __init__(self, env, width = 96, height = 96):
+        gym.ObservationWrapper.__init__(self, env)
         self.observation_space = spaces.Box(low=0, high=255, shape=(self.height, self.width, 1), dtype=np.uint8)
-
-    def reset(self):
-        return self.resize(self.env.reset())
-
-    def step(self, action):
-        observation, reward, done, info = self.env.step(action)
-
-        return self.resize(observation), reward, done, info
-
-    def resize(self, frame):
+        
+    def observation(self, frame):
         result = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY)
         result = cv2.resize(result, (self.width, self.height), interpolation=cv2.INTER_AREA)
         return result
@@ -111,6 +103,7 @@ class Reward(gym.Wrapper):
 
     def step(self, action):
         observation, reward, done, info = self.env.step(action)
+
 
         if reward > 1.0:
             reward = 1.0

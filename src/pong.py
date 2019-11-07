@@ -3,7 +3,7 @@ import agents.dqn
 
 import common.env_pong
 
-env = common.env_pong.Create(size= 64)
+env = common.env_pong.Create(size= 16)
 
 
 
@@ -21,13 +21,9 @@ while agent.iterations < 1000000:
     agent.main()
 
     if agent.iterations%1024 == 0:
-        agent._print() 
+        print(agent.iterations, agent.score)
         #env.render()
 
-    if agent.iterations%100000 == 0:
-        agent.save(save_path)
-
-agent.save(save_path)
 
 
 print("program done")
