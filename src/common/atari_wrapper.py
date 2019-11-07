@@ -16,7 +16,6 @@ class SetDimensions(gym.Wrapper):
         self.frame_stacking = frame_stacking
 
         self.actions_count   = env.action_space.n
-        self.shape           = (1, self.frame_stacking, self.height, self.width)
 
 class SkipFrames(gym.Wrapper):
     def __init__(self, env=None, skip = 2):
@@ -80,10 +79,9 @@ class FrameStack(gym.Wrapper):
     
     def reset(self):
         observation = self.env.reset()
-        self.slices = np.zeros(self.shape)
+        self.slices = np.zeros((1, self.frame_stacking, self.height, self.width))
         for i in range(0, self.frame_stacking):
-            self.slices[0][i] = observation
-
+            self.slices[0][i] = observation/255.0
 
         return self.slices
 
