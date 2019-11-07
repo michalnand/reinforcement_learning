@@ -4,7 +4,7 @@ import time
 
 import common.atari_wrapper
 
-env = gym.make("Pong-v4")
+env = gym.make("Pong-v0")
 #env = gym.make("Breakout-v4")
 #env = gym.make("SpaceInvaders-v4")
 #env = gym.make("MsPacman-v4")
@@ -30,7 +30,7 @@ while True:
     observation, reward, done, info = env.step(action)
     env.render()
 
-    #common.atari_wrapper.observation_show(observation)    
+    common.atari_wrapper.observation_show(observation)    
 
     if reward != 0:
         print("reward = ", reward)

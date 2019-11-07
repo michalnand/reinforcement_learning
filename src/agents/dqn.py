@@ -9,6 +9,8 @@ import common.experience_replay_dqn
 
 import common.atari_wrapper
 
+import sys
+numpy.set_printoptions(threshold=sys.maxsize)
  
 class Agent():
     def __init__(self, env, model, config, save_path = None, save_stats = True):
@@ -68,7 +70,6 @@ class Agent():
                 self.experience_replay.add(self.observation, q_values, self.action, self.reward, self.done)
             else:   
                 self.train_model()
-                #print(self.iterations, epsilon)
 
 
         if hasattr(self, "training_stats") and hasattr(self, "testing_stats"):
@@ -94,12 +95,11 @@ class Agent():
             input, target = self.experience_replay.get_random_batch(self.batch_size, self.model.device)
             #input, target = self.experience_replay.get_random_batch(self.gamma, self.batch_size, self.model.device)
             
+            
             output = self.model.forward(input)
 
-            loss = self.loss(output, target)
-    
             self.optimizer.zero_grad()
-
+            loss = self.loss(output, target)
             loss.backward()
  
             for param in self.model.parameters():

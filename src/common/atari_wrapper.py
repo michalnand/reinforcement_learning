@@ -9,16 +9,15 @@ from matplotlib import pyplot as plt
 cv2.ocl.setUseOpenCL(False)
 
 class SetDimensions(gym.Wrapper):
-    def __init__(self, env=None, width = 96, height = 96, frame_stacking = 4):
+    def __init__(self, env, width = 96, height = 96, frame_stacking = 4):
         super(SetDimensions, self).__init__(env)
         self.width  = width
         self.height = height
         self.frame_stacking = frame_stacking
 
-        self.actions_count   = env.action_space.n
 
 class SkipFrames(gym.Wrapper):
-    def __init__(self, env=None, skip = 2):
+    def __init__(self, env, skip = 2):
         super(SkipFrames, self).__init__(env)
         self.skip = skip
 
@@ -31,7 +30,7 @@ class SkipFrames(gym.Wrapper):
         return observation, reward_sum, done, info
 
 class FireReset(gym.Wrapper):
-    def __init__(self, env=None):
+    def __init__(self, env):
         super(FireReset, self).__init__(env)
 
     def reset(self):
@@ -54,7 +53,7 @@ class FireReset(gym.Wrapper):
 class ResizeFrameEnv(gym.Wrapper):
     def __init__(self, env):
         gym.Wrapper.__init__(self, env)
-        self.observation_space = spaces.Box(low=0, high=255, shape=(self.height, self.width, 1), dtype=np.uint8)
+        self.observation_space = spaces.Box(low=0, high=255, shape=(self.height, self.width), dtype=np.uint8)
 
     def reset(self):
         return self.resize(self.env.reset())
@@ -97,7 +96,7 @@ class FrameStack(gym.Wrapper):
 
 
 class Reward(gym.Wrapper):
-    def __init__(self, env=None):
+    def __init__(self, env):
         super(Reward, self).__init__(env)
 
     def reset(self):
@@ -126,11 +125,11 @@ class Reward(gym.Wrapper):
 
 
 def observation_show(observation):
-    frames = np.zeros((observation.shape[1], observation.shape[3],  observation.shape[2]))
+    frames = np.zeros((observation.shape[1], observation.shape[2],  observation.shape[3]))
 
     for frame in range(observation.shape[1]):
-        for y in range(observation.shape[3]):
-            for x in range(observation.shape[2]):
+        for y in range(observation.shape[2]):
+            for x in range(observation.shape[3]):
                 frames[frame][y][x] = observation[0][frame][y][x]
 
     f, axarr = plt.subplots(2,2)
@@ -147,13 +146,13 @@ def observation_show(observation):
 
 def Create(env, width = 96, height = 96, frame_stacking = 4):
     env = SetDimensions(env, width, height, frame_stacking)
-    env = SkipFrames(env)
     env = FireReset(env)
+    env = SkipFrames(env)
 
     env = ResizeFrameEnv(env)
     env = FrameStack(env)
 
-    env = Reward(env)
+    #env = Reward(env)
 
     return env
     
