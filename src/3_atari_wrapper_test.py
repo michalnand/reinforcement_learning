@@ -3,8 +3,9 @@ import numpy
 import time
 
 import common.atari_wrapper
+import common.env_atari
 
-env = gym.make("Pong-v0")
+#env = gym.make("Pong-v0")
 #env = gym.make("Breakout-v4")
 #env = gym.make("SpaceInvaders-v4")
 #env = gym.make("MsPacman-v4")
@@ -12,8 +13,9 @@ env = gym.make("Pong-v0")
 #env = gym.make("Qbert-v4") 
 
 
-env = common.atari_wrapper.Create(env, width = 64, height = 64)
+#env = common.atari_wrapper.Create(env, width = 64, height = 64)
 
+env = common.env_atari.Create("Pong-v0")
 
 
 env.reset()
@@ -22,7 +24,7 @@ obs             = env.observation_space
 actions_count   = env.action_space.n
 
 
-print(obs, obs.shape, actions_count)
+print(obs.shape, actions_count)
 
 
 while True:
@@ -30,7 +32,8 @@ while True:
     observation, reward, done, info = env.step(action)
     env.render()
 
-    common.atari_wrapper.observation_show(observation)    
+    
+    #common.atari_wrapper.observation_show(observation)    
 
     if reward != 0:
         print("reward = ", reward)
@@ -40,5 +43,7 @@ while True:
         env.reset()
         time.sleep(0.5)
 
+
+    env.show_state()
 
     time.sleep(0.01)

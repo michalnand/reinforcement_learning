@@ -50,7 +50,7 @@ class FireReset(gym.Wrapper):
         
  
 
-class ResizeFrameEnv(gym.Wrapper):
+class ResizeFrame(gym.Wrapper):
     def __init__(self, env):
         gym.Wrapper.__init__(self, env)
         self.observation_space = spaces.Box(low=0, high=255, shape=(self.height, self.width), dtype=np.uint8)
@@ -149,7 +149,7 @@ def Create(env, width = 96, height = 96, frame_stacking = 4):
     env = FireReset(env)
     env = SkipFrames(env)
 
-    env = ResizeFrameEnv(env)
+    env = ResizeFrame(env)
     env = FrameStack(env)
 
     #env = Reward(env)
