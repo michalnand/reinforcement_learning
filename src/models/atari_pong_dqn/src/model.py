@@ -14,7 +14,7 @@ class Model(torch.nn.Module):
 
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-        self.input_shape    = input_shape
+        self.input_shape    = (1, 4, 84, 84) #input_shape
         self.outputs_count  = outputs_count
 
 
@@ -45,17 +45,18 @@ class Model(torch.nn.Module):
                         nn.Conv2d(32, 64, kernel_size=3, stride=1, padding=1),
                         nn.ReLU(),
                         nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
-            
+
                         nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=1),
                         nn.ReLU(),
                         nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
 
-                        Flatten(), 
+
+                        Flatten(),  
                         nn.Linear(fc_inputs_count*64, 512),
                         nn.ReLU(),                      
 
                         nn.Linear(512, outputs_count)
-                    ] 
+                    ]
   
 
         for i in range(len(self.layers)):
@@ -76,9 +77,9 @@ class Model(torch.nn.Module):
             state_dev       = torch.tensor(state, dtype=torch.float32).detach().to(self.device)
             network_output  = self.model.forward(state_dev)
 
-            result =  network_output[0].to("cpu").detach().numpy()
+            q_values = network_output[0].to("cpu").detach().numpy()
 
-            return result
+            return q_values
     
     def save(self, path):
         name = path + "trained/model.pt"
@@ -101,7 +102,7 @@ class Model(torch.nn.Module):
 
         x = torch.zeros(1, self.input_shape[1], self.input_shape[2], self.input_shape[3], dtype=torch.float32, requires_grad=False).to(self.device)
         out = self.forward(x)
-        dot = torchviz.make_dot(out.detach().to("cpu"))
+        dot = torchviz.make_dot(out)
          
         dot.format = "svg"
         dot.render(path + "trained/model")

@@ -3,7 +3,7 @@ import agents.dqn
 
 import common.env_pong
 
-env = common.env_pong.Create(size= 32)
+env = common.env_pong.Create(size= 64)
 
 
 

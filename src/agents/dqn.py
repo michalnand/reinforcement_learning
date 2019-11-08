@@ -104,7 +104,7 @@ class Agent():
             loss.backward()
  
             for param in self.model.parameters():
-                param.grad.data.clamp_(-10, 10)
+                param.grad.data.clamp_(-1.0, 1.0)
             
             self.optimizer.step()
 

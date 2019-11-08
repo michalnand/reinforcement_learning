@@ -3,9 +3,34 @@ import numpy
 import time
 
 import common.atari_wrapper
-import common.env_atari
+import common.atari_wrapper_openai
+from matplotlib import pyplot as plt
 
-env = gym.make("Pong-v4")
+
+def observation_show(observation):
+
+    frames = numpy.zeros((observation.shape[1], observation.shape[2],  observation.shape[3]))
+
+    print("observation_show ", frames.shape)
+
+    for frame in range(observation.shape[1]):
+        for y in range(observation.shape[2]):
+            for x in range(observation.shape[3]):
+                frames[frame][y][x] = observation[0][frame][y][x]
+
+    f, axarr = plt.subplots(2,2)
+    
+    axarr[0,0].imshow(frames[0], cmap='gray')
+    axarr[0,1].imshow(frames[1], cmap='gray')
+    axarr[1,0].imshow(frames[2], cmap='gray')
+    axarr[1,1].imshow(frames[3], cmap='gray')
+
+    #plt.imshow(frames[0], interpolation='none')
+    
+    plt.show() 
+
+
+#env = gym.make("Pong-v4")
 #env = gym.make("Breakout-v4")
 #env = gym.make("SpaceInvaders-v4")
 #env = gym.make("MsPacman-v4")
@@ -13,7 +38,7 @@ env = gym.make("Pong-v4")
 #env = gym.make("Qbert-v4") 
 
 
-env = common.atari_wrapper.Create(env, width = 96, height = 96)
+env = common.atari_wrapper_openai.Create("Breakout-v4")
 
 #env = common.env_atari.Create("Pong-v4")
 
@@ -24,7 +49,7 @@ obs             = env.observation_space
 actions_count   = env.action_space.n
 
 
-print(obs.shape, actions_count)
+print("ENV info ", obs.shape, actions_count)
 
 
 while True:
@@ -33,7 +58,7 @@ while True:
     env.render()
 
     
-    #common.atari_wrapper.observation_show(observation)    
+    #observation_show(observation)    
 
     if reward != 0:
         print("reward = ", reward)

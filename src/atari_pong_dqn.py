@@ -1,6 +1,6 @@
 import gym
 import common.atari_wrapper
-import common.env_atari
+import common.atari_wrapper_openai
 import agents.dqn
 
 import numpy
@@ -16,10 +16,10 @@ config = models.atari_pong_dqn.src.config.Config()
 save_path = "./models/atari_pong_dqn/"
 
 
-env = gym.make("Pong-v4") 
+#env = gym.make("Pong-v4") 
+#env = common.atari_wrapper.Create(env, 96, 96, 4) 
 
-env = common.atari_wrapper.Create(env, 96, 96, 4) 
-
+env = common.atari_wrapper_openai.Create("Pong-v4")
 env.reset() 
 
 

@@ -2,6 +2,9 @@ import numpy
 import time
 import random
 
+import collections
+
+ActionSpace = collections.namedtuple("ActionSpace", ("n"))
 
 class Create():
 
@@ -23,7 +26,7 @@ class Create():
 
         print("\n\nshape = ", self.observation_space.shape, "\n\n")
 
-        
+        self.action_space = ActionSpace(3)
 
         #init state, as 1D vector (tensor with size depth*height*width)
         self.board_init()
