@@ -5,7 +5,7 @@ import time
 import common.atari_wrapper
 import common.env_atari
 
-#env = gym.make("Pong-v0")
+env = gym.make("Pong-v4")
 #env = gym.make("Breakout-v4")
 #env = gym.make("SpaceInvaders-v4")
 #env = gym.make("MsPacman-v4")
@@ -13,9 +13,9 @@ import common.env_atari
 #env = gym.make("Qbert-v4") 
 
 
-#env = common.atari_wrapper.Create(env, width = 64, height = 64)
+env = common.atari_wrapper.Create(env, width = 96, height = 96)
 
-env = common.env_atari.Create("Pong-v0")
+#env = common.env_atari.Create("Pong-v4")
 
 
 env.reset()
@@ -43,7 +43,5 @@ while True:
         env.reset()
         time.sleep(0.5)
 
-
-    env.show_state()
 
     time.sleep(0.01)

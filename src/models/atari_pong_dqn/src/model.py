@@ -76,7 +76,9 @@ class Model(torch.nn.Module):
             state_dev       = torch.tensor(state, dtype=torch.float32).detach().to(self.device)
             network_output  = self.model.forward(state_dev)
 
-            return network_output[0].to("cpu").detach().numpy()
+            result =  network_output[0].to("cpu").detach().numpy()
+
+            return result
     
     def save(self, path):
         name = path + "trained/model.pt"
@@ -99,7 +101,7 @@ class Model(torch.nn.Module):
 
         x = torch.zeros(1, self.input_shape[1], self.input_shape[2], self.input_shape[3], dtype=torch.float32, requires_grad=False).to(self.device)
         out = self.forward(x)
-        dot = torchviz.make_dot(out)
+        dot = torchviz.make_dot(out.detach().to("cpu"))
          
         dot.format = "svg"
         dot.render(path + "trained/model")

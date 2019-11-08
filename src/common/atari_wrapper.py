@@ -10,14 +10,21 @@ cv2.ocl.setUseOpenCL(False)
 
 class SetDimensions(gym.Wrapper):
     def __init__(self, env, width = 96, height = 96, frame_stacking = 4):
+        #gym.Wrapper.__init__(self, env)
         super(SetDimensions, self).__init__(env)
         self.width  = width
         self.height = height
         self.frame_stacking = frame_stacking
 
+        self.observation_space = spaces.Box(low=0, high=1.0, shape=(1, self.frame_stacking, self.height, self.width), dtype=np.float32)
+
+        print("SetDimensions")
+
+
 
 class SkipFrames(gym.Wrapper):
     def __init__(self, env, skip = 2):
+        #gym.Wrapper.__init__(self, env)
         super(SkipFrames, self).__init__(env)
         self.skip = skip
 
@@ -31,7 +38,9 @@ class SkipFrames(gym.Wrapper):
 
 class FireReset(gym.Wrapper):
     def __init__(self, env):
+        #gym.Wrapper.__init__(self, env)
         super(FireReset, self).__init__(env)
+        
 
     def reset(self):
         self.env.reset()
@@ -52,8 +61,8 @@ class FireReset(gym.Wrapper):
 
 class ResizeFrame(gym.Wrapper):
     def __init__(self, env):
-        gym.Wrapper.__init__(self, env)
-        self.observation_space = spaces.Box(low=0, high=255, shape=(self.height, self.width), dtype=np.uint8)
+        #gym.Wrapper.__init__(self, env)
+        super(ResizeFrame, self).__init__(env)
 
     def reset(self):
         return self.resize(self.env.reset())
@@ -66,21 +75,20 @@ class ResizeFrame(gym.Wrapper):
     def resize(self, frame):
         result = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY)
         result = cv2.resize(result, (self.width, self.height), interpolation=cv2.INTER_AREA)
-        return result
+        return result/255.0
 
 
 class FrameStack(gym.Wrapper):
     def __init__(self, env):
-        gym.Wrapper.__init__(self, env)
-
-        self.observation_space = spaces.Box(low=0, high=1.0, shape=(1, self.frame_stacking, self.height, self.width), dtype=np.float32)
+        #gym.Wrapper.__init__(self, env)
+        super(FrameStack, self).__init__(env)
 
     
     def reset(self):
         observation = self.env.reset()
         self.slices = np.zeros((1, self.frame_stacking, self.height, self.width))
         for i in range(0, self.frame_stacking):
-            self.slices[0][i] = observation/255.0
+            self.slices[0][i] = observation
 
         return self.slices
 
@@ -90,14 +98,16 @@ class FrameStack(gym.Wrapper):
         for i in reversed(range(self.frame_stacking-1)):
             self.slices[0][i+1] = self.slices[0][i].copy()
         
-        self.slices[0][0] = np.array(observation).copy()/255.0
+        self.slices[0][0] = np.array(observation).copy()
             
         return self.slices, reward, done, info
 
 
 class Reward(gym.Wrapper):
     def __init__(self, env):
+        #gym.Wrapper.__init__(self, env)
         super(Reward, self).__init__(env)
+
 
     def reset(self):
         observation = self.env.reset()
@@ -125,7 +135,10 @@ class Reward(gym.Wrapper):
 
 
 def observation_show(observation):
+
     frames = np.zeros((observation.shape[1], observation.shape[2],  observation.shape[3]))
+
+    print("observation_show ", frames.shape)
 
     for frame in range(observation.shape[1]):
         for y in range(observation.shape[2]):
