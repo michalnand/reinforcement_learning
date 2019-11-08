@@ -64,19 +64,19 @@ class MaxAndSkipEnv(gym.Wrapper):
         return obs
 
 
-class ProcessFrame84(gym.ObservationWrapper):
+class ScaleFrame(gym.ObservationWrapper):
     """
     Downsamples image to 84x84
     Greyscales image
 
     Returns numpy array
     """
-    def __init__(self, env=None):
-        super(ProcessFrame84, self).__init__(env)
+    def __init__(self, env=None, size = 84):
+        super(ScaleFrame, self).__init__(env)
         self.observation_space = gym.spaces.Box(low=0, high=255, shape=(84, 84, 1), dtype=np.uint8)
 
     def observation(self, obs):
-        return ProcessFrame84.process(obs)
+        return self.process(obs)
 
     @staticmethod
     def process(frame):
@@ -135,7 +135,7 @@ def Create(env_name):
     env = gym.make(env_name)
     env = MaxAndSkipEnv(env)
     env = FireResetEnv(env)
-    env = ProcessFrame84(env)
+    env = ScaleFrame(env, 96)
     env = ImageToPyTorch(env)
     env = BufferWrapper(env, 4)
     return ScaledFloatFrame(env)

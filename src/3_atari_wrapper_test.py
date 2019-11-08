@@ -37,10 +37,9 @@ def observation_show(observation):
 #env = gym.make("Seaquest-v4") 
 #env = gym.make("Qbert-v4") 
 
+env = common.atari_wrapper.Create("Breakout-v4")
+#env = common.atari_wrapper_openai.Create("Breakout-v4")
 
-env = common.atari_wrapper_openai.Create("Breakout-v4")
-
-#env = common.env_atari.Create("Pong-v4")
 
 
 env.reset()
@@ -58,7 +57,7 @@ while True:
     env.render()
 
     
-    #observation_show(observation)    
+    observation_show(observation)    
 
     if reward != 0:
         print("reward = ", reward)

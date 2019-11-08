@@ -14,7 +14,8 @@ class Model(torch.nn.Module):
 
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-        self.input_shape    = (1, 4, 84, 84) #input_shape
+        #self.input_shape    = (1, 4, 84, 84) 
+        self.input_shape    = input_shape
         self.outputs_count  = outputs_count
 
 

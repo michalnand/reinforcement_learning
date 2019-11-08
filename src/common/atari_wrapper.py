@@ -73,9 +73,19 @@ class ResizeFrame(gym.Wrapper):
         return self.resize(observation), reward, done, info
 
     def resize(self, frame):
-        result = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY)
-        result = cv2.resize(result, (self.width, self.height), interpolation=cv2.INTER_AREA)
-        return result/255.0
+        if frame.size == 210 * 160 * 3:
+            img = np.reshape(frame, [210, 160, 3]).astype(np.float32)
+        elif frame.size == 250 * 160 * 3:
+            img = np.reshape(frame, [250, 160, 3]).astype(np.float32)
+        else:
+            assert False, "Unknown resolution."
+        
+        #to grayscale
+        grayscale = (img[:, :, 0] * 0.299 + img[:, :, 1] * 0.587 + img[:, :, 2] * 0.114)/255.0
+
+        resized_screen = cv2.resize(grayscale, (self.width, self.height), interpolation=cv2.INTER_AREA)
+        result = np.reshape(resized_screen, (1, self.height, self.width) )
+        return result
 
 
 class FrameStack(gym.Wrapper):
@@ -157,7 +167,9 @@ def observation_show(observation):
     plt.show() 
 
 
-def Create(env, width = 96, height = 96, frame_stacking = 4):
+def Create(env_name, width = 96, height = 96, frame_stacking = 4):
+    env = gym.make(env_name)
+
     env = SetDimensions(env, width, height, frame_stacking)
     env = FireReset(env)
     env = SkipFrames(env)
