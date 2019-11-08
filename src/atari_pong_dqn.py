@@ -15,10 +15,10 @@ config = models.atari_pong_dqn.src.config.Config()
 
 save_path = "./models/atari_pong_dqn/"
 
-#env = common.atari_wrapper.Create("Pong-v4", 64, 64, 4) 
-env = common.atari_wrapper_openai.Create("Pong-v4")
+env = common.atari_wrapper.Create("Pong-v4", 96, 96, 4) 
+#env = common.atari_wrapper_openai.Create("Pong-v4")
 env.reset() 
-
+ 
 
 agent = agents.dqn.Agent(env, model, config, save_path)
 
