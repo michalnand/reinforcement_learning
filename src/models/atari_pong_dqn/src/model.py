@@ -93,13 +93,13 @@ class Model(torch.nn.Module):
 
         self.model.load_state_dict(torch.load(name))
         self.model.eval() 
-    
+     
 
     def render(self, path):
 
         print("rendering ", path)
 
-        x = torch.zeros(1, self.input_shape[1], self.input_shape[2], self.input_shape[3], dtype=torch.float32, requires_grad=False).to(self.device)
+        x = torch.zeros(1, self.input_shape[0], self.input_shape[1], self.input_shape[2], dtype=torch.float32, requires_grad=False).to(self.device)
         out = self.forward(x)
         dot = torchviz.make_dot(out)
          
