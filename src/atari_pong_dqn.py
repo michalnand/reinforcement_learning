@@ -1,6 +1,6 @@
 import gym
-import common.atari_wrapper
-import common.atari_wrapper_openai
+from gym import ObservationWrapper
+
 import agents.dqn
 
 import numpy
@@ -15,8 +15,32 @@ config = models.atari_pong_dqn.src.config.Config()
 
 save_path = "./models/atari_pong_dqn/"
 
-env = common.atari_wrapper.Create("Pong-v4", 96, 96, 4) 
-#env = common.atari_wrapper_openai.Create("Pong-v4")
+env = gym.make("Pong-v4")
+env = gym.wrappers.AtariPreprocessing(env, noop_max=30, frame_skip=4, screen_size=96)
+env = gym.wrappers.FrameStack(env, 4)
+
+
+class NumpyFrame(ObservationWrapper):
+    def __init__(self, env):
+        super(NumpyFrame, self).__init__(env)
+
+    def _convert_observation(self, observation):
+        return numpy.array(observation)/255.0
+
+    def step(self, action):
+        observation, reward, done, info = self.env.step(action)
+        result = self._convert_observation(observation)
+        return result, reward, done, info
+
+    def reset(self, **kwargs):
+        observation = self.env.reset(**kwargs)
+        result = self._convert_observation(observation)
+        return result
+
+
+env = NumpyFrame(env)
+
+
 env.reset() 
  
 

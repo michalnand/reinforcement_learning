@@ -24,7 +24,7 @@ class Buffer():
         return False
 
     def add(self, observation, q_values, action, reward, done):
-        self.buffer.append(Transition(observation.copy(), q_values.copy(), action, reward, done))
+        self.buffer.append(Transition(observation, q_values, action, reward, done))
 
     def _print(self):
         for i in range(self.length()):
@@ -48,18 +48,14 @@ class Buffer():
             q_next = numpy.max(self.buffer[n+1].q_values)
             self.buffer[n].q_values[action] = self.buffer[n].reward + gamma_*q_next
 
-    def get_random_batch(self, batch_size, device):
+    def get_random_batch(self, batch_size, device):        
+        observation_shape =  self.buffer[0].observation.shape
         
-        observation_shape = self.buffer[0].observation.shape
+        state_shape   = (batch_size, ) + observation_shape[0:]
 
-        if len(observation_shape) == 1:
-            state_shape   = (batch_size, ) + observation_shape[0:]
-        else:
-            state_shape   = (batch_size, ) + observation_shape[1:]
         actions_count = len(self.buffer[0].q_values)
 
         q_values_shape = (batch_size, ) + (actions_count, )
-
 
         input   = torch.zeros(state_shape,  dtype=torch.float32).to(device)
         target  = torch.zeros(q_values_shape,  dtype=torch.float32).to(device)

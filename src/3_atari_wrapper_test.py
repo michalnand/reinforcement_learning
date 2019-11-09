@@ -9,14 +9,15 @@ from matplotlib import pyplot as plt
 
 def observation_show(observation):
 
-    frames = numpy.zeros((observation.shape[1], observation.shape[2],  observation.shape[3]))
+    shape = observation.shape
+    frames = numpy.zeros((shape[0], shape[1],  shape[2]))
 
     print("observation_show ", frames.shape)
 
-    for frame in range(observation.shape[1]):
-        for y in range(observation.shape[2]):
-            for x in range(observation.shape[3]):
-                frames[frame][y][x] = observation[0][frame][y][x]
+    for frame in range(shape[0]):
+        for y in range(shape[1]):
+            for x in range(shape[2]):
+                frames[frame][y][x] = observation[frame][y][x]
 
     f, axarr = plt.subplots(2,2)
     
@@ -30,17 +31,15 @@ def observation_show(observation):
     plt.show() 
 
 
-#env = gym.make("Pong-v4")
+env = gym.make("Pong-v4")
 #env = gym.make("Breakout-v4")
 #env = gym.make("SpaceInvaders-v4")
 #env = gym.make("MsPacman-v4")
 #env = gym.make("Seaquest-v4") 
 #env = gym.make("Qbert-v4") 
 
-env = common.atari_wrapper.Create("Breakout-v4")
-#env = common.atari_wrapper_openai.Create("Breakout-v4")
-
-
+env = gym.wrappers.AtariPreprocessing(env, noop_max=40, frame_skip=4, screen_size=96)
+env = gym.wrappers.FrameStack(env, 4)
 
 env.reset()
 
@@ -56,7 +55,6 @@ while True:
     observation, reward, done, info = env.step(action)
     env.render()
 
-    
     observation_show(observation)    
 
     if reward != 0:
