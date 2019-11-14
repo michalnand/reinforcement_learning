@@ -1,6 +1,5 @@
 import gym
-from gym import ObservationWrapper
-
+import common.atari_wrapper
 import agents.dqn
 
 import numpy
@@ -15,46 +14,23 @@ config = models.atari_pong_dqn.src.config.Config()
 
 save_path = "./models/atari_pong_dqn/"
 
+#env = common.atari_wrapper.make_env("Pong-v0")
+#env.reset() 
+
 env = gym.make("Pong-v4")
-env = gym.wrappers.AtariPreprocessing(env, noop_max=30, frame_skip=4, screen_size=96)
-env = gym.wrappers.FrameStack(env, 4)
+env = common.atari_wrapper.Create(env)
 
-
-class NumpyFrame(ObservationWrapper):
-    def __init__(self, env):
-        super(NumpyFrame, self).__init__(env)
-
-    def _convert_observation(self, observation):
-        return numpy.array(observation)/255.0
-
-    def step(self, action):
-        observation, reward, done, info = self.env.step(action)
-        result = self._convert_observation(observation)
-        return result, reward, done, info
-
-    def reset(self, **kwargs):
-        observation = self.env.reset(**kwargs)
-        result = self._convert_observation(observation)
-        return result
-
-
-env = NumpyFrame(env)
-
-
-env.reset() 
- 
+env.reset()
 
 agent = agents.dqn.Agent(env, model, config, save_path)
 
 while agent.iterations < 10000000:
+
     agent.main()    
 
     if agent.iterations%100000 == 0:
         agent.save()
 
-    if agent.iterations%1000 == 0:
-        pass
-        #env.render()
 
 agent.save() 
 

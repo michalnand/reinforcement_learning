@@ -6,6 +6,7 @@ import torch
 Transition = collections.namedtuple("Transition", ("observation", "q_values", "action", "reward", "done"))
 
 
+
 class Buffer():
 
     def __init__(self, size):
@@ -28,7 +29,7 @@ class Buffer():
 
     def _print(self):
         for i in range(self.length()):
-            #print(self.buffer[i].observation, end = " ")
+            print(self.buffer[i].observation, end = " ")
             print(self.buffer[i].q_values, end = " ")
             print(self.buffer[i].action, end = " ")
             print(self.buffer[i].reward, end = " ")
@@ -37,25 +38,26 @@ class Buffer():
 
     def compute(self, gamma = 0.99):
         for n in reversed(range(self.length() - 1)):
-          
             if self.buffer[n].done:
                 gamma_ = 0.0
-            else: 
+            else:
                 gamma_ = gamma
+
+            q_next = numpy.max(self.buffer[n+1].q_values)
+            q_new  = self.buffer[n].reward + gamma_*q_next
 
             action = self.buffer[n].action
 
-            q_next = numpy.max(self.buffer[n+1].q_values)
-            self.buffer[n].q_values[action] = self.buffer[n].reward + gamma_*q_next
+            self.buffer[n].q_values[action] = q_new
 
-    def get_random_batch(self, batch_size, device):        
-        observation_shape =  self.buffer[0].observation.shape
+    def get_random_batch(self, batch_size, device):
         
+        observation_shape = self.buffer[0].observation.shape
         state_shape   = (batch_size, ) + observation_shape[0:]
-
         actions_count = len(self.buffer[0].q_values)
 
         q_values_shape = (batch_size, ) + (actions_count, )
+
 
         input   = torch.zeros(state_shape,  dtype=torch.float32).to(device)
         target  = torch.zeros(q_values_shape,  dtype=torch.float32).to(device)

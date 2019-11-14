@@ -24,7 +24,7 @@ class SetRewardRange(gym.RewardWrapper):
     def step(self, action):
         obs, reward, done, info = self.env.step(action)
         if reward < 0:
-            reward = -0.01
+            reward = -0.001
 
         if done: 
             reward = 1.0

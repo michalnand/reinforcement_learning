@@ -3,13 +3,15 @@ import numpy
 import time
 
 import common.atari_wrapper
-import common.atari_wrapper_openai
+
 from matplotlib import pyplot as plt
 
 
 def observation_show(observation):
 
     shape = observation.shape
+
+    print(shape)
     frames = numpy.zeros((shape[0], shape[1],  shape[2]))
 
     print("observation_show ", frames.shape)
@@ -31,17 +33,19 @@ def observation_show(observation):
     plt.show() 
 
 
-env = gym.make("Pong-v4")
+#env = gym.make("Pong-v4")
 #env = gym.make("Breakout-v4")
 #env = gym.make("SpaceInvaders-v4")
 #env = gym.make("MsPacman-v4")
 #env = gym.make("Seaquest-v4") 
 #env = gym.make("Qbert-v4") 
 
-env = gym.wrappers.AtariPreprocessing(env, noop_max=40, frame_skip=4, screen_size=96)
-env = gym.wrappers.FrameStack(env, 4)
+env = gym.make("Pong-v0")
+env = common.atari_wrapper.Create(env)
 
 env.reset()
+
+
 
 obs             = env.observation_space
 actions_count   = env.action_space.n

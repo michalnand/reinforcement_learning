@@ -11,6 +11,10 @@ import common.atari_wrapper
 
 import sys
 numpy.set_printoptions(threshold=sys.maxsize)
+
+
+def loss_mse(y_target, y_hat):
+    return torch.mean( (y_target - y_hat).pow(2) )
  
 class Agent():
     def __init__(self, env, model, config, save_path = None, save_stats = True):
@@ -25,14 +29,12 @@ class Agent():
         self.gamma          = config.gamma
 
         self.experience_replay = common.experience_replay.Buffer(config.experience_replay_size)
-        #self.experience_replay = common.experience_replay_dqn.Buffer(config.experience_replay_size)
 
         self.observation_shape = self.env.observation_space.shape
         self.actions_count     = self.env.action_space.n
 
         self.model      = model.Model(self.observation_shape, self.actions_count)
         self.optimizer  = torch.optim.Adam(self.model.parameters(), lr= config.learning_rate)
-        self.loss       = torch.nn.MSELoss()
 
         self.observation    = env.reset()
         self.enable_training()
@@ -44,8 +46,6 @@ class Agent():
         if save_path != None and save_stats:
             self.training_stats = agents.agent_stats.AgentStats(self.save_path + "result/training")
             self.testing_stats  = agents.agent_stats.AgentStats(self.save_path + "result/testing")
-
-
 
     def enable_training(self):
         self.enabled_training = True
@@ -59,12 +59,11 @@ class Agent():
             epsilon = self.epsilon.get()
         else:
             epsilon = self.epsilon.get_testing()
-
         
         q_values = self.model.get_q_values(self.observation)
         self.action = self.choose_action_e_greedy(q_values, epsilon)
 
-        self.observation, self.reward, self.done, self.info = self.env.step(self.action)
+        observation_new, self.reward, self.done, self.info = self.env.step(self.action)
 
         if self.enabled_training:
             if self.experience_replay.is_full() == False:
@@ -72,6 +71,7 @@ class Agent():
             else:   
                 self.train_model()
 
+        self.observation = observation_new
 
         if hasattr(self, "training_stats") and hasattr(self, "testing_stats"):
             if self.enabled_training:
@@ -89,29 +89,25 @@ class Agent():
         
     def train_model(self):
         self.experience_replay.compute(self.gamma)
-                 
+                
         batches_count = self.experience_replay.length()//self.batch_size
 
         for _ in range(0, batches_count):
             input, target = self.experience_replay.get_random_batch(self.batch_size, self.model.device)
-            #input, target = self.experience_replay.get_random_batch(self.gamma, self.batch_size, self.model.device)
-            
             
             output = self.model.forward(input)
 
+            loss   = loss_mse(target, output)
+    
             self.optimizer.zero_grad()
-            loss = self.loss(output, target)
             loss.backward()
- 
             for param in self.model.parameters():
-                param.grad.data.clamp_(-1.0, 1.0)
-            
+                param.grad.data.clamp_(-10.0, 10.0)
             self.optimizer.step()
 
-        self.experience_replay.clear()                
+        self.experience_replay.clear()              
 
         
-    
     def choose_action_e_greedy(self, q_values, epsilon):
         result = numpy.argmax(q_values)
         
