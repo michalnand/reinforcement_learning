@@ -96,6 +96,22 @@ class MaxAndSkipEnv(gym.Wrapper):
         max_frame = self._obs_buffer.max(axis=0)
         return max_frame, total_reward, done, info
 
+ 
+class SkipEnv(gym.Wrapper):
+    def __init__(self, env, skip=2):
+        gym.Wrapper.__init__(self, env)
+        self.skip = skip
+
+    def step(self, action):
+        total_reward = 0.0
+        for _ in range(self.skip):
+            obs, reward, done, info = self.env.step(action)
+            total_reward += reward
+            if done:
+                break
+
+        return obs, total_reward, done, info
+
 
 class ClipRewardEnv(gym.RewardWrapper):
     def __init__(self, env):
@@ -185,7 +201,8 @@ def Create(env, width = 96, height = 96, frame_stacking = 4):
     env = SetDimensions(env, width, height, frame_stacking)
     env = NoopResetEnv(env)
     env = FireResetEnv(env)
-    env = MaxAndSkipEnv(env)
+    #env = MaxAndSkipEnv(env)
+    env = SkipEnv(env)
     env = ClipRewardEnv(env)
     env = LiveLostReward(env)
     env = ResizeFrameEnv(env)

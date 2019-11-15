@@ -44,11 +44,11 @@ class Model(torch.nn.Module):
                         nn.ReLU(),
                         nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
 
-                        Flatten(), 
-                        nn.Linear(fc_inputs_count*64, 512),
+                        Flatten(),  
+                        nn.Linear(fc_inputs_count*64, 256),
                         nn.ReLU(),                      
 
-                        nn.Linear(512, outputs_count)
+                        nn.Linear(256, outputs_count)
                     ]
 
         for i in range(len(self.layers)):
