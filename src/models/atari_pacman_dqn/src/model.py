@@ -14,18 +14,14 @@ class Model(torch.nn.Module):
 
         self.input_shape    = input_shape
         self.outputs_count  = outputs_count
-
         
         input_channels  = self.input_shape[0]
         fc_input_height = self.input_shape[1]
-        fc_input_width  = self.input_shape[2]
-       
+        fc_input_width  = self.input_shape[2]    
 
         ratio           = 2**4
 
         fc_inputs_count = ((fc_input_width)//ratio)*((fc_input_height)//ratio)
-
-        
 
         self.layers = [
                         nn.Conv2d(input_channels, 64, kernel_size=3, stride=1, padding=1),
@@ -45,10 +41,10 @@ class Model(torch.nn.Module):
                         nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
 
                         Flatten(),  
-                        nn.Linear(fc_inputs_count*64, 256),
+                        nn.Linear(fc_inputs_count*64, 512),
                         nn.ReLU(),                      
 
-                        nn.Linear(256, outputs_count)
+                        nn.Linear(512, outputs_count)
                     ]
 
         for i in range(len(self.layers)):
@@ -88,7 +84,6 @@ class Model(torch.nn.Module):
         print("rendering ", path)
 
         x = torch.zeros(1, self.input_shape[0], self.input_shape[1], self.input_shape[2], dtype=torch.float32, requires_grad=False).to(self.device)
-        #x = torch.zeros(self.input_shape, dtype=torch.float32, requires_grad=False).to(self.device)
         out = self.forward(x)
         dot = torchviz.make_dot(out)
          
