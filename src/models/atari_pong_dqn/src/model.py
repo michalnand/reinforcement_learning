@@ -19,7 +19,7 @@ class Model(torch.nn.Module):
         fc_input_height = self.input_shape[1]
         fc_input_width  = self.input_shape[2]    
 
-        ratio           = 2**4
+        ratio           = 2**5
 
         fc_inputs_count = ((fc_input_width)//ratio)*((fc_input_height)//ratio)
 
@@ -40,6 +40,10 @@ class Model(torch.nn.Module):
                         nn.ReLU(),
                         nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
 
+                        nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=1),
+                        nn.ReLU(),
+                        nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
+
                         Flatten(),  
                         nn.Linear(fc_inputs_count*64, 512),
                         nn.ReLU(),                      
@@ -49,7 +53,7 @@ class Model(torch.nn.Module):
 
         for i in range(len(self.layers)):
             if hasattr(self.layers[i], "weight"):
-                torch.nn.init.xavier_uniform(self.layers[i].weight)
+                torch.nn.init.xavier_uniform_(self.layers[i].weight)
 
         self.model = nn.Sequential(*self.layers)
         self.model.to(self.device)
