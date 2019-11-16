@@ -25,7 +25,7 @@ class Agent():
 
         self.batch_size     = config.batch_size
 
-        self.epsilon        = config.epsilon
+        self.exploration    = config.exploration
         self.gamma          = config.gamma
 
         self.experience_replay = common.experience_replay.Buffer(config.experience_replay_size)
@@ -55,10 +55,10 @@ class Agent():
     
     def main(self):
         if self.enabled_training:
-            self.epsilon.process()
-            epsilon = self.epsilon.get()
+            self.exploration.process()
+            epsilon = self.exploration.get()
         else:
-            epsilon = self.epsilon.get_testing()
+            epsilon = self.exploration.get_testing()
         
         q_values = self.model.get_q_values(self.observation)
         self.action = self.choose_action_e_greedy(q_values, epsilon)
