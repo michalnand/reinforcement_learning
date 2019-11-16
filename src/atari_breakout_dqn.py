@@ -19,7 +19,7 @@ env = common.atari_wrapper.Create(env, 96, 96, 4)
 
 env.reset()
 
- 
+
 agent = agents.dqn.Agent(env, model, config, save_path)
 
 
@@ -47,6 +47,7 @@ while agent.iterations < 1000000:
     agent.main()
 
 print("testing done")
+
 '''
 
 
@@ -58,4 +59,5 @@ while True:
     agent.main()
     env.render()
     time.sleep(0.1)
+
 '''
