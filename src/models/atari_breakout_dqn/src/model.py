@@ -19,30 +19,34 @@ class Model(torch.nn.Module):
         fc_input_height = self.input_shape[1]
         fc_input_width  = self.input_shape[2]    
 
-        ratio           = 2**5
+        ratio           = 2**4
 
-        fc_inputs_count = ((fc_input_width)//ratio)*((fc_input_height)//ratio)
+        fc_inputs_count = ((fc_input_width)//ratio - 2)*((fc_input_height)//ratio - 2)
 
         self.layers = [
                         nn.Conv2d(input_channels, 32, kernel_size=3, stride=1, padding=1),
+                        nn.BatchNorm2d(32),
                         nn.ReLU(), 
                         nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
 
                         nn.Conv2d(32, 32, kernel_size=3, stride=1, padding=1),
+                        nn.BatchNorm2d(32),
                         nn.ReLU(),
                         nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
  
                         nn.Conv2d(32, 64, kernel_size=3, stride=1, padding=1),
+                        nn.BatchNorm2d(64),
                         nn.ReLU(),
                         nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
             
                         nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=1),
+                        nn.BatchNorm2d(64),
                         nn.ReLU(),
                         nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
 
-                        nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=1),
+                        nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=0),
+                        nn.BatchNorm2d(64),
                         nn.ReLU(),
-                        nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
 
                         Flatten(),  
                         nn.Linear(fc_inputs_count*64, 512),
@@ -51,9 +55,9 @@ class Model(torch.nn.Module):
                         nn.Linear(512, outputs_count)
                     ]
 
-        for i in range(len(self.layers)):
-            if hasattr(self.layers[i], "weight"):
-                torch.nn.init.xavier_uniform_(self.layers[i].weight)
+        for layer in self.layers:
+            if isinstance(layer, nn.Conv2d):
+                torch.nn.init.xavier_uniform_(layer.weight)
 
         self.model = nn.Sequential(*self.layers)
         self.model.to(self.device)
