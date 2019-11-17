@@ -33,12 +33,12 @@ def observation_show(observation):
     plt.show() 
 
 
-#env = gym.make("Pong-v4")
-#env = gym.make("Breakout-v4")
-env = gym.make("SpaceInvaders-v4")
-#env = gym.make("MsPacman-v4")
-#env = gym.make("Seaquest-v4") 
-#env = gym.make("Qbert-v4") 
+env = gym.make("Pong-v0")
+#env = gym.make("Breakout-v0")
+#env = gym.make("SpaceInvaders-v0")
+#env = gym.make("MsPacman-v0")
+#env = gym.make("Seaquest-v0") 
+#env = gym.make("Qbert-v0") 
 
 env = common.atari_wrapper.Create(env)
 
@@ -58,7 +58,7 @@ while True:
     observation, reward, done, info = env.step(action)
     env.render()
 
-    observation_show(observation)    
+    #observation_show(observation)    
 
     if reward != 0:
         print("reward = ", reward)

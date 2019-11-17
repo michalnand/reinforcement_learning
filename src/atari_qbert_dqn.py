@@ -14,7 +14,7 @@ config = models.atari_enduro_dqn.src.config.Config()
 
 save_path = "./models/atari_qbert_dqn/"
 
-env = gym.make("Qbert-v4") 
+env = gym.make("Qbert-v0") 
 env = common.atari_wrapper.Create(env, 96, 96, 4) 
 
 env.reset()
