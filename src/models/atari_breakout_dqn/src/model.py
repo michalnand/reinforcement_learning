@@ -25,27 +25,22 @@ class Model(torch.nn.Module):
 
         self.layers = [
                         nn.Conv2d(input_channels, 32, kernel_size=3, stride=1, padding=1),
-                        nn.BatchNorm2d(32),
                         nn.ReLU(), 
                         nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
 
                         nn.Conv2d(32, 32, kernel_size=3, stride=1, padding=1),
-                        nn.BatchNorm2d(32),
                         nn.ReLU(),
                         nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
  
                         nn.Conv2d(32, 64, kernel_size=3, stride=1, padding=1),
-                        nn.BatchNorm2d(64),
                         nn.ReLU(),
                         nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
             
                         nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=1),
-                        nn.BatchNorm2d(64),
                         nn.ReLU(),
                         nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
 
                         nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=0),
-                        nn.BatchNorm2d(64),
                         nn.ReLU(),
 
                         Flatten(),  

@@ -17,7 +17,7 @@ save_path = "./models/atari_pong_dqn/"
 #env = common.atari_wrapper.make_env("Pong-v0")
 #env.reset() 
 
-env = gym.make("Pong-v0")
+env = gym.make("Pong-v4")
 env = common.atari_wrapper.Create(env)
 
 env.reset()

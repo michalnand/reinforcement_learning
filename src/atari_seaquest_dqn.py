@@ -14,7 +14,7 @@ config = models.atari_seaquest_dqn.src.config.Config()
 
 save_path = "./models/atari_seaquest_dqn/"
 
-env = gym.make("Seaquest-v0") 
+env = gym.make("Seaquest-v4") 
 env = common.atari_wrapper.Create(env, 96, 96, 4) 
 
 env.reset()
