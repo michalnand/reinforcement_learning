@@ -1,11 +1,11 @@
-iterations                = 267
+iterations                = 278
 game_id                   = 1
 score                     = -21.0
-game_iterations           = 267
-game_iterations_smooth    = 267.0
+game_iterations           = 278
+game_iterations_smooth    = 278.0
 game_score                = -21.0
 game_score_smooth         = -21.000000000000004
-fps_smooth                = 238.3671405839133
+fps_smooth                = 230.84860327421887
 
 
 

@@ -2,11 +2,12 @@
 
 
 class Linear():
-    def __init__(self, iterations, start_value = 1.0, end_value = 0.1, testing_value = 0.02):
-        self.decay = (start_value - end_value)*1.0/iterations   
+    def __init__(self, iterations = 1000000, start_value = 1.0, end_value = 0.1, testing_value = 0.02):
         self.start_value = start_value
         self.end_value = end_value
         self.testing_value = testing_value
+
+        self.decay = (self.start_value - self.end_value)*1.0/iterations   
 
         self.epsilon = self.start_value
 
