@@ -31,25 +31,25 @@ class Model(torch.nn.Module):
                         nn.Conv2d(32, 32, kernel_size=3, stride=1, padding=1),
                         nn.ReLU(),
                         nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
-
+ 
                         nn.Conv2d(32, 32, kernel_size=3, stride=1, padding=1),
                         nn.ReLU(),
                         nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
             
-                        nn.Conv2d(32, 64, kernel_size=3, stride=1, padding=1),
+                        nn.Conv2d(32, 32, kernel_size=3, stride=1, padding=1),
                         nn.ReLU(),
                         nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
 
                         Flatten(), 
-                        nn.Linear(fc_inputs_count*64, 256),
-                        nn.ReLU(), 
+                        nn.Linear(fc_inputs_count*32, 256),
+                        nn.ReLU(),                      
 
                         nn.Linear(256, outputs_count)
                     ]
 
-        for layer in self.layers:
-            if isinstance(layer, nn.Conv2d):
-                torch.nn.init.xavier_uniform_(layer.weight)
+        for i in range(len(self.layers)):
+            if hasattr(self.layers[i], "weight"):
+                torch.nn.init.xavier_uniform_(self.layers[i].weight)
 
         self.model = nn.Sequential(*self.layers)
         self.model.to(self.device)

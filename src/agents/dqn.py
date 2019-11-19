@@ -15,6 +15,7 @@ numpy.set_printoptions(threshold=sys.maxsize)
 
 def loss_mse(y_target, y_hat):
     return torch.mean( (y_target - y_hat).pow(2) )
+
  
 class Agent():
     def __init__(self, env, model, config, save_path = None, save_stats = True):

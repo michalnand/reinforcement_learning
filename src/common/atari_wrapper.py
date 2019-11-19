@@ -98,7 +98,7 @@ class MaxAndSkipEnv(gym.Wrapper):
 
  
 class SkipEnv(gym.Wrapper):
-    def __init__(self, env, skip=2):
+    def __init__(self, env, skip=4):
         gym.Wrapper.__init__(self, env)
         self.skip = skip
 
@@ -202,7 +202,7 @@ def Create(env, width = 96, height = 96, frame_stacking = 4):
     env = NoopResetEnv(env)
     env = FireResetEnv(env)
     #env = MaxAndSkipEnv(env)
-    env = SkipEnv(env, 4)
+    env = SkipEnv(env)
     env = ClipRewardEnv(env)
     env = LiveLostReward(env)
     env = ResizeFrameEnv(env)
