@@ -103,7 +103,7 @@ class Agent():
             self.optimizer.zero_grad()
 
             #loss   = loss_mse(target, output)
-            loos = self.loss(output, target)
+            loss = self.loss(output, target)
     
             loss.backward()
             for param in self.model.parameters():
