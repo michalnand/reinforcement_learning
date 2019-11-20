@@ -12,10 +12,10 @@ import common.atari_wrapper
 import sys
 numpy.set_printoptions(threshold=sys.maxsize)
 
-
+'''
 def loss_mse(y_target, y_hat):
     return torch.mean( (y_target - y_hat).pow(2) )
-
+'''
  
 class Agent():
     def __init__(self, env, model, config, save_path = None, save_stats = True):
@@ -35,6 +35,8 @@ class Agent():
         self.actions_count     = self.env.action_space.n
 
         self.model      = model.Model(self.observation_shape, self.actions_count)
+
+        self.loss       = torch.nn.MSELoss()
         self.optimizer  = torch.optim.Adam(self.model.parameters(), lr= config.learning_rate)
 
         self.observation    = env.reset()
@@ -98,9 +100,11 @@ class Agent():
             
             output = self.model.forward(input)
 
-            loss   = loss_mse(target, output)
-    
             self.optimizer.zero_grad()
+
+            #loss   = loss_mse(target, output)
+            loos = self.loss(output, target)
+    
             loss.backward()
             for param in self.model.parameters():
                 param.grad.data.clamp_(-10.0, 10.0)
