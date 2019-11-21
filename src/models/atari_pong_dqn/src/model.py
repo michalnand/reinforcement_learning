@@ -19,7 +19,7 @@ class Model(torch.nn.Module):
         fc_input_height = self.input_shape[1]
         fc_input_width  = self.input_shape[2]    
 
-        ratio           = 2**5
+        ratio           = 2**4
 
         fc_inputs_count = ((fc_input_width)//ratio)*((fc_input_height)//ratio)
  
@@ -40,9 +40,6 @@ class Model(torch.nn.Module):
                         nn.ReLU(),
                         nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
 
-                        nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=1),
-                        nn.ReLU(),
-                        nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
 
                         Flatten(), 
                         nn.Linear(fc_inputs_count*64, 512),

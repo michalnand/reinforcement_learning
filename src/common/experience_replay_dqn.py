@@ -8,8 +8,9 @@ Transition = collections.namedtuple("Transition", ("observation", "q_values", "a
 
 class Buffer():
 
-    def __init__(self, size):
-        self.size = size
+    def __init__(self, size, gamma):
+        self.size   = size
+        self.gamma  = gamma
         self.clear()
 
     def clear(self):
@@ -36,7 +37,7 @@ class Buffer():
             print("\n")
 
    
-    def get_random_batch(self, gamma, batch_size, device):
+    def get_random_batch(self, batch_size, device):
         
         observation_shape = self.buffer[0].observation.shape
 
@@ -58,7 +59,7 @@ class Buffer():
             if self.buffer[n].done:
                 gamma_ = 0.0
             else: 
-                gamma_ = gamma
+                gamma_ = self.gamma
     
             q_values    = self.buffer[n].q_values.copy()
             action      = self.buffer[n].action

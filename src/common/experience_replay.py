@@ -9,8 +9,9 @@ Transition = collections.namedtuple("Transition", ("observation", "q_values", "a
 
 class Buffer():
 
-    def __init__(self, size):
-        self.size = size
+    def __init__(self, size, gamma):
+        self.size   = size
+        self.gamma  = gamma
         self.clear()
 
     def clear(self):
@@ -36,12 +37,12 @@ class Buffer():
             print(self.buffer[i].done, end = " ")
             print("\n")
 
-    def compute(self, gamma = 0.99):
+    def compute(self):
         for n in reversed(range(self.length() - 1)):
             if self.buffer[n].done:
                 gamma_ = 0.0
             else:
-                gamma_ = gamma
+                gamma_ = self.gamma
 
             q_next = numpy.max(self.buffer[n+1].q_values)
             q_new  = self.buffer[n].reward + gamma_*q_next
