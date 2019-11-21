@@ -48,7 +48,7 @@ class Model(torch.nn.Module):
                         nn.Linear(fc_inputs_count*64, 512),
                         nn.ReLU(),                      
 
-                        nn.Linear(256, outputs_count)
+                        nn.Linear(512, outputs_count)
                     ]
 
         for i in range(len(self.layers)):
