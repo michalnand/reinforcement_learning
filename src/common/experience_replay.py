@@ -51,6 +51,8 @@ class Buffer():
 
             self.buffer[n].q_values[action] = q_new
 
+            self.buffer[n].q_values = numpy.clip(self.buffer[n].q_values, -1.0, 1.0)
+
     def get_random_batch(self, batch_size, device):
         
         observation_shape = self.buffer[0].observation.shape
