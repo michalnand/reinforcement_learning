@@ -92,7 +92,7 @@ class Agent():
         
         
     def train_model(self):
-        self.experience_replay.compute()
+        #self.experience_replay.compute()
                 
         batches_count = self.experience_replay.length()//self.batch_size
 
