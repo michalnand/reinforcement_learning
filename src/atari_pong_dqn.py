@@ -19,7 +19,6 @@ env = common.atari_wrapper.Create(env)
 
 env.reset()
 
-
 agent = agents.dqn.Agent(env, model, config, save_path)
 
 while agent.iterations < 10000000:
