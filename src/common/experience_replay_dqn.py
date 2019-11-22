@@ -50,7 +50,7 @@ class Buffer():
         target  = torch.zeros(q_values_shape,  dtype=torch.float32).to(device)
  
         for i in range(0, batch_size):
-            n      = numpy.random.randint(self.length())
+            n      = numpy.random.randint(self.length() - 1)
 
             if self.buffer[n].done:
                 gamma_ = 0.0

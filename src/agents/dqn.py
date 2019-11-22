@@ -29,8 +29,8 @@ class Agent():
         self.exploration    = config.exploration
         self.gamma          = config.gamma
 
-        self.experience_replay = common.experience_replay.Buffer(config.experience_replay_size, self.gamma)
-        #self.experience_replay = common.experience_replay_dqn.Buffer(config.experience_replay_size, self.gamma)
+        #self.experience_replay = common.experience_replay.Buffer(config.experience_replay_size, self.gamma)
+        self.experience_replay = common.experience_replay_dqn.Buffer(config.experience_replay_size, self.gamma)
 
         self.observation_shape = self.env.observation_space.shape
         self.actions_count     = self.env.action_space.n
