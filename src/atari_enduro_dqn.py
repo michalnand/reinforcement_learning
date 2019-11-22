@@ -5,35 +5,30 @@ import agents.dqn
 import numpy
 import time
 
-import models.atari_sequest_dueling_dqn.src.model
-import models.atari_sequest_dueling_dqn.src.config
+import models.atari_pong_dqn.src.model
+import models.atari_pong_dqn.src.config
 
 
-model  = models.atari_sequest_dueling_dqn.src.model
-config = models.atari_sequest_dueling_dqn.src.config.Config()
+model  = models.atari_pong_dqn.src.model
+config = models.atari_pong_dqn.src.config.Config()
 
+save_path = "./models/atari_pong_dqn/"
 
-save_path = "./models/atari_sequest_dueling_dqn/"
+env = gym.make("Enduro-v4")
+env = common.atari_wrapper.Create(env)
 
-
-env = gym.make("Seaquest-v4") 
-env = common.atari_wrapper.Create(env, 96, 96, 4) 
-
-env.reset() 
+env.reset()
 
 
 agent = agents.dqn.Agent(env, model, config, save_path)
 
-
 while agent.iterations < 10000000:
+
+    agent.main()    
+
     if agent.iterations%100000 == 0:
         agent.save()
-        
-    agent.main()
 
-    if agent.iterations%1000 == 0:
-        pass
-        #env.render()
 
 agent.save() 
 
@@ -49,8 +44,8 @@ while agent.iterations  < 1000000:
 
 print("testing done")
 
-
 '''
+
 agent = agents.dqn.Agent(env, model, config, save_path, save_stats=False)
 agent.load()
 agent.disable_training()

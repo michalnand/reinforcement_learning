@@ -58,6 +58,6 @@ agent.disable_training()
 while True:
     agent.main()
     env.render()
-    time.sleep(0.1)
+    time.sleep(1.0/25.0)
 
 '''

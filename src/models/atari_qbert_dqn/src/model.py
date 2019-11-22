@@ -22,7 +22,7 @@ class Model(torch.nn.Module):
         ratio           = 2**4
 
         fc_inputs_count = ((fc_input_width)//ratio - 2)*((fc_input_height)//ratio - 2)
-
+ 
         self.layers = [
                         nn.Conv2d(input_channels, 32, kernel_size=3, stride=1, padding=1),
                         nn.ReLU(), 
@@ -43,16 +43,16 @@ class Model(torch.nn.Module):
                         nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=0),
                         nn.ReLU(),
 
-                        Flatten(),  
+                        Flatten(), 
                         nn.Linear(fc_inputs_count*64, 512),
                         nn.ReLU(),                      
 
                         nn.Linear(512, outputs_count)
                     ]
 
-        for layer in self.layers:
-            if isinstance(layer, nn.Conv2d):
-                torch.nn.init.xavier_uniform_(layer.weight)
+        for i in range(len(self.layers)):
+            if hasattr(self.layers[i], "weight"):
+                torch.nn.init.xavier_uniform_(self.layers[i].weight)
 
         self.model = nn.Sequential(*self.layers)
         self.model.to(self.device)
@@ -85,10 +85,10 @@ class Model(torch.nn.Module):
     def render(self, path):
 
         print("rendering ", path)
-
-        x   = torch.zeros(1, self.input_shape[0], self.input_shape[1], self.input_shape[2], dtype=torch.float32, requires_grad=False).to(self.device)
-        out = self.forward(x)
-        dot = torchviz.make_dot(out)
-         
-        dot.format = "svg"
-        dot.render(path + "trained/model")
+        with torch.no_grad():
+            x   = torch.zeros(1, self.input_shape[0], self.input_shape[1], self.input_shape[2], dtype=torch.float32, requires_grad=False).to(self.device)
+            out = self.forward(x)
+            dot = torchviz.make_dot(out)
+            
+            dot.format = "svg"
+            dot.render(path + "trained/model")

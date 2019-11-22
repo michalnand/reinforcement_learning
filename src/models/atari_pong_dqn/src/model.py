@@ -41,10 +41,9 @@ class Model(torch.nn.Module):
                         nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
 
                         nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=0),
-                        nn.ReLU(), 
+                        nn.ReLU(),
 
                         Flatten(), 
-                        
                         nn.Linear(fc_inputs_count*64, 512),
                         nn.ReLU(),                      
 

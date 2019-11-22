@@ -13,20 +13,17 @@ class Model(torch.nn.Module):
 
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-        print("computing device ", self.device)
-
         self.input_shape    = input_shape
         self.outputs_count  = outputs_count
         
+        input_channels  = self.input_shape[0]
         fc_input_height = self.input_shape[1]
-        fc_input_width  = self.input_shape[2]
-       
+        fc_input_width  = self.input_shape[2]    
+
         ratio           = 2**4
 
         fc_inputs_count = ((fc_input_width)//ratio - 2)*((fc_input_height)//ratio - 2)
-
-        input_channels = self.input_shape[0]
-
+        
         self.layers_features = [ 
                             nn.Conv2d(input_channels, 32, kernel_size=3, stride=1, padding=1),
                             nn.ReLU(), 
@@ -63,8 +60,9 @@ class Model(torch.nn.Module):
                             ]
   
         for i in range(len(self.layers_features)):
-            if isinstance(self.layers_features[i], nn.Conv2d):
-                torch.nn.init.kaiming_uniform_(self.layers_features[i].weight, nonlinearity="relu")
+            if hasattr(self.layers_features[i], "weight"):
+                torch.nn.init.xavier_uniform_(self.layers_features[i].weight)
+
 
         self.model_features = nn.Sequential(*self.layers_features)
         self.model_features.to(self.device)
@@ -87,7 +85,7 @@ class Model(torch.nn.Module):
 
     def get_q_values(self, state):
         with torch.no_grad():
-            state_dev       = torch.tensor(state, dtype=torch.float32).detach().to(self.device)
+            state_dev       = torch.tensor(state, dtype=torch.float32).detach().to(self.device).unsqueeze(0)
             network_output  = self.forward(state_dev)
 
             return network_output[0].to("cpu").detach().numpy()
