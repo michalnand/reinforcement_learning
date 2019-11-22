@@ -40,11 +40,7 @@ class Buffer():
     def get_random_batch(self, batch_size, device):
         
         observation_shape = self.buffer[0].observation.shape
-
-        if len(observation_shape) == 1:
-            state_shape   = (batch_size, ) + observation_shape[0:]
-        else:
-            state_shape   = (batch_size, ) + observation_shape[1:]
+        state_shape   = (batch_size, ) + observation_shape[0:]
         actions_count = len(self.buffer[0].q_values)
 
         q_values_shape = (batch_size, ) + (actions_count, )
@@ -54,7 +50,7 @@ class Buffer():
         target  = torch.zeros(q_values_shape,  dtype=torch.float32).to(device)
  
         for i in range(0, batch_size):
-            n      = numpy.random.randint(self.length()-1)
+            n      = numpy.random.randint(self.length())
 
             if self.buffer[n].done:
                 gamma_ = 0.0

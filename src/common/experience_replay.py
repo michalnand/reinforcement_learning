@@ -64,7 +64,7 @@ class Buffer():
         target  = torch.zeros(q_values_shape,  dtype=torch.float32, requires_grad=False).to(device)
  
         for i in range(0, batch_size):
-            n      = numpy.random.randint(self.length())
+            n      = numpy.random.randint(self.length() -)
             
             input[i]  = torch.from_numpy(self.buffer[n].observation).to(device)
             target[i] = torch.from_numpy(self.buffer[n].q_values).to(device)
