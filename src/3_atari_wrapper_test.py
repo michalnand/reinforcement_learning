@@ -35,9 +35,9 @@ def observation_show(observation):
 
 #env = gym.make("Pong-v4")
 #env = gym.make("Breakout-v4")
-env = gym.make("Enduro-v4")
+#env = gym.make("Enduro-v4")
 #env = gym.make("SpaceInvaders-v4")
-#env = gym.make("MsPacman-v4")
+env = gym.make("MsPacman-v4")
 #env = gym.make("Seaquest-v4") 
 #env = gym.make("Qbert-v4") 
 
