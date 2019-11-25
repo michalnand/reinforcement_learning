@@ -14,7 +14,7 @@ config = models.atari_pong_dqn.src.config.Config()
 
 save_path = "./models/atari_pong_dqn/"
 
-env = gym.make("Pong-v4")
+env = gym.make("PongNoFrameskip-v4")
 env = common.atari_wrapper.Create(env)
 
 env.reset()
@@ -22,7 +22,7 @@ env.reset()
 
 agent = agents.dqn.Agent(env, model, config, save_path)
 
-while agent.iterations < 20000000:
+while agent.iterations < 2000000:
 
     agent.main()    
 
