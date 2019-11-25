@@ -22,7 +22,7 @@ env.reset()
 
 agent = agents.dqn.Agent(env, model, config, save_path)
 
-while agent.iterations < 2000000:
+while agent.iterations < 10000000:
 
     agent.main()    
 
