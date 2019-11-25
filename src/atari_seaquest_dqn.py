@@ -14,28 +14,22 @@ config = models.atari_seaquest_dqn.src.config.Config()
 
 save_path = "./models/atari_seaquest_dqn/"
 
-env = gym.make("Seaquest-v4") 
+env = gym.make("SeaquestNoFrameskip-v4") 
 env = common.atari_wrapper.Create(env, 96, 96, 4) 
 
 env.reset()
 
-
 agent = agents.dqn.Agent(env, model, config, save_path)
 
-
 while agent.iterations < 10000000:
-    if agent.iterations%100000 == 0:
+
+    agent.main()    
+
+    if agent.iterations%1000000 == 0:
         agent.save()
 
-    agent.main()
 
-    if agent.iterations%1000 == 0:
-        pass
-        #env.render()
-
-
-agent.save()
-
+agent.save() 
 
 print("training done")
 
@@ -43,7 +37,7 @@ agent.load()
 agent.disable_training()
 
 agent.iterations = 0
-while agent.iterations < 1000000:
+while agent.iterations  < 1000000:
     agent.main()
 
 print("testing done")
@@ -57,5 +51,5 @@ agent.disable_training()
 while True:
     agent.main()
     env.render()
-    time.sleep(1.0/25.0)
+    time.sleep(1.0/50.0)
 '''

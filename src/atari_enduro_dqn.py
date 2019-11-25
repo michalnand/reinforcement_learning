@@ -5,20 +5,19 @@ import agents.dqn
 import numpy
 import time
 
-import models.atari_pong_dqn.src.model
-import models.atari_pong_dqn.src.config
+import models.atari_enduro_dqn.src.model
+import models.atari_enduro_dqn.src.config
 
 
-model  = models.atari_pong_dqn.src.model
-config = models.atari_pong_dqn.src.config.Config()
+model  = models.atari_enduro_dqn.src.model
+config = models.atari_enduro_dqn.src.config.Config()
 
-save_path = "./models/atari_pong_dqn/"
+save_path = "./models/atari_enduro_dqn/"
 
-env = gym.make("Enduro-v4")
+env = gym.make("EnduroNoFrameskip-v4")
 env = common.atari_wrapper.Create(env)
 
 env.reset()
-
 
 agent = agents.dqn.Agent(env, model, config, save_path)
 
@@ -26,14 +25,13 @@ while agent.iterations < 10000000:
 
     agent.main()    
 
-    if agent.iterations%100000 == 0:
+    if agent.iterations%1000000 == 0:
         agent.save()
 
 
 agent.save() 
 
 print("training done")
-
 
 agent.load()
 agent.disable_training()
@@ -44,8 +42,8 @@ while agent.iterations  < 1000000:
 
 print("testing done")
 
-'''
 
+'''
 agent = agents.dqn.Agent(env, model, config, save_path, save_stats=False)
 agent.load()
 agent.disable_training()
@@ -53,5 +51,5 @@ agent.disable_training()
 while True:
     agent.main()
     env.render()
-    time.sleep(1.0/25.0)
+    time.sleep(1.0/50.0)
 '''
