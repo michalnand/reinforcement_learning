@@ -29,11 +29,15 @@ class Agent():
         self.exploration    = config.exploration
         self.gamma          = config.gamma
 
-        #self.experience_replay = common.experience_replay.Buffer(config.experience_replay_size, self.gamma)
-        self.experience_replay = common.experience_replay_dqn.Buffer(config.experience_replay_size, self.gamma)
+        self.update_frequency = config.update_frequency
 
+       
         self.observation_shape = self.env.observation_space.shape
         self.actions_count     = self.env.action_space.n
+
+         #self.experience_replay = common.experience_replay.Buffer(config.experience_replay_size, self.gamma)
+        self.experience_replay = common.experience_replay_dqn.Buffer(config.experience_replay_size, self.gamma, self.observation_shape,  self.actions_count)
+
 
         self.model      = model.Model(self.observation_shape, self.actions_count)
 
@@ -69,10 +73,10 @@ class Agent():
 
         observation_new, self.reward, self.done, self.info = self.env.step(self.action)
 
-        if self.enabled_training:
-            if self.experience_replay.is_full() == False:
-                self.experience_replay.add(self.observation, q_values, self.action, self.reward, self.done)
-            else:   
+        self.experience_replay.add(self.observation, q_values, self.action, self.reward, self.done)
+
+        if self.enabled_training and (self.iterations > self.experience_replay.size):
+            if self.iterations%self.update_frequency == 0:
                 self.train_model()
 
         self.observation = observation_new
@@ -92,26 +96,19 @@ class Agent():
         
         
     def train_model(self):
-        #self.experience_replay.compute()
-                
-        batches_count = self.experience_replay.length()//self.batch_size
-
-        for _ in range(0, batches_count):
-            input, target = self.experience_replay.get_random_batch(self.batch_size, self.model.device)
+        input, target = self.experience_replay.get_random_batch(self.batch_size, self.model.device)
             
-            output = self.model.forward(input)
+        output = self.model.forward(input)
 
-            self.optimizer.zero_grad()
+        self.optimizer.zero_grad()
 
-            #loss   = loss_mse(target, output)
-            loss = self.loss(output, target)
+        loss = self.loss(output, target)
     
-            loss.backward()
-            for param in self.model.parameters():
-                param.grad.data.clamp_(-10.0, 10.0)
-            self.optimizer.step()
+        loss.backward()
+        for param in self.model.parameters():
+            param.grad.data.clamp_(-10.0, 10.0)
+        self.optimizer.step()
 
-        self.experience_replay.clear()              
 
         
     def choose_action_e_greedy(self, q_values, epsilon):

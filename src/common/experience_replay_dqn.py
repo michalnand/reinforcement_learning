@@ -8,13 +8,22 @@ Transition = collections.namedtuple("Transition", ("observation", "q_values", "a
 
 class Buffer():
 
-    def __init__(self, size, gamma):
+    def __init__(self, size, gamma, observation_shape, actions_count):
         self.size   = size
         self.gamma  = gamma
+        self.observation_shape = observation_shape
+        self.actions_count = actions_count
         self.clear()
 
     def clear(self):
+        self.ptr = 0
         self.buffer = []
+
+        for _ in range(0, self.size):
+            observation = numpy.zeros(self.observation_shape)
+            q_values    = numpy.zeros(self.actions_count)
+            self.buffer.append(Transition(observation, q_values, 0, 0.0, True))
+
 
     def length(self):
         return len(self.buffer)
@@ -25,7 +34,8 @@ class Buffer():
         return False
 
     def add(self, observation, q_values, action, reward, done):
-        self.buffer.append(Transition(observation.copy(), q_values.copy(), action, reward, done))
+        self.buffer[self.ptr] = Transition(observation.copy(), q_values.copy(), action, reward, done)
+        self.ptr = (self.ptr+1)%self.size
 
     def _print(self):
         for i in range(self.length()):
@@ -44,7 +54,6 @@ class Buffer():
         actions_count = len(self.buffer[0].q_values)
 
         q_values_shape = (batch_size, ) + (actions_count, )
-
 
         input   = torch.zeros(state_shape,  dtype=torch.float32).to(device)
         target  = torch.zeros(q_values_shape,  dtype=torch.float32).to(device)
