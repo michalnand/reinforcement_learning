@@ -1,0 +1,61 @@
+createdAt: "2019-11-27T19:20:26.158Z"
+updatedAt: "2019-11-27T19:31:50.830Z"
+type: "MARKDOWN_NOTE"
+folder: "f112f4ab178c7f7e4317"
+title: "Reinforcement learning experiments"
+tags: []
+content: '''
+  # Reinforcement learning experiments
+  
+  TODO
+  
+  ## deep Q network
+  
+  $$
+  Q(s, a; \\theta') = R + \\gamma \\max_{a' \\in A} Q(s, a'; \\theta)
+  $$
+  
+  where 
+  $s$ is state (observation)
+  $a$ is action
+  $R$ is reward
+  $Q(s, a)$ is state-action value
+  $\\theta'$ is target network
+  $\\theta$ is current network
+  $\\gamma$ is discount factor from $(0, 1\\rangle$
+  
+  network is updated after n-frames
+  
+  ### atari wrapper description
+  TODO
+  
+  ### architecture
+  
+  input are 4 stacked frames, with size 96x96, grayscale
+  4 convolutional layers, 1 FC 512 neurons and output layer
+  
+   - IN 96x96x4
+   - convolution 3x3x32
+   - max pooling 2x2
+   - convolution 3x3x32
+   - max pooling 2x2
+   - convolution 3x3x64
+   - max pooling 2x2
+   - convolution 3x3x64
+   - max pooling 2x2
+   - FC 512
+   - FCa
+  
+  hyperparameters :
+   - learning rate 0.0001
+   - minibatch size 32
+   - gamma 0.99
+   - update frequency every 4 frames
+   - replay buffer 16384
+   - exploration : linear decay from 1.0 downto 0.02, in 1 000 000 frames
+   - total training frames 10 000 000
+   - testing frames 1 000 000
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false
