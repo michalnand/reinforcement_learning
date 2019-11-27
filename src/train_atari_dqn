@@ -2,6 +2,7 @@ python3 atari_breakout_dqn.py
 python3 atari_pong_dqn.py
 python3 atari_pacman_dqn.py 
 python3 atari_enduro_dqn.py
+
 python3 atari_invaders_dqn.py
 python3 atari_seaquest_dqn.py
 python3 atari_qbert_dqn.py
