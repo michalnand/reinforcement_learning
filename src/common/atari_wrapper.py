@@ -123,7 +123,7 @@ class ClipRewardEnv(gym.RewardWrapper):
         return obs, reward, done, info
 
 
-
+'''
 class LiveLostReward(gym.Wrapper):
     def __init__(self, env):
         gym.Wrapper.__init__(self, env)
@@ -144,6 +144,40 @@ class LiveLostReward(gym.Wrapper):
 
         
         return observation, reward, done, info
+'''
+
+class LiveLostReward(gym.Wrapper):
+    def __init__(self, env):
+        gym.Wrapper.__init__(self, env)
+        self.round_done = True
+        self.game_done = True
+        self.lives_current = 0
+
+    
+    def reset(self):
+        if self.game_done:
+            observation = self.env.reset()
+            self.lives_current = self.env.ale.lives()
+            self.round_done = False
+            self.game_done = False
+        else:
+            observation, _, _, _ = self.env.step(0)
+        return observation
+
+    def step(self, action):
+        observation, reward, done, info = self.env.step(action)
+        
+        self.game_done = done
+
+        lives = self.env.ale.lives()
+        if lives < self.lives_current:
+            self.lives_current = lives
+            reward = -1.0
+            self.round_done = True
+        else:
+            self.round_done = False
+
+        return observation, reward, [self.round_done, self.game_done], info
 
 
 

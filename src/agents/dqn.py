@@ -71,10 +71,15 @@ class Agent():
         q_values = self.model.get_q_values(self.observation)
         self.action = self.choose_action_e_greedy(q_values, epsilon)
 
-        observation_new, self.reward, self.done, self.info = self.env.step(self.action)
+        observation_new, self.reward, done, self.info = self.env.step(self.action)
 
-        self.experience_replay.add(self.observation, q_values, self.action, self.reward, self.done)
+        round_done = done[0]
+        game_done  = done[1]
 
+
+        self.experience_replay.add(self.observation, q_values, self.action, self.reward, round_done)
+
+       
         if self.enabled_training and (self.iterations > self.experience_replay.size):
             if self.iterations%self.update_frequency == 0:
                 self.train_model()
@@ -83,12 +88,12 @@ class Agent():
 
         if hasattr(self, "training_stats") and hasattr(self, "testing_stats"):
             if self.enabled_training:
-                self.training_stats.add(self.reward, self.done)
+                self.training_stats.add(self.reward, game_done)
             else:
-                self.testing_stats.add(self.reward, self.done)
+                self.testing_stats.add(self.reward, game_done)
             
             
-        if self.done:
+        if game_done:
             self.env.reset()
 
         self.iterations+= 1

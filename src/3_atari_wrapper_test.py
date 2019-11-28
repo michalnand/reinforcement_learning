@@ -36,7 +36,7 @@ def observation_show(observation):
 #env = gym.make("PongNoFrameskip-v4")
 #env = gym.make("BreakoutNoFrameskip-v4")
 #env = gym.make("EnduroNoFrameskip-v4")
-#env = gym.make("SpaceInvadersNoFrameskip-v4")
+env = gym.make("SpaceInvadersNoFrameskip-v4")
 #env = gym.make("MsPacmanNoFrameskip-v4")
 #env = gym.make("SeaquestNoFrameskip-v4") 
 #env = gym.make("QbertNoFrameskip-v4") 
@@ -64,10 +64,16 @@ while True:
     if reward != 0:
         print("reward = ", reward)
 
-    if done:
+    if done[0]:
+        print("round done\n\n")
+        env.reset()
+        time.sleep(1.0)
+
+
+    if done[1]:
         print("\n\nGAME DONE\n\n")
         env.reset()
-        time.sleep(0.5)
+        time.sleep(1.0)
 
 
-    #time.sleep(0.01)
+    time.sleep(0.01)
