@@ -13,12 +13,11 @@ class Buffer():
         self.gamma  = gamma
         self.observation_shape = observation_shape
         self.actions_count = actions_count
-        self.clear()
-
-    def clear(self):
+        
         self.ptr = 0
         self.buffer = []
 
+    def _init_zeros(self):
         for _ in range(0, self.size):
             observation = numpy.zeros(self.observation_shape)
             q_values    = numpy.zeros(self.actions_count)
@@ -28,12 +27,11 @@ class Buffer():
     def length(self):
         return len(self.buffer)
 
-    def is_full(self):
-        if self.length() >= self.size:
-            return True
-        return False
 
     def add(self, observation, q_values, action, reward, done):
+        if self.length() == 0:
+            self._init_zeros()
+
         self.buffer[self.ptr] = Transition(observation.copy(), q_values.copy(), action, reward, done)
         self.ptr = (self.ptr+1)%self.size
 

@@ -36,10 +36,10 @@ def observation_show(observation):
 #env = gym.make("PongNoFrameskip-v4")
 #env = gym.make("BreakoutNoFrameskip-v4")
 #env = gym.make("EnduroNoFrameskip-v4")
-env = gym.make("SpaceInvadersNoFrameskip-v4")
+#env = gym.make("SpaceInvadersNoFrameskip-v4")
 #env = gym.make("MsPacmanNoFrameskip-v4")
 #env = gym.make("SeaquestNoFrameskip-v4") 
-#env = gym.make("QbertNoFrameskip-v4") 
+env = gym.make("QbertNoFrameskip-v4") 
 
 env = common.atari_wrapper.Create(env)
 

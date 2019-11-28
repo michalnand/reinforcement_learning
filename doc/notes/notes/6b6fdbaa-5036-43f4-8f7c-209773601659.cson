@@ -1,5 +1,5 @@
 createdAt: "2019-11-27T19:20:26.158Z"
-updatedAt: "2019-11-27T19:31:50.830Z"
+updatedAt: "2019-11-28T16:49:31.773Z"
 type: "MARKDOWN_NOTE"
 folder: "f112f4ab178c7f7e4317"
 title: "Reinforcement learning experiments"
@@ -25,6 +25,55 @@ content: '''
   $\\gamma$ is discount factor from $(0, 1\\rangle$
   
   network is updated after n-frames
+  
+  the main Q values computing is done via experience replay buffer - to break out states correlations :
+  
+  first the methond for fill the data into buffer :
+  
+  ```python
+  def add(self, observation, q_values, action, reward, done):
+          self.buffer[self.ptr] = Transition(observation.copy(), q_values.copy(), action, reward, done)
+          self.ptr = (self.ptr+1)%self.size
+  ```
+  
+  after each n-th frame the random batch is computed (via Q learning equation) and filled into neural network with RMS loss
+  
+  the typical n = 4, and is called update_rate; and the good buffer size is from 8192 to 32768, depends on memory size
+  
+  following code is computing target Q values and creating random batches (typical size = 32) for 
+  training the neural network
+  
+  ```python
+  def get_random_batch(self, batch_size, device):
+          
+          observation_shape = self.buffer[0].observation.shape
+          state_shape   = (batch_size, ) + observation_shape[0:]
+          actions_count = len(self.buffer[0].q_values)
+  
+          q_values_shape = (batch_size, ) + (actions_count, )
+  
+          input   = torch.zeros(state_shape,  dtype=torch.float32).to(device)
+          target  = torch.zeros(q_values_shape,  dtype=torch.float32).to(device)
+   
+          for i in range(0, batch_size):
+              n      = numpy.random.randint(self.length() - 1)
+  
+              if self.buffer[n].done:
+                  gamma_ = 0.0
+              else: 
+                  gamma_ = self.gamma
+      
+              q_values    = self.buffer[n].q_values.copy()
+              action      = self.buffer[n].action
+  
+              q_values[action] = self.buffer[n].reward + gamma_*numpy.max(self.buffer[n+1].q_values)
+              
+              input[i]  = torch.from_numpy(self.buffer[n].observation).to(device)
+              target[i] = torch.from_numpy(q_values).to(device)
+  
+          return input, target
+  
+  ```
   
   ### atari wrapper description
   TODO
