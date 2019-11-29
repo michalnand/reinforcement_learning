@@ -28,10 +28,18 @@ set xlabel "games"
 set output 'training_score_games.png'
 plot 'training_progress.log' using 2:3 notitle  with lines lw 2 lc 'red'
 
+
+set xlabel "iterations"
+set output 'training_score_per_game_iterations.png'
+plot 'training_progress.log' using 1:6 title 'raw'  with lines lw 2 lc 'red', \
+     'training_progress.log' using 1:7 title 'smoothed'  with lines lw 3 lc 'blue'
+
+
 set xlabel "games"
 set output 'training_score_per_game.png'
 plot 'training_progress.log' using 2:6 title 'raw'  with lines lw 2 lc 'red', \
      'training_progress.log' using 2:7 title 'smoothed'  with lines lw 3 lc 'blue'
+
 
 set ylabel "iterations per game"
 set xlabel "games"
