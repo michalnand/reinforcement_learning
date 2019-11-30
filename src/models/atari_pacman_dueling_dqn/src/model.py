@@ -50,17 +50,18 @@ class NoiseLayer(torch.nn.Module):
         
         self.inputs_count   = inputs_count
         self.device         = torch.device("cuda" if torch.cuda.is_available() else "cpu")
- 
-        self.w      = init_range*(2.0*torch.rand(self.inputs_count, device = self.device, requires_grad=True) - 1.0)
+
+        initial = init_range*(2.0*torch.rand(self.inputs_count, device = self.device) - 1.0)
+        self.w  = torch.autograd.Variable(initial)
 
     def forward(self, x):
         with torch.no_grad():
             r = (torch.rand(self.inputs_count, device = self.device)*2.0 - 1.0).detach()
 
-        self.w.detach_()
-        self.w = self.w.detach()
+        #self.w.detach_()
+        #self.w = self.w.detach()
 
-        print(self.w,"\n\n\n\n")
+        print(self.w, "\n\n\n\n")
 
         return x + self.w*r 
 
