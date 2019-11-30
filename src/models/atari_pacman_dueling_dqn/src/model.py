@@ -58,9 +58,10 @@ class NoiseLayer(torch.nn.Module):
         
         r = (torch.rand(self.inputs_count, device = self.device)*2.0 - 1.0).detach()
 
-        print(w, "\n\n\n")
+        res = self.w*r 
+        print(res, "\n\n\n")
 
-        return x + self.w*r 
+        return x + res
 
 
 
