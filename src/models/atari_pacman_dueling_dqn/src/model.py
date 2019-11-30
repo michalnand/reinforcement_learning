@@ -93,7 +93,6 @@ class Model(torch.nn.Module):
                                 ResidualBlock(layer_3_kernels_count),
 
                                 Flatten(),
-                                NoiseLayer(fc_inputs_count)
                             ]
                             
         self.layers_value = [
