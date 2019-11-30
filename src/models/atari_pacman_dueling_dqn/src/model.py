@@ -55,13 +55,10 @@ class NoiseLayer(torch.nn.Module):
         self.w  = torch.autograd.Variable(initial)
 
     def forward(self, x):
-        with torch.no_grad():
-            r = (torch.rand(self.inputs_count, device = self.device)*2.0 - 1.0).detach()
+        
+        r = (torch.rand(self.inputs_count, device = self.device)*2.0 - 1.0).detach()
 
-        #self.w.detach_()
-        #self.w = self.w.detach()
-
-        print(self.w, "\n\n\n\n")
+        print(w, "\n\n\n")
 
         return x + self.w*r 
 
