@@ -54,8 +54,8 @@ class NoiseLayer(torch.nn.Module):
         self.w      = init_range*(2.0*torch.rand(self.inputs_count, device = self.device) - 1.0)
 
     def forward(self, x):
-        r = torch.rand(self.inputs_count, device = self.device)*2.0 - 1.0
-        r = r.detach()
+        with torch.no_grad():
+            r = (torch.rand(self.inputs_count, device = self.device)*2.0 - 1.0).detach()
 
         return x + self.w*r 
 
@@ -193,11 +193,3 @@ class Model(torch.nn.Module):
         dot.render(path + "trained/model")
         #dot.render(path + "model")
     
-'''
-input_shape     = (4, 96, 96)
-outputs_count   = 16
-model = Model(input_shape, outputs_count)
-model.render()
-
-print("program done")
-'''
