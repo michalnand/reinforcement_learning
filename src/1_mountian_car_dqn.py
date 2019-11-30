@@ -29,7 +29,7 @@ class SetRewardRange(gym.RewardWrapper):
         if done: 
             reward = 1.0
         
-        return obs, reward, done, info
+        return obs, reward, [done, done], info
 
 
 env = SetRewardRange(env)

@@ -33,13 +33,15 @@ def observation_show(observation):
     plt.show() 
 
 
-#env = gym.make("PongNoFrameskip-v4")
-env = gym.make("BreakoutNoFrameskip-v4")
+#env = gym.make("BreakoutNoFrameskip-v4")
 #env = gym.make("EnduroNoFrameskip-v4")
 #env = gym.make("SpaceInvadersNoFrameskip-v4")
+env = gym.make("KungFuMasterNoFrameskip-v4")
 #env = gym.make("MsPacmanNoFrameskip-v4")
-#env = gym.make("SeaquestNoFrameskip-v4") 
+#env = gym.make("PongNoFrameskip-v4")
 #env = gym.make("QbertNoFrameskip-v4") 
+#env = gym.make("SeaquestNoFrameskip-v4") 
+
 
 env = common.atari_wrapper.Create(env)
 
@@ -53,13 +55,17 @@ actions_count   = env.action_space.n
 
 print("ENV info ", obs.shape, actions_count)
 
-
+frames = 0
 while True:
     action = numpy.random.randint(actions_count)
     observation, reward, done, info = env.step(action)
     env.render()
 
-    observation_show(observation)    
+    '''
+    if frames > 100:
+        observation_show(observation)    
+    '''
+    frames+= 1
 
     if reward != 0:
         print("reward = ", reward)

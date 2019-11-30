@@ -3,7 +3,7 @@ import torch
 
 import agents.agent_stats
 
-import common.experience_replay_dqn
+import common.experience_replay_a2c
 
 
 class Agent():
@@ -15,8 +15,8 @@ class Agent():
 
         self.batch_size     = config.batch_size
 
-        self.exploration    = config.exploration
         self.gamma          = config.gamma
+        self.entropy_ratio  = config.entropy_ratio
 
         self.update_frequency = config.update_frequency
 
@@ -24,7 +24,8 @@ class Agent():
         self.observation_shape = self.env.observation_space.shape
         self.actions_count     = self.env.action_space.n
 
-        self.experience_replay = common.experience_replay_dqn.Buffer(config.experience_replay_size, self.gamma, self.observation_shape,  self.actions_count)
+        self.experience_replay = common.experience_replay_a2c.Buffer(config.experience_replay_size, self.gamma, self.observation_shape,  self.actions_count)
+
 
         self.model      = model.Model(self.observation_shape, self.actions_count)
 
@@ -48,15 +49,9 @@ class Agent():
     def disable_training(self):
         self.enabled_training = False
     
-    def main(self):
-        if self.enabled_training:
-            self.exploration.process()
-            epsilon = self.exploration.get()
-        else:
-            epsilon = self.exploration.get_testing()
-        
-        q_values = self.model.get_q_values(self.observation)
-        self.action = self.choose_action_e_greedy(q_values, epsilon)
+    def main(self):       
+        policy_output, critic_output = self.model.get_q_values(self.observation)
+        self.action = numpy.random.choice(1, len(policy_output), p=policy_output)
 
         observation_new, self.reward, done, self.info = self.env.step(self.action)
 
@@ -64,7 +59,7 @@ class Agent():
         game_done  = done[1]
 
         if self.enabled_training:
-            self.experience_replay.add(self.observation, q_values, self.action, self.reward, round_done)
+            self.experience_replay.add(self.observation, policy_output, critic_output, self.reward, round_done)
 
        
         if self.enabled_training and (self.iterations > self.experience_replay.size):
@@ -88,7 +83,13 @@ class Agent():
         
         
     def train_model(self):
+        pass
+
+        '''
         input, target = self.experience_replay.get_random_batch(self.batch_size, self.model.device)
+
+        critic_loss = (q_target - q_critic)**2
+        actor_loss  = torch.log(policy_output)*q_critic #Q actor-critic
             
         output = self.model.forward(input)
 
@@ -100,17 +101,9 @@ class Agent():
         for param in self.model.parameters():
             param.grad.data.clamp_(-10.0, 10.0)
         self.optimizer.step()
-
+        '''
 
         
-    def choose_action_e_greedy(self, q_values, epsilon):
-        result = numpy.argmax(q_values)
-        
-        if numpy.random.random() < epsilon:
-            result = numpy.random.randint(len(q_values))
-        
-        return result
-
     def save(self):
         self.model.save(self.save_path)
 

@@ -1,5 +1,5 @@
 createdAt: "2019-11-27T19:20:26.158Z"
-updatedAt: "2019-11-28T16:49:31.773Z"
+updatedAt: "2019-11-30T17:49:01.541Z"
 type: "MARKDOWN_NOTE"
 folder: "f112f4ab178c7f7e4317"
 title: "Reinforcement learning experiments"
@@ -7,6 +7,32 @@ tags: []
 content: '''
   # Reinforcement learning experiments
   
+  ## Atari wrapper
+  
+  
+  most important points :
+  - correct observation shape (96x96, 4 last frames, grayscale)
+  - fire reset : some games require to push star button action = 1
+  - frame skip : there is used 4 frames downsampling, with 4 times repeat the some action
+  - reward clipping : reward is clipped into -1, 1 range
+  - live lost reward : for live lost the reward is set to -1, and also the episodic life scheme is used for games with multiple lives
+  
+  ```python
+  def Create(env, width = 96, height = 96, frame_stacking = 4):
+      env = SetDimensions(env, width, height, frame_stacking)
+      env = NoopResetEnv(env)
+      env = FireResetEnv(env)
+      env = SkipEnv(env, 4)
+      env = ClipRewardEnv(env)
+      env = LiveLostReward(env)
+      env = ResizeFrameEnv(env)
+      env = FrameStack(env)
+      env = MakeTensorEnv(env)
+  
+      env.observation_space.shape = (env.shape[0], env.shape[1], env.shape[2])
+  
+      return env
+  ```
   TODO
   
   ## deep Q network

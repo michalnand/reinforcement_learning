@@ -17,10 +17,10 @@ gym.envs.register(
 env = gym.make("MountainCarCustom-v0")
 
 
-class SetRewardRange(gym.RewardWrapper):
+class SetRewardRange(gym.Wrapper):
     def __init__(self, env):
-        gym.RewardWrapper.__init__(self, env)
-
+        gym.Wrapper.__init__(self, env)
+ 
     def step(self, action):
         obs, reward, done, info = self.env.step(action)
         if reward < 0:
@@ -29,7 +29,7 @@ class SetRewardRange(gym.RewardWrapper):
         if done: 
             reward = 1.0
         
-        return obs, reward, done, info
+        return obs, reward, [False, done], info
 
 
 env = SetRewardRange(env)
@@ -39,8 +39,11 @@ obs             = env.observation_space
 actions_count   = env.action_space.n
 
 
+obs, reward, done, info = env.step(0)
 
+print(done)
 
+'''
 model  = models.mountain_car_dqn.src.model
 config = models.mountain_car_dqn.src.config.Config()
 
@@ -60,3 +63,4 @@ while True:
     agent.main()
     env.render()
     time.sleep(0.01)
+'''

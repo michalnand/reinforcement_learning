@@ -123,29 +123,6 @@ class ClipRewardEnv(gym.RewardWrapper):
         return obs, reward, done, info
 
 
-'''
-class LiveLostReward(gym.Wrapper):
-    def __init__(self, env):
-        gym.Wrapper.__init__(self, env)
-
-    
-    def reset(self):
-        observation = self.env.reset()
-        self.lives_current = self.env.ale.lives()
-        return observation
-
-    def step(self, action):
-        observation, reward, done, info = self.env.step(action)
-        
-        lives = self.env.ale.lives()
-        if lives < self.lives_current:
-            self.lives_current = lives
-            reward = -1.0
-
-        
-        return observation, reward, done, info
-'''
-
 class LiveLostReward(gym.Wrapper):
     def __init__(self, env):
         gym.Wrapper.__init__(self, env)
@@ -235,7 +212,6 @@ def Create(env, width = 96, height = 96, frame_stacking = 4):
     env = SetDimensions(env, width, height, frame_stacking)
     env = NoopResetEnv(env)
     env = FireResetEnv(env)
-    #env = MaxAndSkipEnv(env)
     env = SkipEnv(env, 4)
     env = ClipRewardEnv(env)
     env = LiveLostReward(env)
