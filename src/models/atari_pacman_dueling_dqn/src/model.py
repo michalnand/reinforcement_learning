@@ -26,24 +26,6 @@ class ResidualBlock(torch.nn.Module):
     def forward(self, x):
         return x + self.model(x)
 
-'''
-class linearZ(torch.autograd.Function):
-    @staticmethod
-    def forward(ctx, input, weight):
-        ctx.save_for_backward(input, weight)
-        output = input.mm(weight.t())
-        return output
-
-    @staticmethod
-    def backward(ctx, grad_output):
-        input, weight = ctx.saved_tensors
-        grad_input = grad_output.mm(weight)
-        grad_weight = grad_output.t().mm(input)
-        return grad_input, grad_weight
-'''
-
-
-
 class NoiseLayer(torch.nn.Module):
     def __init__(self, inputs_count, init_range = 0.001):
         super(NoiseLayer, self).__init__()
@@ -55,13 +37,8 @@ class NoiseLayer(torch.nn.Module):
         self.w  = torch.autograd.Variable(initial)
 
     def forward(self, x):
-        
         r = (torch.rand(self.inputs_count, device = self.device)*2.0 - 1.0).detach()
-
-        res = self.w*r 
-        print(res, "\n\n\n")
-
-        return x + res
+        return x + self.w*r
 
 
 
