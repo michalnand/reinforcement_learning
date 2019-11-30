@@ -54,9 +54,10 @@ class NoiseLayer(torch.nn.Module):
         self.w      = init_range*(2.0*torch.rand(self.inputs_count, device = self.device) - 1.0)
 
     def forward(self, x):
-        #r = torch.rand(self.inputs_count, device = self.device)*2.0 - 1.0
+        r = torch.rand(self.inputs_count, device = self.device)*2.0 - 1.0
+        r = r.detach()
 
-        return x + self.w #*r 
+        return x + self.w*r 
 
 
 
