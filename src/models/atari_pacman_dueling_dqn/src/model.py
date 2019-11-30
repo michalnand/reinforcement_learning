@@ -6,6 +6,43 @@ class Flatten(nn.Module):
     def forward(self, input):
         return input.view(input.size(0), -1)
 
+class ResidualBlock(torch.nn.Module):
+    def __init__(self, input_channels):
+        super(ResidualBlock, self).__init__()
+
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+        self.layers = [ 
+                        nn.BatchNorm2d(input_channels),
+                        nn.Conv2d(input_channels, input_channels, kernel_size=3, stride=1, padding=1),
+                        nn.ReLU(), 
+                        nn.BatchNorm2d(input_channels),
+                        nn.Conv2d(input_channels, input_channels, kernel_size=3, stride=1, padding=1),
+                        nn.ReLU()
+                    ]
+
+        self.model = nn.Sequential(*self.layers)
+        
+    def forward(self, x):
+        return x + self.model(x)
+
+class NoiseLayer(torch.nn.Module):
+    def __init__(self, inputs_count, init_range = 0.001):
+        super(NoiseLayer, self).__init__()
+        
+        self.inputs_count   = inputs_count
+        self.device         = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+ 
+        self.w      = init_range*(2.0*torch.rand(self.inputs_count, device = self.device, requires_grad = True) - 1.0)
+        self.bias   = torch.zeros(self.inputs_count, device = self.device, requires_grad = True)
+
+    def forward(self, x):
+        r = torch.rand(self.inputs_count, device = self.device, requires_grad = True)*2.0 - 1.0
+
+        return x + self.w*r + self.bias 
+
+
+
 class Model(torch.nn.Module):
 
     def __init__(self, input_shape, outputs_count):
@@ -17,44 +54,56 @@ class Model(torch.nn.Module):
         self.outputs_count  = outputs_count
         
         input_channels  = self.input_shape[0]
-        fc_input_height = self.input_shape[1]
-        fc_input_width  = self.input_shape[2]    
+        input_height    = self.input_shape[1]
+        input_width     = self.input_shape[2]    
 
-        ratio           = 2**4
 
-        fc_inputs_count = ((fc_input_width)//ratio - 2)*((fc_input_height)//ratio - 2)
+        layer_0_kernels_count = 128
+        layer_1_kernels_count = 128
+        layer_2_kernels_count = 128
+        layer_3_kernels_count = 128
+
+        scale_ratio           = 2**4
+
+        fc_inputs_count = ((input_width)//scale_ratio)*((input_height)//scale_ratio)*layer_3_kernels_count
         
         self.layers_features = [ 
-                            nn.Conv2d(input_channels, 32, kernel_size=3, stride=1, padding=1),
-                            nn.ReLU(), 
-                            nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
+                                nn.Conv2d(input_channels, layer_0_kernels_count, kernel_size=3, stride=2, padding=1),
+                                nn.ReLU(), 
+                                ResidualBlock(layer_0_kernels_count),
+                                ResidualBlock(layer_0_kernels_count),
 
-                            nn.Conv2d(32, 32, kernel_size=3, stride=1, padding=1),
-                            nn.ReLU(),
-                            nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
-    
-                            nn.Conv2d(32, 64, kernel_size=3, stride=1, padding=1),
-                            nn.ReLU(),
-                            nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
-                
-                            nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=1),
-                            nn.ReLU(),
-                            nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
+                                nn.Conv2d(layer_0_kernels_count, layer_1_kernels_count, kernel_size=3, stride=2, padding=1),
+                                nn.ReLU(), 
+                                ResidualBlock(layer_1_kernels_count),
+                                ResidualBlock(layer_1_kernels_count),
 
-                            nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=0),
-                            nn.ReLU(), 
+                                nn.Conv2d(layer_1_kernels_count, layer_2_kernels_count, kernel_size=3, stride=2, padding=1),
+                                nn.ReLU(), 
+                                ResidualBlock(layer_2_kernels_count),
+                                ResidualBlock(layer_2_kernels_count),
+                                ResidualBlock(layer_2_kernels_count),
+                                ResidualBlock(layer_2_kernels_count),
 
-                            Flatten()
-                        ]
+                                nn.Conv2d(layer_2_kernels_count, layer_3_kernels_count, kernel_size=3, stride=2, padding=1),
+                                nn.ReLU(), 
+                                ResidualBlock(layer_3_kernels_count),
+                                ResidualBlock(layer_3_kernels_count),
+                                ResidualBlock(layer_3_kernels_count),
+                                ResidualBlock(layer_3_kernels_count),
 
+                                Flatten(),
+                                NoiseLayer(fc_inputs_count)
+                            ]
+                            
         self.layers_value = [
-                            nn.Linear(fc_inputs_count*64, 512),
+                            nn.Linear(fc_inputs_count, 512),
                             nn.ReLU(),                      
                             nn.Linear(512, 1)
                         ]
 
         self.layers_advantage = [
-                                nn.Linear(fc_inputs_count*64, 512),
+                                nn.Linear(fc_inputs_count, 512),
                                 nn.ReLU(),                      
                                 nn.Linear(512, outputs_count)
                             ]
@@ -72,6 +121,10 @@ class Model(torch.nn.Module):
 
         self.model_advantage = nn.Sequential(*self.layers_advantage)
         self.model_advantage.to(self.device)
+
+        print(self.model_features)
+        print(self.model_value)
+        print(self.model_advantage)
 
 
 
@@ -110,14 +163,23 @@ class Model(torch.nn.Module):
         self.model_value.eval() 
         self.model_advantage.eval() 
 
-    def render(self, path):
+    def render(self, path = "./"):
 
         print("rendering ", path)
 
-        x = torch.zeros(1, self.input_shape[0], self.input_shape[1], self.input_shape[2], dtype=torch.float, requires_grad=False).to(self.device)
+        x = torch.zeros(32, self.input_shape[0], self.input_shape[1], self.input_shape[2], dtype=torch.float, requires_grad=False).to(self.device)
         out = self.forward(x)
         dot = torchviz.make_dot(out)
          
         dot.format = "svg"
         dot.render(path + "trained/model")
+        #dot.render(path + "model")
     
+'''
+input_shape     = (4, 96, 96)
+outputs_count   = 16
+model = Model(input_shape, outputs_count)
+model.render()
+
+print("program done")
+'''
