@@ -33,9 +33,6 @@ while agent.iterations < 10000000:
             print("score_best = ", score_best)
             print("\n\n\n")
 
-
-agent.save() 
-
 print("training done")
 
 agent.load()
