@@ -4,7 +4,7 @@ import common.atari_wrapper
 import agents.dqn
 
 
-'''
+
 #Breakout
 import models.atari_breakout_dqn.src.model
 import models.atari_breakout_dqn.src.config
@@ -13,7 +13,7 @@ model  = models.atari_breakout_dqn.src.model
 config = models.atari_breakout_dqn.src.config.Config()
 save_path = "./models/atari_breakout_dqn/"
 env = gym.make("BreakoutNoFrameskip-v4") 
-'''
+
 
 '''
 #Enduro
@@ -34,10 +34,10 @@ import models.atari_invaders_dqn.src.config
 model  = models.atari_invaders_dqn.src.model
 config = models.atari_invaders_dqn.src.config.Config()
 save_path = "./models/atari_invaders_dqn/"
-env = gym.make("InvadersNoFrameskip-v4") 
+env = gym.make("SpaceInvadersNoFrameskip-v4") 
 '''
 
-
+'''
 #Pacman
 import models.atari_pacman_dqn.src.model
 import models.atari_pacman_dqn.src.config
@@ -46,7 +46,7 @@ model  = models.atari_pacman_dqn.src.model
 config = models.atari_pacman_dqn.src.config.Config()
 save_path = "./models/atari_pacman_dqn/"
 env = gym.make("MsPacmanNoFrameskip-v4") 
-
+'''
 
 '''
 #Pong
