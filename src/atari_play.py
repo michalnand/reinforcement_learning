@@ -14,7 +14,6 @@ config = models.atari_breakout_dqn.src.config.Config()
 save_path = "./models/atari_breakout_dqn/"
 env = gym.make("BreakoutNoFrameskip-v4") 
 
-
 '''
 #Enduro
 import models.atari_enduro_dqn.src.model

@@ -46,7 +46,7 @@ class AgentStats():
 
 
         if done:
-            k = 0.1
+            k = 0.01
             self.game_id+= 1
 
             self.game_iterations  = self.game_iterations_

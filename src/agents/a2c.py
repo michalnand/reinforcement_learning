@@ -2,9 +2,7 @@ import numpy
 import torch
 
 import agents.agent_stats
-
-import common.experience_replay_a2c
-
+import common.buffer_a2c
 
 class Agent():
     def __init__(self, env, model, config, save_path = None, save_stats = True):
@@ -13,23 +11,17 @@ class Agent():
 
         self.action = 0
 
-        self.batch_size     = config.batch_size
-
-        self.gamma          = config.gamma
-        self.entropy_ratio  = config.entropy_ratio
-
-        self.update_frequency = config.update_frequency
-
+        self.gamma    = config.gamma
+        self.entropy  = config.entropy
+        self.update_rate = config.update_rate
        
         self.observation_shape = self.env.observation_space.shape
         self.actions_count     = self.env.action_space.n
 
-        self.experience_replay = common.experience_replay_a2c.Buffer(config.experience_replay_size, self.gamma, self.observation_shape,  self.actions_count)
-
+        self.buffer = common.buffer_a2c.Buffer(self.update_rate)
 
         self.model      = model.Model(self.observation_shape, self.actions_count)
 
-        self.loss       = torch.nn.MSELoss()
         self.optimizer  = torch.optim.Adam(self.model.parameters(), lr= config.learning_rate)
 
         self.observation    = env.reset()
@@ -49,23 +41,23 @@ class Agent():
     def disable_training(self):
         self.enabled_training = False
     
-    def main(self):       
-        policy_output, critic_output = self.model.get_q_values(self.observation)
-        self.action = numpy.random.choice(1, len(policy_output), p=policy_output)
+    def main(self):              
+        policy_dist, value  = self.model.get_output(self.observation)
 
-        observation_new, self.reward, done, self.info = self.env.step(self.action)
+        action = numpy.random.choice(len(policy_dist), p=policy_dist)
+        
+        observation_new, self.reward, done, self.info = self.env.step(action)
 
         round_done = done[0]
         game_done  = done[1]
-
+ 
         if self.enabled_training:
-            self.experience_replay.add(self.observation, policy_output, critic_output, self.reward, round_done)
-
-       
-        if self.enabled_training and (self.iterations > self.experience_replay.size):
-            if self.iterations%self.update_frequency == 0:
+            if self.buffer.is_full():
                 self.train_model()
-
+                self.buffer.clear()
+            else:
+                self.buffer.add(self.observation, self.action, self.reward, round_done)
+ 
         self.observation = observation_new
 
         if hasattr(self, "training_stats") and hasattr(self, "testing_stats"):
@@ -81,27 +73,6 @@ class Agent():
         self.iterations+= 1
         self.score+= self.reward
         
-        
-    def train_model(self):
-        pass
-
-        '''
-        input, target = self.experience_replay.get_random_batch(self.batch_size, self.model.device)
-
-        critic_loss = (q_target - q_critic)**2
-        actor_loss  = torch.log(policy_output)*q_critic #Q actor-critic
-            
-        output = self.model.forward(input)
-
-        self.optimizer.zero_grad()
-
-        loss = self.loss(output, target)
-    
-        loss.backward()
-        for param in self.model.parameters():
-            param.grad.data.clamp_(-10.0, 10.0)
-        self.optimizer.step()
-        '''
 
         
     def save(self):
@@ -109,3 +80,111 @@ class Agent():
 
     def load(self):
         self.model.load(self.save_path)
+
+    def train_model(self):
+        observations, actions, rewards, done = self.buffer.get(self.model.device)
+
+        policy_dists, values  = self.model.forward(observations)
+
+        log_probs = []
+        for n in range(self.buffer.length()):
+            action = actions[n]
+            log_prob = torch.log(policy_dists[n].squeeze(0)[action])
+            log_probs.append(log_prob)
+
+        q_values = numpy.zeros(values.shape)
+        q_val = 0.0
+        for n in reversed(range(len(rewards))):
+            q_val = rewards[n] + self.gamma*q_val
+            q_values[n] = q_val 
+
+        
+        #TODO - divergence
+        
+        q_values  = torch.FloatTensor(q_values).to(self.model.device)
+        log_probs = torch.stack(log_probs)
+        
+        
+        advantage = q_values - values
+        actor_loss = (-log_probs * advantage).mean()
+        critic_loss = 0.5 * advantage.pow(2).mean()
+        ac_loss = actor_loss + critic_loss # + 0.001 * entropy_term
+
+        print("loss = ", actor_loss, critic_loss, "\n\n")
+
+        self.optimizer.zero_grad()
+        ac_loss.backward()
+        self.optimizer.step()
+        
+
+
+
+
+
+
+'''
+def a2c(env):
+    num_steps = 300
+    num_inputs = env.observation_space.shape[0]
+    num_outputs = env.action_space.n
+    
+    actor_critic = ActorCritic(num_inputs, num_outputs, hidden_size)
+    ac_optimizer = optim.Adam(actor_critic.parameters(), lr=learning_rate)
+
+    all_lengths = []
+    average_lengths = []
+    all_rewards = []
+    entropy_term = 0
+
+    for episode in range(max_episodes):
+        log_probs = []
+        values = []
+        rewards = []
+
+        state = env.reset()
+        for steps in range(num_steps):
+            value, policy_dist = actor_critic.forward(state)
+            value = value.detach().numpy()[0,0]
+            dist = policy_dist.detach().numpy() 
+
+            action = np.random.choice(num_outputs, p=np.squeeze(dist))
+            log_prob = torch.log(policy_dist.squeeze(0)[action])
+            entropy = -np.sum(np.mean(dist) * np.log(dist))
+            new_state, reward, done, _ = env.step(action)
+
+            rewards.append(reward)
+            values.append(value)
+            log_probs.append(log_prob)
+            entropy_term += entropy
+            state = new_state
+            
+            if done or steps == num_steps-1:
+                Qval, _ = actor_critic.forward(new_state)
+                Qval = Qval.detach().numpy()[0,0]
+                all_rewards.append(np.sum(rewards))
+                all_lengths.append(steps)
+                average_lengths.append(np.mean(all_lengths[-10:]))
+                if episode % 10 == 0:                    
+                    sys.stdout.write("episode: {}, reward: {}, total length: {}, average length: {} \n".format(episode, np.sum(rewards), steps, average_lengths[-1]))
+                break
+        
+        # compute Q values
+        Qvals = np.zeros_like(values)
+        for t in reversed(range(len(rewards))):
+            Qval = rewards[t] + GAMMA * Qval
+            Qvals[t] = Qval
+  
+        #update actor critic
+        values = torch.FloatTensor(values)
+        Qvals = torch.FloatTensor(Qvals)
+        log_probs = torch.stack(log_probs)
+        
+        advantage = Qvals - values
+        actor_loss = (-log_probs * advantage).mean()
+        critic_loss = 0.5 * advantage.pow(2).mean()
+        ac_loss = actor_loss + critic_loss + 0.001 * entropy_term
+
+        ac_optimizer.zero_grad()
+        ac_loss.backward()
+        ac_optimizer.step()
+'''

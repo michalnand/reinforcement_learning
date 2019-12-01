@@ -17,16 +17,21 @@ save_path = "./models/atari_seaquest_dqn/"
 env = gym.make("SeaquestNoFrameskip-v4") 
 env = common.atari_wrapper.Create(env, 96, 96, 4) 
 
-env.reset()
-
 agent = agents.dqn.Agent(env, model, config, save_path)
 
+score_best = -10000.0
 while agent.iterations < 10000000:
-
     agent.main()    
-
-    if agent.iterations%1000000 == 0:
-        agent.save()
+    if agent.iterations%100000 == 0:
+        if agent.training_stats.game_score_smooth > score_best:
+            score_best = agent.training_stats.game_score_smooth
+            agent.save()
+            
+            print("\n\n\n")
+            print("saving best agent")
+            print("iteration = ", agent.iterations)
+            print("score_best = ", score_best)
+            print("\n\n\n")
 
 
 agent.save() 
