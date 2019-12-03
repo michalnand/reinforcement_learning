@@ -28,8 +28,7 @@ class Model(torch.nn.Module):
         self.layers_policy = [
                                 nn.Linear(neurons_count, neurons_count),
                                 nn.ReLU(),                      
-                                nn.Linear(neurons_count, outputs_count),
-                                nn.Softmax()
+                                nn.Linear(neurons_count, outputs_count)
                             ]
 
         self.layers_critic = [ 

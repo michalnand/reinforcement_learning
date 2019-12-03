@@ -9,8 +9,6 @@ class Agent():
         self.env = env
         self.save_path = save_path
 
-        self.action = 0
-
         self.gamma    = config.gamma
         self.entropy  = config.entropy
         self.update_rate = config.update_rate
@@ -42,36 +40,37 @@ class Agent():
         self.enabled_training = False
     
     def main(self):              
-        policy_dist, value  = self.model.get_output(self.observation)
+        policy, value  = self.model.get_output(self.observation)
 
-        action = numpy.random.choice(len(policy_dist), p=policy_dist)
+        probs = self.softmax(policy)
+        action = numpy.random.choice(len(probs), p=probs)
         
-        observation_new, self.reward, done, self.info = self.env.step(action)
+        self.observation, reward, done, _ = self.env.step(action)
 
         round_done = done[0]
-        game_done  = done[1]
+        game_done  = done[1] 
  
+
         if self.enabled_training:
-            if self.buffer.is_full():
+            if self.buffer.is_full() or round_done:
                 self.train_model()
                 self.buffer.clear()
             else:
-                self.buffer.add(self.observation, self.action, self.reward, round_done)
- 
-        self.observation = observation_new
+                self.buffer.add(self.observation, action, reward, round_done)
+
 
         if hasattr(self, "training_stats") and hasattr(self, "testing_stats"):
             if self.enabled_training:
-                self.training_stats.add(self.reward, game_done)
+                self.training_stats.add(reward, game_done)
             else:
-                self.testing_stats.add(self.reward, game_done)
+                self.testing_stats.add(reward, game_done)
             
             
         if game_done:
             self.env.reset()
 
         self.iterations+= 1
-        self.score+= self.reward
+        self.score+= reward
         
 
         
@@ -81,41 +80,42 @@ class Agent():
     def load(self):
         self.model.load(self.save_path)
 
+
+    def softmax(self, x):
+        e_x = numpy.exp(x - numpy.max(x))
+        return e_x/e_x.sum()
+
+    def compute_q_vals(self, rewards, device):
+        result = numpy.zeros(len(rewards))
+
+        sum = 0.0
+        for i in reversed(range(len(rewards))):
+            sum*= self.gamma
+            sum+= rewards[i]
+            result[i] = sum
+
+        return torch.from_numpy(result).to(self.model.device)
+
     def train_model(self):
-        observations, actions, rewards, done = self.buffer.get(self.model.device)
+        states, actions, rewards, done = self.buffer.get(self.model.device)
 
-        policy_dists, values  = self.model.forward(observations)
+        q_vals = self.compute_q_vals(rewards, self.model.device)
+                
+        logits, values = self.model(states)
 
-        log_probs = []
-        for n in range(self.buffer.length()):
-            action = actions[n]
-            log_prob = torch.log(policy_dists[n].squeeze(0)[action])
-            log_probs.append(log_prob)
+        probs = torch.nn.functional.softmax(logits, dim = 1)
+        log_prob = torch.log(probs)
 
-        q_values = numpy.zeros(values.shape)
-        q_val = 0.0
-        for n in reversed(range(len(rewards))):
-            q_val = rewards[n] + self.gamma*q_val
-            q_values[n] = q_val 
+        log_prob_actions = q_vals*log_prob[range(len(states)), actions]
 
-        
-        #TODO - divergence
-        
-        q_values  = torch.FloatTensor(q_values).to(self.model.device)
-        log_probs = torch.stack(log_probs)
-        
-        
-        advantage = q_values - values
-        actor_loss = (-log_probs * advantage).mean()
-        critic_loss = 0.5 * advantage.pow(2).mean()
-        ac_loss = actor_loss + critic_loss # + 0.001 * entropy_term
+        loss = -log_prob_actions.mean() - 0.01*(-probs.mul(probs.log2()).mean())
 
-        print("loss = ", actor_loss, critic_loss, "\n\n")
+        print("LOSS = ", loss, "\n\n\n")
 
         self.optimizer.zero_grad()
-        ac_loss.backward()
+        loss.backward()
         self.optimizer.step()
-        
+
 
 
 

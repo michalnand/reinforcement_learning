@@ -1,1276 +1,3256 @@
-iterations                = 2985
+iterations                = 1490
 game_id                   = 1
-score                     = 99.0
-game_iterations           = 2985
-game_iterations_smooth    = 2985.0
-game_score                = 99.0
-game_score_smooth         = 99.0
-fps_smooth                = 322.2103785893628
+score                     = 45.0
+game_iterations           = 1490
+game_iterations_smooth    = 1490.0
+game_score                = 45.0
+game_score_smooth         = 45.0
+fps_smooth                = 718.5031528202046
 
 
 
-iterations                = 4695
+iterations                = 4758
 game_id                   = 2
-score                     = 150.0
-game_iterations           = 1710
-game_iterations_smooth    = 2972.25
-game_score                = 51.0
-game_score_smooth         = 98.52000000000001
-fps_smooth                = 354.81743975175834
+score                     = 145.0
+game_iterations           = 3268
+game_iterations_smooth    = 1507.78
+game_score                = 100.0
+game_score_smooth         = 45.55
+fps_smooth                = 727.1530420316388
 
 
 
-iterations                = 6140
+iterations                = 7461
 game_id                   = 3
-score                     = 190.0
-game_iterations           = 1445
-game_iterations_smooth    = 2956.9775
-game_score                = 40.0
-game_score_smooth         = 97.93480000000001
-fps_smooth                = 389.6437993606478
-
-
-
-iterations                = 7869
-game_id                   = 4
-score                     = 262.0
-game_iterations           = 1729
-game_iterations_smooth    = 2944.697725
-game_score                = 72.0
-game_score_smooth         = 97.675452
-fps_smooth                = 390.86672680427876
-
-
-
-iterations                = 11388
-game_id                   = 5
-score                     = 362.0
-game_iterations           = 3519
-game_iterations_smooth    = 2950.44074775
-game_score                = 100.0
-game_score_smooth         = 97.69869748
-fps_smooth                = 400.4132224926328
-
-
-
-iterations                = 13356
-game_id                   = 6
-score                     = 442.0
-game_iterations           = 1968
-game_iterations_smooth    = 2940.6163402724997
-game_score                = 80.0
-game_score_smooth         = 97.5217105052
-fps_smooth                = 384.8233384979871
-
-
-
-iterations                = 14908
-game_id                   = 7
-score                     = 500.0
-game_iterations           = 1552
-game_iterations_smooth    = 2926.730176869775
-game_score                = 58.0
-game_score_smooth         = 97.12649340014801
-fps_smooth                = 370.93281150300373
-
-
-
-iterations                = 15996
-game_id                   = 8
-score                     = 523.0
-game_iterations           = 1088
-game_iterations_smooth    = 2908.342875101077
-game_score                = 23.0
-game_score_smooth         = 96.38522846614653
-fps_smooth                = 365.7728383962011
-
-
-
-iterations                = 17312
-game_id                   = 9
-score                     = 563.0
-game_iterations           = 1316
-game_iterations_smooth    = 2892.419446350066
-game_score                = 40.0
-game_score_smooth         = 95.82137618148506
-fps_smooth                = 377.47405206016526
-
-
-
-iterations                = 19445
-game_id                   = 10
-score                     = 649.0
-game_iterations           = 2133
-game_iterations_smooth    = 2884.8252518865656
-game_score                = 86.0
-game_score_smooth         = 95.72316241967022
-fps_smooth                = 393.2781680350642
-
-
-
-iterations                = 21083
-game_id                   = 11
-score                     = 709.0
-game_iterations           = 1638
-game_iterations_smooth    = 2872.3569993677
-game_score                = 60.0
-game_score_smooth         = 95.3659307954735
-fps_smooth                = 389.6412661957504
-
-
-
-iterations                = 23136
-game_id                   = 12
-score                     = 780.0
-game_iterations           = 2053
-game_iterations_smooth    = 2864.1634293740235
-game_score                = 71.0
-game_score_smooth         = 95.12227148751876
-fps_smooth                = 388.98030223189295
-
-
-
-iterations                = 25858
-game_id                   = 13
-score                     = 876.0
-game_iterations           = 2722
-game_iterations_smooth    = 2862.741795080283
-game_score                = 96.0
-game_score_smooth         = 95.13104877264357
-fps_smooth                = 392.421258503166
-
-
-
-iterations                = 28337
-game_id                   = 14
-score                     = 970.0
-game_iterations           = 2479
-game_iterations_smooth    = 2858.90437712948
-game_score                = 94.0
-game_score_smooth         = 95.11973828491713
-fps_smooth                = 394.30244652202975
-
-
-
-iterations                = 31411
-game_id                   = 15
-score                     = 1071.0
-game_iterations           = 3074
-game_iterations_smooth    = 2861.055333358185
-game_score                = 101.0
-game_score_smooth         = 95.17854090206797
-fps_smooth                = 397.45921359065
-
-
-
-iterations                = 33154
-game_id                   = 16
-score                     = 1154.0
-game_iterations           = 1743
-game_iterations_smooth    = 2849.8747800246033
-game_score                = 83.0
-game_score_smooth         = 95.05675549304728
-fps_smooth                = 386.7716212629992
-
-
-
-iterations                = 36012
-game_id                   = 17
-score                     = 1252.0
-game_iterations           = 2858
-game_iterations_smooth    = 2849.9560322243574
-game_score                = 98.0
-game_score_smooth         = 95.08618793811681
-fps_smooth                = 387.94841934566205
-
-
-
-iterations                = 38572
-game_id                   = 18
-score                     = 1352.0
-game_iterations           = 2560
-game_iterations_smooth    = 2847.0564719021136
-game_score                = 100.0
-game_score_smooth         = 95.13532605873564
-fps_smooth                = 393.8936513172838
-
-
-
-iterations                = 40736
-game_id                   = 19
-score                     = 1440.0
-game_iterations           = 2164
-game_iterations_smooth    = 2840.225907183092
-game_score                = 88.0
-game_score_smooth         = 95.06397279814828
-fps_smooth                = 388.64704233871254
-
-
-
-iterations                = 42168
-game_id                   = 20
-score                     = 1477.0
-game_iterations           = 1432
-game_iterations_smooth    = 2826.1436481112614
-game_score                = 37.0
-game_score_smooth         = 94.48333307016681
-fps_smooth                = 378.0581251143282
-
-
-
-iterations                = 43846
-game_id                   = 21
-score                     = 1546.0
-game_iterations           = 1678
-game_iterations_smooth    = 2814.662211630149
-game_score                = 69.0
-game_score_smooth         = 94.22849973946514
-fps_smooth                = 384.44572065767994
-
-
-
-iterations                = 45614
-game_id                   = 22
-score                     = 1621.0
-game_iterations           = 1768
-game_iterations_smooth    = 2804.1955895138476
-game_score                = 75.0
-game_score_smooth         = 94.03621474207048
-fps_smooth                = 384.01912116986716
-
-
-
-iterations                = 47791
-game_id                   = 23
-score                     = 1716.0
-game_iterations           = 2177
-game_iterations_smooth    = 2797.923633618709
-game_score                = 95.0
-game_score_smooth         = 94.04585259464979
-fps_smooth                = 389.3331470956014
-
-
-
-iterations                = 50707
-game_id                   = 24
-score                     = 1816.0
-game_iterations           = 2916
-game_iterations_smooth    = 2799.104397282522
-game_score                = 100.0
-game_score_smooth         = 94.10539406870329
-fps_smooth                = 394.5320845402458
-
-
-
-iterations                = 53395
-game_id                   = 25
-score                     = 1916.0
-game_iterations           = 2688
-game_iterations_smooth    = 2797.993353309697
-game_score                = 100.0
-game_score_smooth         = 94.16434012801626
-fps_smooth                = 395.40049797884785
-
-
-
-iterations                = 55133
-game_id                   = 26
-score                     = 1980.0
-game_iterations           = 1738
-game_iterations_smooth    = 2787.3934197766
-game_score                = 64.0
-game_score_smooth         = 93.8626967267361
-fps_smooth                = 385.9985124448212
-
-
-
-iterations                = 56297
-game_id                   = 27
-score                     = 2005.0
-game_iterations           = 1164
-game_iterations_smooth    = 2771.1594855788335
-game_score                = 25.0
-game_score_smooth         = 93.17406975946874
-fps_smooth                = 382.31738347131784
-
-
-
-iterations                = 58368
-game_id                   = 28
-score                     = 2087.0
-game_iterations           = 2071
-game_iterations_smooth    = 2764.157890723045
-game_score                = 82.0
-game_score_smooth         = 93.06232906187404
-fps_smooth                = 384.0938398406363
-
-
-
-iterations                = 59615
-game_id                   = 29
-score                     = 2125.0
-game_iterations           = 1247
-game_iterations_smooth    = 2748.9863118158146
-game_score                = 38.0
-game_score_smooth         = 92.5117057712553
-fps_smooth                = 383.45263457910715
-
-
-
-iterations                = 61801
-game_id                   = 30
-score                     = 2219.0
-game_iterations           = 2186
-game_iterations_smooth    = 2743.3564486976566
-game_score                = 94.0
-game_score_smooth         = 92.52658871354274
-fps_smooth                = 383.9448199754014
-
-
-
-iterations                = 65084
-game_id                   = 31
-score                     = 2324.0
-game_iterations           = 3283
-game_iterations_smooth    = 2748.75288421068
-game_score                = 105.0
-game_score_smooth         = 92.65132282640731
-fps_smooth                = 394.70442882358196
-
-
-
-iterations                = 66616
-game_id                   = 32
-score                     = 2377.0
-game_iterations           = 1532
-game_iterations_smooth    = 2736.5853553685733
-game_score                = 53.0
-game_score_smooth         = 92.25480959814324
-fps_smooth                = 386.2945152973445
-
-
-
-iterations                = 69222
-game_id                   = 33
-score                     = 2475.0
-game_iterations           = 2606
-game_iterations_smooth    = 2735.2795018148877
-game_score                = 98.0
-game_score_smooth         = 92.31226150216182
-fps_smooth                = 392.7039092235675
-
-
-
-iterations                = 70828
-game_id                   = 34
-score                     = 2542.0
-game_iterations           = 1606
-game_iterations_smooth    = 2723.986706796739
-game_score                = 67.0
-game_score_smooth         = 92.0591388871402
-fps_smooth                = 384.819741732512
-
-
-
-iterations                = 72390
-game_id                   = 35
-score                     = 2582.0
-game_iterations           = 1562
-game_iterations_smooth    = 2712.3668397287715
-game_score                = 40.0
-game_score_smooth         = 91.5385474982688
-fps_smooth                = 380.48701624361604
-
-
-
-iterations                = 73361
-game_id                   = 36
-score                     = 2605.0
-game_iterations           = 971
-game_iterations_smooth    = 2694.9531713314836
-game_score                = 23.0
-game_score_smooth         = 90.85316202328612
-fps_smooth                = 382.59203401461707
-
-
-
-iterations                = 75042
-game_id                   = 37
-score                     = 2675.0
-game_iterations           = 1681
-game_iterations_smooth    = 2684.8136396181685
-game_score                = 70.0
-game_score_smooth         = 90.64463040305326
-fps_smooth                = 385.10683961942374
-
-
-
-iterations                = 77006
-game_id                   = 38
-score                     = 2767.0
-game_iterations           = 1964
-game_iterations_smooth    = 2677.6055032219865
-game_score                = 92.0
-game_score_smooth         = 90.65818409902272
-fps_smooth                = 385.94073704512454
-
-
-
-iterations                = 79265
-game_id                   = 39
-score                     = 2866.0
-game_iterations           = 2259
-game_iterations_smooth    = 2673.4194481897666
-game_score                = 99.0
-game_score_smooth         = 90.74160225803249
-fps_smooth                = 388.52767850513794
-
-
-
-iterations                = 80710
-game_id                   = 40
-score                     = 2942.0
-game_iterations           = 1445
-game_iterations_smooth    = 2661.1352537078687
-game_score                = 76.0
-game_score_smooth         = 90.59418623545217
-fps_smooth                = 387.2490252790752
-
-
-
-iterations                = 84393
-game_id                   = 41
-score                     = 3030.0
-game_iterations           = 3683
-game_iterations_smooth    = 2671.35390117079
-game_score                = 88.0
-game_score_smooth         = 90.56824437309764
-fps_smooth                = 390.02004281139637
-
-
-
-iterations                = 86785
-game_id                   = 42
-score                     = 3130.0
-game_iterations           = 2392
-game_iterations_smooth    = 2668.560362159082
-game_score                = 100.0
-game_score_smooth         = 90.66256192936666
-fps_smooth                = 396.4528234336968
-
-
-
-iterations                = 90818
-game_id                   = 43
-score                     = 3232.0
-game_iterations           = 4033
-game_iterations_smooth    = 2682.204758537491
-game_score                = 102.0
-game_score_smooth         = 90.77593631007299
-fps_smooth                = 397.1570590100631
-
-
-
-iterations                = 93733
-game_id                   = 44
-score                     = 3332.0
-game_iterations           = 2915
-game_iterations_smooth    = 2684.5327109521163
-game_score                = 100.0
-game_score_smooth         = 90.86817694697226
-fps_smooth                = 392.9186009652271
-
-
-
-iterations                = 95952
-game_id                   = 45
-score                     = 3418.0
-game_iterations           = 2219
-game_iterations_smooth    = 2679.877383842595
-game_score                = 86.0
-game_score_smooth         = 90.81949517750253
-fps_smooth                = 391.58687688219334
-
-
-
-iterations                = 97507
-game_id                   = 46
-score                     = 3469.0
-game_iterations           = 1555
-game_iterations_smooth    = 2668.6286100041693
-game_score                = 51.0
-game_score_smooth         = 90.4213002257275
-fps_smooth                = 383.0886287900373
-
-
-
-iterations                = 99979
-game_id                   = 47
-score                     = 3559.0
-game_iterations           = 2472
-game_iterations_smooth    = 2666.6623239041273
-game_score                = 90.0
-game_score_smooth         = 90.41708722347023
-fps_smooth                = 388.50762996318485
-
-
-
-iterations                = 102324
-game_id                   = 48
-score                     = 3656.0
-game_iterations           = 2345
-game_iterations_smooth    = 2663.445700665086
-game_score                = 97.0
-game_score_smooth         = 90.48291635123553
-fps_smooth                = 393.16441412614887
-
-
-
-iterations                = 105025
-game_id                   = 49
-score                     = 3770.0
-game_iterations           = 2701
-game_iterations_smooth    = 2663.8212436584354
-game_score                = 114.0
-game_score_smooth         = 90.71808718772317
-fps_smooth                = 382.4370279477702
-
-
-
-iterations                = 106716
-game_id                   = 50
-score                     = 3851.0
-game_iterations           = 1691
-game_iterations_smooth    = 2654.0930312218507
-game_score                = 81.0
-game_score_smooth         = 90.62090631584594
-fps_smooth                = 381.71560654740574
-
-
-
-iterations                = 108128
-game_id                   = 51
-score                     = 3892.0
-game_iterations           = 1412
-game_iterations_smooth    = 2641.672100909632
-game_score                = 41.0
-game_score_smooth         = 90.12469725268748
-fps_smooth                = 382.4561602841205
-
-
-
-iterations                = 110021
-game_id                   = 52
-score                     = 3956.0
-game_iterations           = 1893
-game_iterations_smooth    = 2634.1853799005353
-game_score                = 64.0
-game_score_smooth         = 89.8634502801606
-fps_smooth                = 383.323060176191
-
-
-
-iterations                = 112313
-game_id                   = 53
-score                     = 4052.0
-game_iterations           = 2292
-game_iterations_smooth    = 2630.76352610153
-game_score                = 96.0
-game_score_smooth         = 89.92481577735899
-fps_smooth                = 392.8318953166177
-
-
-
-iterations                = 115147
-game_id                   = 54
-score                     = 4140.0
-game_iterations           = 2834
-game_iterations_smooth    = 2632.7958908405144
-game_score                = 88.0
-game_score_smooth         = 89.9055676195854
-fps_smooth                = 385.926188742455
-
-
-
-iterations                = 117068
-game_id                   = 55
-score                     = 4222.0
-game_iterations           = 1921
-game_iterations_smooth    = 2625.6779319321095
-game_score                = 82.0
-game_score_smooth         = 89.82651194338953
-fps_smooth                = 385.9321561703529
-
-
-
-iterations                = 118235
-game_id                   = 56
-score                     = 4251.0
-game_iterations           = 1167
-game_iterations_smooth    = 2611.0911526127884
-game_score                = 29.0
-game_score_smooth         = 89.21824682395564
-fps_smooth                = 380.99225318773136
-
-
-
-iterations                = 119453
-game_id                   = 57
-score                     = 4285.0
-game_iterations           = 1218
-game_iterations_smooth    = 2597.1602410866603
-game_score                = 34.0
-game_score_smooth         = 88.66606435571609
-fps_smooth                = 383.2749780975982
-
-
-
-iterations                = 122439
-game_id                   = 58
-score                     = 4387.0
-game_iterations           = 2986
-game_iterations_smooth    = 2601.048638675794
-game_score                = 102.0
-game_score_smooth         = 88.79940371215892
-fps_smooth                = 397.65016422177024
-
-
-
-iterations                = 123854
-game_id                   = 59
-score                     = 4438.0
-game_iterations           = 1415
-game_iterations_smooth    = 2589.188152289036
-game_score                = 51.0
-game_score_smooth         = 88.42140967503734
-fps_smooth                = 381.6978749791215
-
-
-
-iterations                = 126049
-game_id                   = 60
-score                     = 4532.0
-game_iterations           = 2195
-game_iterations_smooth    = 2585.2462707661457
-game_score                = 94.0
-game_score_smooth         = 88.47719557828697
-fps_smooth                = 388.51982259930077
-
-
-
-iterations                = 127812
-game_id                   = 61
-score                     = 4601.0
-game_iterations           = 1763
-game_iterations_smooth    = 2577.0238080584845
-game_score                = 69.0
-game_score_smooth         = 88.2824236225041
-fps_smooth                = 385.4475314666231
-
-
-
-iterations                = 129865
-game_id                   = 62
-score                     = 4687.0
-game_iterations           = 2053
-game_iterations_smooth    = 2571.7835699779
-game_score                = 86.0
-game_score_smooth         = 88.25959938627905
-fps_smooth                = 380.7238861793127
-
-
-
-iterations                = 131754
-game_id                   = 63
-score                     = 4750.0
-game_iterations           = 1889
-game_iterations_smooth    = 2564.9557342781204
-game_score                = 63.0
-game_score_smooth         = 88.00700339241625
-fps_smooth                = 380.4547528159758
-
-
-
-iterations                = 134458
-game_id                   = 64
-score                     = 4849.0
-game_iterations           = 2704
-game_iterations_smooth    = 2566.3461769353394
-game_score                = 99.0
-game_score_smooth         = 88.11693335849208
-fps_smooth                = 390.9073222229795
-
-
-
-iterations                = 136717
-game_id                   = 65
-score                     = 4943.0
-game_iterations           = 2259
-game_iterations_smooth    = 2563.272715165986
-game_score                = 94.0
-game_score_smooth         = 88.17576402490715
-fps_smooth                = 390.95109023628845
-
-
-
-iterations                = 138864
-game_id                   = 66
-score                     = 5037.0
-game_iterations           = 2147
-game_iterations_smooth    = 2559.109988014326
-game_score                = 94.0
-game_score_smooth         = 88.23400638465807
-fps_smooth                = 390.98742026964993
-
-
-
-iterations                = 141241
-game_id                   = 67
-score                     = 5125.0
-game_iterations           = 2377
-game_iterations_smooth    = 2557.288888134183
-game_score                = 88.0
-game_score_smooth         = 88.23166632081148
-fps_smooth                = 389.1192163306044
-
-
-
-iterations                = 143412
-game_id                   = 68
-score                     = 5220.0
-game_iterations           = 2171
-game_iterations_smooth    = 2553.425999252841
-game_score                = 95.0
-game_score_smooth         = 88.29934965760337
-fps_smooth                = 390.3068082555963
-
-
-
-iterations                = 145646
-game_id                   = 69
-score                     = 5309.0
-game_iterations           = 2234
-game_iterations_smooth    = 2550.2317392603127
-game_score                = 89.0
-game_score_smooth         = 88.30635616102734
-fps_smooth                = 386.6377916148566
-
-
-
-iterations                = 147750
-game_id                   = 70
-score                     = 5388.0
-game_iterations           = 2104
-game_iterations_smooth    = 2545.7694218677093
-game_score                = 79.0
-game_score_smooth         = 88.21329259941707
-fps_smooth                = 384.05348614717406
-
-
-
-iterations                = 149949
-game_id                   = 71
-score                     = 5480.0
-game_iterations           = 2199
-game_iterations_smooth    = 2542.301727649032
-game_score                = 92.0
-game_score_smooth         = 88.2511596734229
-fps_smooth                = 391.09208782159436
-
-
-
-iterations                = 152606
-game_id                   = 72
-score                     = 5582.0
-game_iterations           = 2657
-game_iterations_smooth    = 2543.4487103725414
-game_score                = 102.0
-game_score_smooth         = 88.38864807668867
-fps_smooth                = 399.7802185753832
-
-
-
-iterations                = 154626
-game_id                   = 73
-score                     = 5663.0
-game_iterations           = 2020
-game_iterations_smooth    = 2538.2142232688157
-game_score                = 81.0
-game_score_smooth         = 88.31476159592178
-fps_smooth                = 378.6980554973456
-
-
-
-iterations                = 156488
-game_id                   = 74
-score                     = 5726.0
-game_iterations           = 1862
-game_iterations_smooth    = 2531.4520810361273
-game_score                = 63.0
-game_score_smooth         = 88.06161397996256
-fps_smooth                = 381.16122816330864
-
-
-
-iterations                = 157910
-game_id                   = 75
-score                     = 5767.0
-game_iterations           = 1422
-game_iterations_smooth    = 2520.3575602257656
-game_score                = 41.0
-game_score_smooth         = 87.59099784016293
-fps_smooth                = 385.43460193701515
-
-
-
-iterations                = 159244
-game_id                   = 76
-score                     = 5798.0
-game_iterations           = 1334
-game_iterations_smooth    = 2508.493984623508
-game_score                = 31.0
-game_score_smooth         = 87.02508786176129
-fps_smooth                = 360.2493315698008
-
-
-
-iterations                = 161570
-game_id                   = 77
-score                     = 5894.0
-game_iterations           = 2326
-game_iterations_smooth    = 2506.669044777273
-game_score                = 96.0
-game_score_smooth         = 87.11483698314368
-fps_smooth                = 389.52294978894815
-
-
-
-iterations                = 164235
-game_id                   = 78
-score                     = 5994.0
-game_iterations           = 2665
-game_iterations_smooth    = 2508.2523543295006
-game_score                = 100.0
-game_score_smooth         = 87.24368861331224
-fps_smooth                = 394.3877621062622
-
-
-
-iterations                = 165643
-game_id                   = 79
-score                     = 6027.0
-game_iterations           = 1408
-game_iterations_smooth    = 2497.2498307862056
-game_score                = 33.0
-game_score_smooth         = 86.70125172717911
-fps_smooth                = 379.4531168127439
-
-
-
-iterations                = 168524
-game_id                   = 80
-score                     = 6128.0
-game_iterations           = 2881
-game_iterations_smooth    = 2501.0873324783433
-game_score                = 101.0
-game_score_smooth         = 86.84423920990733
-fps_smooth                = 397.2515370867126
-
-
-
-iterations                = 169715
-game_id                   = 81
-score                     = 6157.0
-game_iterations           = 1191
-game_iterations_smooth    = 2487.9864591535597
-game_score                = 29.0
-game_score_smooth         = 86.26579681780827
-fps_smooth                = 383.1457243352018
-
-
-
-iterations                = 171989
-game_id                   = 82
-score                     = 6252.0
-game_iterations           = 2274
-game_iterations_smooth    = 2485.8465945620237
-game_score                = 95.0
-game_score_smooth         = 86.35313884963018
-fps_smooth                = 389.0808632896868
-
-
-
-iterations                = 173282
-game_id                   = 83
-score                     = 6284.0
-game_iterations           = 1293
-game_iterations_smooth    = 2473.9181286164035
-game_score                = 32.0
-game_score_smooth         = 85.80960746113388
-fps_smooth                = 382.2987208360754
-
-
-
-iterations                = 175195
-game_id                   = 84
-score                     = 6364.0
-game_iterations           = 1913
-game_iterations_smooth    = 2468.3089473302393
-game_score                = 80.0
-game_score_smooth         = 85.75151138652254
-fps_smooth                = 383.4161843966243
-
-
-
-iterations                = 177491
-game_id                   = 85
-score                     = 6453.0
-game_iterations           = 2296
-game_iterations_smooth    = 2466.585857856937
-game_score                = 89.0
-game_score_smooth         = 85.7839962726573
-fps_smooth                = 390.28790920853567
-
-
-
-iterations                = 178562
-game_id                   = 86
-score                     = 6479.0
-game_iterations           = 1071
-game_iterations_smooth    = 2452.6299992783674
-game_score                = 26.0
-game_score_smooth         = 85.18615630993074
-fps_smooth                = 382.29019568744724
-
-
-
-iterations                = 180029
-game_id                   = 87
-score                     = 6513.0
-game_iterations           = 1467
-game_iterations_smooth    = 2442.773699285584
-game_score                = 34.0
-game_score_smooth         = 84.67429474683144
-fps_smooth                = 380.4551287213698
-
-
-
-iterations                = 180799
-game_id                   = 88
-score                     = 6528.0
-game_iterations           = 770
-game_iterations_smooth    = 2426.045962292728
-game_score                = 15.0
-game_score_smooth         = 83.97755179936313
-fps_smooth                = 381.64148811951674
-
-
-
-iterations                = 182924
-game_id                   = 89
-score                     = 6605.0
-game_iterations           = 2125
-game_iterations_smooth    = 2423.0355026698007
-game_score                = 77.0
-game_score_smooth         = 83.9077762813695
-fps_smooth                = 386.69455423192335
-
-
-
-iterations                = 184171
-game_id                   = 90
-score                     = 6634.0
-game_iterations           = 1247
-game_iterations_smooth    = 2411.2751476431026
-game_score                = 29.0
-game_score_smooth         = 83.3586985185558
-fps_smooth                = 367.65123877855115
-
-
-
-iterations                = 185037
-game_id                   = 91
-score                     = 6652.0
-game_iterations           = 866
-game_iterations_smooth    = 2395.8223961666713
-game_score                = 18.0
-game_score_smooth         = 82.70511153337024
-fps_smooth                = 383.6301234179504
-
-
-
-iterations                = 187206
-game_id                   = 92
-score                     = 6744.0
-game_iterations           = 2169
-game_iterations_smooth    = 2393.5541722050048
-game_score                = 92.0
-game_score_smooth         = 82.79806041803654
-fps_smooth                = 387.4453640174364
-
-
-
-iterations                = 189372
-game_id                   = 93
-score                     = 6833.0
-game_iterations           = 2166
-game_iterations_smooth    = 2391.2786304829547
-game_score                = 89.0
-game_score_smooth         = 82.86007981385617
-fps_smooth                = 389.1055411969236
-
-
-
-iterations                = 191907
-game_id                   = 94
-score                     = 6931.0
-game_iterations           = 2535
-game_iterations_smooth    = 2392.715844178125
-game_score                = 98.0
-game_score_smooth         = 83.01147901571761
-fps_smooth                = 391.7950704773658
-
-
-
-iterations                = 193742
-game_id                   = 95
-score                     = 6986.0
-game_iterations           = 1835
-game_iterations_smooth    = 2387.1386857363436
-game_score                = 55.0
-game_score_smooth         = 82.73136422556043
-fps_smooth                = 383.11473352356785
-
-
-
-iterations                = 195505
-game_id                   = 96
-score                     = 7070.0
-game_iterations           = 1763
-game_iterations_smooth    = 2380.89729887898
-game_score                = 84.0
-game_score_smooth         = 82.74405058330483
-fps_smooth                = 383.03819803369277
-
-
-
-iterations                = 197284
-game_id                   = 97
-score                     = 7131.0
-game_iterations           = 1779
-game_iterations_smooth    = 2374.8783258901904
-game_score                = 61.0
-game_score_smooth         = 82.52661007747177
-fps_smooth                = 388.4848161429683
-
-
-
-iterations                = 199741
-game_id                   = 98
-score                     = 7225.0
-game_iterations           = 2457
-game_iterations_smooth    = 2375.6995426312888
-game_score                = 94.0
-game_score_smooth         = 82.64134397669706
-fps_smooth                = 392.2730365795856
-
-
-
-iterations                = 202967
-game_id                   = 99
-score                     = 7325.0
-game_iterations           = 3226
-game_iterations_smooth    = 2384.202547204976
-game_score                = 100.0
-game_score_smooth         = 82.81493053693009
-fps_smooth                = 397.28667093303517
-
-
-
-iterations                = 205488
-game_id                   = 100
-score                     = 7400.0
-game_iterations           = 2521
-game_iterations_smooth    = 2385.570521732926
-game_score                = 75.0
-game_score_smooth         = 82.73678123156078
-fps_smooth                = 353.6272592216424
-
-
-
-iterations                = 207587
-game_id                   = 101
-score                     = 7483.0
-game_iterations           = 2099
-game_iterations_smooth    = 2382.7048165155966
-game_score                = 83.0
-game_score_smooth         = 82.73941341924517
-fps_smooth                = 272.6375697836453
-
-
-
-iterations                = 209515
-game_id                   = 102
-score                     = 7558.0
-game_iterations           = 1928
-game_iterations_smooth    = 2378.1577683504406
-game_score                = 75.0
-game_score_smooth         = 82.66201928505272
-fps_smooth                = 342.22999728621073
-
-
-
-iterations                = 211688
-game_id                   = 103
-score                     = 7641.0
-game_iterations           = 2173
-game_iterations_smooth    = 2376.106190666936
-game_score                = 83.0
-game_score_smooth         = 82.6653990922022
-fps_smooth                = 294.9429403626128
-
-
-
-iterations                = 214262
-game_id                   = 104
-score                     = 7732.0
-game_iterations           = 2574
-game_iterations_smooth    = 2378.0851287602663
-game_score                = 91.0
-game_score_smooth         = 82.74874510128016
-fps_smooth                = 391.79696812981365
-
-
-
-iterations                = 215859
-game_id                   = 105
-score                     = 7784.0
-game_iterations           = 1597
-game_iterations_smooth    = 2370.2742774726635
-game_score                = 52.0
-game_score_smooth         = 82.44125765026736
-fps_smooth                = 384.32784684414406
-
-
-
-iterations                = 217227
-game_id                   = 106
-score                     = 7813.0
-game_iterations           = 1368
-game_iterations_smooth    = 2360.2515346979367
-game_score                = 29.0
-game_score_smooth         = 81.90684507376469
-fps_smooth                = 385.85830671155185
-
-
-
-iterations                = 218981
-game_id                   = 107
-score                     = 7882.0
-game_iterations           = 1754
-game_iterations_smooth    = 2354.189019350957
-game_score                = 69.0
-game_score_smooth         = 81.77777662302704
-fps_smooth                = 260.92766682549535
-
-
-
-iterations                = 220353
-game_id                   = 108
-score                     = 7916.0
-game_iterations           = 1372
-game_iterations_smooth    = 2344.3671291574474
-game_score                = 34.0
-game_score_smooth         = 81.29999885679678
-fps_smooth                = 359.63008636190517
-
-
-
-iterations                = 222401
-game_id                   = 109
-score                     = 8011.0
-game_iterations           = 2048
-game_iterations_smooth    = 2341.403457865873
-game_score                = 95.0
-game_score_smooth         = 81.43699886822881
-fps_smooth                = 387.6261770119918
-
-
-
-iterations                = 224692
-game_id                   = 110
-score                     = 8096.0
-game_iterations           = 2291
-game_iterations_smooth    = 2340.899423287214
+score                     = 230.0
+game_iterations           = 2703
+game_iterations_smooth    = 1519.7322
 game_score                = 85.0
-game_score_smooth         = 81.47262887954652
-fps_smooth                = 333.44151195411683
+game_score_smooth         = 45.9445
+fps_smooth                = 717.1455226891052
 
 
 
-iterations                = 226261
-game_id                   = 111
-score                     = 8173.0
-game_iterations           = 1569
-game_iterations_smooth    = 2333.180429054342
-game_score                = 77.0
-game_score_smooth         = 81.42790259075105
-fps_smooth                = 329.03751903196644
+iterations                = 10370
+game_id                   = 4
+score                     = 321.0
+game_iterations           = 2909
+game_iterations_smooth    = 1533.6248779999999
+game_score                = 91.0
+game_score_smooth         = 46.39505499999999
+fps_smooth                = 716.5306886368875
 
 
 
-iterations                = 227385
-game_id                   = 112
-score                     = 8211.0
-game_iterations           = 1124
-game_iterations_smooth    = 2321.088624763798
-game_score                = 38.0
-game_score_smooth         = 80.99362356484353
-fps_smooth                = 279.43395324584867
+iterations                = 14635
+game_id                   = 5
+score                     = 422.0
+game_iterations           = 4265
+game_iterations_smooth    = 1560.93862922
+game_score                = 101.0
+game_score_smooth         = 46.94110444999999
+fps_smooth                = 737.5775454312201
 
 
 
-iterations                = 228808
-game_id                   = 113
-score                     = 8246.0
-game_iterations           = 1423
-game_iterations_smooth    = 2312.10773851616
+iterations                = 19497
+game_id                   = 6
+score                     = 546.0
+game_iterations           = 4862
+game_iterations_smooth    = 1593.9492429277998
+game_score                = 124.0
+game_score_smooth         = 47.71169340549999
+fps_smooth                = 705.3484066934986
+
+
+
+iterations                = 27680
+game_id                   = 7
+score                     = 754.0
+game_iterations           = 8183
+game_iterations_smooth    = 1659.8397504985217
+game_score                = 208.0
+game_score_smooth         = 49.314576471444994
+fps_smooth                = 737.1215453412689
+
+
+
+iterations                = 29615
+game_id                   = 8
+score                     = 826.0
+game_iterations           = 1935
+game_iterations_smooth    = 1662.5913529935362
+game_score                = 72.0
+game_score_smooth         = 49.541430706730544
+fps_smooth                = 711.5380444250052
+
+
+
+iterations                = 31698
+game_id                   = 9
+score                     = 909.0
+game_iterations           = 2083
+game_iterations_smooth    = 1666.7954394636008
+game_score                = 83.0
+game_score_smooth         = 49.876016399663236
+fps_smooth                = 714.3249449216555
+
+
+
+iterations                = 33764
+game_id                   = 10
+score                     = 1001.0
+game_iterations           = 2066
+game_iterations_smooth    = 1670.7874850689648
+game_score                = 92.0
+game_score_smooth         = 50.2972562356666
+fps_smooth                = 719.3018893046167
+
+
+
+iterations                = 37947
+game_id                   = 11
+score                     = 1102.0
+game_iterations           = 4183
+game_iterations_smooth    = 1695.909610218275
+game_score                = 101.0
+game_score_smooth         = 50.80428367330993
+fps_smooth                = 738.2152239271746
+
+
+
+iterations                = 41157
+game_id                   = 12
+score                     = 1201.0
+game_iterations           = 3210
+game_iterations_smooth    = 1711.0505141160922
+game_score                = 99.0
+game_score_smooth         = 51.28624083657684
+fps_smooth                = 734.5022573898211
+
+
+
+iterations                = 43471
+game_id                   = 13
+score                     = 1292.0
+game_iterations           = 2314
+game_iterations_smooth    = 1717.0800089749314
+game_score                = 91.0
+game_score_smooth         = 51.683378428211064
+fps_smooth                = 719.2347978504818
+
+
+
+iterations                = 45774
+game_id                   = 14
+score                     = 1386.0
+game_iterations           = 2303
+game_iterations_smooth    = 1722.939208885182
+game_score                = 94.0
+game_score_smooth         = 52.10654464392895
+fps_smooth                = 722.4714476461484
+
+
+
+iterations                = 49212
+game_id                   = 15
+score                     = 1487.0
+game_iterations           = 3438
+game_iterations_smooth    = 1740.0898167963303
+game_score                = 101.0
+game_score_smooth         = 52.59547919748966
+fps_smooth                = 735.5798902944534
+
+
+
+iterations                = 58714
+game_id                   = 16
+score                     = 1587.0
+game_iterations           = 9502
+game_iterations_smooth    = 1817.708918628367
+game_score                = 100.0
+game_score_smooth         = 53.06952440551476
+fps_smooth                = 734.3168541458691
+
+
+
+iterations                = 59764
+game_id                   = 17
+score                     = 1622.0
+game_iterations           = 1050
+game_iterations_smooth    = 1810.0318294420833
 game_score                = 35.0
-game_score_smooth         = 80.53368732919509
-fps_smooth                = 349.48958695808955
+game_score_smooth         = 52.88882916145962
+fps_smooth                = 705.2490197973581
 
 
 
-iterations                = 230842
+iterations                = 63106
+game_id                   = 18
+score                     = 1724.0
+game_iterations           = 3342
+game_iterations_smooth    = 1825.3515111476624
+game_score                = 102.0
+game_score_smooth         = 53.37994086984502
+fps_smooth                = 741.2830014678487
+
+
+
+iterations                = 65922
+game_id                   = 19
+score                     = 1826.0
+game_iterations           = 2816
+game_iterations_smooth    = 1835.257996036186
+game_score                = 102.0
+game_score_smooth         = 53.866141461146576
+fps_smooth                = 737.9895342625467
+
+
+
+iterations                = 73129
+game_id                   = 20
+score                     = 1925.0
+game_iterations           = 7207
+game_iterations_smooth    = 1888.975416075824
+game_score                = 99.0
+game_score_smooth         = 54.31748004653511
+fps_smooth                = 733.9121863075858
+
+
+
+iterations                = 75723
+game_id                   = 21
+score                     = 2023.0
+game_iterations           = 2594
+game_iterations_smooth    = 1896.0256619150657
+game_score                = 98.0
+game_score_smooth         = 54.754305246069755
+fps_smooth                = 731.9772199100929
+
+
+
+iterations                = 80487
+game_id                   = 22
+score                     = 2118.0
+game_iterations           = 4764
+game_iterations_smooth    = 1924.7054052959152
+game_score                = 95.0
+game_score_smooth         = 55.15676219360906
+fps_smooth                = 718.1258283852773
+
+
+
+iterations                = 82939
+game_id                   = 23
+score                     = 2215.0
+game_iterations           = 2452
+game_iterations_smooth    = 1929.978351242956
+game_score                = 97.0
+game_score_smooth         = 55.57519457167297
+fps_smooth                = 733.0676804273525
+
+
+
+iterations                = 86093
+game_id                   = 24
+score                     = 2316.0
+game_iterations           = 3154
+game_iterations_smooth    = 1942.2185677305265
+game_score                = 101.0
+game_score_smooth         = 56.029442625956236
+fps_smooth                = 736.081694550061
+
+
+
+iterations                = 88655
+game_id                   = 25
+score                     = 2407.0
+game_iterations           = 2562
+game_iterations_smooth    = 1948.416382053221
+game_score                = 91.0
+game_score_smooth         = 56.37914819969667
+fps_smooth                = 721.1191085564002
+
+
+
+iterations                = 91227
+game_id                   = 26
+score                     = 2507.0
+game_iterations           = 2572
+game_iterations_smooth    = 1954.6522182326887
+game_score                = 100.0
+game_score_smooth         = 56.81535671769971
+fps_smooth                = 729.8764301364519
+
+
+
+iterations                = 95569
+game_id                   = 27
+score                     = 2629.0
+game_iterations           = 4342
+game_iterations_smooth    = 1978.5256960503618
+game_score                = 122.0
+game_score_smooth         = 57.46720315052271
+fps_smooth                = 705.523489606588
+
+
+
+iterations                = 98444
+game_id                   = 28
+score                     = 2725.0
+game_iterations           = 2875
+game_iterations_smooth    = 1987.4904390898582
+game_score                = 96.0
+game_score_smooth         = 57.85253111901748
+fps_smooth                = 724.212187403275
+
+
+
+iterations                = 102202
+game_id                   = 29
+score                     = 2904.0
+game_iterations           = 3758
+game_iterations_smooth    = 2005.1955346989596
+game_score                = 179.0
+game_score_smooth         = 59.0640058078273
+fps_smooth                = 711.771006005048
+
+
+
+iterations                = 104221
+game_id                   = 30
+score                     = 2998.0
+game_iterations           = 2019
+game_iterations_smooth    = 2005.33357935197
+game_score                = 94.0
+game_score_smooth         = 59.413365749749026
+fps_smooth                = 723.7760550927151
+
+
+
+iterations                = 108766
+game_id                   = 31
+score                     = 3089.0
+game_iterations           = 4545
+game_iterations_smooth    = 2030.7302435584504
+game_score                = 91.0
+game_score_smooth         = 59.72923209225153
+fps_smooth                = 717.70170337783
+
+
+
+iterations                = 110946
+game_id                   = 32
+score                     = 3182.0
+game_iterations           = 2180
+game_iterations_smooth    = 2032.222941122866
+game_score                = 93.0
+game_score_smooth         = 60.061939771329016
+fps_smooth                = 721.8053176800574
+
+
+
+iterations                = 113808
+game_id                   = 33
+score                     = 3284.0
+game_iterations           = 2862
+game_iterations_smooth    = 2040.5207117116372
+game_score                = 102.0
+game_score_smooth         = 60.48132037361573
+fps_smooth                = 739.1332783622508
+
+
+
+iterations                = 117648
+game_id                   = 34
+score                     = 3380.0
+game_iterations           = 3840
+game_iterations_smooth    = 2058.5155045945207
+game_score                = 96.0
+game_score_smooth         = 60.836507169879575
+fps_smooth                = 720.0623417247552
+
+
+
+iterations                = 120889
+game_id                   = 35
+score                     = 3480.0
+game_iterations           = 3241
+game_iterations_smooth    = 2070.3403495485754
+game_score                = 100.0
+game_score_smooth         = 61.228142098180776
+fps_smooth                = 731.9089863746945
+
+
+
+iterations                = 124501
+game_id                   = 36
+score                     = 3580.0
+game_iterations           = 3612
+game_iterations_smooth    = 2085.7569460530895
+game_score                = 100.0
+game_score_smooth         = 61.61586067719897
+fps_smooth                = 738.2238839957635
+
+
+
+iterations                = 128205
+game_id                   = 37
+score                     = 3671.0
+game_iterations           = 3704
+game_iterations_smooth    = 2101.9393765925583
+game_score                = 91.0
+game_score_smooth         = 61.909702070426974
+fps_smooth                = 717.8996660375623
+
+
+
+iterations                = 132238
+game_id                   = 38
+score                     = 3773.0
+game_iterations           = 4033
+game_iterations_smooth    = 2121.2499828266327
+game_score                = 102.0
+game_score_smooth         = 62.31060504972271
+fps_smooth                = 741.8765254681897
+
+
+
+iterations                = 134711
+game_id                   = 39
+score                     = 3870.0
+game_iterations           = 2473
+game_iterations_smooth    = 2124.767482998366
+game_score                = 97.0
+game_score_smooth         = 62.65749899922548
+fps_smooth                = 728.5025767824047
+
+
+
+iterations                = 136995
+game_id                   = 40
+score                     = 3967.0
+game_iterations           = 2284
+game_iterations_smooth    = 2126.3598081683826
+game_score                = 97.0
+game_score_smooth         = 63.00092400923322
+fps_smooth                = 726.2688846262233
+
+
+
+iterations                = 138663
+game_id                   = 41
+score                     = 4045.0
+game_iterations           = 1668
+game_iterations_smooth    = 2121.7762100866985
+game_score                = 78.0
+game_score_smooth         = 63.15091476914089
+fps_smooth                = 711.2713936744173
+
+
+
+iterations                = 143326
+game_id                   = 42
+score                     = 4146.0
+game_iterations           = 4663
+game_iterations_smooth    = 2147.1884479858318
+game_score                = 101.0
+game_score_smooth         = 63.52940562144948
+fps_smooth                = 735.8084625121347
+
+
+
+iterations                = 146226
+game_id                   = 43
+score                     = 4238.0
+game_iterations           = 2900
+game_iterations_smooth    = 2154.716563505973
+game_score                = 92.0
+game_score_smooth         = 63.81411156523498
+fps_smooth                = 722.8424993106307
+
+
+
+iterations                = 157349
+game_id                   = 44
+score                     = 4335.0
+game_iterations           = 11123
+game_iterations_smooth    = 2244.3993978709136
+game_score                = 97.0
+game_score_smooth         = 64.14597044958263
+fps_smooth                = 721.0485502679637
+
+
+
+iterations                = 165752
+game_id                   = 45
+score                     = 4437.0
+game_iterations           = 8403
+game_iterations_smooth    = 2305.985403892205
+game_score                = 102.0
+game_score_smooth         = 64.5245107450868
+fps_smooth                = 740.7844430918393
+
+
+
+iterations                = 169031
+game_id                   = 46
+score                     = 4538.0
+game_iterations           = 3279
+game_iterations_smooth    = 2315.715549853283
+game_score                = 101.0
+game_score_smooth         = 64.88926563763593
+fps_smooth                = 731.7327605067588
+
+
+
+iterations                = 170885
+game_id                   = 47
+score                     = 4620.0
+game_iterations           = 1854
+game_iterations_smooth    = 2311.09839435475
+game_score                = 82.0
+game_score_smooth         = 65.06037298125956
+fps_smooth                = 712.1110396560277
+
+
+
+iterations                = 173731
+game_id                   = 48
+score                     = 4714.0
+game_iterations           = 2846
+game_iterations_smooth    = 2316.4474104112023
+game_score                = 94.0
+game_score_smooth         = 65.34976925144696
+fps_smooth                = 728.8396044163816
+
+
+
+iterations                = 175421
+game_id                   = 49
+score                     = 4780.0
+game_iterations           = 1690
+game_iterations_smooth    = 2310.1829363070906
+game_score                = 66.0
+game_score_smooth         = 65.35627155893249
+fps_smooth                = 710.9659173400671
+
+
+
+iterations                = 177613
+game_id                   = 50
+score                     = 4874.0
+game_iterations           = 2192
+game_iterations_smooth    = 2309.0011069440197
+game_score                = 94.0
+game_score_smooth         = 65.64270884334316
+fps_smooth                = 720.5971344708986
+
+
+
+iterations                = 180609
+game_id                   = 51
+score                     = 4983.0
+game_iterations           = 2996
+game_iterations_smooth    = 2315.8710958745796
+game_score                = 109.0
+game_score_smooth         = 66.07628175490973
+fps_smooth                = 721.0947488169031
+
+
+
+iterations                = 186840
+game_id                   = 52
+score                     = 5071.0
+game_iterations           = 6231
+game_iterations_smooth    = 2355.0223849158338
+game_score                = 88.0
+game_score_smooth         = 66.29551893736063
+fps_smooth                = 718.6817001113894
+
+
+
+iterations                = 188248
+game_id                   = 53
+score                     = 5108.0
+game_iterations           = 1408
+game_iterations_smooth    = 2345.552161066675
+game_score                = 37.0
+game_score_smooth         = 66.00256374798703
+fps_smooth                = 705.3968373908892
+
+
+
+iterations                = 190702
+game_id                   = 54
+score                     = 5205.0
+game_iterations           = 2454
+game_iterations_smooth    = 2346.636639456008
+game_score                = 97.0
+game_score_smooth         = 66.31253811050715
+fps_smooth                = 723.834343697403
+
+
+
+iterations                = 194705
+game_id                   = 55
+score                     = 5301.0
+game_iterations           = 4003
+game_iterations_smooth    = 2363.200273061448
+game_score                = 96.0
+game_score_smooth         = 66.60941272940207
+fps_smooth                = 721.115049137582
+
+
+
+iterations                = 198815
+game_id                   = 56
+score                     = 5402.0
+game_iterations           = 4110
+game_iterations_smooth    = 2380.6682703308334
+game_score                = 101.0
+game_score_smooth         = 66.95331860210806
+fps_smooth                = 738.0497737716381
+
+
+
+iterations                = 203262
+game_id                   = 57
+score                     = 5527.0
+game_iterations           = 4447
+game_iterations_smooth    = 2401.3315876275246
+game_score                = 125.0
+game_score_smooth         = 67.53378541608697
+fps_smooth                = 705.6774846818387
+
+
+
+iterations                = 206379
+game_id                   = 58
+score                     = 5616.0
+game_iterations           = 3117
+game_iterations_smooth    = 2408.4882717512496
+game_score                = 89.0
+game_score_smooth         = 67.7484475619261
+fps_smooth                = 718.9013168512115
+
+
+
+iterations                = 209364
+game_id                   = 59
+score                     = 5718.0
+game_iterations           = 2985
+game_iterations_smooth    = 2414.253389033737
+game_score                = 102.0
+game_score_smooth         = 68.09096308630683
+fps_smooth                = 740.2187712963693
+
+
+
+iterations                = 213301
+game_id                   = 60
+score                     = 5817.0
+game_iterations           = 3937
+game_iterations_smooth    = 2429.4808551434
+game_score                = 99.0
+game_score_smooth         = 68.40005345544375
+fps_smooth                = 728.8101885513223
+
+
+
+iterations                = 215534
+game_id                   = 61
+score                     = 5910.0
+game_iterations           = 2233
+game_iterations_smooth    = 2427.5160465919657
+game_score                = 93.0
+game_score_smooth         = 68.64605292088932
+fps_smooth                = 723.5903480672985
+
+
+
+iterations                = 220714
+game_id                   = 62
+score                     = 6010.0
+game_iterations           = 5180
+game_iterations_smooth    = 2455.040886126046
+game_score                = 100.0
+game_score_smooth         = 68.95959239168043
+fps_smooth                = 735.5966450735607
+
+
+
+iterations                = 225019
+game_id                   = 63
+score                     = 6109.0
+game_iterations           = 4305
+game_iterations_smooth    = 2473.5404772647857
+game_score                = 99.0
+game_score_smooth         = 69.25999646776363
+fps_smooth                = 726.757839685112
+
+
+
+iterations                = 227263
+game_id                   = 64
+score                     = 6201.0
+game_iterations           = 2244
+game_iterations_smooth    = 2471.2450724921378
+game_score                = 92.0
+game_score_smooth         = 69.48739650308599
+fps_smooth                = 724.751682662471
+
+
+
+iterations                = 229926
+game_id                   = 65
+score                     = 6300.0
+game_iterations           = 2663
+game_iterations_smooth    = 2473.1626217672165
+game_score                = 99.0
+game_score_smooth         = 69.78252253805512
+fps_smooth                = 731.1030623830048
+
+
+
+iterations                = 232234
+game_id                   = 66
+score                     = 6397.0
+game_iterations           = 2308
+game_iterations_smooth    = 2471.510995549544
+game_score                = 97.0
+game_score_smooth         = 70.05469731267456
+fps_smooth                = 726.885007092626
+
+
+
+iterations                = 236686
+game_id                   = 67
+score                     = 6489.0
+game_iterations           = 4452
+game_iterations_smooth    = 2491.3158855940487
+game_score                = 92.0
+game_score_smooth         = 70.27415033954782
+fps_smooth                = 726.8972249165256
+
+
+
+iterations                = 241302
+game_id                   = 68
+score                     = 6589.0
+game_iterations           = 4616
+game_iterations_smooth    = 2512.5627267381083
+game_score                = 100.0
+game_score_smooth         = 70.57140883615234
+fps_smooth                = 730.5422555102091
+
+
+
+iterations                = 252539
+game_id                   = 69
+score                     = 6691.0
+game_iterations           = 11237
+game_iterations_smooth    = 2599.8070994707273
+game_score                = 102.0
+game_score_smooth         = 70.88569474779082
+fps_smooth                = 740.7363742296035
+
+
+
+iterations                = 254966
+game_id                   = 70
+score                     = 6787.0
+game_iterations           = 2427
+game_iterations_smooth    = 2598.07902847602
+game_score                = 96.0
+game_score_smooth         = 71.1368378003129
+fps_smooth                = 724.0216526126844
+
+
+
+iterations                = 259966
+game_id                   = 71
+score                     = 6888.0
+game_iterations           = 5000
+game_iterations_smooth    = 2622.09823819126
+game_score                = 101.0
+game_score_smooth         = 71.43546942230978
+fps_smooth                = 733.1553183197503
+
+
+
+iterations                = 266135
+game_id                   = 72
+score                     = 7091.0
+game_iterations           = 6169
+game_iterations_smooth    = 2657.5672558093474
+game_score                = 203.0
+game_score_smooth         = 72.75111472808668
+fps_smooth                = 730.5116971091757
+
+
+
+iterations                = 268196
+game_id                   = 73
+score                     = 7179.0
+game_iterations           = 2061
+game_iterations_smooth    = 2651.601583251254
+game_score                = 88.0
+game_score_smooth         = 72.90360358080581
+fps_smooth                = 715.507568613608
+
+
+
+iterations                = 270915
+game_id                   = 74
+score                     = 7281.0
+game_iterations           = 2719
+game_iterations_smooth    = 2652.2755674187415
+game_score                = 102.0
+game_score_smooth         = 73.19456754499774
+fps_smooth                = 740.345991417692
+
+
+
+iterations                = 273737
+game_id                   = 75
+score                     = 7381.0
+game_iterations           = 2822
+game_iterations_smooth    = 2653.972811744554
+game_score                = 100.0
+game_score_smooth         = 73.46262186954776
+fps_smooth                = 735.0064064153438
+
+
+
+iterations                = 276173
+game_id                   = 76
+score                     = 7478.0
+game_iterations           = 2436
+game_iterations_smooth    = 2651.7930836271084
+game_score                = 97.0
+game_score_smooth         = 73.69799565085228
+fps_smooth                = 724.462888423274
+
+
+
+iterations                = 278895
+game_id                   = 77
+score                     = 7581.0
+game_iterations           = 2722
+game_iterations_smooth    = 2652.495152790837
+game_score                = 103.0
+game_score_smooth         = 73.99101569434376
+fps_smooth                = 738.4786172971181
+
+
+
+iterations                = 279881
+game_id                   = 78
+score                     = 7616.0
+game_iterations           = 986
+game_iterations_smooth    = 2635.8302012629288
+game_score                = 35.0
+game_score_smooth         = 73.60110553740031
+fps_smooth                = 707.6009819309445
+
+
+
+iterations                = 288769
+game_id                   = 79
+score                     = 7718.0
+game_iterations           = 8888
+game_iterations_smooth    = 2698.3518992502995
+game_score                = 102.0
+game_score_smooth         = 73.8850944820263
+fps_smooth                = 738.408086101221
+
+
+
+iterations                = 290806
+game_id                   = 80
+score                     = 7797.0
+game_iterations           = 2037
+game_iterations_smooth    = 2691.7383802577965
+game_score                = 79.0
+game_score_smooth         = 73.93624353720605
+fps_smooth                = 710.590730339746
+
+
+
+iterations                = 293605
+game_id                   = 81
+score                     = 7894.0
+game_iterations           = 2799
+game_iterations_smooth    = 2692.810996455218
+game_score                = 97.0
+game_score_smooth         = 74.166881101834
+fps_smooth                = 726.456502504968
+
+
+
+iterations                = 296245
+game_id                   = 82
+score                     = 7987.0
+game_iterations           = 2640
+game_iterations_smooth    = 2692.282886490666
+game_score                = 93.0
+game_score_smooth         = 74.35521229081566
+fps_smooth                = 721.8314718628773
+
+
+
+iterations                = 300038
+game_id                   = 83
+score                     = 8117.0
+game_iterations           = 3793
+game_iterations_smooth    = 2703.2900576257593
+game_score                = 130.0
+game_score_smooth         = 74.9116601679075
+fps_smooth                = 704.6679158260092
+
+
+
+iterations                = 303198
+game_id                   = 84
+score                     = 8208.0
+game_iterations           = 3160
+game_iterations_smooth    = 2707.8571570495014
+game_score                = 91.0
+game_score_smooth         = 75.07254356622842
+fps_smooth                = 720.6556428386285
+
+
+
+iterations                = 304634
+game_id                   = 85
+score                     = 8250.0
+game_iterations           = 1436
+game_iterations_smooth    = 2695.1385854790065
+game_score                = 42.0
+game_score_smooth         = 74.74181813056613
+fps_smooth                = 709.9188040859538
+
+
+
+iterations                = 305278
+game_id                   = 86
+score                     = 8262.0
+game_iterations           = 644
+game_iterations_smooth    = 2674.6271996242162
+game_score                = 12.0
+game_score_smooth         = 74.11439994926047
+fps_smooth                = 705.1260105533715
+
+
+
+iterations                = 307383
+game_id                   = 87
+score                     = 8345.0
+game_iterations           = 2105
+game_iterations_smooth    = 2668.930927627974
+game_score                = 83.0
+game_score_smooth         = 74.20325594976786
+fps_smooth                = 717.9109875472582
+
+
+
+iterations                = 309550
+game_id                   = 88
+score                     = 8442.0
+game_iterations           = 2167
+game_iterations_smooth    = 2663.9116183516944
+game_score                = 97.0
+game_score_smooth         = 74.43122339027019
+fps_smooth                = 724.0216149692251
+
+
+
+iterations                = 314656
+game_id                   = 89
+score                     = 8540.0
+game_iterations           = 5106
+game_iterations_smooth    = 2688.3325021681776
+game_score                = 98.0
+game_score_smooth         = 74.66691115636749
+fps_smooth                = 729.8169186387585
+
+
+
+iterations                = 316678
+game_id                   = 90
+score                     = 8615.0
+game_iterations           = 2022
+game_iterations_smooth    = 2681.6691771464957
+game_score                = 75.0
+game_score_smooth         = 74.67024204480381
+fps_smooth                = 711.0551415480058
+
+
+
+iterations                = 320042
+game_id                   = 91
+score                     = 8713.0
+game_iterations           = 3364
+game_iterations_smooth    = 2688.492485375031
+game_score                = 98.0
+game_score_smooth         = 74.90353962435577
+fps_smooth                = 734.0903400593439
+
+
+
+iterations                = 321531
+game_id                   = 92
+score                     = 8776.0
+game_iterations           = 1489
+game_iterations_smooth    = 2676.4975605212803
+game_score                = 63.0
+game_score_smooth         = 74.78450422811221
+fps_smooth                = 712.4300812797294
+
+
+
+iterations                = 323789
+game_id                   = 93
+score                     = 8857.0
+game_iterations           = 2258
+game_iterations_smooth    = 2672.3125849160674
+game_score                = 81.0
+game_score_smooth         = 74.84665918583109
+fps_smooth                = 720.1871767446937
+
+
+
+iterations                = 329909
+game_id                   = 94
+score                     = 8954.0
+game_iterations           = 6120
+game_iterations_smooth    = 2706.7894590669066
+game_score                = 97.0
+game_score_smooth         = 75.06819259397277
+fps_smooth                = 728.883932336696
+
+
+
+iterations                = 331855
+game_id                   = 95
+score                     = 9027.0
+game_iterations           = 1946
+game_iterations_smooth    = 2699.1815644762373
+game_score                = 73.0
+game_score_smooth         = 75.04751066803304
+fps_smooth                = 710.961774550979
+
+
+
+iterations                = 334249
+game_id                   = 96
+score                     = 9122.0
+game_iterations           = 2394
+game_iterations_smooth    = 2696.129748831475
+game_score                = 95.0
+game_score_smooth         = 75.24703556135272
+fps_smooth                = 719.655056068133
+
+
+
+iterations                = 338643
+game_id                   = 97
+score                     = 9224.0
+game_iterations           = 4394
+game_iterations_smooth    = 2713.10845134316
+game_score                = 102.0
+game_score_smooth         = 75.51456520573919
+fps_smooth                = 739.1466807245894
+
+
+
+iterations                = 344907
+game_id                   = 98
+score                     = 9326.0
+game_iterations           = 6264
+game_iterations_smooth    = 2748.6173668297283
+game_score                = 102.0
+game_score_smooth         = 75.77941955368179
+fps_smooth                = 738.6761348511145
+
+
+
+iterations                = 348376
+game_id                   = 99
+score                     = 9424.0
+game_iterations           = 3469
+game_iterations_smooth    = 2755.821193161431
+game_score                = 98.0
+game_score_smooth         = 76.00162535814498
+fps_smooth                = 729.2509002763838
+
+
+
+iterations                = 351683
+game_id                   = 100
+score                     = 9519.0
+game_iterations           = 3307
+game_iterations_smooth    = 2761.3329812298166
+game_score                = 95.0
+game_score_smooth         = 76.19160910456353
+fps_smooth                = 720.5248312191918
+
+
+
+iterations                = 359031
+game_id                   = 101
+score                     = 9727.0
+game_iterations           = 7348
+game_iterations_smooth    = 2807.1996514175185
+game_score                = 208.0
+game_score_smooth         = 77.50969301351789
+fps_smooth                = 734.5180635902358
+
+
+
+iterations                = 360144
+game_id                   = 102
+score                     = 9766.0
+game_iterations           = 1113
+game_iterations_smooth    = 2790.2576549033433
+game_score                = 39.0
+game_score_smooth         = 77.12459608338271
+fps_smooth                = 708.42941109754
+
+
+
+iterations                = 363401
+game_id                   = 103
+score                     = 9861.0
+game_iterations           = 3257
+game_iterations_smooth    = 2794.9250783543102
+game_score                = 95.0
+game_score_smooth         = 77.30335012254889
+fps_smooth                = 720.4441626136028
+
+
+
+iterations                = 366985
+game_id                   = 104
+score                     = 9963.0
+game_iterations           = 3584
+game_iterations_smooth    = 2802.8158275707674
+game_score                = 102.0
+game_score_smooth         = 77.5503166213234
+fps_smooth                = 735.9358870346605
+
+
+
+iterations                = 368883
+game_id                   = 105
+score                     = 10030.0
+game_iterations           = 1898
+game_iterations_smooth    = 2793.76766929506
+game_score                = 67.0
+game_score_smooth         = 77.44481345511016
+fps_smooth                = 711.462725908946
+
+
+
+iterations                = 372252
+game_id                   = 106
+score                     = 10127.0
+game_iterations           = 3369
+game_iterations_smooth    = 2799.519992602109
+game_score                = 97.0
+game_score_smooth         = 77.64036532055906
+fps_smooth                = 731.6619348781744
+
+
+
+iterations                = 375457
+game_id                   = 107
+score                     = 10229.0
+game_iterations           = 3205
+game_iterations_smooth    = 2803.5747926760882
+game_score                = 102.0
+game_score_smooth         = 77.88396166735346
+fps_smooth                = 740.1389566971677
+
+
+
+iterations                = 376279
+game_id                   = 108
+score                     = 10249.0
+game_iterations           = 822
+game_iterations_smooth    = 2783.759044749327
+game_score                = 20.0
+game_score_smooth         = 77.30512205067993
+fps_smooth                = 705.1765977197607
+
+
+
+iterations                = 387747
+game_id                   = 109
+score                     = 10348.0
+game_iterations           = 11468
+game_iterations_smooth    = 2870.6014543018337
+game_score                = 99.0
+game_score_smooth         = 77.52207083017312
+fps_smooth                = 729.0943659262904
+
+
+
+iterations                = 391431
+game_id                   = 110
+score                     = 10446.0
+game_iterations           = 3684
+game_iterations_smooth    = 2878.7354397588156
+game_score                = 98.0
+game_score_smooth         = 77.7268501218714
+fps_smooth                = 727.2201452472626
+
+
+
+iterations                = 392980
+game_id                   = 111
+score                     = 10508.0
+game_iterations           = 1549
+game_iterations_smooth    = 2865.438085361227
+game_score                = 62.0
+game_score_smooth         = 77.56958162065268
+fps_smooth                = 707.844192962026
+
+
+
+iterations                = 395729
+game_id                   = 112
+score                     = 10602.0
+game_iterations           = 2749
+game_iterations_smooth    = 2864.2737045076146
+game_score                = 94.0
+game_score_smooth         = 77.73388580444616
+fps_smooth                = 723.2544730390952
+
+
+
+iterations                = 398139
+game_id                   = 113
+score                     = 10698.0
+game_iterations           = 2410
+game_iterations_smooth    = 2859.7309674625385
+game_score                = 96.0
+game_score_smooth         = 77.9165469464017
+fps_smooth                = 728.921030154458
+
+
+
+iterations                = 404196
 game_id                   = 114
-score                     = 8322.0
-game_iterations           = 2034
-game_iterations_smooth    = 2309.3266611309987
-game_score                = 76.0
-game_score_smooth         = 80.48835045590315
-fps_smooth                = 383.0632465073605
+score                     = 10797.0
+game_iterations           = 6057
+game_iterations_smooth    = 2891.7036577879135
+game_score                = 99.0
+game_score_smooth         = 78.12738147693767
+fps_smooth                = 736.3946978383211
 
 
 
-iterations                = 232936
+iterations                = 407235
 game_id                   = 115
-score                     = 8411.0
-game_iterations           = 2094
-game_iterations_smooth    = 2307.173394519689
-game_score                = 89.0
-game_score_smooth         = 80.57346695134412
-fps_smooth                = 384.6976732440842
+score                     = 10898.0
+game_iterations           = 3039
+game_iterations_smooth    = 2893.176621210034
+game_score                = 101.0
+game_score_smooth         = 78.3561076621683
+fps_smooth                = 730.6144824857748
 
 
 
-iterations                = 235117
+iterations                = 410138
 game_id                   = 116
-score                     = 8500.0
-game_iterations           = 2181
-game_iterations_smooth    = 2305.911660574492
+score                     = 10995.0
+game_iterations           = 2903
+game_iterations_smooth    = 2893.274854997934
+game_score                = 97.0
+game_score_smooth         = 78.54254658554662
+fps_smooth                = 733.0353773512688
+
+
+
+iterations                = 413994
+game_id                   = 117
+score                     = 11134.0
+game_iterations           = 3856
+game_iterations_smooth    = 2902.902106447955
+game_score                = 139.0
+game_score_smooth         = 79.14712111969115
+fps_smooth                = 708.4739792929489
+
+
+
+iterations                = 415335
+game_id                   = 118
+score                     = 11168.0
+game_iterations           = 1341
+game_iterations_smooth    = 2887.2830853834753
+game_score                = 34.0
+game_score_smooth         = 78.69564990849425
+fps_smooth                = 711.1622076085465
+
+
+
+iterations                = 420471
+game_id                   = 119
+score                     = 11270.0
+game_iterations           = 5136
+game_iterations_smooth    = 2909.7702545296406
+game_score                = 102.0
+game_score_smooth         = 78.9286934094093
+fps_smooth                = 738.9413526934235
+
+
+
+iterations                = 421860
+game_id                   = 120
+score                     = 11347.0
+game_iterations           = 1389
+game_iterations_smooth    = 2894.5625519843443
+game_score                = 77.0
+game_score_smooth         = 78.90940647531521
+fps_smooth                = 710.3549436059966
+
+
+
+iterations                = 426131
+game_id                   = 121
+score                     = 11449.0
+game_iterations           = 4271
+game_iterations_smooth    = 2908.326926464501
+game_score                = 102.0
+game_score_smooth         = 79.14031241056205
+fps_smooth                = 738.5903688986359
+
+
+
+iterations                = 427181
+game_id                   = 122
+score                     = 11479.0
+game_iterations           = 1050
+game_iterations_smooth    = 2889.743657199856
+game_score                = 30.0
+game_score_smooth         = 78.64890928645642
+fps_smooth                = 707.4620893763054
+
+
+
+iterations                = 430630
+game_id                   = 123
+score                     = 11577.0
+game_iterations           = 3449
+game_iterations_smooth    = 2895.336220627857
+game_score                = 98.0
+game_score_smooth         = 78.84242019359185
+fps_smooth                = 723.8900177644614
+
+
+
+iterations                = 433784
+game_id                   = 124
+score                     = 11678.0
+game_iterations           = 3154
+game_iterations_smooth    = 2897.9228584215784
+game_score                = 101.0
+game_score_smooth         = 79.06399599165593
+fps_smooth                = 735.9283323515557
+
+
+
+iterations                = 436896
+game_id                   = 125
+score                     = 11790.0
+game_iterations           = 3112
+game_iterations_smooth    = 2900.0636298373624
+game_score                = 112.0
+game_score_smooth         = 79.39335603173937
+fps_smooth                = 711.9843622738342
+
+
+
+iterations                = 443733
+game_id                   = 126
+score                     = 12000.0
+game_iterations           = 6837
+game_iterations_smooth    = 2939.4329935389887
+game_score                = 210.0
+game_score_smooth         = 80.69942247142197
+fps_smooth                = 738.3713256155885
+
+
+
+iterations                = 452843
+game_id                   = 127
+score                     = 12099.0
+game_iterations           = 9110
+game_iterations_smooth    = 3001.1386636035986
+game_score                = 99.0
+game_score_smooth         = 80.88242824670775
+fps_smooth                = 729.1893376872081
+
+
+
+iterations                = 458028
+game_id                   = 128
+score                     = 12183.0
+game_iterations           = 5185
+game_iterations_smooth    = 3022.9772769675624
+game_score                = 84.0
+game_score_smooth         = 80.91360396424068
+fps_smooth                = 712.4877610692921
+
+
+
+iterations                = 461679
+game_id                   = 129
+score                     = 12285.0
+game_iterations           = 3651
+game_iterations_smooth    = 3029.257504197887
+game_score                = 102.0
+game_score_smooth         = 81.12446792459826
+fps_smooth                = 732.9869043782551
+
+
+
+iterations                = 465412
+game_id                   = 130
+score                     = 12389.0
+game_iterations           = 3733
+game_iterations_smooth    = 3036.294929155908
+game_score                = 104.0
+game_score_smooth         = 81.35322324535228
+fps_smooth                = 733.9938011163363
+
+
+
+iterations                = 467818
+game_id                   = 131
+score                     = 12488.0
+game_iterations           = 2406
+game_iterations_smooth    = 3029.9919798643487
+game_score                = 99.0
+game_score_smooth         = 81.52969101289875
+fps_smooth                = 733.4123896383345
+
+
+
+iterations                = 470800
+game_id                   = 132
+score                     = 12582.0
+game_iterations           = 2982
+game_iterations_smooth    = 3029.512060065705
+game_score                = 94.0
+game_score_smooth         = 81.65439410276976
+fps_smooth                = 722.7823914274111
+
+
+
+iterations                = 471908
+game_id                   = 133
+score                     = 12610.0
+game_iterations           = 1108
+game_iterations_smooth    = 3010.296939465048
+game_score                = 28.0
+game_score_smooth         = 81.11785016174206
+fps_smooth                = 705.6706398441797
+
+
+
+iterations                = 474898
+game_id                   = 134
+score                     = 12704.0
+game_iterations           = 2990
+game_iterations_smooth    = 3010.0939700703975
+game_score                = 94.0
+game_score_smooth         = 81.24667166012463
+fps_smooth                = 726.5494063538514
+
+
+
+iterations                = 478590
+game_id                   = 135
+score                     = 12804.0
+game_iterations           = 3692
+game_iterations_smooth    = 3016.9130303696934
+game_score                = 100.0
+game_score_smooth         = 81.43420494352338
+fps_smooth                = 732.3237167173908
+
+
+
+iterations                = 480836
+game_id                   = 136
+score                     = 12901.0
+game_iterations           = 2246
+game_iterations_smooth    = 3009.2039000659965
+game_score                = 97.0
+game_score_smooth         = 81.58986289408814
+fps_smooth                = 729.7982342231277
+
+
+
+iterations                = 482913
+game_id                   = 137
+score                     = 12997.0
+game_iterations           = 2077
+game_iterations_smooth    = 2999.8818610653366
+game_score                = 96.0
+game_score_smooth         = 81.73396426514725
+fps_smooth                = 726.5300482766186
+
+
+
+iterations                = 484534
+game_id                   = 138
+score                     = 13045.0
+game_iterations           = 1621
+game_iterations_smooth    = 2986.093042454683
+game_score                = 48.0
+game_score_smooth         = 81.39662462249578
+fps_smooth                = 713.7649244371223
+
+
+
+iterations                = 487151
+game_id                   = 139
+score                     = 13138.0
+game_iterations           = 2617
+game_iterations_smooth    = 2982.4021120301363
+game_score                = 93.0
+game_score_smooth         = 81.51265837627082
+fps_smooth                = 721.649151980687
+
+
+
+iterations                = 489653
+game_id                   = 140
+score                     = 13238.0
+game_iterations           = 2502
+game_iterations_smooth    = 2977.598090909835
+game_score                = 100.0
+game_score_smooth         = 81.69753179250812
+fps_smooth                = 731.0522263943867
+
+
+
+iterations                = 492226
+game_id                   = 141
+score                     = 13340.0
+game_iterations           = 2573
+game_iterations_smooth    = 2973.5521100007363
+game_score                = 102.0
+game_score_smooth         = 81.90055647458303
+fps_smooth                = 739.0019042902215
+
+
+
+iterations                = 494463
+game_id                   = 142
+score                     = 13426.0
+game_iterations           = 2237
+game_iterations_smooth    = 2966.186588900729
+game_score                = 86.0
+game_score_smooth         = 81.94155090983719
+fps_smooth                = 720.577558735213
+
+
+
+iterations                = 498071
+game_id                   = 143
+score                     = 13528.0
+game_iterations           = 3608
+game_iterations_smooth    = 2972.6047230117215
+game_score                = 102.0
+game_score_smooth         = 82.14213540073881
+fps_smooth                = 738.0352060976637
+
+
+
+iterations                = 503670
+game_id                   = 144
+score                     = 13628.0
+game_iterations           = 5599
+game_iterations_smooth    = 2998.868675781604
+game_score                = 100.0
+game_score_smooth         = 82.32071404673142
+fps_smooth                = 731.8576658173589
+
+
+
+iterations                = 505279
+game_id                   = 145
+score                     = 13698.0
+game_iterations           = 1609
+game_iterations_smooth    = 2984.969989023788
+game_score                = 70.0
+game_score_smooth         = 82.19750690626411
+fps_smooth                = 712.0731982024862
+
+
+
+iterations                = 508759
+game_id                   = 146
+score                     = 13804.0
+game_iterations           = 3480
+game_iterations_smooth    = 2989.9202891335503
+game_score                = 106.0
+game_score_smooth         = 82.43553183720147
+fps_smooth                = 727.8141133987674
+
+
+
+iterations                = 514407
+game_id                   = 147
+score                     = 13905.0
+game_iterations           = 5648
+game_iterations_smooth    = 3016.501086242215
+game_score                = 101.0
+game_score_smooth         = 82.62117651882946
+fps_smooth                = 736.1403863514068
+
+
+
+iterations                = 515500
+game_id                   = 148
+score                     = 13937.0
+game_iterations           = 1093
+game_iterations_smooth    = 2997.2660753797927
+game_score                = 32.0
+game_score_smooth         = 82.11496475364116
+fps_smooth                = 706.249763472112
+
+
+
+iterations                = 516660
+game_id                   = 149
+score                     = 13970.0
+game_iterations           = 1160
+game_iterations_smooth    = 2978.893414625995
+game_score                = 33.0
+game_score_smooth         = 81.62381510610474
+fps_smooth                = 707.5993084475163
+
+
+
+iterations                = 521779
+game_id                   = 150
+score                     = 14071.0
+game_iterations           = 5119
+game_iterations_smooth    = 3000.294480479735
+game_score                = 101.0
+game_score_smooth         = 81.8175769550437
+fps_smooth                = 738.3876236878053
+
+
+
+iterations                = 525145
+game_id                   = 151
+score                     = 14169.0
+game_iterations           = 3366
+game_iterations_smooth    = 3003.9515356749375
+game_score                = 98.0
+game_score_smooth         = 81.97940118549327
+fps_smooth                = 732.1631320047112
+
+
+
+iterations                = 526749
+game_id                   = 152
+score                     = 14250.0
+game_iterations           = 1604
+game_iterations_smooth    = 2989.9520203181883
+game_score                = 81.0
+game_score_smooth         = 81.96960717363834
+fps_smooth                = 711.8483887411492
+
+
+
+iterations                = 529154
+game_id                   = 153
+score                     = 14342.0
+game_iterations           = 2405
+game_iterations_smooth    = 2984.1025001150065
+game_score                = 92.0
+game_score_smooth         = 82.06991110190195
+fps_smooth                = 720.0662640714747
+
+
+
+iterations                = 531697
+game_id                   = 154
+score                     = 14443.0
+game_iterations           = 2543
+game_iterations_smooth    = 2979.691475113856
+game_score                = 101.0
+game_score_smooth         = 82.25921199088293
+fps_smooth                = 737.5422569005397
+
+
+
+iterations                = 535823
+game_id                   = 155
+score                     = 14524.0
+game_iterations           = 4126
+game_iterations_smooth    = 2991.154560362718
+game_score                = 81.0
+game_score_smooth         = 82.2466198709741
+fps_smooth                = 714.3600395156453
+
+
+
+iterations                = 538156
+game_id                   = 156
+score                     = 14623.0
+game_iterations           = 2333
+game_iterations_smooth    = 2984.5730147590907
+game_score                = 99.0
+game_score_smooth         = 82.41415367226435
+fps_smooth                = 724.0007548838945
+
+
+
+iterations                = 543923
+game_id                   = 157
+score                     = 14718.0
+game_iterations           = 5767
+game_iterations_smooth    = 3012.3972846115
+game_score                = 95.0
+game_score_smooth         = 82.5400121355417
+fps_smooth                = 727.8786546186672
+
+
+
+iterations                = 546902
+game_id                   = 158
+score                     = 14814.0
+game_iterations           = 2979
+game_iterations_smooth    = 3012.0633117653847
+game_score                = 96.0
+game_score_smooth         = 82.67461201418628
+fps_smooth                = 724.7554941736684
+
+
+
+iterations                = 548995
+game_id                   = 159
+score                     = 14898.0
+game_iterations           = 2093
+game_iterations_smooth    = 3002.8726786477305
+game_score                = 84.0
+game_score_smooth         = 82.68786589404442
+fps_smooth                = 721.104645246787
+
+
+
+iterations                = 551864
+game_id                   = 160
+score                     = 14997.0
+game_iterations           = 2869
+game_iterations_smooth    = 3001.533951861253
+game_score                = 99.0
+game_score_smooth         = 82.85098723510397
+fps_smooth                = 726.4243302140756
+
+
+
+iterations                = 556228
+game_id                   = 161
+score                     = 15096.0
+game_iterations           = 4364
+game_iterations_smooth    = 3015.1586123426405
+game_score                = 99.0
+game_score_smooth         = 83.01247736275293
+fps_smooth                = 734.2833894952153
+
+
+
+iterations                = 558742
+game_id                   = 162
+score                     = 15183.0
+game_iterations           = 2514
+game_iterations_smooth    = 3010.147026219214
+game_score                = 87.0
+game_score_smooth         = 83.0523525891254
+fps_smooth                = 716.1821430937831
+
+
+
+iterations                = 563935
+game_id                   = 163
+score                     = 15283.0
+game_iterations           = 5193
+game_iterations_smooth    = 3031.9755559570212
+game_score                = 100.0
+game_score_smooth         = 83.22182906323415
+fps_smooth                = 734.409851062722
+
+
+
+iterations                = 566281
+game_id                   = 164
+score                     = 15363.0
+game_iterations           = 2346
+game_iterations_smooth    = 3025.115800397451
+game_score                = 80.0
+game_score_smooth         = 83.18961077260181
+fps_smooth                = 714.1294041566143
+
+
+
+iterations                = 568849
+game_id                   = 165
+score                     = 15456.0
+game_iterations           = 2568
+game_iterations_smooth    = 3020.5446423934764
+game_score                = 93.0
+game_score_smooth         = 83.28771466487579
+fps_smooth                = 718.1776435304977
+
+
+
+iterations                = 570506
+game_id                   = 166
+score                     = 15542.0
+game_iterations           = 1657
+game_iterations_smooth    = 3006.9091959695415
+game_score                = 86.0
+game_score_smooth         = 83.31483751822704
+fps_smooth                = 715.3919991759847
+
+
+
+iterations                = 574162
+game_id                   = 167
+score                     = 15643.0
+game_iterations           = 3656
+game_iterations_smooth    = 3013.400104009846
+game_score                = 101.0
+game_score_smooth         = 83.49168914304477
+fps_smooth                = 738.0537416527607
+
+
+
+iterations                = 576714
+game_id                   = 168
+score                     = 15745.0
+game_iterations           = 2552
+game_iterations_smooth    = 3008.7861029697474
+game_score                = 102.0
+game_score_smooth         = 83.67677225161431
+fps_smooth                = 734.4689714777161
+
+
+
+iterations                = 580275
+game_id                   = 169
+score                     = 15841.0
+game_iterations           = 3561
+game_iterations_smooth    = 3014.30824194005
+game_score                = 96.0
+game_score_smooth         = 83.80000452909816
+fps_smooth                = 722.2315359669292
+
+
+
+iterations                = 583993
+game_id                   = 170
+score                     = 15928.0
+game_iterations           = 3718
+game_iterations_smooth    = 3021.3451595206493
+game_score                = 87.0
+game_score_smooth         = 83.83200448380718
+fps_smooth                = 718.237981433357
+
+
+
+iterations                = 586507
+game_id                   = 171
+score                     = 16030.0
+game_iterations           = 2514
+game_iterations_smooth    = 3016.2717079254426
+game_score                = 102.0
+game_score_smooth         = 84.01368443896911
+fps_smooth                = 739.1573595694297
+
+
+
+iterations                = 589377
+game_id                   = 172
+score                     = 16131.0
+game_iterations           = 2870
+game_iterations_smooth    = 3014.808990846188
+game_score                = 101.0
+game_score_smooth         = 84.18354759457942
+fps_smooth                = 739.0731429004707
+
+
+
+iterations                = 591592
+game_id                   = 173
+score                     = 16222.0
+game_iterations           = 2215
+game_iterations_smooth    = 3006.8109009377263
+game_score                = 91.0
+game_score_smooth         = 84.25171211863362
+fps_smooth                = 716.9194013856197
+
+
+
+iterations                = 593429
+game_id                   = 174
+score                     = 16286.0
+game_iterations           = 1837
+game_iterations_smooth    = 2995.112791928349
+game_score                = 64.0
+game_score_smooth         = 84.04919499744729
+fps_smooth                = 714.7165644104693
+
+
+
+iterations                = 597110
+game_id                   = 175
+score                     = 16383.0
+game_iterations           = 3681
+game_iterations_smooth    = 3001.9716640090655
+game_score                = 97.0
+game_score_smooth         = 84.17870304747281
+fps_smooth                = 722.8642720472648
+
+
+
+iterations                = 598816
+game_id                   = 176
+score                     = 16447.0
+game_iterations           = 1706
+game_iterations_smooth    = 2989.0119473689747
+game_score                = 64.0
+game_score_smooth         = 83.97691601699808
+fps_smooth                = 710.5821758463595
+
+
+
+iterations                = 601258
+game_id                   = 177
+score                     = 16547.0
+game_iterations           = 2442
+game_iterations_smooth    = 2983.5418278952848
+game_score                = 100.0
+game_score_smooth         = 84.1371468568281
+fps_smooth                = 739.8990535817335
+
+
+
+iterations                = 605031
+game_id                   = 178
+score                     = 16645.0
+game_iterations           = 3773
+game_iterations_smooth    = 2991.4364096163317
+game_score                = 98.0
+game_score_smooth         = 84.27577538825982
+fps_smooth                = 727.884219790943
+
+
+
+iterations                = 608714
+game_id                   = 179
+score                     = 16743.0
+game_iterations           = 3683
+game_iterations_smooth    = 2998.3520455201683
+game_score                = 98.0
+game_score_smooth         = 84.41301763437723
+fps_smooth                = 727.4706848443556
+
+
+
+iterations                = 610554
+game_id                   = 180
+score                     = 16810.0
+game_iterations           = 1840
+game_iterations_smooth    = 2986.7685250649665
+game_score                = 67.0
+game_score_smooth         = 84.23888745803346
+fps_smooth                = 711.7599870589737
+
+
+
+iterations                = 612988
+game_id                   = 181
+score                     = 16904.0
+game_iterations           = 2434
+game_iterations_smooth    = 2981.240839814317
+game_score                = 94.0
+game_score_smooth         = 84.33649858345312
+fps_smooth                = 714.6803153150047
+
+
+
+iterations                = 615659
+game_id                   = 182
+score                     = 17006.0
+game_iterations           = 2671
+game_iterations_smooth    = 2978.1384314161737
+game_score                = 102.0
+game_score_smooth         = 84.51313359761859
+fps_smooth                = 739.4873253865676
+
+
+
+iterations                = 617649
+game_id                   = 183
+score                     = 17104.0
+game_iterations           = 1990
+game_iterations_smooth    = 2968.257047102012
+game_score                = 98.0
+game_score_smooth         = 84.6480022616424
+fps_smooth                = 725.701551306201
+
+
+
+iterations                = 620248
+game_id                   = 184
+score                     = 17195.0
+game_iterations           = 2599
+game_iterations_smooth    = 2964.564476630992
+game_score                = 91.0
+game_score_smooth         = 84.71152223902598
+fps_smooth                = 721.4552293999245
+
+
+
+iterations                = 623431
+game_id                   = 185
+score                     = 17301.0
+game_iterations           = 3183
+game_iterations_smooth    = 2966.748831864682
+game_score                = 106.0
+game_score_smooth         = 84.92440701663573
+fps_smooth                = 723.889984490542
+
+
+
+iterations                = 632540
+game_id                   = 186
+score                     = 17403.0
+game_iterations           = 9109
+game_iterations_smooth    = 3028.171343546035
+game_score                = 102.0
+game_score_smooth         = 85.09516294646936
+fps_smooth                = 739.4881771613672
+
+
+
+iterations                = 634062
+game_id                   = 187
+score                     = 17450.0
+game_iterations           = 1522
+game_iterations_smooth    = 3013.1096301105745
+game_score                = 47.0
+game_score_smooth         = 84.71421131700467
+fps_smooth                = 705.0342161407102
+
+
+
+iterations                = 636189
+game_id                   = 188
+score                     = 17533.0
+game_iterations           = 2127
+game_iterations_smooth    = 3004.248533809469
+game_score                = 83.0
+game_score_smooth         = 84.69706920383462
+fps_smooth                = 710.3146522712603
+
+
+
+iterations                = 640538
+game_id                   = 189
+score                     = 17625.0
+game_iterations           = 4349
+game_iterations_smooth    = 3017.696048471374
+game_score                = 92.0
+game_score_smooth         = 84.77009851179628
+fps_smooth                = 722.3180997249218
+
+
+
+iterations                = 642059
+game_id                   = 190
+score                     = 17681.0
+game_iterations           = 1521
+game_iterations_smooth    = 3002.7290879866605
+game_score                = 56.0
+game_score_smooth         = 84.48239752667831
+fps_smooth                = 710.1829578256758
+
+
+
+iterations                = 645174
+game_id                   = 191
+score                     = 17779.0
+game_iterations           = 3115
+game_iterations_smooth    = 3003.851797106794
+game_score                = 98.0
+game_score_smooth         = 84.61757355141154
+fps_smooth                = 731.272858692376
+
+
+
+iterations                = 647248
+game_id                   = 192
+score                     = 17871.0
+game_iterations           = 2074
+game_iterations_smooth    = 2994.553279135726
+game_score                = 92.0
+game_score_smooth         = 84.69139781589742
+fps_smooth                = 722.6950824027026
+
+
+
+iterations                = 655064
+game_id                   = 193
+score                     = 17972.0
+game_iterations           = 7816
+game_iterations_smooth    = 3042.7677463443683
+game_score                = 101.0
+game_score_smooth         = 84.85448383773844
+fps_smooth                = 734.772359553304
+
+
+
+iterations                = 658564
+game_id                   = 194
+score                     = 18072.0
+game_iterations           = 3500
+game_iterations_smooth    = 3047.3400688809247
+game_score                = 100.0
+game_score_smooth         = 85.00593899936106
+fps_smooth                = 733.0352192926166
+
+
+
+iterations                = 660806
+game_id                   = 195
+score                     = 18158.0
+game_iterations           = 2242
+game_iterations_smooth    = 3039.2866681921155
+game_score                = 86.0
+game_score_smooth         = 85.01587960936745
+fps_smooth                = 716.1863187769002
+
+
+
+iterations                = 663064
+game_id                   = 196
+score                     = 18255.0
+game_iterations           = 2258
+game_iterations_smooth    = 3031.4738015101943
+game_score                = 97.0
+game_score_smooth         = 85.13572081327376
+fps_smooth                = 717.7512868076423
+
+
+
+iterations                = 665057
+game_id                   = 197
+score                     = 18338.0
+game_iterations           = 1993
+game_iterations_smooth    = 3021.089063495092
+game_score                = 83.0
+game_score_smooth         = 85.11436360514102
+fps_smooth                = 714.5564271044035
+
+
+
+iterations                = 670573
+game_id                   = 198
+score                     = 18450.0
+game_iterations           = 5516
+game_iterations_smooth    = 3046.038172860141
+game_score                = 112.0
+game_score_smooth         = 85.38321996908962
+fps_smooth                = 708.7849766640754
+
+
+
+iterations                = 678688
+game_id                   = 199
+score                     = 18552.0
+game_iterations           = 8115
+game_iterations_smooth    = 3096.7277911315396
+game_score                = 102.0
+game_score_smooth         = 85.54938776939872
+fps_smooth                = 739.6324448533433
+
+
+
+iterations                = 683570
+game_id                   = 200
+score                     = 18736.0
+game_iterations           = 4882
+game_iterations_smooth    = 3114.5805132202245
+game_score                = 184.0
+game_score_smooth         = 86.53389389170474
+fps_smooth                = 715.7010095437782
+
+
+
+iterations                = 685737
+game_id                   = 201
+score                     = 18832.0
+game_iterations           = 2167
+game_iterations_smooth    = 3105.104708088022
+game_score                = 96.0
+game_score_smooth         = 86.62855495278768
+fps_smooth                = 728.607180006515
+
+
+
+iterations                = 690512
+game_id                   = 202
+score                     = 18925.0
+game_iterations           = 4775
+game_iterations_smooth    = 3121.8036610071417
+game_score                = 93.0
+game_score_smooth         = 86.69226940325981
+fps_smooth                = 720.4294000687531
+
+
+
+iterations                = 692872
+game_id                   = 203
+score                     = 19023.0
+game_iterations           = 2360
+game_iterations_smooth    = 3114.18562439707
+game_score                = 98.0
+game_score_smooth         = 86.80534670922722
+fps_smooth                = 735.4299103868245
+
+
+
+iterations                = 694706
+game_id                   = 204
+score                     = 19086.0
+game_iterations           = 1834
+game_iterations_smooth    = 3101.3837681530995
+game_score                = 63.0
+game_score_smooth         = 86.56729324213495
+fps_smooth                = 713.0837084805443
+
+
+
+iterations                = 698161
+game_id                   = 205
+score                     = 19177.0
+game_iterations           = 3455
+game_iterations_smooth    = 3104.9199304715685
+game_score                = 91.0
+game_score_smooth         = 86.6116203097136
+fps_smooth                = 721.6533413934385
+
+
+
+iterations                = 700847
+game_id                   = 206
+score                     = 19266.0
+game_iterations           = 2686
+game_iterations_smooth    = 3100.730731166853
 game_score                = 89.0
-game_score_smooth         = 80.65773228183068
-fps_smooth                = 354.5727194720447
+game_score_smooth         = 86.63550410661647
+fps_smooth                = 716.4075403100552
+
+
+
+iterations                = 705028
+game_id                   = 207
+score                     = 19360.0
+game_iterations           = 4181
+game_iterations_smooth    = 3111.533423855184
+game_score                = 94.0
+game_score_smooth         = 86.70914906555029
+fps_smooth                = 716.7420837518573
+
+
+
+iterations                = 707640
+game_id                   = 208
+score                     = 19458.0
+game_iterations           = 2612
+game_iterations_smooth    = 3106.538089616632
+game_score                = 98.0
+game_score_smooth         = 86.8220575748948
+fps_smooth                = 730.057917297891
+
+
+
+iterations                = 708447
+game_id                   = 209
+score                     = 19483.0
+game_iterations           = 807
+game_iterations_smooth    = 3083.5427087204657
+game_score                = 25.0
+game_score_smooth         = 86.20383699914585
+fps_smooth                = 707.0381718879728
+
+
+
+iterations                = 710672
+game_id                   = 210
+score                     = 19558.0
+game_iterations           = 2225
+game_iterations_smooth    = 3074.957281633261
+game_score                = 75.0
+game_score_smooth         = 86.0917986291544
+fps_smooth                = 709.703690235088
+
+
+
+iterations                = 713581
+game_id                   = 211
+score                     = 19660.0
+game_iterations           = 2909
+game_iterations_smooth    = 3073.2977088169287
+game_score                = 102.0
+game_score_smooth         = 86.25088064286285
+fps_smooth                = 737.4119223262494
+
+
+
+iterations                = 719796
+game_id                   = 212
+score                     = 19757.0
+game_iterations           = 6215
+game_iterations_smooth    = 3104.7147317287595
+game_score                = 97.0
+game_score_smooth         = 86.35837183643422
+fps_smooth                = 729.9490397220137
+
+
+
+iterations                = 722721
+game_id                   = 213
+score                     = 19857.0
+game_iterations           = 2925
+game_iterations_smooth    = 3102.917584411472
+game_score                = 100.0
+game_score_smooth         = 86.49478811806988
+fps_smooth                = 736.7069204919368
+
+
+
+iterations                = 731304
+game_id                   = 214
+score                     = 19953.0
+game_iterations           = 8583
+game_iterations_smooth    = 3157.718408567357
+game_score                = 96.0
+game_score_smooth         = 86.58984023688917
+fps_smooth                = 728.5161339631179
+
+
+
+iterations                = 736062
+game_id                   = 215
+score                     = 20054.0
+game_iterations           = 4758
+game_iterations_smooth    = 3173.7212244816833
+game_score                = 101.0
+game_score_smooth         = 86.73394183452028
+fps_smooth                = 735.4417643491632
+
+
+
+iterations                = 738378
+game_id                   = 216
+score                     = 20143.0
+game_iterations           = 2316
+game_iterations_smooth    = 3165.1440122368663
+game_score                = 89.0
+game_score_smooth         = 86.75660241617507
+fps_smooth                = 719.9866072784024
+
+
+
+iterations                = 740503
+game_id                   = 217
+score                     = 20241.0
+game_iterations           = 2125
+game_iterations_smooth    = 3154.7425721144978
+game_score                = 98.0
+game_score_smooth         = 86.86903639201333
+fps_smooth                = 727.4117317342823
+
+
+
+iterations                = 742613
+game_id                   = 218
+score                     = 20335.0
+game_iterations           = 2110
+game_iterations_smooth    = 3144.2951463933528
+game_score                = 94.0
+game_score_smooth         = 86.94034602809319
+fps_smooth                = 725.6772027214739
+
+
+
+iterations                = 743836
+game_id                   = 219
+score                     = 20402.0
+game_iterations           = 1223
+game_iterations_smooth    = 3125.082194929419
+game_score                = 67.0
+game_score_smooth         = 86.74094256781225
+fps_smooth                = 708.6842373225624
+
+
+
+iterations                = 752913
+game_id                   = 220
+score                     = 20501.0
+game_iterations           = 9077
+game_iterations_smooth    = 3184.601372980125
+game_score                = 99.0
+game_score_smooth         = 86.86353314213413
+fps_smooth                = 727.8328985101859
+
+
+
+iterations                = 756583
+game_id                   = 221
+score                     = 20592.0
+game_iterations           = 3670
+game_iterations_smooth    = 3189.4553592503235
+game_score                = 91.0
+game_score_smooth         = 86.90489781071278
+fps_smooth                = 717.7802857330577
+
+
+
+iterations                = 759966
+game_id                   = 222
+score                     = 20693.0
+game_iterations           = 3383
+game_iterations_smooth    = 3191.3908056578202
+game_score                = 101.0
+game_score_smooth         = 87.04584883260566
+fps_smooth                = 735.733249390523
+
+
+
+iterations                = 762233
+game_id                   = 223
+score                     = 20787.0
+game_iterations           = 2267
+game_iterations_smooth    = 3182.146897601242
+game_score                = 94.0
+game_score_smooth         = 87.1153903442796
+fps_smooth                = 725.7588100385707
+
+
+
+iterations                = 763137
+game_id                   = 224
+score                     = 20808.0
+game_iterations           = 904
+game_iterations_smooth    = 3159.3654286252295
+game_score                = 21.0
+game_score_smooth         = 86.4542364408368
+fps_smooth                = 705.06225850137
+
+
+
+iterations                = 769064
+game_id                   = 225
+score                     = 20939.0
+game_iterations           = 5927
+game_iterations_smooth    = 3187.041774338977
+game_score                = 131.0
+game_score_smooth         = 86.89969407642843
+fps_smooth                = 707.3872319634149
+
+
+
+iterations                = 771677
+game_id                   = 226
+score                     = 21033.0
+game_iterations           = 2613
+game_iterations_smooth    = 3181.3013565955875
+game_score                = 94.0
+game_score_smooth         = 86.97069713566414
+fps_smooth                = 725.2928529890589
+
+
+
+iterations                = 773642
+game_id                   = 227
+score                     = 21127.0
+game_iterations           = 1965
+game_iterations_smooth    = 3169.138343029632
+game_score                = 94.0
+game_score_smooth         = 87.04099016430749
+fps_smooth                = 723.0499517590762
+
+
+
+iterations                = 777854
+game_id                   = 228
+score                     = 21208.0
+game_iterations           = 4212
+game_iterations_smooth    = 3179.5669595993354
+game_score                = 81.0
+game_score_smooth         = 86.98058026266442
+fps_smooth                = 712.9624933043343
+
+
+
+iterations                = 781310
+game_id                   = 229
+score                     = 21354.0
+game_iterations           = 3456
+game_iterations_smooth    = 3182.331290003342
+game_score                = 146.0
+game_score_smooth         = 87.57077446003777
+fps_smooth                = 710.2819272985047
+
+
+
+iterations                = 783930
+game_id                   = 230
+score                     = 21453.0
+game_iterations           = 2620
+game_iterations_smooth    = 3176.707977103308
+game_score                = 99.0
+game_score_smooth         = 87.68506671543739
+fps_smooth                = 726.2944194942608
+
+
+
+iterations                = 788846
+game_id                   = 231
+score                     = 21555.0
+game_iterations           = 4916
+game_iterations_smooth    = 3194.100897332275
+game_score                = 102.0
+game_score_smooth         = 87.82821604828301
+fps_smooth                = 739.4043033820499
+
+
+
+iterations                = 791569
+game_id                   = 232
+score                     = 21653.0
+game_iterations           = 2723
+game_iterations_smooth    = 3189.3898883589522
+game_score                = 98.0
+game_score_smooth         = 87.92993388780019
+fps_smooth                = 724.3031766181618
+
+
+
+iterations                = 793516
+game_id                   = 233
+score                     = 21736.0
+game_iterations           = 1947
+game_iterations_smooth    = 3176.9659894753627
+game_score                = 83.0
+game_score_smooth         = 87.88063454892219
+fps_smooth                = 716.1838908195031
+
+
+
+iterations                = 794936
+game_id                   = 234
+score                     = 21787.0
+game_iterations           = 1420
+game_iterations_smooth    = 3159.396329580609
+game_score                = 51.0
+game_score_smooth         = 87.51182820343297
+fps_smooth                = 708.98219763754
+
+
+
+iterations                = 797135
+game_id                   = 235
+score                     = 21883.0
+game_iterations           = 2199
+game_iterations_smooth    = 3149.7923662848025
+game_score                = 96.0
+game_score_smooth         = 87.59670992139863
+fps_smooth                = 720.7184647264463
+
+
+
+iterations                = 799225
+game_id                   = 236
+score                     = 21973.0
+game_iterations           = 2090
+game_iterations_smooth    = 3139.1944426219543
+game_score                = 90.0
+game_score_smooth         = 87.62074282218465
+fps_smooth                = 711.6526115434465
+
+
+
+iterations                = 801740
+game_id                   = 237
+score                     = 22059.0
+game_iterations           = 2515
+game_iterations_smooth    = 3132.9524981957347
+game_score                = 86.0
+game_score_smooth         = 87.6045353939628
+fps_smooth                = 715.0613684924086
+
+
+
+iterations                = 803659
+game_id                   = 238
+score                     = 22134.0
+game_iterations           = 1919
+game_iterations_smooth    = 3120.8129732137772
+game_score                = 75.0
+game_score_smooth         = 87.47849004002317
+fps_smooth                = 716.8176951192912
+
+
+
+iterations                = 805601
+game_id                   = 239
+score                     = 22233.0
+game_iterations           = 1942
+game_iterations_smooth    = 3109.0248434816394
+game_score                = 99.0
+game_score_smooth         = 87.59370513962294
+fps_smooth                = 731.6527774825303
+
+
+
+iterations                = 807877
+game_id                   = 240
+score                     = 22317.0
+game_iterations           = 2276
+game_iterations_smooth    = 3100.6945950468235
+game_score                = 84.0
+game_score_smooth         = 87.55776808822671
+fps_smooth                = 715.7462947348532
+
+
+
+iterations                = 811827
+game_id                   = 241
+score                     = 22413.0
+game_iterations           = 3950
+game_iterations_smooth    = 3109.187649096355
+game_score                = 96.0
+game_score_smooth         = 87.64219040734443
+fps_smooth                = 725.8124784150706
+
+
+
+iterations                = 814821
+game_id                   = 242
+score                     = 22512.0
+game_iterations           = 2994
+game_iterations_smooth    = 3108.0357726053917
+game_score                = 99.0
+game_score_smooth         = 87.75576850327099
+fps_smooth                = 731.2762985139956
+
+
+
+iterations                = 817110
+game_id                   = 243
+score                     = 22611.0
+game_iterations           = 2289
+game_iterations_smooth    = 3099.8454148793376
+game_score                = 99.0
+game_score_smooth         = 87.86821081823827
+fps_smooth                = 728.1147390849565
+
+
+
+iterations                = 819331
+game_id                   = 244
+score                     = 22691.0
+game_iterations           = 2221
+game_iterations_smooth    = 3091.0569607305442
+game_score                = 80.0
+game_score_smooth         = 87.78952871005588
+fps_smooth                = 719.4161325877126
+
+
+
+iterations                = 822245
+game_id                   = 245
+score                     = 22791.0
+game_iterations           = 2914
+game_iterations_smooth    = 3089.2863911232384
+game_score                = 100.0
+game_score_smooth         = 87.91163342295532
+fps_smooth                = 734.3443637715751
+
+
+
+iterations                = 828140
+game_id                   = 246
+score                     = 22886.0
+game_iterations           = 5895
+game_iterations_smooth    = 3117.343527212006
+game_score                = 95.0
+game_score_smooth         = 87.98251708872577
+fps_smooth                = 724.5699121111555
+
+
+
+iterations                = 833205
+game_id                   = 247
+score                     = 23014.0
+game_iterations           = 5065
+game_iterations_smooth    = 3136.820091939886
+game_score                = 128.0
+game_score_smooth         = 88.38269191783851
+fps_smooth                = 705.9406793210295
+
+
+
+iterations                = 837087
+game_id                   = 248
+score                     = 23101.0
+game_iterations           = 3882
+game_iterations_smooth    = 3144.271891020487
+game_score                = 87.0
+game_score_smooth         = 88.36886499866013
+fps_smooth                = 718.7902252375058
+
+
+
+iterations                = 839043
+game_id                   = 249
+score                     = 23187.0
+game_iterations           = 1956
+game_iterations_smooth    = 3132.3891721102823
+game_score                = 86.0
+game_score_smooth         = 88.34517634867353
+fps_smooth                = 718.0909655262085
+
+
+
+iterations                = 842033
+game_id                   = 250
+score                     = 23269.0
+game_iterations           = 2990
+game_iterations_smooth    = 3130.9652803891795
+game_score                = 82.0
+game_score_smooth         = 88.2817245851868
+fps_smooth                = 716.0595673767677
+
+
+
+iterations                = 843656
+game_id                   = 251
+score                     = 23347.0
+game_iterations           = 1623
+game_iterations_smooth    = 3115.8856275852877
+game_score                = 78.0
+game_score_smooth         = 88.17890733933493
+fps_smooth                = 711.8352003479471
+
+
+
+iterations                = 849478
+game_id                   = 252
+score                     = 23447.0
+game_iterations           = 5822
+game_iterations_smooth    = 3142.9467713094346
+game_score                = 100.0
+game_score_smooth         = 88.29711826594158
+fps_smooth                = 734.3371530334293
+
+
+
+iterations                = 853385
+game_id                   = 253
+score                     = 23547.0
+game_iterations           = 3907
+game_iterations_smooth    = 3150.5873035963405
+game_score                = 100.0
+game_score_smooth         = 88.41414708328216
+fps_smooth                = 731.2962981995408
+
+
+
+iterations                = 856229
+game_id                   = 254
+score                     = 23647.0
+game_iterations           = 2844
+game_iterations_smooth    = 3147.521430560377
+game_score                = 100.0
+game_score_smooth         = 88.53000561244934
+fps_smooth                = 724.32938869679
+
+
+
+iterations                = 858539
+game_id                   = 255
+score                     = 23740.0
+game_iterations           = 2310
+game_iterations_smooth    = 3139.146216254773
+game_score                = 93.0
+game_score_smooth         = 88.57470555632486
+fps_smooth                = 713.2766148428803
+
+
+
+iterations                = 860048
+game_id                   = 256
+score                     = 23819.0
+game_iterations           = 1509
+game_iterations_smooth    = 3122.8447540922257
+game_score                = 79.0
+game_score_smooth         = 88.47895850076162
+fps_smooth                = 714.9309744397706
+
+
+
+iterations                = 863649
+game_id                   = 257
+score                     = 23921.0
+game_iterations           = 3601
+game_iterations_smooth    = 3127.6263065513035
+game_score                = 102.0
+game_score_smooth         = 88.61416891575401
+fps_smooth                = 740.622711482887
+
+
+
+iterations                = 866901
+game_id                   = 258
+score                     = 24016.0
+game_iterations           = 3252
+game_iterations_smooth    = 3128.8700434857906
+game_score                = 95.0
+game_score_smooth         = 88.67802722659647
+fps_smooth                = 722.287663432087
+
+
+
+iterations                = 868955
+game_id                   = 259
+score                     = 24096.0
+game_iterations           = 2054
+game_iterations_smooth    = 3118.1213430509324
+game_score                = 80.0
+game_score_smooth         = 88.5912469543305
+fps_smooth                = 719.3015997776838
+
+
+
+iterations                = 871718
+game_id                   = 260
+score                     = 24189.0
+game_iterations           = 2763
+game_iterations_smooth    = 3114.5701296204234
+game_score                = 93.0
+game_score_smooth         = 88.63533448478721
+fps_smooth                = 723.2528876947914
+
+
+
+iterations                = 874170
+game_id                   = 261
+score                     = 24284.0
+game_iterations           = 2452
+game_iterations_smooth    = 3107.944428324219
+game_score                = 95.0
+game_score_smooth         = 88.69898113993933
+fps_smooth                = 724.280230104619
+
+
+
+iterations                = 879924
+game_id                   = 262
+score                     = 24386.0
+game_iterations           = 5754
+game_iterations_smooth    = 3134.404984040977
+game_score                = 102.0
+game_score_smooth         = 88.83199132853994
+fps_smooth                = 741.1196412593948
+
+
+
+iterations                = 881666
+game_id                   = 263
+score                     = 24468.0
+game_iterations           = 1742
+game_iterations_smooth    = 3120.4809342005674
+game_score                = 82.0
+game_score_smooth         = 88.76367141525454
+fps_smooth                = 712.0771665154685
+
+
+
+iterations                = 886188
+game_id                   = 264
+score                     = 24590.0
+game_iterations           = 4522
+game_iterations_smooth    = 3134.4961248585614
+game_score                = 122.0
+game_score_smooth         = 89.09603470110198
+fps_smooth                = 707.0030186707897
+
+
+
+iterations                = 889299
+game_id                   = 265
+score                     = 24691.0
+game_iterations           = 3111
+game_iterations_smooth    = 3134.261163609976
+game_score                = 101.0
+game_score_smooth         = 89.21507435409097
+fps_smooth                = 737.7085408313691
+
+
+
+iterations                = 891803
+game_id                   = 266
+score                     = 24791.0
+game_iterations           = 2504
+game_iterations_smooth    = 3127.958551973876
+game_score                = 100.0
+game_score_smooth         = 89.32292361055006
+fps_smooth                = 732.2987737304526
+
+
+
+iterations                = 895061
+game_id                   = 267
+score                     = 24891.0
+game_iterations           = 3258
+game_iterations_smooth    = 3129.2589664541374
+game_score                = 100.0
+game_score_smooth         = 89.42969437444457
+fps_smooth                = 737.607328250396
+
+
+
+iterations                = 897693
+game_id                   = 268
+score                     = 24990.0
+game_iterations           = 2632
+game_iterations_smooth    = 3124.286376789596
+game_score                = 99.0
+game_score_smooth         = 89.52539743070011
+fps_smooth                = 728.3818345693822
+
+
+
+iterations                = 900662
+game_id                   = 269
+score                     = 25091.0
+game_iterations           = 2969
+game_iterations_smooth    = 3122.7335130217
+game_score                = 101.0
+game_score_smooth         = 89.64014345639312
+fps_smooth                = 738.3677426015337
+
+
+
+iterations                = 905179
+game_id                   = 270
+score                     = 25187.0
+game_iterations           = 4517
+game_iterations_smooth    = 3136.6761778914833
+game_score                = 96.0
+game_score_smooth         = 89.70374202182919
+fps_smooth                = 729.3221501621025
+
+
+
+iterations                = 909362
+game_id                   = 271
+score                     = 25289.0
+game_iterations           = 4183
+game_iterations_smooth    = 3147.1394161125686
+game_score                = 102.0
+game_score_smooth         = 89.82670460161088
+fps_smooth                = 738.5234796488742
+
+
+
+iterations                = 911725
+game_id                   = 272
+score                     = 25385.0
+game_iterations           = 2363
+game_iterations_smooth    = 3139.298021951443
+game_score                = 96.0
+game_score_smooth         = 89.88843755559476
+fps_smooth                = 724.5004026477702
+
+
+
+iterations                = 913745
+game_id                   = 273
+score                     = 25479.0
+game_iterations           = 2020
+game_iterations_smooth    = 3128.1050417319284
+game_score                = 94.0
+game_score_smooth         = 89.92955318003881
+fps_smooth                = 718.6691007010553
+
+
+
+iterations                = 918899
+game_id                   = 274
+score                     = 25599.0
+game_iterations           = 5154
+game_iterations_smooth    = 3148.363991314609
+game_score                = 120.0
+game_score_smooth         = 90.23025764823842
+fps_smooth                = 707.3459077927982
+
+
+
+iterations                = 922335
+game_id                   = 275
+score                     = 25722.0
+game_iterations           = 3436
+game_iterations_smooth    = 3151.240351401463
+game_score                = 123.0
+game_score_smooth         = 90.55795507175604
+fps_smooth                = 704.7611458745215
+
+
+
+iterations                = 924292
+game_id                   = 276
+score                     = 25813.0
+game_iterations           = 1957
+game_iterations_smooth    = 3139.2979478874486
+game_score                = 91.0
+game_score_smooth         = 90.56237552103848
+fps_smooth                = 715.876382825478
+
+
+
+iterations                = 930146
+game_id                   = 277
+score                     = 25914.0
+game_iterations           = 5854
+game_iterations_smooth    = 3166.444968408574
+game_score                = 101.0
+game_score_smooth         = 90.6667517658281
+fps_smooth                = 733.6997649529012
+
+
+
+iterations                = 934040
+game_id                   = 278
+score                     = 26014.0
+game_iterations           = 3894
+game_iterations_smooth    = 3173.720518724488
+game_score                = 100.0
+game_score_smooth         = 90.76008424816982
+fps_smooth                = 733.1827565508809
+
+
+
+iterations                = 935809
+game_id                   = 279
+score                     = 26085.0
+game_iterations           = 1769
+game_iterations_smooth    = 3159.6733135372433
+game_score                = 71.0
+game_score_smooth         = 90.56248340568811
+fps_smooth                = 716.5183869233013
+
+
+
+iterations                = 938958
+game_id                   = 280
+score                     = 26176.0
+game_iterations           = 3149
+game_iterations_smooth    = 3159.5665804018704
+game_score                = 91.0
+game_score_smooth         = 90.56685857163123
+fps_smooth                = 724.2736781736543
+
+
+
+iterations                = 943373
+game_id                   = 281
+score                     = 26277.0
+game_iterations           = 4415
+game_iterations_smooth    = 3172.120914597852
+game_score                = 101.0
+game_score_smooth         = 90.67118998591492
+fps_smooth                = 735.8280034442896
+
+
+
+iterations                = 950242
+game_id                   = 282
+score                     = 26376.0
+game_iterations           = 6869
+game_iterations_smooth    = 3209.089705451873
+game_score                = 99.0
+game_score_smooth         = 90.75447808605577
+fps_smooth                = 728.3852078058067
+
+
+
+iterations                = 953673
+game_id                   = 283
+score                     = 26467.0
+game_iterations           = 3431
+game_iterations_smooth    = 3211.3088083973544
+game_score                = 91.0
+game_score_smooth         = 90.7569333051952
+fps_smooth                = 723.0564685147374
+
+
+
+iterations                = 958429
+game_id                   = 284
+score                     = 26580.0
+game_iterations           = 4756
+game_iterations_smooth    = 3226.7557203133806
+game_score                = 113.0
+game_score_smooth         = 90.97936397214325
+fps_smooth                = 713.8285570476476
+
+
+
+iterations                = 960631
+game_id                   = 285
+score                     = 26670.0
+game_iterations           = 2202
+game_iterations_smooth    = 3216.5081631102466
+game_score                = 90.0
+game_score_smooth         = 90.96957033242182
+fps_smooth                = 717.5591203778537
+
+
+
+iterations                = 963279
+game_id                   = 286
+score                     = 26767.0
+game_iterations           = 2648
+game_iterations_smooth    = 3210.823081479144
+game_score                = 97.0
+game_score_smooth         = 91.0298746290976
+fps_smooth                = 722.5213114037831
+
+
+
+iterations                = 965259
+game_id                   = 287
+score                     = 26855.0
+game_iterations           = 1980
+game_iterations_smooth    = 3198.5148506643527
+game_score                = 88.0
+game_score_smooth         = 90.99957588280662
+fps_smooth                = 715.0690413644869
+
+
+
+iterations                = 970044
+game_id                   = 288
+score                     = 26953.0
+game_iterations           = 4785
+game_iterations_smooth    = 3214.379702157709
+game_score                = 98.0
+game_score_smooth         = 91.06958012397857
+fps_smooth                = 726.9914735947065
+
+
+
+iterations                = 973792
+game_id                   = 289
+score                     = 27055.0
+game_iterations           = 3748
+game_iterations_smooth    = 3219.715905136132
+game_score                = 102.0
+game_score_smooth         = 91.17888432273878
+fps_smooth                = 740.8279693028317
+
+
+
+iterations                = 981663
+game_id                   = 290
+score                     = 27148.0
+game_iterations           = 7871
+game_iterations_smooth    = 3266.2287460847706
+game_score                = 93.0
+game_score_smooth         = 91.1970954795114
+fps_smooth                = 726.5924626199312
+
+
+
+iterations                = 983716
+game_id                   = 291
+score                     = 27244.0
+game_iterations           = 2053
+game_iterations_smooth    = 3254.096458623923
+game_score                = 96.0
+game_score_smooth         = 91.24512452471629
+fps_smooth                = 724.5417841714288
+
+
+
+iterations                = 987112
+game_id                   = 292
+score                     = 27346.0
+game_iterations           = 3396
+game_iterations_smooth    = 3255.5154940376838
+game_score                = 102.0
+game_score_smooth         = 91.35267327946912
+fps_smooth                = 740.1019168374228
+
+
+
+iterations                = 990949
+game_id                   = 293
+score                     = 27448.0
+game_iterations           = 3837
+game_iterations_smooth    = 3261.330339097307
+game_score                = 102.0
+game_score_smooth         = 91.45914654667442
+fps_smooth                = 738.5378982118146
+
+
+
+iterations                = 993957
+game_id                   = 294
+score                     = 27541.0
+game_iterations           = 3008
+game_iterations_smooth    = 3258.7970357063336
+game_score                = 93.0
+game_score_smooth         = 91.47455508120768
+fps_smooth                = 718.599971536937
+
+
+
+iterations                = 996371
+game_id                   = 295
+score                     = 27636.0
+game_iterations           = 2414
+game_iterations_smooth    = 3250.34906534927
+game_score                = 95.0
+game_score_smooth         = 91.50980953039561
+fps_smooth                = 724.4732742313572
+
+
+
+iterations                = 998986
+game_id                   = 296
+score                     = 27735.0
+game_iterations           = 2615
+game_iterations_smooth    = 3243.995574695777
+game_score                = 99.0
+game_score_smooth         = 91.58471143509165
+fps_smooth                = 725.4462580993973
 
 
 

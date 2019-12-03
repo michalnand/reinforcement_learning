@@ -6,7 +6,7 @@ class Config():
         self.entropy  = 0.00001
 
         self.update_rate    = 256
-        self.learning_rate  = 0.0001
+        self.learning_rate  = 0.01
         
 
 
