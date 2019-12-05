@@ -36,7 +36,7 @@ save_path = "./models/atari_invaders_dqn/"
 env = gym.make("SpaceInvadersNoFrameskip-v4") 
 '''
 
-
+'''
 #Pacman
 import models.atari_pacman_dqn.src.model
 import models.atari_pacman_dqn.src.config
@@ -45,7 +45,7 @@ model  = models.atari_pacman_dqn.src.model
 config = models.atari_pacman_dqn.src.config.Config()
 save_path = "./models/atari_pacman_dqn/"
 env = gym.make("MsPacmanNoFrameskip-v4") 
-
+'''
 
 '''
 #Pong
@@ -58,7 +58,7 @@ save_path = "./models/atari_pong_dqn/"
 env = gym.make("PongNoFrameskip-v4") 
 '''
 
-'''
+
 #Qbert
 import models.atari_qbert_dqn.src.model
 import models.atari_qbert_dqn.src.config
@@ -67,7 +67,7 @@ model  = models.atari_qbert_dqn.src.model
 config = models.atari_qbert_dqn.src.config.Config()
 save_path = "./models/atari_qbert_dqn/"
 env = gym.make("QbertNoFrameskip-v4") 
-'''
+
 
 '''
 #seaquest

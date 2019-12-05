@@ -8,7 +8,7 @@ class Agent():
     def __init__(self, env, model, config, save_path = None, save_stats = True):
         self.env = env
         self.save_path = save_path
-
+ 
         self.gamma    = config.gamma
         self.entropy  = config.entropy
         self.update_rate = config.update_rate
@@ -86,7 +86,7 @@ class Agent():
         return e_x/e_x.sum()
 
     def compute_q_vals(self, rewards, device):
-        result = numpy.zeros(len(rewards))
+        result = numpy.zeros(len(rewards), dtype=numpy.float32)
 
         sum = 0.0
         for i in reversed(range(len(rewards))):
@@ -94,27 +94,47 @@ class Agent():
             sum+= rewards[i]
             result[i] = sum
 
-        return torch.from_numpy(result).to(self.model.device)
+        result = torch.from_numpy(result).to(self.model.device)
+        return result
+
+    def actions_one_hot(self, actions):
+        actions_one_hot = torch.zeros((len(actions), self.actions_count), requires_grad=False)
+
+        for i in range(len(actions)):
+            actions_one_hot[i][actions[i]] = 1.0
+
+        return actions_one_hot.to(self.model.device)
+
+    def compute_entropy(self, logits):
+        b = torch.nn.functional.softmax(logits, dim=1) * torch.nn.functional.log_softmax(logits, dim=1)
+        b = -1.0*b.mean()
+        return b
 
     def train_model(self):
         states, actions, rewards, done = self.buffer.get(self.model.device)
 
         q_vals = self.compute_q_vals(rewards, self.model.device)
                 
-        logits, values = self.model(states)
+        actor, critic = self.model(states)
 
-        probs = torch.nn.functional.softmax(logits, dim = 1)
-        log_prob = torch.log(probs)
+        log_prob = torch.nn.functional.log_softmax(actor, dim = 1)
 
-        log_prob_actions = q_vals*log_prob[range(len(states)), actions]
+        advantage = (q_vals - critic)
+        log_prob_actions = advantage*log_prob[range(len(states)), actions]
 
-        loss = -log_prob_actions.mean() - 0.01*(-probs.mul(probs.log2()).mean())
+        loss_actor      = -log_prob_actions.mean()
+        loss_critic     = (advantage**2).mean()
+        loss_entropy    = -0.1*self.compute_entropy(actor)
 
-        print("LOSS = ", loss, "\n\n\n")
+        
 
         self.optimizer.zero_grad()
+        loss = loss_actor + loss_critic + loss_entropy
         loss.backward()
         self.optimizer.step()
+
+        print(loss_actor.detach().cpu().numpy(), loss_critic.detach().cpu().numpy(), loss_entropy.detach().cpu().numpy(), "\n\n\n")
+
 
 
 
