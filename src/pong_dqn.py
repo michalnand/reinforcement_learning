@@ -1,9 +1,8 @@
-import common.env_atari
 import agents.dqn
 
 import common.env_pong
 
-env = common.env_pong.Create(size= 64)
+env = common.env_pong.Create(size= 32)
 
 
 

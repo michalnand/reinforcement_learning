@@ -1,9 +1,6 @@
 import numpy
-import collections
 import torch
 
-
-Transition = collections.namedtuple("Transition", ("observation", "action", "reward",  "done"))
 
 class Buffer():
 
@@ -12,10 +9,14 @@ class Buffer():
         self.clear()
 
     def clear(self):
-        self.buffer = []
+        self.observations_v = []
+        self.actions_v      = []
+        self.rewards_v      = []
+        self.dones_v        = []
+
 
     def length(self):
-        return len(self.buffer)
+        return len(self.observations_v)
 
     def is_full(self):
         if self.length() >= self.size:
@@ -23,33 +24,20 @@ class Buffer():
         else:
             return False
 
-    def add(self, observation, action, reward, done):
+    def add(self, observation, action, reward, done, device):
         if self.is_full() == False:
-            self.buffer.append(Transition(observation.copy(), action, reward, done))
+            self.observations_v.append(observation.copy())
+            self.actions_v.append(action)
+            self.rewards_v.append(reward)
+            self.dones_v.append(done)
 
     def _print(self):
         for i in range(self.length()):
-            #print(self.buffer[i].observation, end = " ")
-            print(self.buffer[i].action, end = " ")
-            print(self.buffer[i].reward, end = " ")
-            print(self.buffer[i].done, end = " ")
+            #print(self.observations_v[i], end = " ")
+            print(self.actions_v[i], end = " ")
+            print(self.rewards_v[i], end = " ")
+            print(self.dones_v[i], end = " ")
             print("\n")
 
     def get(self, device):
-        batch_size          = len(self.buffer)
-
-        observation_shape   = self.buffer[0].observation.shape
-        state_shape         = (batch_size, ) + observation_shape[0:]
-
-        observation  = torch.zeros(state_shape,  dtype=torch.float32).to(device)
-        action       = numpy.zeros(batch_size, dtype=int)
-        reward       = numpy.zeros(batch_size)
-        done         = numpy.zeros(batch_size, dtype=bool)
-
-        for n in range(batch_size):
-            observation[n]  = torch.from_numpy(self.buffer[n].observation).to(device)
-            action[n]       = self.buffer[n].action
-            reward[n]       = self.buffer[n].reward
-            done[n]         = self.buffer[n].done
-
-        return observation, action, reward, done
+        return torch.FloatTensor(self.observations_v).to(device), self.actions_v, self.rewards_v, self.dones_v

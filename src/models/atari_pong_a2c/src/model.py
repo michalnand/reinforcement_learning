@@ -21,9 +21,9 @@ class Model(torch.nn.Module):
 
         ratio           = 2**4
 
-        fc_inputs_count = 64*((fc_input_width)//ratio)*((fc_input_height)//ratio)
+        fc_inputs_count = ((fc_input_width)//ratio)*((fc_input_height)//ratio)
  
-        self.features_layers = [ 
+        self.layers_features = [ 
                                 nn.Conv2d(input_channels, 32, kernel_size=3, stride=1, padding=1),
                                 nn.ReLU(), 
                                 nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
@@ -40,68 +40,54 @@ class Model(torch.nn.Module):
                                 nn.ReLU(),
                                 nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
                                 
-                                Flatten() 
+                                Flatten(),
                             ]
 
         self.layers_policy = [
-                                nn.Linear(fc_inputs_count, 512),
+                                nn.Linear(fc_inputs_count*64, 512),
                                 nn.ReLU(),                      
-                                nn.Linear(512, outputs_count),
-                                nn.Softmax()
+                                nn.Linear(512, outputs_count)
                             ]
 
-        self.layers_critic = [ 
-                                nn.Linear(fc_inputs_count, 512),
+        self.layers_value = [
+                                nn.Linear(fc_inputs_count*64, 512),
                                 nn.ReLU(),                      
                                 nn.Linear(512, 1)
                             ]
 
+        for i in range(len(self.layers_features)):
+            if hasattr(self.layers_features[i], "weight"):
+                torch.nn.init.xavier_uniform_(self.layers_features[i].weight)
 
+        self.model_features = nn.Sequential(*self.layers_features)
+        self.model_policy   = nn.Sequential(*self.layers_policy)
+        self.model_value    = nn.Sequential(*self.layers_value)
 
-
-
-        for i in range(len(self.features_layers)):
-            if hasattr(self.features_layers[i], "weight"):
-                torch.nn.init.xavier_uniform_(self.features_layers[i].weight)
-
-
-        self.model_features = nn.Sequential(*self.features_layers)
         self.model_features.to(self.device)
-
-        self.model_policy = nn.Sequential(*self.layers_policy)
         self.model_policy.to(self.device)
-
-        self.model_critic = nn.Sequential(*self.layers_critic)
-        self.model_critic.to(self.device)
-
+        self.model_value.to(self.device)
 
         print(self.model_features)
         print(self.model_policy)
-        print(self.model_critic)
-
+        print(self.model_value)
 
     def forward(self, state):
-        features_output =  self.model_features(state)
-
-        policy_output = self.model_policy(features_output)
-        critic_output = self.model_critic(features_output)
-
-      
-        return policy_output, critic_output
+        features = self.model_features.forward(state)
+        return self.model_policy.forward(features), self.model_value.forward(features)
 
     def get_policy(self, state):
         with torch.no_grad():
-            state_dev       = torch.tensor(state, dtype=torch.float32).detach().to(self.device).unsqueeze(0)
-            policy_output, critic_output  = self.model.forward(state_dev)
+            state_dev  = torch.tensor(state, dtype=torch.float32).detach().to(self.device).unsqueeze(0)
+            policy, _  = self.forward(state_dev)
 
-            return policy_output[0].to("cpu").detach().numpy()
+            return policy[0].to("cpu").detach().numpy()
     
     def save(self, path):
         print("saving to ", path)
 
         torch.save(self.model_features.state_dict(), path + "trained/model_features.pt")
         torch.save(self.model_policy.state_dict(), path + "trained/model_policy.pt")
-        torch.save(self.model_critic.state_dict(), path + "trained/model_critic.pt")
+        torch.save(self.model_value.state_dict(), path + "trained/model_value.pt")
 
     def load(self, path):
         
@@ -113,6 +99,6 @@ class Model(torch.nn.Module):
         self.model_policy.load_state_dict(torch.load(path + "trained/model_policy.pt"))
         self.model_policy.eval() 
 
-        self.model_critic.load_state_dict(torch.load(path + "trained/model_critic.pt"))
-        self.model_critic.eval()  
+        self.model_value.load_state_dict(torch.load(path + "trained/model_value.pt"))
+        self.model_value.eval()  
     

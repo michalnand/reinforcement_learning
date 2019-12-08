@@ -57,10 +57,10 @@ class Model(torch.nn.Module):
         input_width     = self.input_shape[2]    
 
 
-        layer_0_kernels_count = 128
-        layer_1_kernels_count = 128
-        layer_2_kernels_count = 128
-        layer_3_kernels_count = 128
+        layer_0_kernels_count = 32
+        layer_1_kernels_count = 32
+        layer_2_kernels_count = 64
+        layer_3_kernels_count = 64
 
         scale_ratio           = 2**4
 

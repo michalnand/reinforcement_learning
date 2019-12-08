@@ -13,7 +13,7 @@ class Create():
 
         self.board          = None
         self.reward         = 0
-        self.done           = False
+        self.done           = [False, False]
         self.info           = None
         self.actions_count  = 0
 
@@ -96,7 +96,7 @@ class Create():
 
     def step(self, action):
         self.reward = 0.0
-        self.done = False
+        self.done   = [False, False]
         self.info = "pong"
 
         if action == 0:
@@ -153,7 +153,8 @@ class Create():
         if (self.player_0_points + self.player_1_points >= 64):
             self.player_0_points = 0
             self.player_1_points = 0
-            self.done = True
+            self.done[0] = True
+            self.done[1] = True
 
 
         if self.ball_y <= 0:
@@ -181,10 +182,10 @@ class Create():
 
         self.board.fill(0.0)
 
-        self.observation_space = numpy.zeros((1, 3, self.height, self.width))
-        self.observation_space[0][0][ball_y][ball_x]                 = 1.0
-        self.observation_space[0][1][player_0][0]                     = 1.0
-        self.observation_space[0][2][player_1][self.width-1]          = 1.0
+        self.observation_space = numpy.zeros((3, self.height, self.width))
+        self.observation_space[0][ball_y][ball_x]                 = 1.0
+        self.observation_space[1][player_0][0]                     = 1.0
+        self.observation_space[2][player_1][self.width-1]          = 1.0
 
 
     def __saturate(self, value, min, max):
