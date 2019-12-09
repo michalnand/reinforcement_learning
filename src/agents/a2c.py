@@ -86,19 +86,28 @@ class Agent():
         return e_x/e_x.sum()
 
 
-    def compute_q_vals(self, rewards, done, device):
+    def compute_q_vals(self, rewards, values, done, device):
 
         result = numpy.zeros(len(rewards))
         
-
-        for i in reversed(range(len(rewards) - 1)):
-            if done[i]:
+        '''
+        for n in reversed(range(len(rewards) - 1)):
+            if done[n]:
                 gamma = 0.0
             else:
                 gamma = self.gamma
 
-            result[i] = rewards[i] + gamma*rewards[i+1]
-            
+            result[n] = rewards[n] + gamma*rewards[n+1]
+        ''' 
+        
+        for n in range(len(rewards) - 1):
+
+            if done[n]:
+                gamma = 0.0
+            else:
+                gamma = self.gamma
+
+            result[n] = rewards[n] + values[n + 1]*gamma
         
         result = torch.FloatTensor(result).to(device)
         result = result.reshape(len(rewards), 1)
@@ -114,7 +123,7 @@ class Agent():
 
         logits_v, values_v = self.model(states_v)
 
-        values_target_v = self.compute_q_vals(rewards_v, done_v, self.model.device)
+        values_target_v = self.compute_q_vals(rewards_v, values_v.detach().cpu().numpy(), done_v, self.model.device)
 
         '''
         compute critic loss, as MSE : L = T - V(s)
@@ -143,8 +152,8 @@ class Agent():
         loss_v = loss_policy_v + loss_entropy_v + loss_value_v
         loss_v.backward()
 
-        #for param in self.model.parameters():
-        #    param.grad.data.clamp_(-10.0, 10.0)
+        for param in self.model.parameters():
+            param.grad.data.clamp_(-10.0, 10.0)
         self.optimizer.step() 
 
         print("\n\n")
