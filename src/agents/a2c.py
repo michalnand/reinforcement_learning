@@ -42,6 +42,17 @@ class Agent():
     def main(self):              
         policy  = self.model.get_policy(self.observation)
 
+        '''
+        action_probs = F.softmax(self.action_layer(state))
+        action_distribution = Categorical(action_probs)
+        action = action_distribution.sample()
+        
+        self.logprobs.append(action_distribution.log_prob(action))
+        self.state_values.append(state_value)
+        
+        return action.item()
+        '''
+
         probs = self.softmax(policy)
         action = numpy.random.choice(len(probs), p=probs)
         
@@ -86,19 +97,9 @@ class Agent():
         return e_x/e_x.sum()
 
 
-    def compute_q_vals(self, rewards, values, done, device):
+    def compute_q_vals(self, rewards, done, device):
 
         result = numpy.zeros(len(rewards))
-        
-        '''
-        for n in reversed(range(len(rewards) - 1)):
-            if done[n]:
-                gamma = 0.0
-            else:
-                gamma = self.gamma
-
-            result[n] = rewards[n] + gamma*rewards[n+1]
-        ''' 
         
         for n in range(len(rewards) - 1):
 
@@ -107,7 +108,10 @@ class Agent():
             else:
                 gamma = self.gamma
 
-            result[n] = rewards[n] + values[n + 1]*gamma
+            result[n] = rewards[n] + result[n + 1]*gamma
+
+        result = result - result.mean()
+        result = result/(result.std() + 0.00001)
         
         result = torch.FloatTensor(result).to(device)
         result = result.reshape(len(rewards), 1)
@@ -123,20 +127,21 @@ class Agent():
 
         logits_v, values_v = self.model(states_v)
 
-        values_target_v = self.compute_q_vals(rewards_v, values_v.detach().cpu().numpy(), done_v, self.model.device)
+        values_target_v = self.compute_q_vals(rewards_v, done_v, self.model.device)
 
         '''
         compute critic loss, as MSE : L = T - V(s)
         '''
-        loss_value_v = torch.nn.functional.mse_loss(values_v, values_target_v)
+        loss_value_v    = torch.nn.functional.mse_loss(values_v, values_target_v)
+        critic_loss     = (values_target_v - values_v).pow(2).mean()
 
         '''
         compute actor loss, L = log(pi(s, a))*(T - V(s))
         log softmax is better for numerical stability
         '''
         log_prob_v          = torch.nn.functional.log_softmax(logits_v, dim = 1)
-        advance_v           = values_target_v - values_v.detach()
-        log_prob_actions_v  = advance_v*log_prob_v[range(self.batch_size), actions_v]
+        advantage_v         = values_target_v - values_v.detach()
+        log_prob_actions_v  = advantage_v*log_prob_v[range(self.batch_size), actions_v]
         loss_policy_v       = -log_prob_actions_v.mean()
 
 
