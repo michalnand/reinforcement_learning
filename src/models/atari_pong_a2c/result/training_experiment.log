@@ -1,33 +1,121 @@
-iterations                = 941
+iterations                = 939
 game_id                   = 1
-score                     = -21.0
-game_iterations           = 941
-game_iterations_smooth    = 941.0
-game_score                = -21.0
-game_score_smooth         = -21.0
-fps_smooth                = 321.29361441959213
+score                     = -19.0
+game_iterations           = 939
+game_iterations_smooth    = 939.0
+game_score                = -19.0
+game_score_smooth         = -19.0
+fps_smooth                = 316.04521334705424
 
 
 
-iterations                = 1761
+iterations                = 1900
 game_id                   = 2
-score                     = -41.0
-game_iterations           = 820
-game_iterations_smooth    = 939.7900000000001
+score                     = -39.0
+game_iterations           = 961
+game_iterations_smooth    = 939.22
 game_score                = -20.0
-game_score_smooth         = -20.99
-fps_smooth                = 315.58960178057674
+game_score_smooth         = -19.009999999999998
+fps_smooth                = 319.1011646419735
 
 
 
-iterations                = 2624
+iterations                = 2753
 game_id                   = 3
 score                     = -60.0
-game_iterations           = 863
-game_iterations_smooth    = 939.0221
+game_iterations           = 853
+game_iterations_smooth    = 938.3578
+game_score                = -21.0
+game_score_smooth         = -19.029899999999998
+fps_smooth                = 326.5789967294684
+
+
+
+iterations                = 3561
+game_id                   = 4
+score                     = -81.0
+game_iterations           = 808
+game_iterations_smooth    = 937.054222
+game_score                = -21.0
+game_score_smooth         = -19.049601
+fps_smooth                = 325.33792133687086
+
+
+
+iterations                = 4503
+game_id                   = 5
+score                     = -100.0
+game_iterations           = 942
+game_iterations_smooth    = 937.1036797799999
 game_score                = -19.0
-game_score_smooth         = -20.9701
-fps_smooth                = 300.99474413674454
+game_score_smooth         = -19.04910499
+fps_smooth                = 278.6519057520601
+
+
+
+iterations                = 5319
+game_id                   = 6
+score                     = -120.0
+game_iterations           = 816
+game_iterations_smooth    = 935.8926429821998
+game_score                = -20.0
+game_score_smooth         = -19.0586139401
+fps_smooth                = 327.3858579948021
+
+
+
+iterations                = 6253
+game_id                   = 7
+score                     = -141.0
+game_iterations           = 934
+game_iterations_smooth    = 935.8737165523779
+game_score                = -21.0
+game_score_smooth         = -19.078027800699
+fps_smooth                = 332.7302809594438
+
+
+
+iterations                = 7010
+game_id                   = 8
+score                     = -162.0
+game_iterations           = 757
+game_iterations_smooth    = 934.0849793868542
+game_score                = -21.0
+game_score_smooth         = -19.09724752269201
+fps_smooth                = 328.8304462894785
+
+
+
+iterations                = 7767
+game_id                   = 9
+score                     = -183.0
+game_iterations           = 757
+game_iterations_smooth    = 932.3141295929858
+game_score                = -21.0
+game_score_smooth         = -19.11627504746509
+fps_smooth                = 318.5789420092934
+
+
+
+iterations                = 8695
+game_id                   = 10
+score                     = -203.0
+game_iterations           = 928
+game_iterations_smooth    = 932.2709882970559
+game_score                = -20.0
+game_score_smooth         = -19.12511229699044
+fps_smooth                = 321.9429729670736
+
+
+
+iterations                = 9517
+game_id                   = 11
+score                     = -224.0
+game_iterations           = 822
+game_iterations_smooth    = 931.1682784140853
+game_score                = -21.0
+game_score_smooth         = -19.143861174020536
+fps_smooth                = 319.1114336431085
 
 
 
