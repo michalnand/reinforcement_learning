@@ -73,6 +73,7 @@ class Agent():
 
  
         if len(self.probs_b) >= self.batch_size:
+            self.optimizer.zero_grad()
 
             dis_reward = 0
             target_value_t = []
