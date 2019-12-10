@@ -4,6 +4,8 @@ import torch
 import agents.agent_stats
 import common.buffer_a2c
 
+from torch.distributions import Categorical
+
 class Agent():
     def __init__(self, env, model, config, save_path = None, save_stats = True):
         self.env = env
@@ -42,21 +44,12 @@ class Agent():
     def main(self):              
         policy  = self.model.get_policy(self.observation)
 
-        '''
-        action_probs = F.softmax(self.action_layer(state))
-        action_distribution = Categorical(action_probs)
-        action = action_distribution.sample()
-        
-        self.logprobs.append(action_distribution.log_prob(action))
-        self.state_values.append(state_value)
-        
-        return action.item()
-        '''
 
-        probs = self.softmax(policy)
-        action = numpy.random.choice(len(probs), p=probs)
+        action_probs = torch.nn.functional.softmax(torch.FloatTensor(policy))
+        action_distribution = Categorical(action_probs)
+        action = action_distribution.sample()     
         
-        self.observation, reward, done, _ = self.env.step(action)
+        self.observation, reward, done, _ = self.env.step(action.item())
 
         round_done = done[0]
         game_done  = done[1] 
@@ -67,7 +60,7 @@ class Agent():
                 self.train_model()
                 self.buffer.clear()
             else:
-                self.buffer.add(self.observation, action, reward, round_done, self.model.device)
+                self.buffer.add(self.observation, action_distribution.log_prob(action), reward, round_done, self.model.device)
 
 
         if hasattr(self, "training_stats") and hasattr(self, "testing_stats"):
@@ -123,7 +116,7 @@ class Agent():
     def train_model(self):
         self.optimizer.zero_grad()
 
-        states_v, actions_v, rewards_v, done_v = self.buffer.get(self.model.device)
+        states_v, log_actions_v, rewards_v, done_v = self.buffer.get(self.model.device)
 
         logits_v, values_v = self.model(states_v)
 
@@ -141,7 +134,7 @@ class Agent():
         '''
         log_prob_v          = torch.nn.functional.log_softmax(logits_v, dim = 1)
         advantage_v         = values_target_v - values_v.detach()
-        log_prob_actions_v  = advantage_v*log_prob_v[range(self.batch_size), actions_v]
+        log_prob_actions_v  = advantage_v*log_actions_v #log_prob_v[range(self.batch_size), actions_v]
         loss_policy_v       = -log_prob_actions_v.mean()
 
 

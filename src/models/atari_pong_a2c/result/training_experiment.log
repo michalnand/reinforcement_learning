@@ -1,66 +1,11 @@
-iterations                = 940
+iterations                = 923
 game_id                   = 1
-score                     = -20.0
-game_iterations           = 940
-game_iterations_smooth    = 940.0
-game_score                = -20.0
-game_score_smooth         = -20.0
-fps_smooth                = 327.4703700331884
-
-
-
-iterations                = 2158
-game_id                   = 2
-score                     = -39.0
-game_iterations           = 1218
-game_iterations_smooth    = 942.78
-game_score                = -19.0
-game_score_smooth         = -19.990000000000002
-fps_smooth                = 331.6175154363288
-
-
-
-iterations                = 2919
-game_id                   = 3
-score                     = -60.0
-game_iterations           = 761
-game_iterations_smooth    = 940.9621999999999
+score                     = -21.0
+game_iterations           = 923
+game_iterations_smooth    = 923.0
 game_score                = -21.0
-game_score_smooth         = -20.000100000000003
-fps_smooth                = 333.8473464592662
-
-
-
-iterations                = 3907
-game_id                   = 4
-score                     = -79.0
-game_iterations           = 988
-game_iterations_smooth    = 941.4325779999999
-game_score                = -19.0
-game_score_smooth         = -19.990099000000004
-fps_smooth                = 328.7500298152695
-
-
-
-iterations                = 4819
-game_id                   = 5
-score                     = -99.0
-game_iterations           = 912
-game_iterations_smooth    = 941.1382522199999
-game_score                = -20.0
-game_score_smooth         = -19.990198010000004
-fps_smooth                = 319.1428516098465
-
-
-
-iterations                = 5765
-game_id                   = 6
-score                     = -120.0
-game_iterations           = 946
-game_iterations_smooth    = 941.1868696977999
-game_score                = -21.0
-game_score_smooth         = -20.000296029900003
-fps_smooth                = 328.7559165794117
+game_score_smooth         = -21.0
+fps_smooth                = 327.3777055670231
 
 
 

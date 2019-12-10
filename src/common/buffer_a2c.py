@@ -40,4 +40,4 @@ class Buffer():
             print("\n")
 
     def get(self, device):
-        return torch.FloatTensor(self.observations_v).to(device), self.actions_v, self.rewards_v, self.dones_v
+        return torch.FloatTensor(self.observations_v).to(device),  torch.FloatTensor(self.actions_v).to(device), self.rewards_v, self.dones_v

@@ -95,7 +95,11 @@ class Agent():
         self.optimizer.zero_grad()
 
         loss = self.loss(output, target)
-    
+
+        loss = torch.nn.MSELoss(q_predicted, q_target)
+        loss.backward()
+        optimizer.step()
+
         loss.backward()
         for param in self.model.parameters():
             param.grad.data.clamp_(-10.0, 10.0)
