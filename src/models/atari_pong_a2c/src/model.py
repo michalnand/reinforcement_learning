@@ -10,7 +10,8 @@ class Model(torch.nn.Module):
     def __init__(self, input_shape, outputs_count):
         super(Model, self).__init__()
 
-        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        #self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self.device = "cpu" 
 
         self.input_shape    = input_shape
         self.outputs_count  = outputs_count

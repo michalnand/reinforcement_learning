@@ -97,8 +97,8 @@ class Agent():
             for logits, value, action, target_value in zip(self.logits_b, self.state_values_b, self.action_b, target_value_t):
                 advantage       = target_value  - value.item()
 
-                probs     = torch.nn.functional.softmax(logits)
-                log_probs = torch.nn.functional.log_softmax(logits)
+                probs     = torch.nn.functional.softmax(logits, dim = 0)
+                log_probs = torch.nn.functional.log_softmax(logits, dim = 0)
 
                 '''
                 compute critic loss, as MSE : L = (T - V(s))^2
@@ -130,7 +130,7 @@ class Agent():
             '''
 
             loss = loss_value + loss_policy  + loss_entropy
-            
+            loss.to(self.model.device)
 
             loss.backward()
 
