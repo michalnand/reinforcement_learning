@@ -117,7 +117,9 @@ class Agent():
                 '''
                 loss_entropy+= self.entropy_beta*(probs*log_probs).sum()
 
-                
+            loss_value.to(self.model.device)
+            loss_policy.to(self.model.device)
+            loss_entropy.to(self.model.device)
 
             '''
             print("\n\n")
