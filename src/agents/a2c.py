@@ -87,6 +87,8 @@ class Agent():
 
                 v = self.rewards_b[n] + gamma*v
                 target_value_t[n] = v
+
+            target_value_t.to(self.model.device)
             
 
             loss_value  = 0
