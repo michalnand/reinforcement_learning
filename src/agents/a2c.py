@@ -33,9 +33,9 @@ class Agent():
             self.training_stats = agents.agent_stats.AgentStats(self.save_path + "result/training")
             self.testing_stats  = agents.agent_stats.AgentStats(self.save_path + "result/testing")
 
-        self.probs_b            = []
-        self.logprobs_b         = []
+        self.logits_b           = []
         self.state_values_b     = []
+        self.action_b           = []
         self.rewards_b          = []
         self.done_b             = []
 
@@ -48,10 +48,10 @@ class Agent():
     def main(self):              
 
         observation_t  = torch.tensor(self.observation, dtype=torch.float32).detach().to(self.model.device).unsqueeze(0)
-        policy_t, value_t  = self.model.forward(observation_t)
+        logits_t, value_t  = self.model.forward(observation_t)
 
 
-        action_probs_t        = torch.nn.functional.softmax(policy_t, dim=1)
+        action_probs_t        = torch.nn.functional.softmax(logits_t, dim=1)
         action_distribution_t = torch.distributions.Categorical(action_probs_t)
         action_t              = action_distribution_t.sample()
        
@@ -65,60 +65,67 @@ class Agent():
 
 
         if self.enabled_training:
-            self.probs_b.append(action_probs_t)
-            self.logprobs_b.append(action_distribution_t.log_prob(action_t))
-            self.state_values_b.append(value_t)
+            self.logits_b.append(logits_t.squeeze(0))
+            self.state_values_b.append(value_t.squeeze(0)[0])
+            self.action_b.append(action_t.item())
             self.rewards_b.append(reward)
             self.done_b.append(done)
 
  
-        if len(self.probs_b) >= self.batch_size:
-            self.optimizer.zero_grad()
+        if len(self.logits_b) >= self.batch_size:
 
-            dis_reward = 0
-            target_value_t = []
-            for reward in self.rewards_b[::-1]:
-                dis_reward = reward + self.gamma * dis_reward
-                target_value_t.insert(0, dis_reward)
-                
-        
-            loss = 0
+            size = len(self.logits_b)
+
+            target_value_t = torch.FloatTensor(size)
+
+            v = 0.0
+            for n in reversed(range(size)):
+                if self.done_b:
+                    gamma = 0.0
+                else:
+                    gamma = self.gamma
+
+                v = self.rewards_b[n] + gamma*v
+                target_value_t[n] = v
+            
 
             loss_value  = 0
             loss_policy = 0
             loss_entropy= 0
-            for prob, logprob, value, target_value in zip(self.probs_b, self.logprobs_b, self.state_values_b, target_value_t):
+            for logits, value, action, target_value in zip(self.logits_b, self.state_values_b, self.action_b, target_value_t):
                 advantage       = target_value  - value.item()
 
+                probs     = torch.nn.functional.softmax(logits)
+                log_probs = torch.nn.functional.log_softmax(logits)
 
                 '''
                 compute critic loss, as MSE : L = (T - V(s))^2
                 '''
-                loss_value+= (target_value - value)**2 
+                loss_value+= (target_value - value)**2.0
 
                 '''
                 compute actor loss, L = log(pi(s, a))*(T - V(s)) = log(pi(s, a))*A
                 TODO : log softmax is better for numerical stability
                 '''
-                loss_policy+= -logprob * advantage
+                loss_policy+= -log_probs[action]*advantage
 
                 '''
                 compute entropy loss, to avoid greedy strategy
                 L = beta*H(pi(s)) = beta*pi(s)*log(pi(s))
                 '''
-                loss_entropy+= self.entropy_beta*(prob*logprob).sum()
+                loss_entropy+= self.entropy_beta*(probs*log_probs).sum()
 
                 
 
-
+            '''
             print("\n\n")
-            print("loss_value_v = ", loss_value.detach().cpu().numpy())
-            print("loss_policy_v = ", loss_policy.detach().cpu().numpy())
+            print("loss_value_v   = ", loss_value.detach().cpu().numpy())
+            print("loss_policy_v  = ", loss_policy.detach().cpu().numpy())
             print("loss_entropy_v = ", loss_entropy.detach().cpu().numpy())
             print("\n\n")
+            '''
 
-
-            loss = loss_value + loss_policy + loss_entropy
+            loss = loss_value + loss_policy  + loss_entropy
             
 
             loss.backward()
@@ -127,10 +134,12 @@ class Agent():
                 param.grad.data.clamp_(-10.0, 10.0)
             self.optimizer.step() 
 
+            self.optimizer.zero_grad()
 
-            self.probs_b            = []
-            self.logprobs_b         = []
+ 
+            self.logits_b           = []
             self.state_values_b     = []
+            self.action_b           = []
             self.rewards_b          = []
             self.done_b             = []
 

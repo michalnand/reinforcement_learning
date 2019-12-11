@@ -10,7 +10,7 @@ class Model(torch.nn.Module):
     def __init__(self, input_shape, outputs_count):
         super(Model, self).__init__()
 
-        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self.device = "cpu" #torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
         self.input_shape    = input_shape
         self.outputs_count  = outputs_count
@@ -64,14 +64,6 @@ class Model(torch.nn.Module):
 
       
         return policy_output, critic_output
-
-
-    def get_output(self, state):
-        with torch.no_grad():
-            state_dev = torch.tensor(state, dtype=torch.float32).detach().to(self.device).unsqueeze(0)
-            policy_output, critic_output  = self.forward(state_dev)
-
-            return policy_output[0].to("cpu").detach().numpy(), critic_output[0].to("cpu").detach().numpy()
     
     def save(self, path):
         print("saving to ", path)

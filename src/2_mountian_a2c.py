@@ -50,7 +50,7 @@ agent = agents.a2c.Agent(env, model, config)
 while agent.iterations < 1000000:
     agent.main()
 
-    if agent.iterations%100 == 0:
+    if agent.iterations%1000 == 0:
         env.render()
         print(agent.iterations, agent.score)
 
