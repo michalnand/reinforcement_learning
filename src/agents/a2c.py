@@ -18,9 +18,9 @@ class Agent():
         self.actions_count     = self.env.action_space.n
 
 
-        self.model      = model.Model(self.observation_shape, self.actions_count)
+        self.model          = model.Model(self.observation_shape, self.actions_count)
 
-        self.optimizer  = torch.optim.Adam(self.model.parameters(), lr= config.learning_rate)
+        self.optimizer      = torch.optim.Adam(self.model.parameters(), lr= config.learning_rate)
 
         self.observation    = env.reset()
         self.enable_training()
@@ -33,128 +33,122 @@ class Agent():
             self.training_stats = agents.agent_stats.AgentStats(self.save_path + "result/training")
             self.testing_stats  = agents.agent_stats.AgentStats(self.save_path + "result/testing")
 
-        self.logits_b           = []
-        self.state_values_b     = []
-        self.action_b           = []
-        self.rewards_b          = []
-        self.done_b             = []
+        self.init_buffer()
 
     def enable_training(self):
         self.enabled_training = True
 
     def disable_training(self):
         self.enabled_training = False
-    
+
+
+    def init_buffer(self):
+        self.logits_b           = torch.zeros((self.batch_size, self.actions_count)).to(self.model.device)
+        self.values_b           = torch.zeros((self.batch_size, 1)).to(self.model.device)
+        self.action_b           = torch.LongTensor(self.batch_size)
+        self.rewards_b          = numpy.zeros(self.batch_size)
+        self.done_b             = numpy.zeros(self.batch_size, dtype=bool)
+
+        self.idx = 0
+
     def main(self):              
 
-        observation_t  = torch.tensor(self.observation, dtype=torch.float32).detach().to(self.model.device).unsqueeze(0)
-        logits_t, value_t  = self.model.forward(observation_t)
+        observation_t   = torch.tensor(self.observation, dtype=torch.float32).detach().to(self.model.device).unsqueeze(0)
+        logits, value   = self.model.forward(observation_t)
 
-
-        action_probs_t        = torch.nn.functional.softmax(logits_t, dim=1)
+       
+       
+        action_probs_t        = torch.nn.functional.softmax(logits.squeeze(0), dim = 0)
         action_distribution_t = torch.distributions.Categorical(action_probs_t)
         action_t              = action_distribution_t.sample()
        
             
         self.observation, reward, done, _ = self.env.step(action_t.item())
-
-
         
         round_done = done[0]
         game_done  = done[1] 
 
 
         if self.enabled_training:
-            self.logits_b.append(logits_t.squeeze(0))
-            self.state_values_b.append(value_t.squeeze(0)[0])
-            self.action_b.append(action_t.item())
-            self.rewards_b.append(reward)
-            self.done_b.append(done)
+            self.logits_b[self.idx]     = logits
+            self.values_b[self.idx]     = value.squeeze(0)
+            self.action_b[self.idx]     = action_t.item()
+            self.rewards_b[self.idx]    = reward
+            self.done_b[self.idx]       = round_done
+            self.idx+= 1
 
- 
-        if len(self.logits_b) >= self.batch_size:
-
-            size = len(self.logits_b)
-
-            target_value_t = torch.FloatTensor(size)
-
-            v = 0.0
-            for n in reversed(range(size)):
-                if self.done_b:
-                    gamma = 0.0
-                else:
-                    gamma = self.gamma
-
-                v = self.rewards_b[n] + gamma*v
-                target_value_t[n] = v
-
-            target_value_t.to(self.model.device)
+        if self.idx >= self.batch_size:
             
 
-            loss_value  = 0
-            loss_policy = 0
-            loss_entropy= 0
-            for logits, value, action, target_value in zip(self.logits_b, self.state_values_b, self.action_b, target_value_t):
-                advantage       = target_value  - value.item()
+            
+            #target_values_b = self._calc_q_values(self.rewards_b, self.values_b.detach().cpu().numpy(), self.done_b)
+            target_values_b = self._calc_q_valuesB(self.rewards_b, self.done_b)
 
-                probs     = torch.nn.functional.softmax(logits, dim = 0)
-                log_probs = torch.nn.functional.log_softmax(logits, dim = 0)
-
-                '''
-                compute critic loss, as MSE : L = (T - V(s))^2
-                '''
-                loss_value+= (target_value - value)**2.0
-
-                '''
-                compute actor loss, L = log(pi(s, a))*(T - V(s)) = log(pi(s, a))*A
-                TODO : log softmax is better for numerical stability
-                '''
-                loss_policy+= -log_probs[action]*advantage
-
-                '''
-                compute entropy loss, to avoid greedy strategy
-                L = beta*H(pi(s)) = beta*pi(s)*log(pi(s))
-                '''
-                loss_entropy+= self.entropy_beta*(probs*log_probs).sum()
-
-            loss_value.to(self.model.device)
-            loss_policy.to(self.model.device)
-            loss_entropy.to(self.model.device)
+            target_values_b = torch.FloatTensor(target_values_b).to(self.model.device)
 
             '''
-            print("\n\n")
-            print("loss_value_v   = ", loss_value.detach().cpu().numpy())
-            print("loss_policy_v  = ", loss_policy.detach().cpu().numpy())
-            print("loss_entropy_v = ", loss_entropy.detach().cpu().numpy())
-            print("\n\n")
+            print("target_values_t ", target_values_b.shape)
+            print("values_t ", self.values_b.shape)
+            print("logits_t ", self.logits_b.shape)
+            print("action_t ", self.action_b.shape)
+            print("\n")
             '''
 
-            loss = loss_value + loss_policy  + loss_entropy
-            loss.to(self.model.device)
+            '''
+            compute critic loss, as MSE : L = (T - V(s))^2
+            '''
+            loss_value = (target_values_b - self.values_b)**2
+            loss_value = loss_value.mean()
 
-            loss.backward()
+            probs     = torch.nn.functional.softmax(self.logits_b, dim = 1)
+            log_probs = torch.nn.functional.log_softmax(self.logits_b, dim = 1)
 
-            for param in self.model.parameters():
-                param.grad.data.clamp_(-10.0, 10.0)
+
+            '''
+            compute actor loss, L = log(pi(s, a))*(T - V(s)) = log(pi(s, a))*A
+            TODO : log softmax is better for numerical stability
+            '''
+            advantage  = (target_values_b - self.values_b).detach()
+            loss_policy = -log_probs[range(len(log_probs)), self.action_b]*advantage
+            loss_policy = loss_policy.mean()
+
+            '''
+            compute entropy loss, to avoid greedy strategy
+            L = beta*H(pi(s)) = beta*pi(s)*log(pi(s))
+            '''
+            loss_entropy = (probs*log_probs).sum(dim = 1)
+            loss_entropy = self.entropy_beta*loss_entropy.mean()
+            
+
+
+
+            #train network, with gradient cliping
+            #loss = loss_value + loss_policy + loss_entropy
+            #loss.backward()
+
+            loss_value.backward(retain_graph=True)
+            loss_policy.backward(retain_graph=True)
+            loss_entropy.backward()
+            
+            torch.nn.utils.clip_grad_norm_(self.model.parameters(), 1.0)
             self.optimizer.step() 
-
             self.optimizer.zero_grad()
 
- 
-            self.logits_b           = []
-            self.state_values_b     = []
-            self.action_b           = []
-            self.rewards_b          = []
-            self.done_b             = []
+            #clear batch buffer
+            self.init_buffer()
 
-
+            '''
+            print("loss_value = ", loss_value.detach().cpu().numpy())
+            print("loss_policy = ", loss_policy.detach().cpu().numpy())
+            print("loss_entropy = ", loss_entropy.detach().cpu().numpy())
+            print("\n\n\n")
+            '''
 
         if hasattr(self, "training_stats") and hasattr(self, "testing_stats"):
             if self.enabled_training:
                 self.training_stats.add(reward, game_done)
             else:
                 self.testing_stats.add(reward, game_done)
-            
             
         if game_done:
             self.env.reset()
@@ -169,7 +163,37 @@ class Agent():
 
     def load(self):
         self.model.load(self.save_path)
+    
+    
+    def _calc_q_values(self, rewards, values, done):
+        result = numpy.zeros((len(rewards), 1))
 
+        for i in reversed(range(len(rewards)-1)):
+            if done[i]:
+                gamma = 0.0
+            else:
+                gamma = self.gamma
+            
+            result[i][0] = rewards[i] + gamma*values[i+1][0]
+
+        return result
+
+    
+    def _calc_q_valuesB(self, rewards, done):
+        result = numpy.zeros((len(rewards), 1))
+        r  = 0.0
+
+        for i in reversed(range(len(rewards))):
+            if done[i]:
+                gamma = 0.0
+            else:
+                gamma = self.gamma
+            
+            r = rewards[i] + gamma*r
+            result[i][0] = r
+
+        return result
+    
 
 
 
