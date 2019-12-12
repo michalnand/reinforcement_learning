@@ -70,7 +70,7 @@ class Agent():
 
 
         if self.enabled_training:
-            self.logits_b[self.idx]     = logits
+            self.logits_b[self.idx]     = logits.squeeze(0)
             self.values_b[self.idx]     = value.squeeze(0)
             self.action_b[self.idx]     = action_t.item()
             self.rewards_b[self.idx]    = reward
@@ -94,14 +94,15 @@ class Agent():
             print("\n")
             '''
 
+
+            probs     = torch.nn.functional.softmax(self.logits_b, dim = 1)
+            log_probs = torch.nn.functional.log_softmax(self.logits_b, dim = 1)
+
             '''
             compute critic loss, as MSE : L = (T - V(s))^2
             '''
             loss_value = (target_values_b - self.values_b)**2
             loss_value = loss_value.mean()
-
-            probs     = torch.nn.functional.softmax(self.logits_b, dim = 1)
-            log_probs = torch.nn.functional.log_softmax(self.logits_b, dim = 1)
 
 
             '''
@@ -130,7 +131,7 @@ class Agent():
             loss_policy.backward(retain_graph=True)
             loss_entropy.backward()
             
-            torch.nn.utils.clip_grad_norm_(self.model.parameters(), 1.0)
+            torch.nn.utils.clip_grad_norm_(self.model.parameters(), 0.1)
             self.optimizer.step() 
             self.optimizer.zero_grad()
 
