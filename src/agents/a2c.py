@@ -81,7 +81,7 @@ class Agent():
             
 
             
-            #target_values_b = self._calc_q_values(self.rewards_b, self.values_b.detach().cpu().numpy(), self.done_b)
+            #target_values_b = self._calc_q_valuesA(self.rewards_b, self.values_b.detach().cpu().numpy(), self.done_b)
             target_values_b = self._calc_q_valuesB(self.rewards_b, self.done_b)
 
             target_values_b = torch.FloatTensor(target_values_b).to(self.model.device)
@@ -138,7 +138,7 @@ class Agent():
             #clear batch buffer
             self.init_buffer()
 
-            '''
+            '''            
             print("loss_value = ", loss_value.detach().cpu().numpy())
             print("loss_policy = ", loss_policy.detach().cpu().numpy())
             print("loss_entropy = ", loss_entropy.detach().cpu().numpy())
@@ -166,7 +166,7 @@ class Agent():
         self.model.load(self.save_path)
     
     
-    def _calc_q_values(self, rewards, values, done):
+    def _calc_q_valuesA(self, rewards, values, done):
         result = numpy.zeros((len(rewards), 1))
 
         for i in reversed(range(len(rewards)-1)):

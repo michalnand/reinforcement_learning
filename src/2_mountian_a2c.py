@@ -7,10 +7,10 @@ import models.mountain_car_a2c.src.config
 
 import time
 
-
+'''
 gym.envs.register(
-    id='MountainCarCustom-v0',
-    entry_point='gym.envs.classic_control:MountainCarEnv',
+    id="MountainCarCustom-v0",
+    entry_point="gym.envs.classic_control:MountainCarEnv",
     max_episode_steps=4096      # MountainCar-v0 uses 200
 )
 
@@ -30,9 +30,29 @@ class SetRewardRange(gym.RewardWrapper):
             reward = 1.0
         
         return obs, reward, [done, done], info
-
-
 env = SetRewardRange(env)
+'''
+
+
+env = gym.make("LunarLander-v2")
+
+
+class SetRewardRange(gym.RewardWrapper):
+    def __init__(self, env):
+        gym.RewardWrapper.__init__(self, env)
+
+    def step(self, action):
+        obs, reward, done, info = self.env.step(action)
+        if reward < -1.0:
+            reward = -1.0
+
+        if reward > 1.0:
+            reward = 1.0
+
+        
+        return obs, reward, [done, done], info
+env = SetRewardRange(env)
+
 env.reset()
 
 obs             = env.observation_space
