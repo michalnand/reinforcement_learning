@@ -6,16 +6,19 @@ import agents.agent_stats
 from torch.distributions import Categorical
 
 class Agent():
-    def __init__(self, env, model, config, save_path = None, save_stats = True, mode = 'a'):
+    def __init__(self, env, model, config, save_path = None, save_stats = True):
         self.env = env
         self.save_path = save_path
  
         self.gamma          = config.gamma
         self.entropy_beta   = config.entropy_beta
         self.batch_size     = config.batch_size
+        self.bellman_steps  = config.bellman_steps
        
         self.observation_shape = self.env.observation_space.shape
         self.actions_count     = self.env.action_space.n
+
+        
 
 
         self.model          = model.Model(self.observation_shape, self.actions_count)
@@ -34,8 +37,6 @@ class Agent():
         if save_path != None and save_stats:
             self.training_stats = agents.agent_stats.AgentStats(self.save_path + "result/training")
             self.testing_stats  = agents.agent_stats.AgentStats(self.save_path + "result/testing")
-
-        self.mode = mode
 
 
     def enable_training(self):
@@ -82,13 +83,7 @@ class Agent():
 
         if self.idx >= self.batch_size:      
             
-            
-            if self.mode == "a":     
-                target_values_b = self._calc_q_values_a(self.rewards_b, self.done_b)
-            elif self.mode == "b":
-                target_values_b = self._calc_q_values_b(self.rewards_b, self.values_b.detach().cpu().numpy(), self.done_b)
-            elif self.mode == "c":
-                target_values_b = self._calc_q_values_c(self.rewards_b, self.values_b.detach().cpu().numpy(), self.done_b, 4)
+            target_values_b = self._calc_q_values(self.rewards_b, self.values_b.detach().cpu().numpy(), self.done_b, self.bellman_steps)
 
             target_values_b = torch.FloatTensor(target_values_b).to(self.model.device)
 
@@ -158,38 +153,7 @@ class Agent():
         self.model.load(self.save_path)
     
 
-
-    
-    def _calc_q_values_a(self, rewards, done):
-        result = numpy.zeros((len(rewards), 1))
-        r  = 0.0
-
-        for i in reversed(range(len(rewards))):
-            if done[i]:
-                gamma = 0.0
-            else:
-                gamma = self.gamma
-            
-            r = rewards[i] + gamma*r
-            result[i][0] = r
-
-        return result 
-
-    def _calc_q_values_b(self, rewards, values, done):
-        result = numpy.zeros((len(rewards), 1))
-
-        for i in range(len(rewards)-1):
-            if done[i]:
-                gamma = 0.0
-            else:
-                gamma = self.gamma
-
-            result[i][0] = rewards[i] + gamma*values[i+1][0] 
-
-        return result
-
-
-    def _calc_q_values_c(self, rewards, values, done, steps = 4):
+    def _calc_q_values(self, rewards, values, done, steps):
         result = numpy.zeros((len(rewards), 1))
 
         for i in range(len(rewards)-steps):
@@ -198,10 +162,10 @@ class Agent():
             else:
                 gamma = self.gamma
 
-            sum = 0.0
+            reward_sum = 0.0
             for n in range(steps):
-                sum+= rewards[i+n]*(gamma**n) 
+                reward_sum+= rewards[i + n]*(gamma**n) 
                 
-            result[i][0] = sum + (gamma**steps)*values[i+steps][0] 
+            result[i][0] = reward_sum + (gamma**steps)*values[i + steps][0] 
 
         return result

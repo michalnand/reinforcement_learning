@@ -38,23 +38,21 @@ actions_count   = env.action_space.n
 
 model  = models.lunar_lander_a2c.src.model
 config = models.lunar_lander_a2c.src.config.Config()
-
-agent = agents.a2c.Agent(env, model, config, "a2c_test/a/", True, "a")
+ 
+agent = agents.a2c.Agent(env, model, config)
 
 
 while agent.iterations < 1000000:
     agent.main()
 
-    if agent.iterations%1000 == 0:
+    if agent.iterations%100 == 0:
         env.render()
         print(agent.iterations, agent.score)
 
 
-'''
 agent.disable_training()
 agent.iterations = 0
 while True:
     agent.main()
     env.render()
     time.sleep(0.01)
-'''
