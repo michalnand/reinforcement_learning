@@ -5,18 +5,18 @@ import agents.a2c
 import numpy
 import time
 
-import models.atari_pong_a2c.src.model
-import models.atari_pong_a2c.src.config
+import models.atari_a2c.pong.src.model
+import models.atari_a2c.pong.src.config
 
 
-model  = models.atari_pong_a2c.src.model
-config = models.atari_pong_a2c.src.config.Config()
+model  = models.atari_a2c.pong.src.model
+config = models.atari_a2c.pong.src.config.Config() 
 
-save_path = "./models/atari_pong_a2c/"
+save_path = "./models/atari_a2c/pong/"
 
 env = gym.make("PongNoFrameskip-v4")
 env = common.atari_wrapper.Create(env)
-
+ 
 env.reset()
 
 

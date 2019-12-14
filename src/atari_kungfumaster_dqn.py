@@ -5,14 +5,14 @@ import agents.dqn
 import numpy
 import time
 
-import models.atari_kungfumaster_dqn.src.model
-import models.atari_kungfumaster_dqn.src.config
+import models.atari_dqn.kungfumaster.src.model
+import models.atari_dqn.kungfumaster.src.config
 
 
-model  = models.atari_kungfumaster_dqn.src.model
-config = models.atari_kungfumaster_dqn.src.config.Config()
+model  = models.atari_dqn.kungfumaster.src.model
+config = models.atari_dqn.kungfumaster.src.config.Config()
 
-save_path = "./models/atari_kungfumaster_dqn/"
+save_path = "./models/atari_dqn/kungfumaster/"
 
 env = gym.make("KungFuMasterNoFrameskip-v4") 
 env = common.atari_wrapper.Create(env, 96, 96, 4) 

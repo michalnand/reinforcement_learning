@@ -5,14 +5,14 @@ import agents.dqn
 import numpy
 import time
 
-import models.atari_pacman_dueling_dqn.src.model
-import models.atari_pacman_dueling_dqn.src.config
+import models.atari_dueling_dqn.pacman.src.model
+import models.atari_dueling_dqn.pacman.src.config
 
 
-model  = models.atari_pacman_dueling_dqn.src.model
-config = models.atari_pacman_dueling_dqn.src.config.Config()
+model  = models.atari_dueling_dqn.pacman.src.model
+config = models.atari_dueling_dqn.pacman.src.config.Config()
 
-save_path = "./models/atari_pacman_dueling_dqn/"
+save_path = "./models/atari_dueling_dqn/pacman/"
 
 env = gym.make("MsPacmanNoFrameskip-v4") 
 env = common.atari_wrapper.Create(env, 96, 96, 4) 

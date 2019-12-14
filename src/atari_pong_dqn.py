@@ -12,7 +12,7 @@ import models.atari_pong_dqn.src.config
 model  = models.atari_pong_dqn.src.model
 config = models.atari_pong_dqn.src.config.Config()
 
-save_path = "./models/atari_pong_dqn/"
+save_path = "./models/atari_dqn/pong/"
 
 env = gym.make("PongNoFrameskip-v4")
 env = common.atari_wrapper.Create(env)

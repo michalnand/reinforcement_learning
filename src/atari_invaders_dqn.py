@@ -5,14 +5,14 @@ import agents.dqn
 import numpy
 import time
 
-import models.atari_invaders_dqn.src.model
-import models.atari_invaders_dqn.src.config
+import models.atari_dqn.invaders.src.model
+import models.atari_dqn.invaders.src.config
 
 
-model  = models.atari_invaders_dqn.src.model
-config = models.atari_invaders_dqn.src.config.Config()
+model  = models.atari_dqn.invaders.src.model
+config = models.atari_dqn.invaders.src.config.Config()
 
-save_path = "./models/atari_invaders_dqn/"
+save_path = "./models/atari_dqn/invaders/"
 
 env = gym.make("SpaceInvadersNoFrameskip-v4") 
 env = common.atari_wrapper.Create(env, 96, 96, 4) 

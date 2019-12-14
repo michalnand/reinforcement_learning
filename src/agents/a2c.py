@@ -13,7 +13,6 @@ class Agent():
         self.gamma          = config.gamma
         self.entropy_beta   = config.entropy_beta
         self.batch_size     = config.batch_size
-        self.bellman_steps  = config.bellman_steps
        
         self.observation_shape = self.env.observation_space.shape
         self.actions_count     = self.env.action_space.n
@@ -80,7 +79,7 @@ class Agent():
 
         if self.idx >= self.batch_size:          
             target_values_b = self._calc_q_values(self.rewards_b, self.done_b)
-            #target_values_b = self._calc_q_values(self.rewards_b, self.values_b.detach().cpu().numpy(), self.done_b, self.bellman_steps)
+            #target_values_b = self._calc_q_values(self.rewards_b, self.values_b.detach().cpu().numpy(), self.done_b, 4)
 
             target_values_b = torch.FloatTensor(target_values_b).to(self.model.device)
 

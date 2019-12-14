@@ -5,88 +5,89 @@ import agents.dqn
 
 '''
 #Breakout
-import models.atari_breakout_dqn.src.model
-import models.atari_breakout_dqn.src.config
+import models.atari_dqn.breakout.src.model
+import models.atari_dqn.breakout.src.config
 
-model  = models.atari_breakout_dqn.src.model
-config = models.atari_breakout_dqn.src.config.Config()
-save_path = "./models/atari_breakout_dqn/"
+model  = models.atari_dqn.breakout.src.model
+config = models.atari_dqn.breakout.src.config.Config()
+save_path = "./models/atari_dqn/breakout/"
 env = gym.make("BreakoutNoFrameskip-v4") 
 '''
 
 '''
 #Enduro
-import models.atari_enduro_dqn.src.model
-import models.atari_enduro_dqn.src.config
+import models.atari_dqn.enduro.src.model
+import models.atari_dqn.enduro.src.config
 
-model  = models.atari_enduro_dqn.src.model
-config = models.atari_enduro_dqn.src.config.Config()
-save_path = "./models/atari_enduro_dqn/"
+model  = models.atari_dqn.enduro.src.model
+config = models.atari_dqn.enduro.src.config.Config()
+save_path = "./models/atari_dqn/enduro/"
 env = gym.make("EnduroNoFrameskip-v4") 
 '''
 
 '''
 #Invaders
-import models.atari_invaders_dqn.src.model
-import models.atari_invaders_dqn.src.config
+import models.atari_dqn.invaders.src.model
+import models.atari_dqn.invaders.src.config
 
-model  = models.atari_invaders_dqn.src.model
-config = models.atari_invaders_dqn.src.config.Config()
-save_path = "./models/atari_invaders_dqn/"
+model  = models.atari_dqn.invaders.src.model
+config = models.atari_dqn.invaders.src.config.Config()
+save_path = "./models/atari_dqn/invaders/"
 env = gym.make("SpaceInvadersNoFrameskip-v4") 
 '''
 
+'''
 #KungFuMaster
-import models.atari_kungfumaster_dqn.src.model
-import models.atari_kungfumaster_dqn.src.config
+import models.atari_dqn.kungfumaster.src.model
+import models.atari_dqn.kungfumaster.src.config
 
-model  = models.atari_kungfumaster_dqn.src.model
-config = models.atari_kungfumaster_dqn.src.config.Config()
-save_path = "./models/atari_kungfumaster_dqn/"
+model  = models.atari_dqn.kungfumaster.src.model
+config = models.atari_dqn.kungfumaster.src.config.Config()
+save_path = "./models/atari_dqn/kungfumaster/"
 env = gym.make("KungFuMasterNoFrameskip-v4") 
-
-
 '''
+
+
 #Pacman
-import models.atari_pacman_dqn.src.model
-import models.atari_pacman_dqn.src.config
+import models.atari_dqn.pacman.src.model
+import models.atari_dqn.pacman.src.config
 
-model  = models.atari_pacman_dqn.src.model
-config = models.atari_pacman_dqn.src.config.Config()
-save_path = "./models/atari_pacman_dqn/"
+model  = models.atari_dqn.pacman.src.model
+config = models.atari_dqn.pacman.src.config.Config()
+save_path = "./models/atari_dqn/pacman/"
 env = gym.make("MsPacmanNoFrameskip-v4") 
-'''
+
 
 '''
 #Pong
-import models.atari_pong_dqn.src.model
-import models.atari_pong_dqn.src.config
+import models.atari_dqn.pong.src.model
+import models.atari_dqn.pong.src.config
 
-model  = models.atari_pong_dqn.src.model
-config = models.atari_pong_dqn.src.config.Config()
-save_path = "./models/atari_pong_dqn/"
+model  = models.atari_dqn.pong.src.model
+config = models.atari_dqn.pong.src.config.Config()
+save_path = "./models/atari_dqn/pong/"
 env = gym.make("PongNoFrameskip-v4") 
 '''
 
 '''
 #Qbert
-import models.atari_qbert_dqn.src.model
-import models.atari_qbert_dqn.src.config
+import models.atari_dqn.qbert.src.model
+import models.atari_dqn.qbert.src.config
 
-model  = models.atari_qbert_dqn.src.model
-config = models.atari_qbert_dqn.src.config.Config()
-save_path = "./models/atari_qbert_dqn/"
+model  = models.atari_dqn.qbert.src.model
+config = models.atari_dqn.qbert.src.config.Config()
+save_path = "./models/atari_dqn/qbert/"
 env = gym.make("QbertNoFrameskip-v4") 
 '''
 
 '''
 #seaquest
-import models.atari_seaquest_dqn.src.model
-import models.atari_seaquest_dqn.src.config
+import models.atari_dqn.seaquest.src.model
+import models.atari_dqn.seaquest.src.config
 
-model  = models.atari_seaquest_dqn.src.model
-config = models.atari_seaquest_dqn.src.config.Config()
-save_path = "./models/atari_seaquest_dqn/"
+model  = models.atari_dqn.seaquest.src.model
+config = models.atari_dqn.seaquest.src.config.Config()
+save_path = "./models/atari_dqn/seaquest/"
 env = gym.make("SeaquestNoFrameskip-v4") 
 '''
 

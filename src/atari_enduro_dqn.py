@@ -5,12 +5,12 @@ import agents.dqn
 import numpy
 import time
 
-import models.atari_enduro_dqn.src.model
-import models.atari_enduro_dqn.src.config
+import models.atari_dqn.enduro.src.model
+import models.atari_dqn.enduro.src.config
 
 
-model  = models.atari_enduro_dqn.src.model
-config = models.atari_enduro_dqn.src.config.Config()
+model  = models.atari_dqn.enduro.src.model
+config = models.atari_dqn.enduro.src.config.Config()
 
 save_path = "./models/atari_enduro_dqn/"
 

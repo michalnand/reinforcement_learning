@@ -6,3 +6,5 @@ torch
 torchviz
 gym  
 gym[atari]
+gym[box2d]
+gym[mujo]

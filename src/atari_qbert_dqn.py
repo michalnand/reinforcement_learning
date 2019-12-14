@@ -5,14 +5,14 @@ import agents.dqn
 import numpy
 import time
 
-import models.atari_qbert_dqn.src.model
-import models.atari_qbert_dqn.src.config
+import models.atari_dqn.qbert.src.model
+import models.atari_dqn.qbert.src.config
 
 
-model  = models.atari_qbert_dqn.src.model
-config = models.atari_qbert_dqn.src.config.Config()
+model  = models.atari_dqn.qbert.src.model
+config = models.atari_dqn.qbert.src.config.Config()
 
-save_path = "./models/atari_qbert_dqn/"
+save_path = "./models/atari_dqn/qbert/"
 
 env = gym.make("QbertNoFrameskip-v4") 
 env = common.atari_wrapper.Create(env, 96, 96, 4) 

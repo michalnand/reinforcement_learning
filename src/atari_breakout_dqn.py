@@ -5,14 +5,14 @@ import agents.dqn
 import numpy
 import time
 
-import models.atari_breakout_dqn.src.model
-import models.atari_breakout_dqn.src.config
+import models.atari_dqn.breakout.src.model
+import models.atari_dqn.breakout.src.config
 
 
-model  = models.atari_breakout_dqn.src.model
-config = models.atari_breakout_dqn.src.config.Config()
+model  = models.atari_dqn.breakout.src.model
+config = models.atari_dqn.breakout.src.config.Config()
 
-save_path = "./models/atari_breakout_dqn/"
+save_path = "./models/atari_dqn/breakout/"
 
 env = gym.make("BreakoutNoFrameskip-v4") 
 env = common.atari_wrapper.Create(env, 96, 96, 4) 
