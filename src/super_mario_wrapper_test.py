@@ -38,10 +38,11 @@ def observation_show(observation):
     
     plt.show() 
 
+actions_count     = env.action_space.n
 
-done = True
 while True:
-    state, reward, done, info = env.step(env.action_space.sample())
+    action = numpy.random.randint(actions_count)
+    state, reward, done, info = env.step(action)
     env.render()
     
     #observation_show(state)

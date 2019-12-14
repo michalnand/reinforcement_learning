@@ -234,6 +234,21 @@ def Create(env, width = 96, height = 96, frame_stacking = 4):
 
     env.observation_space.shape = (env.shape[0], env.shape[1], env.shape[2])
 
+    env.reset()
+
+    actions_count     = env.action_space.n
+
+
+    for i in range(10000):
+        action = np.random.randint(actions_count)
+        _, _, done, _ = env.step(action)
+
+        if done[1]:
+            env.reset() 
+
+    env.reset()
+
+
     return env
     
 
