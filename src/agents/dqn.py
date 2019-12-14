@@ -94,7 +94,8 @@ class Agent():
 
         self.optimizer.zero_grad()
 
-        loss = torch.nn.MSELoss(q_predicted, q_target)
+        loss = (q_target - q_predicted)**2).mean() 
+
         loss.backward()
         optimizer.step()
 
