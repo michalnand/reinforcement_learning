@@ -5,12 +5,12 @@ import agents.dqn
 import numpy
 import time
 
-import models.atari_pong_dqn.src.model
-import models.atari_pong_dqn.src.config
+import models.atari_dqn.pong.src.model
+import models.atari_dqn.pong.src.config
 
 
-model  = models.atari_pong_dqn.src.model
-config = models.atari_pong_dqn.src.config.Config()
+model  = models.atari_dqn.pong.src.model
+config = models.atari_dqn.pong.src.config.Config()
 
 save_path = "./models/atari_dqn/pong/"
 
