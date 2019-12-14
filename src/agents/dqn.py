@@ -90,11 +90,9 @@ class Agent():
     def train_model(self):
         input, target = self.experience_replay.get_random_batch(self.batch_size, self.model.device)
             
-        output = self.model.forward(input)
+        q_predicted = self.model.forward(input)
 
         self.optimizer.zero_grad()
-
-        loss = self.loss(output, target)
 
         loss = torch.nn.MSELoss(q_predicted, q_target)
         loss.backward()
