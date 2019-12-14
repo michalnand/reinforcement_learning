@@ -88,7 +88,7 @@ class Agent():
         
         
     def train_model(self):
-        input, target = self.experience_replay.get_random_batch(self.batch_size, self.model.device)
+        input, q_target = self.experience_replay.get_random_batch(self.batch_size, self.model.device)
             
         q_predicted = self.model.forward(input)
 
