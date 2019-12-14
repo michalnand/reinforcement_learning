@@ -79,7 +79,8 @@ class Agent():
             self.idx+= 1
 
         if self.idx >= self.batch_size:          
-            target_values_b = self._calc_q_values(self.rewards_b, self.values_b.detach().cpu().numpy(), self.done_b, self.bellman_steps)
+            target_values_b = self._calc_q_values(self.rewards_b, self.done_b)
+            #target_values_b = self._calc_q_values(self.rewards_b, self.values_b.detach().cpu().numpy(), self.done_b, self.bellman_steps)
 
             target_values_b = torch.FloatTensor(target_values_b).to(self.model.device)
 
@@ -150,7 +151,7 @@ class Agent():
     
 
   
-    
+    '''
     def _calc_q_values(self, rewards, values, done, steps = 4):
         result = numpy.zeros((len(rewards), 1))
 
@@ -167,24 +168,10 @@ class Agent():
             result[i][0] = sum + (gamma**steps)*values[i+steps][0] 
 
         return result
-
-
     '''
-    def _calc_q_valuesA(self, rewards, values, done):
-        result = numpy.zeros((len(rewards), 1))
-
-        for i in reversed(range(len(rewards)-1)):
-            if done[i]:
-                gamma = 0.0
-            else:
-                gamma = self.gamma
-            
-            result[i][0] = rewards[i] + gamma*values[i+1][0]
-
-        return result
 
     
-    def _calc_q_valuesB(self, rewards, done):
+    def _calc_q_values(self, rewards, done):
         result = numpy.zeros((len(rewards), 1))
         r  = 0.0
 
@@ -198,4 +185,3 @@ class Agent():
             result[i][0] = r
 
         return result 
-    '''
