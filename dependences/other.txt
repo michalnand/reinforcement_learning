@@ -2,9 +2,12 @@ numpy
 matplotlib 
 noise
 opencv-python
+
 torch 
 torchviz
+
 gym  
 gym[atari]
 gym[box2d]
-gym[mujo]
+
+gym-super-mario-bros

@@ -6,7 +6,6 @@ import common.atari_wrapper
 
 from matplotlib import pyplot as plt
 
-
 def observation_show(observation):
 
     shape = observation.shape
