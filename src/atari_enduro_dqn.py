@@ -12,7 +12,7 @@ import models.atari_dqn.enduro.src.config
 model  = models.atari_dqn.enduro.src.model
 config = models.atari_dqn.enduro.src.config.Config()
 
-save_path = "./models/atari_enduro_dqn/"
+save_path = "./models/atari_dqn/enduro/"
 
 env = gym.make("EnduroNoFrameskip-v4")
 env = common.atari_wrapper.Create(env)

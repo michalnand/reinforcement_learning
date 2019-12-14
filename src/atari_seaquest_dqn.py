@@ -12,7 +12,7 @@ import models.atari_dqn.seaquest.src.config
 model  = models.atari_dqn.seaquest.src.model
 config = models.atari_dqn.seaquest.src.config.Config()
 
-save_path = "./models/atari_dqn/sequest/"
+save_path = "./models/atari_dqn/seaquest/"
 
 env = gym.make("SeaquestNoFrameskip-v4") 
 env = common.atari_wrapper.Create(env, 96, 96, 4) 
