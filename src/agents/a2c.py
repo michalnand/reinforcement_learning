@@ -6,7 +6,7 @@ import agents.agent_stats
 from torch.distributions import Categorical
 
 class Agent():
-    def __init__(self, env, model, config, save_path = None, save_stats = True):
+    def __init__(self, env, model, config, save_path = None, save_stats = True, mode = 'a'):
         self.env = env
         self.save_path = save_path
  
@@ -35,6 +35,8 @@ class Agent():
             self.training_stats = agents.agent_stats.AgentStats(self.save_path + "result/training")
             self.testing_stats  = agents.agent_stats.AgentStats(self.save_path + "result/testing")
 
+        self.mode = mode
+
 
     def enable_training(self):
         self.enabled_training = True
@@ -54,6 +56,7 @@ class Agent():
 
     def main(self):              
 
+        
         observation_t   = torch.tensor(self.observation, dtype=torch.float32).detach().to(self.model.device).unsqueeze(0)
         logits, value   = self.model.forward(observation_t)
 
@@ -77,9 +80,15 @@ class Agent():
             self.done_b[self.idx]       = round_done
             self.idx+= 1
 
-        if self.idx >= self.batch_size:          
-            target_values_b = self._calc_q_values(self.rewards_b, self.done_b)
-            #target_values_b = self._calc_q_values(self.rewards_b, self.values_b.detach().cpu().numpy(), self.done_b, 4)
+        if self.idx >= self.batch_size:      
+            
+            
+            if self.mode == "a":     
+                target_values_b = self._calc_q_values_a(self.rewards_b, self.done_b)
+            elif self.mode == "b":
+                target_values_b = self._calc_q_values_b(self.rewards_b, self.values_b.detach().cpu().numpy(), self.done_b)
+            elif self.mode == "c":
+                target_values_b = self._calc_q_values_c(self.rewards_b, self.values_b.detach().cpu().numpy(), self.done_b, 4)
 
             target_values_b = torch.FloatTensor(target_values_b).to(self.model.device)
 
@@ -149,9 +158,38 @@ class Agent():
         self.model.load(self.save_path)
     
 
-  
-    '''
-    def _calc_q_values(self, rewards, values, done, steps = 4):
+
+    
+    def _calc_q_values_a(self, rewards, done):
+        result = numpy.zeros((len(rewards), 1))
+        r  = 0.0
+
+        for i in reversed(range(len(rewards))):
+            if done[i]:
+                gamma = 0.0
+            else:
+                gamma = self.gamma
+            
+            r = rewards[i] + gamma*r
+            result[i][0] = r
+
+        return result 
+
+    def _calc_q_values_b(self, rewards, values, done):
+        result = numpy.zeros((len(rewards), 1))
+
+        for i in range(len(rewards)-1):
+            if done[i]:
+                gamma = 0.0
+            else:
+                gamma = self.gamma
+
+            result[i][0] = rewards[i] + gamma*values[i+1][0] 
+
+        return result
+
+
+    def _calc_q_values_c(self, rewards, values, done, steps = 4):
         result = numpy.zeros((len(rewards), 1))
 
         for i in range(len(rewards)-steps):
@@ -167,20 +205,3 @@ class Agent():
             result[i][0] = sum + (gamma**steps)*values[i+steps][0] 
 
         return result
-    '''
-
-    
-    def _calc_q_values(self, rewards, done):
-        result = numpy.zeros((len(rewards), 1))
-        r  = 0.0
-
-        for i in reversed(range(len(rewards))):
-            if done[i]:
-                gamma = 0.0
-            else:
-                gamma = self.gamma
-            
-            r = rewards[i] + gamma*r
-            result[i][0] = r
-
-        return result 
