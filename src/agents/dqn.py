@@ -94,11 +94,7 @@ class Agent():
 
         self.optimizer.zero_grad()
 
-        loss = (q_target - q_predicted)**2).mean() 
-
-        loss.backward()
-        optimizer.step()
-
+        loss = ((q_target - q_predicted)**2).mean() 
         loss.backward()
         for param in self.model.parameters():
             param.grad.data.clamp_(-10.0, 10.0)
