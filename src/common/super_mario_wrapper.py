@@ -115,13 +115,22 @@ class SkipEnv(gym.Wrapper):
         return obs, total_reward, done, info
 
 
-class ClipRewardEnv(gym.RewardWrapper):
+class RewardEnv(gym.RewardWrapper):
     def __init__(self, env):
         gym.RewardWrapper.__init__(self, env)
 
     def step(self, action):
         obs, reward, done, info = self.env.step(action)
-        reward = np.clip(reward, -1.0, 1.0)
+        
+        if done:
+            if info["flag_get"]:
+                reward+= 50.0
+                print("WIN")
+            else:
+                reward+= -50.0
+                print("LOSE")
+ 
+        reward = reward/10.0 
         return obs, reward, done, info
 
 '''
@@ -227,7 +236,7 @@ def Create(env, width = 96, height = 96, frame_stacking = 4, dummy_moves = 10000
     env = NoopResetEnv(env)
     env = FireResetEnv(env)
     env = SkipEnv(env, 4)
-    env = ClipRewardEnv(env)
+    env = RewardEnv(env)
     env = LiveLostReward(env)
     env = ResizeFrameEnv(env)
     env = FrameStack(env)
