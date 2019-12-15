@@ -4,7 +4,7 @@ import common.super_mario_wrapper
 import numpy
 
 env = gym_super_mario_bros.make('SuperMarioBros-v0')
-env = common.super_mario_wrapper.Create(env)
+env = common.super_mario_wrapper.Create(env, dummy_moves = 256)
 
 env.reset()
 
@@ -47,7 +47,7 @@ while True:
     
     #observation_show(state)
 
-    if done[1]:
+    if done[0]:
         state = env.reset()
 
     if reward != 0:

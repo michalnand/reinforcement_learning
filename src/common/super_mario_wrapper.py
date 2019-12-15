@@ -130,13 +130,14 @@ class LiveLostReward(gym.Wrapper):
         gym.Wrapper.__init__(self, env)
         self.round_done = True
         self.game_done = True
-        self.lives_current = 0
+        self.lives_current = 3
 
     
     def reset(self):
         if self.game_done:
             observation = self.env.reset()
-            self.lives_current = self.env.ale.lives()
+
+            self.lives_current = 3
             self.round_done = False
             self.game_done = False
         else:
@@ -148,7 +149,7 @@ class LiveLostReward(gym.Wrapper):
         
         self.game_done = done
 
-        lives = self.env.ale.lives()
+        lives = info["life"]
         if lives < self.lives_current:
             self.lives_current = lives
             reward = -1.0
@@ -237,17 +238,15 @@ def Create(env, width = 96, height = 96, frame_stacking = 4, dummy_moves = 10000
     env.reset()
 
     actions_count     = env.action_space.n
-
-
     for i in range(dummy_moves):
         action = np.random.randint(actions_count)
         _, _, done, _ = env.step(action)
 
-        if done[1]:
+        if done[0]:
             env.reset() 
 
     env.reset()
-
+ 
 
     return env
     

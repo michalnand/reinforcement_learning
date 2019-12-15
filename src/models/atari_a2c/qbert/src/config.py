@@ -6,7 +6,7 @@ class Config():
         self.gamma          = 0.99
         self.entropy_beta   = 0.001
         self.batch_size     = 128 
-        self.bellman_steps  = 4
+        self.bellman_steps  = 1
 
         self.learning_rate  = 0.001
         
