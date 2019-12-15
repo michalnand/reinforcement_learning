@@ -220,7 +220,7 @@ class MakeTensorEnv(gym.ObservationWrapper):
 
 
 
-def Create(env, width = 96, height = 96, frame_stacking = 4):
+def Create(env, width = 96, height = 96, frame_stacking = 4, dummy_moves = 10000):
     env = JoypadSpace(env, SIMPLE_MOVEMENT)
     env = SetDimensions(env, width, height, frame_stacking)
     env = NoopResetEnv(env)
@@ -239,7 +239,7 @@ def Create(env, width = 96, height = 96, frame_stacking = 4):
     actions_count     = env.action_space.n
 
 
-    for i in range(10000):
+    for i in range(dummy_moves):
         action = np.random.randint(actions_count)
         _, _, done, _ = env.step(action)
 
