@@ -125,10 +125,8 @@ class RewardEnv(gym.RewardWrapper):
         if done:
             if info["flag_get"]:
                 reward+= 50.0
-                print("WIN")
             else:
                 reward+= -50.0
-                print("LOSE")
  
         reward = reward/10.0 
         return obs, reward, done, info
@@ -230,11 +228,10 @@ class MakeTensorEnv(gym.ObservationWrapper):
 
 
 
-def Create(env, width = 96, height = 96, frame_stacking = 4, dummy_moves = 10000):
+def Create(env, width = 96, height = 96, frame_stacking = 4, dummy_moves = 1024):
     env = JoypadSpace(env, SIMPLE_MOVEMENT)
     env = SetDimensions(env, width, height, frame_stacking)
     env = NoopResetEnv(env)
-    env = FireResetEnv(env)
     env = SkipEnv(env, 4)
     env = RewardEnv(env)
     env = LiveLostReward(env)
@@ -254,6 +251,8 @@ def Create(env, width = 96, height = 96, frame_stacking = 4, dummy_moves = 10000
         if done[0]:
             env.reset() 
 
+    env.reset()
+    env.reset()
     env.reset()
  
 
