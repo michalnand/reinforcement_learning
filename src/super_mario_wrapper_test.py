@@ -46,7 +46,7 @@ while True:
     state, reward, done, info = env.step(action)
     env.render()
     
-    #observation_show(state)
+    observation_show(state)
 
     
     if reward != 0:

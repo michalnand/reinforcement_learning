@@ -14,8 +14,10 @@ import models.super_mario.a2c.src.config
 
 
 env = gym_super_mario_bros.make('SuperMarioBros-v0')
+#env = gym_super_mario_bros.make('SuperMarioBrosRandomStages-v0', True)
 env = common.super_mario_wrapper.Create(env, dummy_moves = 0)
 env.reset()
+
 
 
 model       = models.super_mario.dqn.src.model
