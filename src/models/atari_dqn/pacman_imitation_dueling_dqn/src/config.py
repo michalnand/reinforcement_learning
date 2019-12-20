@@ -11,11 +11,11 @@ class Config():
         self.batch_size     = 32 
         self.learning_rate  = 0.0002
         
-        self.exploration    = common.decay.Linear(1000000, 1.0, 0.05, 0.02)
-        self.expert_decay   = common.decay.Linear(800000, 1.0, 0.0, 0.0)
+        self.exploration    = common.decay.Linear(250000, 1.0, 0.05, 0.02)
+        self.expert_decay   = common.decay.Linear(1000000, 1.0, 0.0, 0.0)
         
 
-        self.experience_replay_size = 256 #16384
+        self.experience_replay_size = 16384
  
  
 
