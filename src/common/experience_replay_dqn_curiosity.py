@@ -44,9 +44,42 @@ class Buffer():
             print(self.buffer[i].done, end = " ")
             print("\n")
 
-   
-    def get_random_batch(self, batch_size, device):
+    def create_indices(self, batch_size):
+        self.indices = numpy.zeros(batch_size, dtype=int)
+        for i in range(0, batch_size):
+            self.indices[i] = numpy.random.randint(self.length() - 1)
+
+    def get_icm_input(self, device):
+        batch_size      = len(self.indices)
+
+        observation_shape = self.buffer[0].observation.shape
+        state_shape   = (batch_size, ) + observation_shape[0:]
+        actions_count = len(self.buffer[0].q_values)
+
+        q_values_shape = (batch_size, ) + (actions_count, )
+
         
+        input           = torch.zeros(state_shape,  dtype=torch.float32).to(device)
+        input_next      = torch.zeros(state_shape,  dtype=torch.float32).to(device)
+        actions_one_hot = torch.zeros(q_values_shape,  dtype=torch.float32)
+
+
+        for i in range(0, batch_size):
+            n               = self.indices[i]
+    
+            input[i]        = torch.from_numpy(self.buffer[n].observation).to(device)
+            input_next[i]   = torch.from_numpy(self.buffer[n+1].observation).to(device)
+            
+            action = self.buffer[n].action
+            actions_one_hot[i][action]  = 1.0
+
+        actions_one_hot = actions_one_hot.to(device)
+
+        return input, input_next, actions_one_hot
+
+    def get_dqn_input(self, curiosity, alpha, device):
+        batch_size      = len(self.indices)
+
         observation_shape = self.buffer[0].observation.shape
         state_shape   = (batch_size, ) + observation_shape[0:]
         actions_count = len(self.buffer[0].q_values)
@@ -55,23 +88,24 @@ class Buffer():
 
         input       = torch.zeros(state_shape,  dtype=torch.float32).to(device)
         target      = torch.zeros(q_values_shape,  dtype=torch.float32).to(device)
- 
+
         for i in range(0, batch_size):
-            n      = numpy.random.randint(self.length() - 1)
+            n               = self.indices[i]
 
             if self.buffer[n].done:
                 gamma_ = 0.0
             else: 
                 gamma_ = self.gamma
-    
+
             q_values    = self.buffer[n].q_values.copy()
             action      = self.buffer[n].action
 
-            q_values[action] = self.buffer[n].reward + gamma_*numpy.max(self.buffer[n+1].q_values)
-            
+            reward = (1.0 - alpha)*self.buffer[n].reward + alpha*curiosity[i]
+
+            q_values[action] = reward + gamma_*numpy.max(self.buffer[n+1].q_values)
+
             input[i]  = torch.from_numpy(self.buffer[n].observation).to(device)
             target[i] = torch.from_numpy(q_values).to(device)
-            
+
         return input, target
 
-        

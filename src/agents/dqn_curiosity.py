@@ -3,11 +3,11 @@ import torch
 
 import agents.agent_stats
 
-import common.experience_replay_dqn
+import common.experience_replay_dqn_curiosity
 
 
 class Agent():
-    def __init__(self, env, model, config, save_path = None, save_stats = True):
+    def __init__(self, env, dqn_model, icm_model, config, save_path = None, save_stats = True):
         self.env = env
         self.save_path = save_path
 
@@ -16,6 +16,8 @@ class Agent():
         self.batch_size     = config.batch_size
 
         self.exploration    = config.exploration
+        self.alpha          = config.alpha
+        self.beta           = config.beta
         self.gamma          = config.gamma
 
         self.update_frequency = config.update_frequency
@@ -24,13 +26,15 @@ class Agent():
         self.observation_shape = self.env.observation_space.shape
         self.actions_count     = self.env.action_space.n
 
-        self.experience_replay = common.experience_replay_dqn.Buffer(config.experience_replay_size, self.gamma, self.observation_shape,  self.actions_count)
+        self.experience_replay = common.experience_replay_dqn_curiosity.Buffer(config.experience_replay_size, self.gamma, self.observation_shape,  self.actions_count)
 
-        self.model      = model.Model(self.observation_shape, self.actions_count)
+        self.dqn_model      = dqn_model.Model(self.observation_shape, self.actions_count)
+        self.icm_model      = icm_model.Model(self.observation_shape, self.actions_count)
 
-        self.optimizer  = torch.optim.Adam(self.model.parameters(), lr= config.learning_rate)
+        self.dqn_optimizer  = torch.optim.Adam(self.dqn_model.parameters(), lr= config.dqn_learning_rate)
+        self.icm_optimizer  = torch.optim.Adam(self.icm_model.parameters(), lr= config.icm_learning_rate)
 
-        self.observation    = env.reset()
+        self.observation        = env.reset()
         self.enable_training()
 
         self.iterations = 0
@@ -54,7 +58,7 @@ class Agent():
         else:
             epsilon = self.exploration.get_testing()
         
-        q_values = self.model.get_q_values(self.observation)
+        q_values = self.dqn_model.get_q_values(self.observation)
         self.action = self.choose_action_e_greedy(q_values, epsilon)
 
         observation_new, self.reward, done, self.info = self.env.step(self.action)
@@ -87,17 +91,44 @@ class Agent():
         
         
     def train_model(self):
-        input, q_target = self.experience_replay.get_random_batch(self.batch_size, self.model.device)
-            
-        q_predicted = self.model.forward(input)
 
-        self.optimizer.zero_grad()
+        self.experience_replay.create_indices(self.batch_size)
 
-        loss = ((q_target - q_predicted)**2).mean() 
-        loss.backward()
-        for param in self.model.parameters():
+
+        input, input_next, actions_target = self.experience_replay.get_icm_input(self.icm_model.device)
+
+        #curiosity model train
+        curiosity, action_predicted = self.icm_model.forward(input, input_next, actions_target)
+
+        self.icm_optimizer.zero_grad()
+
+        loss_inverse    = ((actions_target - action_predicted)**2).mean()
+        loss_forward    = curiosity.mean()
+        loss_icm        = (1.0 - self.beta)*loss_inverse + self.beta*loss_forward
+
+        
+        loss_icm.backward()
+        for param in self.icm_model.parameters():
             param.grad.data.clamp_(-10.0, 10.0)
-        self.optimizer.step()
+        self.icm_optimizer.step()
+
+
+        curiosity = curiosity.detach().to("cpu").numpy()
+
+        input, q_target = self.experience_replay.get_dqn_input(curiosity, self.alpha, self.dqn_model.device)
+
+ 
+        #train deep Qnet, using RMS    
+        q_predicted = self.dqn_model.forward(input)
+
+        self.dqn_optimizer.zero_grad()
+
+        #RMS loss 
+        loss_dqn = ((q_target - q_predicted)**2).mean() 
+        loss_dqn.backward()
+        for param in self.dqn_model.parameters():
+            param.grad.data.clamp_(-10.0, 10.0)
+        self.dqn_optimizer.step()
 
 
         

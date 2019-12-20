@@ -1,28 +1,30 @@
 import gym_super_mario_bros
 import common.super_mario_wrapper
 
-import agents.dqn
+import agents.dqn_curiosity
 
 import numpy
 import time
 
-import models.super_mario.dueling_dqn.src.model
-import models.super_mario.dueling_dqn.src.config
+import models.super_mario.curiosity_dqn.src.dqn_model
+import models.super_mario.curiosity_dqn.src.icm_model
+import models.super_mario.curiosity_dqn.src.config
 
 
-model  = models.super_mario.dueling_dqn.src.model
-config = models.super_mario.dueling_dqn.src.config.Config()
+dqn_model  = models.super_mario.curiosity_dqn.src.dqn_model
+icm_model  = models.super_mario.curiosity_dqn.src.icm_model
+config = models.super_mario.curiosity_dqn.src.config.Config()
 
-save_path = "./models/super_mario/imitation_dueling_dqn/"
+save_path = "./models/super_mario/curiosity_dqn/"
 
 env = gym_super_mario_bros.make('SuperMarioBros-v0')
-env = common.super_mario_wrapper.Create(env)
+env = common.super_mario_wrapper.Create(env, 32)
 
 env.reset()
 
 
 
-agent = agents.dqn.Agent(env, model, config, save_path)
+agent = agents.dqn_curiosity.Agent(env, dqn_model, icm_model, config, save_path)
 
 score_best = -10000.0
 while agent.iterations < 10000000:
