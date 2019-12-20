@@ -1,2 +1,2 @@
-python3 atari_pacman_imitation_dqn.py
+python3 atari_pacman_imitation_dueling_dqn.py
 python3 atari_pacman_dueling_dqn.py
