@@ -3,7 +3,7 @@ import common.decay
 class Config(): 
 
     def __init__(self):
-        self.type  = "dqn"
+        self.type  = "dueling dqn"
         self.gamma = 0.99
 
         self.update_frequency = 4
@@ -13,10 +13,7 @@ class Config():
         
         self.exploration    = common.decay.Linear(1000000, 1.0, 0.05, 0.02)
         #self.exploration   = common.decay.Exponential(0.999999, 1.0, 0.1, 0.02)
-
-        self.expert_decay   = common.decay.Linear(1000000, 1.0, 0.0, 0.0)
-
-
+ 
         self.experience_replay_size = 16384
  
 

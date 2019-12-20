@@ -1,21 +1,26 @@
-import gym
-import common.atari_wrapper
+import gym_super_mario_bros
+import common.super_mario_wrapper
+
 import agents.dqn
 
 import numpy
 import time
 
-import models.q_nets.dueling_dqn.src.model
-import models.q_nets.dueling_dqn.src.config
+import models.super_mario.dueling_dqn.src.model
+import models.super_mario.dueling_dqn.src.config
 
 
-model  = models.q_nets.dueling_dqn.src.model
-config = models.q_nets.dueling_dqn.src.config.Config()
+model  = models.super_mario.dueling_dqn.src.model
+config = models.super_mario.dueling_dqn.src.config.Config()
 
-save_path = "./models/q_nets/dueling_dqn/"
+save_path = "./models/super_mario/imitation_dueling_dqn/"
 
-env = gym.make("MsPacmanNoFrameskip-v4") 
-env = common.atari_wrapper.Create(env, 96, 96, 4) 
+env = gym_super_mario_bros.make('SuperMarioBros-v0')
+env = common.super_mario_wrapper.Create(env)
+
+env.reset()
+
+
 
 agent = agents.dqn.Agent(env, model, config, save_path)
 
