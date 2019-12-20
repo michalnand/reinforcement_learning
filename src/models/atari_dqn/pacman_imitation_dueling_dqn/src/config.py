@@ -15,7 +15,7 @@ class Config():
         self.expert_decay   = common.decay.Linear(800000, 1.0, 0.0, 0.0)
         
 
-        self.experience_replay_size = 16384
+        self.experience_replay_size = 256 #16384
  
  
 
