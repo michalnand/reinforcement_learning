@@ -228,7 +228,7 @@ class MakeTensorEnv(gym.ObservationWrapper):
 
 
 
-def Create(env, width = 96, height = 96, frame_stacking = 4, dummy_moves = 32):
+def Create(env, width = 96, height = 96, frame_stacking = 4, dummy_moves = 4096):
     env = JoypadSpace(env, SIMPLE_MOVEMENT)
     env = SetDimensions(env, width, height, frame_stacking)
     env = NoopResetEnv(env)
