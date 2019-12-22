@@ -44,9 +44,7 @@ class LinearDelayed():
         self.iterations = 0
 
     def process(self):
-        if self.iterations == 0:
-            self.epsilon = self.end_value
-        elif self.iterations == self.start_iterations:
+        if self.iterations == self.start_iterations:
             self.epsilon = self.start_value
         elif self.iterations > self.start_iterations:
             if self.epsilon > self.end_value:
