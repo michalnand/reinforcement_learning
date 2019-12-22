@@ -13,8 +13,8 @@ class Config():
 
         self.experience_replay_size = 16384
 
-        self.exploration    = common.decay.LinearDelayed(self.experience_replay_size*10, 1000000, 0.3, 0.05, 0.02)
-        self.expert_decay   = common.decay.Linear(self.experience_replay_size*10, 1.0, 0.0, 0.0)
+        self.exploration    = common.decay.Linear(1000000, 1.0, 0.05, 0.02)
+        self.expert_decay   = common.decay.Linear(500000, 1.0, 0.0, 0.0)
         
 
  
