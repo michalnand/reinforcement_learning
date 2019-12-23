@@ -105,14 +105,15 @@ class Agent():
 
         loss = (1.0 - self.beta1)*loss_inverse + self.beta1*loss_forward + self.beta2*loss_q_values
 
-        
+        '''
         print("loss_inverse = ", loss_inverse.detach().to("cpu").numpy())
         print("loss_forward = ", loss_forward.detach().to("cpu").numpy())
         print("loss_q_values = ", loss_q_values.detach().to("cpu").numpy())
         print("loss = ", loss.detach().to("cpu").numpy())
         print("curiosity = ", curiosity.detach().to("cpu").numpy())
         print("\n\n\n")
-    
+        '''
+        
         loss.backward()
         for param in self.model.parameters():
             param.grad.data.clamp_(-10.0, 10.0)
