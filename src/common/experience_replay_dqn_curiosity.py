@@ -77,16 +77,14 @@ class Buffer():
 
         return input, input_next, actions_one_hot
 
-    def get_dqn_input(self, curiosity, alpha, device):
+    def get_q_target(self, curiosity, alpha, device):
         batch_size      = len(self.indices)
 
         observation_shape = self.buffer[0].observation.shape
-        state_shape   = (batch_size, ) + observation_shape[0:]
         actions_count = len(self.buffer[0].q_values)
 
         q_values_shape = (batch_size, ) + (actions_count, )
 
-        input       = torch.zeros(state_shape,  dtype=torch.float32).to(device)
         target      = torch.zeros(q_values_shape,  dtype=torch.float32).to(device)
 
         for i in range(0, batch_size):
@@ -104,8 +102,7 @@ class Buffer():
 
             q_values[action] = reward + gamma_*numpy.max(self.buffer[n+1].q_values)
 
-            input[i]  = torch.from_numpy(self.buffer[n].observation).to(device)
             target[i] = torch.from_numpy(q_values).to(device)
 
-        return input, target
+        return target
 

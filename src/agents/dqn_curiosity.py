@@ -7,7 +7,7 @@ import common.experience_replay_dqn_curiosity
 
 
 class Agent():
-    def __init__(self, env, dqn_model, icm_model, config, save_path = None, save_stats = True):
+    def __init__(self, env, model, config, save_path = None, save_stats = True):
         self.env = env
         self.save_path = save_path
 
@@ -17,7 +17,8 @@ class Agent():
 
         self.exploration    = config.exploration
         self.alpha          = config.alpha
-        self.beta           = config.beta
+        self.beta1          = config.beta1
+        self.beta2          = config.beta2
         self.gamma          = config.gamma
 
         self.update_frequency = config.update_frequency
@@ -28,11 +29,9 @@ class Agent():
 
         self.experience_replay = common.experience_replay_dqn_curiosity.Buffer(config.experience_replay_size, self.gamma, self.observation_shape,  self.actions_count)
 
-        self.dqn_model      = dqn_model.Model(self.observation_shape, self.actions_count)
-        self.icm_model      = icm_model.Model(self.observation_shape, self.actions_count)
+        self.model      = model.Model(self.observation_shape, self.actions_count)
 
-        self.dqn_optimizer  = torch.optim.Adam(self.dqn_model.parameters(), lr= config.dqn_learning_rate)
-        self.icm_optimizer  = torch.optim.Adam(self.icm_model.parameters(), lr= config.icm_learning_rate)
+        self.optimizer  = torch.optim.Adam(self.model.parameters(), lr= config.learning_rate)
 
         self.observation        = env.reset()
         self.enable_training()
@@ -58,7 +57,7 @@ class Agent():
         else:
             epsilon = self.exploration.get_testing()
         
-        q_values = self.dqn_model.get_q_values(self.observation)
+        q_values = self.model.get_q_values(self.observation)
         self.action = self.choose_action_e_greedy(q_values, epsilon)
 
         observation_new, self.reward, done, self.info = self.env.step(self.action)
@@ -91,44 +90,34 @@ class Agent():
         
         
     def train_model(self):
-
         self.experience_replay.create_indices(self.batch_size)
 
+        input, input_next, actions_target = self.experience_replay.get_icm_input(self.model.device)
 
-        input, input_next, actions_target = self.experience_replay.get_icm_input(self.icm_model.device)
+        q_values, curiosity, action_predicted = self.model.forward(input, input_next, actions_target)
+        q_target = self.experience_replay.get_q_target(curiosity.detach().to("cpu").numpy(), self.alpha, self.model.device)
 
-        #curiosity model train
-        curiosity, action_predicted = self.icm_model.forward(input, input_next, actions_target)
-
-        self.icm_optimizer.zero_grad()
+        self.optimizer.zero_grad()
 
         loss_inverse    = ((actions_target - action_predicted)**2).mean()
         loss_forward    = curiosity.mean()
-        loss_icm        = (1.0 - self.beta)*loss_inverse + self.beta*loss_forward
+        loss_q_values   = ((q_target - q_values)**2).mean()
+
+        loss = (1.0 - self.beta1)*loss_inverse + self.beta1*loss_forward + self.beta2*loss_q_values
 
         
-        loss_icm.backward()
-        for param in self.icm_model.parameters():
+        print("loss_inverse = ", loss_inverse.detach().to("cpu").numpy())
+        print("loss_forward = ", loss_forward.detach().to("cpu").numpy())
+        print("loss_q_values = ", loss_q_values.detach().to("cpu").numpy())
+        print("loss = ", loss.detach().to("cpu").numpy())
+        print("curiosity = ", curiosity.detach().to("cpu").numpy())
+        print("\n\n\n")
+    
+        loss.backward()
+        for param in self.model.parameters():
             param.grad.data.clamp_(-10.0, 10.0)
-        self.icm_optimizer.step()
+        self.optimizer.step()
 
-
-        curiosity = curiosity.detach().to("cpu").numpy()
-
-        input, q_target = self.experience_replay.get_dqn_input(curiosity, self.alpha, self.dqn_model.device)
-
- 
-        #train deep Qnet, using RMS    
-        q_predicted = self.dqn_model.forward(input)
-
-        self.dqn_optimizer.zero_grad()
-
-        #RMS loss 
-        loss_dqn = ((q_target - q_predicted)**2).mean() 
-        loss_dqn.backward()
-        for param in self.dqn_model.parameters():
-            param.grad.data.clamp_(-10.0, 10.0)
-        self.dqn_optimizer.step()
 
 
         
