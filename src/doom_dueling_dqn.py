@@ -1,26 +1,27 @@
-import gym
-import common.atari_wrapper
-import agents.dqn_curiosity
+import gym_super_mario_bros
+import common.doom_wrapper
+
+import agents.dqn
 
 import numpy
 import time
 
-import models.atari_dqn.pacman_curiosity_dqn.src.icm_model
-import models.atari_dqn.pacman_curiosity_dqn.src.config
+import models.doom.src.model
+import models.doom.src.config
 
 
-model  = models.atari_dqn.pacman_curiosity_dqn.src.icm_model
-config = models.atari_dqn.pacman_curiosity_dqn.src.config.Config()
+model  = models.doom.src.model
+config = models.doom.src.config.Config()
 
-save_path = "./models/atari_dqn/pacman_curiosity_dqn/" 
+save_path = "./models/doom/"
 
-#env = gym.make("MsPacmanNoFrameskip-v4") 
-env = gym.make("PongNoFrameskip-v4") 
-env = common.atari_wrapper.Create(env, 96, 96, 4) 
+env = common.doom_wrapper.Create()
 
 env.reset()
 
-agent = agents.dqn_curiosity.Agent(env, model, config, save_path)
+
+
+agent = agents.dqn.Agent(env, model, config, save_path)
 
 score_best = -10000.0
 while agent.iterations < 10000000:

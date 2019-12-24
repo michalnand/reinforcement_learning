@@ -1,6 +1,8 @@
 import torch
 import torch.nn as nn
 
+import numpy
+
 class Flatten(nn.Module):
     def forward(self, input):
         return input.view(input.size(0), -1)
@@ -17,6 +19,8 @@ class Model(torch.nn.Module):
         fc_input_width  = input_shape[2]    
 
         ratio           = 2**4
+
+        self.actions_count = actions_count
 
         features_outputs_count = 64*((fc_input_width)//ratio)*((fc_input_height)//ratio)
         inverse_inputs_count   = features_outputs_count*2
@@ -40,8 +44,8 @@ class Model(torch.nn.Module):
                                 nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
                                 
                                 Flatten()
-                            ]
-
+                            ] 
+                            
         self.layers_q_values  = [
                                     nn.Linear(features_outputs_count, 512),
                                     nn.ELU(),                      
@@ -51,7 +55,7 @@ class Model(torch.nn.Module):
         self.layers_inverse = [
                                 nn.Linear(inverse_inputs_count, inverse_inputs_count//8),
                                 nn.ELU(),                      
-                                nn.Linear(inverse_inputs_count//8, actions_count) 
+                                nn.Linear(inverse_inputs_count//8, actions_count)
                             ]
 
         self.layers_forward = [
@@ -93,12 +97,24 @@ class Model(torch.nn.Module):
 
 
     def get_q_values(self, state):
+
+        return numpy.random.rand(self.actions_count)
+
+        '''
         with torch.no_grad():
             state_dev       = torch.tensor(state, dtype=torch.float32).detach().to(self.device).unsqueeze(0)
             features_now    = self.model_features.forward(state_dev)
             q_values        = self.model_q_values.forward(features_now)
 
-            return q_values[0].to("cpu").detach().numpy() 
+        return q_values[0].to("cpu").detach().numpy() 
+        '''
+        state_dev   = torch.tensor(state, dtype=torch.float32).detach().to(self.device).unsqueeze(0)
+        action      = torch.zeros(self.actions_count,  dtype=torch.float32).to(self.device).unsqueeze(0)
+
+        q_values, _, _, = self.forward(state_dev, state_dev, action)
+
+        return q_values[0].to("cpu").detach().numpy() 
+
 
     def forward(self, state_now, state_next, action):
         features_now  = self.model_features.forward(state_now)
@@ -112,7 +128,9 @@ class Model(torch.nn.Module):
 
 
         return q_values, curiosity, action_predicted
-    
+
+
+
     def save(self, path):
         torch.save(self.model_features.state_dict(), path + "trained/icm_model_features.pt")
         torch.save(self.model_q_values.state_dict(), path + "trained/icm_model_q_values.pt")

@@ -90,34 +90,67 @@ class Agent():
         
         
     def train_model(self):
+        self.optimizer.zero_grad()
+
         self.experience_replay.create_indices(self.batch_size)
 
         input, input_next, actions_target = self.experience_replay.get_icm_input(self.model.device)
 
-        q_values, curiosity, action_predicted = self.model.forward(input, input_next, actions_target)
+
+        q_values, curiosity, actions_predicted = self.model.forward(input, input_next, actions_target)
         q_target = self.experience_replay.get_q_target(curiosity.detach().to("cpu").numpy(), self.alpha, self.model.device)
 
-        self.optimizer.zero_grad()
 
-        loss_inverse    = ((actions_target - action_predicted)**2).mean()
+        loss_inverse    = ((actions_target - actions_predicted)**2).mean()
         loss_forward    = curiosity.mean()
         loss_q_values   = ((q_target - q_values)**2).mean()
 
-        loss = (1.0 - self.beta1)*loss_inverse + self.beta1*loss_forward + self.beta2*loss_q_values
+        #loss = (1.0 - self.beta1)*loss_inverse + self.beta1*loss_forward + self.beta2*loss_q_values
 
-        '''
+        loss = loss_inverse  + 0*loss_forward + 0*loss_q_values
+        loss.backward()
+
+        for param in self.model.parameters():
+            param.grad.data.clamp_(-10.0, 10.0)
+        self.optimizer.step()
+
         print("loss_inverse = ", loss_inverse.detach().to("cpu").numpy())
         print("loss_forward = ", loss_forward.detach().to("cpu").numpy())
         print("loss_q_values = ", loss_q_values.detach().to("cpu").numpy())
         print("loss = ", loss.detach().to("cpu").numpy())
         print("curiosity = ", curiosity.detach().to("cpu").numpy())
         print("\n\n\n")
+
+
+        idx_actions_target      = torch.argmax(actions_target, dim = 1).detach()
+        idx_actions_predicted   = torch.argmax(actions_predicted, dim = 1).detach()
+
+        match = idx_actions_target == idx_actions_predicted
+
+        print(match)
+        print("\n\n\n")
+
+        
+
         '''
         
+        loss = ((actions_target - actions_predicted)**2.0).mean()
+         
         loss.backward()
+
+        
         for param in self.model.parameters():
             param.grad.data.clamp_(-10.0, 10.0)
         self.optimizer.step()
+
+        idx_actions_target      = torch.argmax(actions_target, dim = 1).detach()
+        idx_actions_predicted   = torch.argmax(actions_predicted, dim = 1).detach()
+
+        match = idx_actions_target == idx_actions_predicted
+
+        print(match)
+        print("\n\n\n")
+        '''
 
 
 

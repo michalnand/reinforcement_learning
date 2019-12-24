@@ -61,7 +61,7 @@ class Buffer():
         
         input           = torch.zeros(state_shape,  dtype=torch.float32).to(device)
         input_next      = torch.zeros(state_shape,  dtype=torch.float32).to(device)
-        actions_one_hot = torch.zeros(q_values_shape,  dtype=torch.float32)
+        actions_one_hot = torch.zeros(q_values_shape,  dtype=torch.float32).to(device)
 
 
         for i in range(0, batch_size):
@@ -71,9 +71,8 @@ class Buffer():
             input_next[i]   = torch.from_numpy(self.buffer[n+1].observation).to(device)
             
             action = self.buffer[n].action
-            actions_one_hot[i][action]  = 1.0
+            actions_one_hot[i][action]  = 1.0 
 
-        actions_one_hot = actions_one_hot.to(device)
 
         return input, input_next, actions_one_hot
 
