@@ -1,0 +1,4 @@
+python3 atari_breakout_a2c_128_1.py
+python3 atari_breakout_a2c_128_4.py
+python3 atari_breakout_a2c_128_8.py
+
