@@ -15,7 +15,7 @@ config = models.doom.src.config.Config()
 
 save_path = "./models/doom/"
 
-env = common.doom_wrapper.Create()
+env = common.doom_wrapper.Create("defend_the_line", 96, 96, 4)
 
 env.reset()
 

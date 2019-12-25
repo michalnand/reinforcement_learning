@@ -40,21 +40,23 @@ def observation_show(observation):
     plt.show() 
 
 frames = 0
+score = 0
 while True:
     action = numpy.random.randint(actions_count)
     observation, reward, done, info = env.step(action)
     env.render()
 
+    score+= reward
+
     #observation_show(observation)
 
     if reward != 0:
-        print("reward = ", reward)
+        print("reward = ", reward, score)
 
     if done[0]:
         print("round done\n\n")
         env.reset()
         time.sleep(1.0)
-
 
     if done[1]:
         print("\n\nGAME DONE\n\n")
