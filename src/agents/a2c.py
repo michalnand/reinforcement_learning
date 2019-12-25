@@ -157,15 +157,12 @@ class Agent():
         result = numpy.zeros((len(rewards), 1))
 
         for i in range(len(rewards)-steps):
-            if done[i]:
-                gamma = 0.0
-            else:
-                gamma = self.gamma
+            
 
             reward_sum = 0.0
             for n in range(steps):
-                reward_sum+= rewards[i + n]*(gamma**n) 
+                reward_sum+= rewards[i + n]*(self.gamma**n) 
                 
-            result[i][0] = reward_sum + (gamma**steps)*values[i + steps][0] 
+            result[i][0] = reward_sum + (self.gamma**steps)*values[i + steps][0] 
 
         return result
