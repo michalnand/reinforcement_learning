@@ -18,10 +18,15 @@ frame_stacking  = 4
 
 envs = []
 
+'''
 envs.append(common.atari_wrapper.Create(gym.make("MsPacmanNoFrameskip-v4"), width, height, frame_stacking))
 envs.append(common.super_mario_wrapper.Create(gym_super_mario_bros.make('SuperMarioBros-v0'), width, height, frame_stacking))
+'''
 
-
+envs.append(common.atari_wrapper.Create(gym.make("BreakoutNoFrameskip-v4"), width, height, frame_stacking))
+envs.append(common.atari_wrapper.Create(gym.make("MsPacmanNoFrameskip-v4"), width, height, frame_stacking))
+envs.append(common.atari_wrapper.Create(gym.make("SeaquestNoFrameskip-v4"), width, height, frame_stacking))
+envs.append(common.atari_wrapper.Create(gym.make("QbertNoFrameskip-v4"), width, height, frame_stacking))
 
 env = common.env_multi.EnvMulti(envs, 256)
 env.reset()
