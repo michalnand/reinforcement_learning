@@ -5,14 +5,14 @@ import agents.a2c
 import numpy
 import time
 
-import models.atari_a2c.breakout_128_1.src.model
-import models.atari_a2c.breakout_128_1.src.config
+import models.atari_a2c.breakout_256_1.src.model
+import models.atari_a2c.breakout_256_1.src.config
 
 
-model  = models.atari_a2c.breakout_128_1.src.model
-config = models.atari_a2c.breakout_128_1.src.config.Config() 
+model  = models.atari_a2c.breakout_256_1.src.model
+config = models.atari_a2c.breakout_256_1.src.config.Config() 
 
-save_path = "./models/atari_a2c/breakout_128_1/"
+save_path = "./models/atari_a2c/breakout_256_1/"
 
 env = gym.make("BreakoutNoFrameskip-v4")
 env = common.atari_wrapper.Create(env)
