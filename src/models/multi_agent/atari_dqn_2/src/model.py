@@ -166,7 +166,6 @@ class Model(torch.nn.Module):
         torch.save(self.model_value.state_dict(), path + "trained/model_value.pt")
         torch.save(self.model_advantage.state_dict(), path + "trained/model_advantage.pt")
 
-        self.render(path)
 
     def load(self, path):
         print("loading ", path) 
