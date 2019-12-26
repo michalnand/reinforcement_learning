@@ -4,7 +4,7 @@ class Config():
         self.type           = "a2c"
         
         self.gamma          = 0.99
-        self.entropy_beta   = 0.01
+        self.entropy_beta   = 0.001
         self.batch_size     = 256
         self.bellman_steps  = 8
 

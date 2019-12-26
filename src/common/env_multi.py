@@ -10,6 +10,8 @@ class EnvMulti():
         self.envs = envs
         self.change_period = change_period
 
+        self.enable_auto_env_change()
+
         self._reset_all()
 
 
@@ -32,15 +34,26 @@ class EnvMulti():
     def reset(self):
         return self.envs[self.current_env].reset()
 
+    def set_env(self, env_id):
+        self.auto_env_change = False
+        self.current_env = env_id
+
+    def enable_auto_env_change(self):
+        self.auto_env_change = True
+
+    def disable_auto_env_change(self):
+        self.auto_env_change = False
+
     def step(self, action):
         action = action%self.actions_count[self.current_env]
 
         observation, reward, done, info = self.envs[self.current_env].step(action)
 
         self.iterations+= 1
-        if self.iterations%self.change_period == 0:
-            self.current_env = numpy.random.randint(len(self.envs))
-
+        if self.auto_env_change:
+            if self.iterations%self.change_period == 0:
+                self.current_env = numpy.random.randint(len(self.envs))
+        
         return observation, reward, done, info
 
     def render(self):
