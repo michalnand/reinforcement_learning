@@ -37,7 +37,10 @@ envs.append(common.atari_wrapper.Create(gym.make("QbertNoFrameskip-v4"), width, 
 env = common.env_multi.EnvMulti(envs, 512)
 env.reset()
 
-env.set_env(0)
+
+active_env = 0
+
+env.set_env(active_env)
 
 
 
@@ -69,21 +72,27 @@ def activity_show(observation, activity, alpha = 0.3):
     
     plt.imshow(image, interpolation='bicubic')
     
-    plt.draw()
-    plt.pause(0.001)
-    #plt.show() 
+    #plt.draw()
+    #plt.pause(0.001)
+    plt.show() 
     
 iteration = 0
+
 
 while True:
     agent.main()
     env.render()
     time.sleep(1.0/50.0)
 
-    '''
-    activity = agent.model.get_activity_map(agent.observation)
+    iteration+= 1
 
-    if iteration%10 == 0:
+    if iteration%512 == 0:
+        active_env = (active_env + 1)%env.get_env_count()
+
+        env.set_env(active_env)
+
+    '''
+    if iteration%100 == 0:
+        activity = agent.model.get_activity_map(agent.observation)
         activity_show(agent.observation, activity, 0.7)
     '''
-    iteration+= 1

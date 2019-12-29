@@ -38,6 +38,9 @@ class EnvMulti():
         self.auto_env_change = False
         self.current_env = env_id
 
+    def get_env_count(self):
+        return len(self.envs)
+
     def enable_auto_env_change(self):
         self.auto_env_change = True
 

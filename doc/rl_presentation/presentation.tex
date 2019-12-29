@@ -116,6 +116,26 @@
 \begin{frame}{\bf Reinforcement learning}
 - learning from punishments and rewards
 
+
+\begin{columns}
+\begin{column}{0.5\textwidth}
+
+    \centering
+    \includemovie[
+      poster,
+      autoplay,
+      externalviewer,
+      inline=false,
+      text={ \includegraphics[scale=0.15]{./pictures/breakout.png}}
+    ]{4cm}{4cm}{./video/rl_atari.mp4}
+
+\begin{figure}
+  \includegraphics[scale=0.2]{./diagrams/rl_mechanism.png}
+\end{figure}
+
+\end{column}
+\begin{column}{0.5\textwidth}  %%<--- here
+
 \begin{itemize}
   \item obtain {\bf state}
   \item choose {\bf action}
@@ -124,9 +144,9 @@
   \item learn from {\bf experiences}, $Q(s, a)$, or $\pi(a|s)$
 \end{itemize}
 
-  \begin{figure}
-    \includegraphics[scale=0.3]{./diagrams/rl_mechanism.png}
-  \end{figure}
+
+\end{column}
+\end{columns}
 
 \end{frame}
 
@@ -147,20 +167,20 @@ $Q(s, a)$ : what is the potential reward in state $s$ and action $a$
 
 
 \begin{frame}{\bf be more specific}
-
 \begin{itemize}
   \item state  : \begin{itemize}
                   \item  grayscale frames, 
                   \item size 96x96, (84x84) 4 past frames - frame stacking
-                  \item use wrappers (see my code)
+                  \item use wrappers (life lost reward, frame skipping, reset fire button)
                 \end{itemize}
   \item reward : clip into range $\langle -1, 1 \rangle$
   \item discount factor $\gamma = 0.99$
   \item update rate $k = 4$
 \end{itemize}
 
+
 \begin{figure}
-  \includegraphics[scale=0.42]{./pictures/breakout_state.png}
+  \includegraphics[scale=0.4]{./pictures/breakout_state.png}
 \end{figure}
 
 \end{frame}
@@ -202,6 +222,100 @@ a long time ago in a galaxy far far away
   \includegraphics[scale=0.08]{./diagrams/attention_dueling_dqn_my_atari.png}
 \end{figure}
 \end{frame}
+
+
+\begin{frame}{\bf playing multiple games using one network}
+
+
+\begin{columns}
+
+  \begin{column}{0.25\textwidth}
+    \begin{figure}
+      \includegraphics[scale=0.15]{./pictures/breakout.png}
+    \end{figure}
+  \end{column}
+
+  \begin{column}{0.25\textwidth}
+    \begin{figure}
+      \includegraphics[scale=0.15]{./pictures/pacman.png}
+    \end{figure}
+  \end{column}
+
+  \begin{column}{0.25\textwidth}
+    \begin{figure}
+      \includegraphics[scale=0.15]{./pictures/seaquest.png}
+    \end{figure}
+  \end{column}
+
+  \begin{column}{0.25\textwidth}
+    \begin{figure}
+      \includegraphics[scale=0.15]{./pictures/qbert.png}
+    \end{figure}
+  \end{column}
+
+
+\end{columns}
+
+\begin{itemize}
+  \item pure DQN
+  \item dueling residual DQN
+  \item dueling residual DQN with attention
+\end{itemize}
+
+
+
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}{\bf attention is all you need}
+
+
+\begin{columns}
+
+  \begin{column}{0.5\textwidth}
+    \begin{figure}
+      \includegraphics[scale=0.3]{./pictures/attention_breakout_dqn.png}
+    \end{figure}
+  \end{column}
+
+  \begin{column}{0.5\textwidth}
+    \begin{figure}
+      \includegraphics[scale=0.3]{./pictures/attention_pacman_dqn.png}
+    \end{figure}
+  \end{column}
+
+
+\end{columns}
+
+\begin{columns}
+
+  \begin{column}{0.5\textwidth}
+    \begin{figure}
+      \includegraphics[scale=0.3]{./pictures/attention_seaquest_dqn.png}
+    \end{figure}
+  \end{column}
+
+  \begin{column}{0.5\textwidth}
+    \begin{figure}
+      \includegraphics[scale=0.3]{./pictures/attention_qbert_dqn.png}
+    \end{figure}
+  \end{column}
+
+
+\end{columns}
+
+
+
+
+
+\end{frame}
+
+
 
 
 \begin{frame}{\bf results : farewell my dear gtx1080ti}

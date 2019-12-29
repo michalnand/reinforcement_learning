@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.12.28)  29 DEC 2019 17:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.12.28)  29 DEC 2019 20:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1563,128 +1563,187 @@ Overfull \vbox (90.73662pt too high) has occurred while \output is active []
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./pictures/rl_square.jpg>]
-<./diagrams/rl_mechanism.png, id=28, 566.82353pt x 388.98265pt>
+<./pictures/breakout.png, id=28, 501.875pt x 625.33624pt>
+File: ./pictures/breakout.png Graphic file (type png)
+<use ./pictures/breakout.png>
+Package pdftex.def Info: ./pictures/breakout.png  used on input line 151.
+(pdftex.def)             Requested size: 75.278pt x 93.79639pt.
+<./diagrams/rl_mechanism.png, id=31, 566.82353pt x 388.98265pt>
 File: ./diagrams/rl_mechanism.png Graphic file (type png)
 <use ./diagrams/rl_mechanism.png>
-Package pdftex.def Info: ./diagrams/rl_mechanism.png  used on input line 131.
-(pdftex.def)             Requested size: 170.04837pt x 116.69568pt.
+Package pdftex.def Info: ./diagrams/rl_mechanism.png  used on input line 151.
+(pdftex.def)             Requested size: 113.36269pt x 77.79515pt.
  [2
 
- <./diagrams/rl_mechanism.png>]
-<./diagrams/dqn_detail.png, id=42, 576.1525pt x 501.875pt>
+ <./pictures/breakout.png> <./diagrams/rl_mechanism.png>]
+<./diagrams/dqn_detail.png, id=47, 576.1525pt x 501.875pt>
 File: ./diagrams/dqn_detail.png Graphic file (type png)
 <use ./diagrams/dqn_detail.png>
-Package pdftex.def Info: ./diagrams/dqn_detail.png  used on input line 146.
+Package pdftex.def Info: ./diagrams/dqn_detail.png  used on input line 166.
 (pdftex.def)             Requested size: 172.84708pt x 150.56366pt.
  [3
 
  <./diagrams/dqn_detail.png>]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 166.
+(Font)              <10> on input line 186.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 166.
+(Font)              <7> on input line 186.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 166.
+(Font)              <5> on input line 186.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 166.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 186.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <7> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 166.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 186.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <5> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 166.
-<./pictures/breakout_state.png, id=53, 462.528pt x 346.896pt>
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 186.
+<./pictures/breakout_state.png, id=58, 462.528pt x 346.896pt>
 File: ./pictures/breakout_state.png Graphic file (type png)
 <use ./pictures/breakout_state.png>
-Package pdftex.def Info: ./pictures/breakout_state.png  used on input line 166.
+Package pdftex.def Info: ./pictures/breakout_state.png  used on input line 186.
 
-(pdftex.def)             Requested size: 194.26042pt x 145.69531pt.
+(pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
 
-Overfull \vbox (20.08186pt too high) detected at line 166
+Overfull \vbox (25.14249pt too high) detected at line 186
  []
 
 [4
 
  <./pictures/breakout_state.png>]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 180.
+(Font)              <9> on input line 200.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <9> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 180.
-<./diagrams/dqn_mnih_atari.png, id=64, 1707.178pt x 481.8pt>
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 200.
+<./diagrams/dqn_mnih_atari.png, id=68, 1707.178pt x 481.8pt>
 File: ./diagrams/dqn_mnih_atari.png Graphic file (type png)
 <use ./diagrams/dqn_mnih_atari.png>
-Package pdftex.def Info: ./diagrams/dqn_mnih_atari.png  used on input line 180.
+Package pdftex.def Info: ./diagrams/dqn_mnih_atari.png  used on input line 200.
 
 (pdftex.def)             Requested size: 307.27878pt x 86.72025pt.
  [5
 
  <./diagrams/dqn_mnih_atari.png>]
-<./diagrams/dqn_my_atari.png, id=75, 2975.918pt x 481.8pt>
+<./diagrams/dqn_my_atari.png, id=79, 2975.918pt x 481.8pt>
 File: ./diagrams/dqn_my_atari.png Graphic file (type png)
 <use ./diagrams/dqn_my_atari.png>
-Package pdftex.def Info: ./diagrams/dqn_my_atari.png  used on input line 197.
+Package pdftex.def Info: ./diagrams/dqn_my_atari.png  used on input line 217.
 (pdftex.def)             Requested size: 327.35199pt x 52.99815pt.
 
-Overfull \hbox (20.06212pt too wide) in paragraph at lines 197--197
+Overfull \hbox (20.06212pt too wide) in paragraph at lines 217--217
  [] 
  []
 
 [6
 
  <./diagrams/dqn_my_atari.png>]
-<./diagrams/attention_dueling_dqn_my_atari.png, id=83, 3892.141pt x 1606.0pt>
+<./diagrams/attention_dueling_dqn_my_atari.png, id=87, 3892.141pt x 1606.0pt>
 File: ./diagrams/attention_dueling_dqn_my_atari.png Graphic file (type png)
 <use ./diagrams/attention_dueling_dqn_my_atari.png>
 Package pdftex.def Info: ./diagrams/attention_dueling_dqn_my_atari.png  used on
- input line 204.
+ input line 224.
 (pdftex.def)             Requested size: 311.37764pt x 128.48262pt.
 
-Overfull \hbox (4.08777pt too wide) in paragraph at lines 204--204
+Overfull \hbox (4.08777pt too wide) in paragraph at lines 224--224
  [] 
  []
 
 [7
 
  <./diagrams/attention_dueling_dqn_my_atari.png>]
-<./pictures/gtx1080ti.jpg, id=92, 4175.6pt x 2348.775pt>
-File: ./pictures/gtx1080ti.jpg Graphic file (type jpg)
-<use ./pictures/gtx1080ti.jpg>
-Package pdftex.def Info: ./pictures/gtx1080ti.jpg  used on input line 211.
-(pdftex.def)             Requested size: 334.05482pt x 187.90584pt.
+File: ./pictures/breakout.png Graphic file (type png)
+<use ./pictures/breakout.png>
+Package pdftex.def Info: ./pictures/breakout.png  used on input line 268.
+(pdftex.def)             Requested size: 75.278pt x 93.79639pt.
+<./pictures/pacman.png, id=96, 501.875pt x 622.325pt>
+File: ./pictures/pacman.png Graphic file (type png)
+<use ./pictures/pacman.png>
+Package pdftex.def Info: ./pictures/pacman.png  used on input line 268.
+(pdftex.def)             Requested size: 75.278pt x 93.34471pt.
+<./pictures/seaquest.png, id=97, 501.875pt x 622.325pt>
+File: ./pictures/seaquest.png Graphic file (type png)
+<use ./pictures/seaquest.png>
+Package pdftex.def Info: ./pictures/seaquest.png  used on input line 268.
+(pdftex.def)             Requested size: 75.278pt x 93.34471pt.
+<./pictures/qbert.png, id=98, 501.875pt x 632.3625pt>
+File: ./pictures/qbert.png Graphic file (type png)
+<use ./pictures/qbert.png>
+Package pdftex.def Info: ./pictures/qbert.png  used on input line 268.
+(pdftex.def)             Requested size: 75.278pt x 94.85028pt.
+ [8
 
-Overfull \hbox (26.76495pt too wide) in paragraph at lines 211--211
- [] 
- []
+ <./pictures/pacman.png> <./pictures/seaquest.png> <./pictures/qbert.png>]
+<./pictures/attention_breakout_dqn.png, id=108, 462.528pt x 346.896pt>
+File: ./pictures/attention_breakout_dqn.png Graphic file (type png)
+<use ./pictures/attention_breakout_dqn.png>
+Package pdftex.def Info: ./pictures/attention_breakout_dqn.png  used on input l
+ine 316.
+(pdftex.def)             Requested size: 138.75946pt x 104.0696pt.
+<./pictures/attention_pacman_dqn.png, id=109, 462.528pt x 346.896pt>
+File: ./pictures/attention_pacman_dqn.png Graphic file (type png)
+<use ./pictures/attention_pacman_dqn.png>
+Package pdftex.def Info: ./pictures/attention_pacman_dqn.png  used on input lin
+e 316.
+(pdftex.def)             Requested size: 138.75946pt x 104.0696pt.
+<./pictures/attention_seaquest_dqn.png, id=110, 462.528pt x 346.896pt>
+File: ./pictures/attention_seaquest_dqn.png Graphic file (type png)
+<use ./pictures/attention_seaquest_dqn.png>
+Package pdftex.def Info: ./pictures/attention_seaquest_dqn.png  used on input l
+ine 316.
+(pdftex.def)             Requested size: 138.75946pt x 104.0696pt.
+<./pictures/attention_qbert_dqn.png, id=111, 462.528pt x 346.896pt>
+File: ./pictures/attention_qbert_dqn.png Graphic file (type png)
+<use ./pictures/attention_qbert_dqn.png>
+Package pdftex.def Info: ./pictures/attention_qbert_dqn.png  used on input line
+ 316.
+(pdftex.def)             Requested size: 138.75946pt x 104.0696pt.
 
-[8
-
- <./pictures/gtx1080ti.jpg>]
-Overfull \hbox (16.17322pt too wide) detected at line 231
-[]
+Overfull \vbox (1.59659pt too high) detected at line 316
  []
 
 [9
 
-]
-Overfull \vbox (2.28932pt too high) detected at line 262
+ <./pictures/attention_breakout_dqn.png> <./pictures/attention_pacman_dqn.png> 
+<./pictures/attention_seaquest_dqn.png> <./pictures/attention_qbert_dqn.png>]
+<./pictures/gtx1080ti.jpg, id=122, 4175.6pt x 2348.775pt>
+File: ./pictures/gtx1080ti.jpg Graphic file (type jpg)
+<use ./pictures/gtx1080ti.jpg>
+Package pdftex.def Info: ./pictures/gtx1080ti.jpg  used on input line 325.
+(pdftex.def)             Requested size: 334.05482pt x 187.90584pt.
+
+Overfull \hbox (26.76495pt too wide) in paragraph at lines 325--325
+ [] 
  []
 
 [10
 
+ <./pictures/gtx1080ti.jpg>]
+Overfull \hbox (16.17322pt too wide) detected at line 345
+[]
+ []
+
+[11
+
 ]
-<./pictures/me_rysy.jpg, id=115, 616.704pt x 462.528pt>
+Overfull \vbox (2.28932pt too high) detected at line 376
+ []
+
+[12
+
+]
+<./pictures/me_rysy.jpg, id=145, 616.704pt x 462.528pt>
 File: ./pictures/me_rysy.jpg Graphic file (type jpg)
 <use ./pictures/me_rysy.jpg>
-Package pdftex.def Info: ./pictures/me_rysy.jpg  used on input line 272.
+Package pdftex.def Info: ./pictures/me_rysy.jpg  used on input line 386.
 (pdftex.def)             Requested size: 308.35124pt x 231.26343pt.
 
-Overfull \hbox (1.06137pt too wide) in paragraph at lines 272--272
+Overfull \hbox (1.06137pt too wide) in paragraph at lines 386--386
  [] 
  []
 
 
-Overfull \vbox (6.24919pt too high) detected at line 272
+Overfull \vbox (6.24919pt too high) detected at line 386
  []
 
-[11
+[13
 
  <./pictures/me_rysy.jpg>]
 \tf@nav=\write6
@@ -1703,43 +1762,40 @@ Package movie15 Warning: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 (movie15)                @@ superseded by `media9'.           @@
 (movie15)                @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 275.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 275.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 389.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 389.
 (./presentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 275.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 275.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 389.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 389.
 Package rerunfilecheck Info: File `presentation.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 23805 strings out of 492982
- 427639 string characters out of 6134895
- 665173 words of memory out of 5000000
- 26766 multiletter control sequences out of 15000+600000
+ 23867 strings out of 492982
+ 429268 string characters out of 6134895
+ 665211 words of memory out of 5000000
+ 26816 multiletter control sequences out of 15000+600000
  90244 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 56i,15n,55p,803b,649s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{Navigation12} has been referenced but does not ex
-ist, replaced by a fixed one
-
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvip
-s/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/sha
-re/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/
-lm-rm.enc}</usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/
-fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi7.
-pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/t
-ype1/public/lm/lmss10.pfb></usr/share/texmf/fonts/type1/public/lm/lmss17.pfb></
-usr/share/texmf/fonts/type1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/p
-ublic/lm/lmss9.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/s
-hare/texmf/fonts/type1/public/lm/lmsso10.pfb></usr/share/texmf/fonts/type1/publ
-ic/lm/lmsso8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share
-/texmf/fonts/type1/public/lm/lmsy5.pfb></usr/share/texmf/fonts/type1/public/lm/
-lmsy6.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/f
-onts/type1/public/lm/lmsy8.pfb>
-Output written on presentation.pdf (11 pages, 7928019 bytes).
+ 56i,15n,63p,803b,760s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
+ips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/s
+hare/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/l
+m/lm-rm.enc}</usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi
+7.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts
+/type1/public/lm/lmss10.pfb></usr/share/texmf/fonts/type1/public/lm/lmss17.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1
+/public/lm/lmss9.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr
+/share/texmf/fonts/type1/public/lm/lmsso10.pfb></usr/share/texmf/fonts/type1/pu
+blic/lm/lmsso8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/sha
+re/texmf/fonts/type1/public/lm/lmsy5.pfb></usr/share/texmf/fonts/type1/public/l
+m/lmsy6.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf
+/fonts/type1/public/lm/lmsy8.pfb>
+Output written on presentation.pdf (13 pages, 8698584 bytes).
 PDF statistics:
- 186 PDF objects out of 1000 (max. 8388607)
- 133 compressed objects within 2 object streams
- 24 named destinations out of 1000 (max. 500000)
- 100 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 217 PDF objects out of 1000 (max. 8388607)
+ 146 compressed objects within 2 object streams
+ 28 named destinations out of 1000 (max. 500000)
+ 140 words of extra memory for PDF output out of 10000 (max. 10000000)
 
