@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="28cm" height="13cm" viewBox="260 185 547 254" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="Background">
+    <g>
+      <rect style="fill: #ff9a96; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="336.486" y="204.978" width="260.664" height="103.941" rx="0" ry="0"/>
+      <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="466.818" y="260.849">
+        <tspan x="466.818" y="260.849">CONVOLUTION</tspan>
+      </text>
+    </g>
+    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="466.818" y="256.95">
+      <tspan x="466.818" y="256.95"></tspan>
+    </text>
+    <g>
+      <rect style="fill: #c6c0ff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="655.832" y="207.52" width="40" height="99.1302" rx="0" ry="0"/>
+      <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="675.832" y="260.985">
+        <tspan x="675.832" y="260.985">FC</tspan>
+      </text>
+    </g>
+    <g>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="261.918" y1="257.046" x2="326.75" y2="256.963"/>
+      <polygon style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="334.25,256.953 324.256,261.966 326.75,256.963 324.244,251.966 "/>
+    </g>
+    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="264.188" y="242.458">
+      <tspan x="264.188" y="242.458">state</tspan>
+    </text>
+    <g>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="597.15" y1="256.95" x2="646.096" y2="257.063"/>
+      <polygon style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="653.596,257.081 643.584,262.058 646.096,257.063 643.608,252.058 "/>
+    </g>
+    <g>
+      <rect style="fill: #c6c0ff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="655.006" y="320.242" width="40" height="99.1302" rx="0" ry="0"/>
+      <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="675.006" y="373.707">
+        <tspan x="675.006" y="373.707">FC</tspan>
+      </text>
+    </g>
+    <g>
+      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="598.158,256.949 626.582,256.949 626.582,369.807 645.27,369.807 "/>
+      <polygon style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="652.77,369.807 642.77,374.807 645.27,369.807 642.77,364.807 "/>
+    </g>
+    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="716.588" y="243.202">
+      <tspan x="716.588" y="243.202">policy</tspan>
+    </text>
+    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="720.444" y="385.47">
+      <tspan x="720.444" y="385.47">state value</tspan>
+    </text>
+    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="768.11" y="240.748">
+      <tspan x="768.11" y="240.748"></tspan>
+    </text>
+    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="642.23" y="197.391">
+      <tspan x="642.23" y="197.391">actor head</tspan>
+    </text>
+    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="737.648" y="383.868">
+      <tspan x="737.648" y="383.868"></tspan>
+    </text>
+    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="644.41" y="435.666">
+      <tspan x="644.41" y="435.666">critic head</tspan>
+    </text>
+    <g>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="695.832" y1="257.086" x2="794.704" y2="257.345"/>
+      <polygon style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="802.204,257.364 792.191,262.338 794.704,257.345 792.217,252.338 "/>
+    </g>
+    <g>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="695.006" y1="369.806" x2="796.614" y2="369.702"/>
+      <polygon style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="804.114,369.694 794.119,374.705 796.614,369.702 794.109,364.705 "/>
+    </g>
+    <text font-size="12.8" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="683.018" y="432.198">
+      <tspan x="683.018" y="432.198"></tspan>
+    </text>
+  </g>
+</svg>

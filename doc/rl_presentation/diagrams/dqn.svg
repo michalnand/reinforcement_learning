@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="27cm" height="6cm" viewBox="269 237 525 109" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="Background">
+    <g>
+      <rect style="fill: #ff9a96; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="344.613" y="240.758" width="260.664" height="103.941" rx="0" ry="0"/>
+      <text font-size="12.7998" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="474.945" y="296.628">
+        <tspan x="474.945" y="296.628">CONVOLUTION</tspan>
+      </text>
+    </g>
+    <text font-size="12.7998" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="474.945" y="292.728">
+      <tspan x="474.945" y="292.728"></tspan>
+    </text>
+    <g>
+      <rect style="fill: #c6c0ff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="663.959" y="243.299" width="40" height="99.1302" rx="0" ry="0"/>
+      <text font-size="12.7998" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="683.959" y="296.764">
+        <tspan x="683.959" y="296.764">FC</tspan>
+      </text>
+    </g>
+    <g>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="270.045" y1="292.825" x2="334.877" y2="292.741"/>
+      <polygon style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="342.377,292.731 332.383,297.744 334.877,292.741 332.37,287.744 "/>
+    </g>
+    <text font-size="12.7998" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="272.314" y="278.236">
+      <tspan x="272.314" y="278.236">state</tspan>
+    </text>
+    <g>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="605.277" y1="292.728" x2="654.223" y2="292.842"/>
+      <polygon style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="661.723,292.859 651.712,297.836 654.223,292.842 651.735,287.836 "/>
+    </g>
+    <g>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="703.959" y1="292.864" x2="783.042" y2="292.877"/>
+      <polygon style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="790.542,292.879 780.542,297.877 783.042,292.877 780.543,287.877 "/>
+    </g>
+    <text font-size="12.7998" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="762.029" y="277.629">
+      <tspan x="762.029" y="277.629">Q(s)</tspan>
+    </text>
+    <text font-size="12.7998" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="732.279" y="249.629">
+      <tspan x="732.279" y="249.629">Q-values</tspan>
+    </text>
+  </g>
+</svg>

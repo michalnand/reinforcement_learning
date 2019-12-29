@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="34cm" height="19cm" viewBox="418 237 668 371" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="Background">
+    <g>
+      <rect style="fill: #ff9a96; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="499.415" y="259.309" width="260.664" height="103.941" rx="0" ry="0"/>
+      <text font-size="12.7998" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="629.747" y="315.18">
+        <tspan x="629.747" y="315.18">CONVOLUTION</tspan>
+      </text>
+    </g>
+    <text font-size="12.7998" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="629.747" y="311.28">
+      <tspan x="629.747" y="311.28"></tspan>
+    </text>
+    <g>
+      <rect style="fill: #c6c0ff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="818.761" y="261.851" width="40" height="99.1302" rx="0" ry="0"/>
+      <text font-size="12.7998" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="838.761" y="315.316">
+        <tspan x="838.761" y="315.316">FC</tspan>
+      </text>
+    </g>
+    <g>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="424.847" y1="311.377" x2="489.679" y2="311.292"/>
+      <polygon style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="497.179,311.283 487.185,316.296 489.679,311.292 487.172,306.296 "/>
+    </g>
+    <text font-size="12.7998" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="427.116" y="296.787">
+      <tspan x="427.116" y="296.787">state</tspan>
+    </text>
+    <g>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="760.079" y1="311.28" x2="809.025" y2="311.393"/>
+      <polygon style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="816.525,311.41 806.513,316.387 809.025,311.393 806.537,306.387 "/>
+    </g>
+    <g>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="858.761" y1="311.416" x2="937.844" y2="311.429"/>
+      <polygon style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="945.344,311.43 935.343,316.428 937.844,311.429 935.345,306.428 "/>
+    </g>
+    <text font-size="12.7998" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="916.83" y="296.18">
+      <tspan x="916.83" y="296.18">Q(s)</tspan>
+    </text>
+    <text font-size="12.7998" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="810.581" y="249.681">
+      <tspan x="810.581" y="249.681">Q-values</tspan>
+    </text>
+    <g>
+      <rect style="fill: #ff9a96; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="499.728" y="503.441" width="260.664" height="103.941" rx="0" ry="0"/>
+      <text font-size="12.7998" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="630.061" y="559.311">
+        <tspan x="630.061" y="559.311">CONVOLUTION</tspan>
+      </text>
+    </g>
+    <g>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="419.397" y1="555.45" x2="489.992" y2="555.416"/>
+      <polygon style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="497.492,555.413 487.495,560.417 489.992,555.416 487.49,550.417 "/>
+    </g>
+    <text font-size="12.7998" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="418.182" y="539.18">
+      <tspan x="418.182" y="539.18">next state</tspan>
+    </text>
+    <text font-size="12.7998" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="527.852" y="475.866">
+      <tspan x="527.852" y="475.866">shared weights</tspan>
+    </text>
+    <g>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke-dasharray: 4; stroke: #000000" x1="629.772" y1="374.25" x2="630.039" y2="493.705"/>
+      <polygon style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="634.772,374.239 629.749,364.25 624.772,374.261 "/>
+      <polygon style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="630.056,501.205 625.033,491.216 630.039,493.705 635.033,491.194 "/>
+    </g>
+    <text font-size="12.7998" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="777.032" y="292.662">
+      <tspan x="777.032" y="292.662">f(n)</tspan>
+    </text>
+    <text font-size="12.7998" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="782.689" y="568.115">
+      <tspan x="782.689" y="568.115">f(n+1)</tspan>
+    </text>
+    <g>
+      <rect style="fill: #c6c0ff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="886.954" y="505.822" width="40" height="99.1302" rx="0" ry="0"/>
+      <text font-size="12.7998" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="906.954" y="559.287">
+        <tspan x="906.954" y="559.287">FC</tspan>
+      </text>
+    </g>
+    <text font-size="12.7998" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="863.689" y="500.48">
+      <tspan x="863.689" y="500.48">inverse model</tspan>
+    </text>
+    <g>
+      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="760.079,311.28 787.145,311.28 787.145,530.604 877.218,530.604 "/>
+      <polygon style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="884.718,530.604 874.718,535.604 877.218,530.604 874.718,525.604 "/>
+    </g>
+    <g>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="760.393" y1="555.411" x2="877.218" y2="555.389"/>
+      <polygon style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="884.718,555.387 874.719,560.389 877.218,555.389 874.717,550.389 "/>
+    </g>
+    <g>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="926.954" y1="555.387" x2="976.25" y2="555.428"/>
+      <polygon style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="983.75,555.434 973.746,560.425 976.25,555.428 973.754,550.425 "/>
+    </g>
+    <text font-size="12.7998" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="945.806" y="533.498">
+      <tspan x="945.806" y="533.498">predicted action</tspan>
+    </text>
+    <g>
+      <rect style="fill: #c6c0ff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x="888.546" y="376.417" width="40" height="99.1302" rx="0" ry="0"/>
+      <text font-size="12.7998" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="908.546" y="429.882">
+        <tspan x="908.546" y="429.882">FC</tspan>
+      </text>
+    </g>
+    <text font-size="12.7998" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="871.757" y="367.879">
+      <tspan x="871.757" y="367.879">forward model</tspan>
+    </text>
+    <g>
+      <polyline style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" points="760.079,311.28 787.319,311.28 787.319,401.199 878.81,401.199 "/>
+      <polygon style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="886.31,401.199 876.31,406.199 878.81,401.199 876.31,396.199 "/>
+    </g>
+    <g>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="928.546" y1="425.982" x2="975.777" y2="426.029"/>
+      <polygon style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="983.277,426.037 973.272,431.027 975.777,426.029 973.282,421.027 "/>
+    </g>
+    <text font-size="12.7998" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="953.906" y="395.279">
+      <tspan x="953.906" y="395.279">f'(n+1)</tspan>
+    </text>
+    <text font-size="12.7998" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="955.317" y="414.525">
+      <tspan x="955.317" y="414.525">predicted next state</tspan>
+    </text>
+    <g>
+      <line style="fill: none; stroke-opacity: 1; stroke-width: 2; stroke: #000000" x1="822.593" y1="450.492" x2="878.81" y2="450.724"/>
+      <polygon style="fill: #000000; fill-opacity: 1; stroke-opacity: 1; stroke-width: 2; stroke: #000000" fill-rule="evenodd" points="886.31,450.755 876.29,455.714 878.81,450.724 876.331,445.714 "/>
+    </g>
+    <text font-size="12.7998" style="fill: #000000; fill-opacity: 1; stroke: none;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="820.139" y="441.223">
+      <tspan x="820.139" y="441.223">action</tspan>
+    </text>
+  </g>
+</svg>
