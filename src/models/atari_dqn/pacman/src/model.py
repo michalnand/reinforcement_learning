@@ -1,9 +1,19 @@
 import torch
 import torch.nn as nn
 
+import numpy
+
 class Flatten(nn.Module):
     def forward(self, input):
         return input.view(input.size(0), -1)
+
+class SaveFeatures():
+    def __init__(self, module):
+        self.hook = module.register_forward_hook(self.hook_fn)
+    def hook_fn(self, module, input, output):
+        self.features = torch.tensor(output,requires_grad=True).cuda()
+    def close(self):
+        self.hook.remove()
 
 class Model(torch.nn.Module):
 
@@ -79,22 +89,11 @@ class Model(torch.nn.Module):
         self.model.eval() 
      
 
-    def render(self, path):
-
-        print("rendering ", path)
-        with torch.no_grad():
-            x   = torch.zeros(1, self.input_shape[0], self.input_shape[1], self.input_shape[2], dtype=torch.float32, requires_grad=False).to(self.device)
-            out = self.forward(x)
-            dot = torchviz.make_dot(out)
-            
-            dot.format = "svg"
-            dot.render(path + "trained/model")
-
     def get_activity_map(self, state):
         with torch.no_grad():
             x  = torch.tensor(state, dtype=torch.float32).detach().to(self.device).unsqueeze(0)
 
-            for i in range(12):
+            for i in range(12): 
                 x = self.layers[i].forward(x)
 
             upsample = nn.Upsample(size=(self.input_shape[1], self.input_shape[2]), mode='bicubic')
@@ -108,3 +107,40 @@ class Model(torch.nn.Module):
             result = k*result + q
             
             return result
+
+    
+    def kernel_visualise(self, layer, kernel, iterations = 1000):
+        input_initial   = 0.01*(2.0*torch.rand((1, ) + self.input_shape, device = self.device, requires_grad=True) - 1.0)
+
+        
+        input_var       = torch.autograd.Variable(input_initial, requires_grad=True) 
+
+
+        optimizer = torch.optim.Adam([input_var], lr=0.01, weight_decay=0.0000001)
+
+        for _ in range(iterations):
+            x = input_var
+
+            optimizer.zero_grad()
+
+            for l in range(layer+2):
+                x = self.layers[l].forward(x)
+
+            loss = -2.0*x[0][kernel].mean() + x[0].mean()
+            loss.backward()
+            optimizer.step()
+
+        input_var   = input_var.squeeze(0)
+        result      = input_var.to("cpu").detach().numpy()
+
+        max = result.max()
+        min = result.min()
+
+        k = 1.0/(max - min)
+        q = 1.0 - k*max
+
+        result = result*k + q
+
+        result = numpy.clip(result, 0.0, 1.0)
+ 
+        return result

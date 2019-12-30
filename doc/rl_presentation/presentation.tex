@@ -104,7 +104,7 @@
      \colorbox{black}
      {
         \begin{minipage}{7cm}
-           {\LARGE \color{white} \bf Reinforcement learning} \\
+           {\LARGE \color{white} \bf training universal Atari gambler using \\ reinforcement learning} \\
            {\LARGE \color{white} Michal CHOVANEC} \\
        \end{minipage}
      }
@@ -160,7 +160,7 @@ $Q(s, a)$ : what is the potential reward in state $s$ and action $a$
 \end{figure}
 
 \begin{align*}
-\mathcal{L}= &\left( R + \gamma \max \limits_{\alpha'} Q(s', \alpha'; w') - Q(s, a; w) \right) ^2
+\mathcal{L}= &\left( \underset{\bf \color{green} target\ value}{ R + \gamma \max \limits_{\alpha'} Q(s', \alpha'; w') } - \underset{\bf \color{red} predicted\ value}{Q(s, a; w)} \right) ^2
 \end{align*}
 
 \end{frame}
@@ -272,8 +272,7 @@ a long time ago in a galaxy far far away
 
 
 
-\begin{frame}{\bf attention is all you need}
-
+\begin{frame}{\bf results : attention is all you need}
 
 \begin{columns}
 
@@ -309,6 +308,38 @@ a long time ago in a galaxy far far away
 
 \end{columns}
 
+\end{frame}
+
+
+
+
+\begin{frame}{\bf results : kernel response visualisation}
+
+\begin{align*}
+\mathcal{L}= -2\overline{y_{lk}(x)} + \overline{y(x)}
+\end{align*}
+
+    \begin{figure}
+      \includegraphics[scale=0.3]{./pictures/kernel_visualisation/0.png}
+    \end{figure}
+
+    \begin{figure}
+      \includegraphics[scale=0.3]{./pictures/kernel_visualisation/3.png}
+    \end{figure}
+
+
+\end{frame}
+
+
+\begin{frame}{\bf results : kernel response visualisation}
+
+\begin{align*}
+\mathcal{L}= -2\overline{y_{lk}(x)} + \overline{y(x)}
+\end{align*}
+
+    \begin{figure}
+      \includegraphics[scale=0.3]{./pictures/kernel_visualisation/6.png}
+    \end{figure}
 
 
 
