@@ -83,7 +83,12 @@ class Model(torch.nn.Module):
         with torch.no_grad():
             x  = torch.tensor(state, dtype=torch.float32).detach().to(self.device).unsqueeze(0)
 
-            for i in range(12):
+            last_layer = 0
+            for i in range(len(self.layers)):
+                if isinstance(self.layers[i], nn.Conv2d):
+                    last_layer = i
+            
+            for i in range(last_layer):
                 x = self.layers[i].forward(x)
 
             upsample = nn.Upsample(size=(self.input_shape[1], self.input_shape[2]), mode='bicubic')

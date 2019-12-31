@@ -38,7 +38,7 @@ env = common.env_multi.EnvMulti(envs, 512)
 env.reset()
 
 
-active_env = 0
+active_env = 1
 
 env.set_env(active_env)
 
@@ -72,9 +72,9 @@ def activity_show(observation, activity, alpha = 0.3):
     
     plt.imshow(image, interpolation='bicubic')
     
-    #plt.draw()
-    #plt.pause(0.001)
-    plt.show() 
+    plt.draw()
+    plt.pause(0.01)
+    #plt.show() 
     
 iteration = 0
 
@@ -92,7 +92,7 @@ while True:
         env.set_env(active_env)
 
     '''
-    if iteration%100 == 0:
+    if iteration%20 == 0:
         activity = agent.model.get_activity_map(agent.observation)
         activity_show(agent.observation, activity, 0.7)
     '''
