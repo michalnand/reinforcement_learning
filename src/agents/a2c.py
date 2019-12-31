@@ -125,7 +125,7 @@ class Agent():
             #clear batch buffer
             self._init_buffer()
 
-            '''            
+            '''
             print("loss_value = ", loss_value.detach().cpu().numpy())
             print("loss_policy = ", loss_policy.detach().cpu().numpy())
             print("loss_entropy = ", loss_entropy.detach().cpu().numpy())
@@ -156,13 +156,13 @@ class Agent():
     def _calc_q_values(self, rewards, values, done, steps):
         result = numpy.zeros((len(rewards), 1))
 
-        for i in range(len(rewards)-steps):
+        for n in range(len(rewards)-steps):
             
 
             reward_sum = 0.0
-            for n in range(steps):
-                reward_sum+= rewards[i + n]*(self.gamma**n) 
+            for i in range(steps):
+                reward_sum+= rewards[n + i]*(self.gamma**i) 
                 
-            result[i][0] = reward_sum + (self.gamma**steps)*values[i + steps][0] 
+            result[n][0] = reward_sum + (self.gamma**steps)*values[n + steps][0] 
 
         return result
