@@ -9,8 +9,6 @@ class ResidualBlock(torch.nn.Module):
     def __init__(self, input_channels):
         super(ResidualBlock, self).__init__()
 
-        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
         self.layers = [ 
                         nn.BatchNorm2d(input_channels),
                         nn.Conv2d(input_channels, input_channels, kernel_size=3, stride=1, padding=1),
@@ -32,8 +30,6 @@ class AttentionLayer(torch.nn.Module):
 
         self.input_channels = input_channels
 
-        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
         self.layers = [ 
                         nn.Conv2d(self.input_channels, 1, kernel_size=1, stride=1),
                         nn.Sigmoid()
@@ -47,11 +43,11 @@ class AttentionLayer(torch.nn.Module):
 
 
 class NoiseLayer(torch.nn.Module):
-    def __init__(self, inputs_count, init_range = 0.001):
+    def __init__(self, inputs_count, init_range = 0.001, device = "cuda"):
         super(NoiseLayer, self).__init__()
         
         self.inputs_count   = inputs_count
-        self.device         = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self.device         = device
 
         w_initial   = init_range*(2.0*torch.rand(self.inputs_count, device = self.device) - 1.0)
         self.w      = torch.nn.Parameter(w_initial, requires_grad = True)     
@@ -111,7 +107,6 @@ class Model(torch.nn.Module):
                                 AttentionLayer(layer_3_kernels_count),
 
                                 Flatten(),
-                                NoiseLayer(fc_inputs_count, 0.001)
                             ]
                             
         self.layers_value = [
