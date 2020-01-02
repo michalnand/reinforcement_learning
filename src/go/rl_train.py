@@ -9,13 +9,11 @@ PLAYER_BLACK        = 0
 PLAYER_WHITE        = 1
 
 class Create:
-
     def __init__(self, model, board_size = 9):
         self.env = go_wrapper.Create(size)
 
         self.result_stats           = numpy.zeros((2, 2))
         self.result_stats_smoothed  = numpy.zeros((2, 2))
-
 
     def play(self, games_count, batch_size = 100):
         
@@ -24,27 +22,30 @@ class Create:
             result_b = self.play_game(self.player_reference, self.player_training)
 
             self.add_stats(result_a, result_b)
-
-          
+        
     def play_game(self, player_black, player_white):
         observation = self.env.reset()
 
-        black_done = False
-        white_done = False
-
-        while black_done == False and white_done == False:
+        while True:
             q_values, epsilon = player_black.get_policy(observation)
             action = self.env.e_greedy_move(q_values, epsilon)
 
-            observation, reward, black_done, info = self.env.step(action)
-            player_black.add(observation, action, reward, black_done, info, q_values)
+            observation, reward, done, info = self.env.step(action)
+            player_black.add(observation, action, reward, done, info, q_values)
 
- 
+            if done:
+                player_white.add(observation, action, -1.0*reward, done, info, q_values)
+                break
+
             q_values, epsilon = player_white.get_policy(observation)
             action = self.env.e_greedy_move(q_values, epsilon)
 
-            observation, reward, white_done, info = self.env.step(action)
-            player_black.add(observation, action, -1.0*reward, white_done, info, q_values)
+            observation, reward, done, info = self.env.step(action)
+            player_white.add(observation, action, -1.0*reward, done, info, q_values)
+
+            if done:
+                player_black.add(observation, action, reward, done, info, q_values)
+                break
 
         if reward > 0:
             result = 1     #black wins
