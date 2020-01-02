@@ -33,7 +33,7 @@ envs.append(common.atari_wrapper.Create(gym.make("SeaquestNoFrameskip-v4"), widt
 envs.append(common.atari_wrapper.Create(gym.make("QbertNoFrameskip-v4"), width, height, frame_stacking))
 
 
-env = common.env_multi.EnvMulti(envs, 4096)
+env = common.env_multi.EnvMulti(envs, 8192)
 env.reset()
 
 
