@@ -55,14 +55,10 @@ class Agent():
 
         self.idx = 0
 
-    def main(self):              
-
-        
+    def main(self):                      
         observation_t   = torch.tensor(self.observation, dtype=torch.float32).detach().to(self.model.device).unsqueeze(0)
         logits, value   = self.model.forward(observation_t)
 
-       
-       
         action_probs_t        = torch.nn.functional.softmax(logits.squeeze(0), dim = 0)
         action_distribution_t = torch.distributions.Categorical(action_probs_t)
         action_t              = action_distribution_t.sample()
@@ -102,8 +98,10 @@ class Agent():
             compute actor loss 
             L = log(pi(s, a))*(T - V(s)) = log(pi(s, a))*A
             '''
-            advantage  = (target_values_b - self.values_b).detach()
-            loss_policy = -log_probs[range(len(log_probs)), self.action_b]*advantage
+
+            #advantage   = (target_values_b - self.values_b).detach()
+            #loss_policy = -log_probs[range(len(log_probs)), self.action_b]*advantage
+            loss_policy = -log_probs[range(len(log_probs)), self.action_b]*self.values_b
             loss_policy = loss_policy.mean()
 
             '''
@@ -119,7 +117,7 @@ class Agent():
 
             self.optimizer.zero_grad()
             loss.backward()
-            torch.nn.utils.clip_grad_norm_(self.model.parameters(), 1.0)
+            torch.nn.utils.clip_grad_norm_(self.model.parameters(), 0.1)
             self.optimizer.step() 
 
             #clear batch buffer
@@ -143,23 +141,18 @@ class Agent():
 
         self.iterations+= 1
         self.score+= reward
-        
-
-        
+            
     def save(self):
         self.model.save(self.save_path)
 
     def load(self):
         self.model.load(self.save_path)
     
-
     def _calc_q_values(self, rewards, values, done, steps):
         result = numpy.zeros((len(rewards), 1))
 
         for n in range(len(rewards)-steps):
-            
-
-            reward_sum = 0.0
+            reward_sum = 0.0 
             for i in range(steps):
                 reward_sum+= rewards[n + i]*(self.gamma**i) 
                 
