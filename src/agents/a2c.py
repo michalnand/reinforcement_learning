@@ -79,7 +79,9 @@ class Agent():
 
         if self.idx >= self.batch_size:      
             
-            target_values_b = self._calc_q_values(self.rewards_b, self.values_b.detach().cpu().numpy(), self.done_b, self.bellman_steps)
+            #target_values_b = self._calc_q_values(self.rewards_b, self.values_b.detach().cpu().numpy(), self.done_b, self.bellman_steps)
+
+            target_values_b = self._calc_q_values(self.rewards_b, self.values_b.detach().cpu().numpy(), self.done_b)
 
             target_values_b = torch.FloatTensor(target_values_b).to(self.model.device)
 
@@ -98,10 +100,8 @@ class Agent():
             compute actor loss 
             L = log(pi(s, a))*(T - V(s)) = log(pi(s, a))*A
             '''
-
-            #advantage   = (target_values_b - self.values_b).detach()
-            #loss_policy = -log_probs[range(len(log_probs)), self.action_b]*advantage
-            loss_policy = -log_probs[range(len(log_probs)), self.action_b]*self.values_b
+            advantage   = (target_values_b - self.values_b).detach()
+            loss_policy = -log_probs[range(len(log_probs)), self.action_b]*advantage
             loss_policy = loss_policy.mean()
 
             '''
@@ -117,7 +117,7 @@ class Agent():
 
             self.optimizer.zero_grad()
             loss.backward()
-            torch.nn.utils.clip_grad_norm_(self.model.parameters(), 0.1)
+            torch.nn.utils.clip_grad_norm_(self.model.parameters(), 1.0)
             self.optimizer.step() 
 
             #clear batch buffer
@@ -148,6 +148,23 @@ class Agent():
     def load(self):
         self.model.load(self.save_path)
     
+    def _calc_q_values(self, rewards, values, done):
+        size = len(rewards)
+        result = numpy.zeros((size, 1))
+
+        q = 0.0
+        for n in reversed(range(size)):
+            if done[n]:
+                gamma = 0.0
+            else:
+                gamma = self.gamma
+
+            q = rewards[n] + gamma*q
+            result[n][0] = q
+
+        return result
+
+    '''
     def _calc_q_values(self, rewards, values, done, steps):
         result = numpy.zeros((len(rewards), 1))
 
@@ -159,3 +176,4 @@ class Agent():
             result[n][0] = reward_sum + (self.gamma**steps)*values[n + steps][0] 
 
         return result
+    '''
