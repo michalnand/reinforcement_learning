@@ -51,7 +51,6 @@ save_path = "./models/atari_dqn/kungfumaster/"
 env = gym.make("KungFuMasterNoFrameskip-v4") 
 '''
 
-'''
 #Pacman
 import models.atari_dqn.pacman.src.model
 import models.atari_dqn.pacman.src.config
@@ -60,7 +59,6 @@ model  = models.atari_dqn.pacman.src.model
 config = models.atari_dqn.pacman.src.config.Config()
 save_path = "./models/atari_dqn/pacman/"
 env = gym.make("MsPacmanNoFrameskip-v4") 
-'''
 
 '''
 #PacmanDueling

@@ -13,16 +13,12 @@ class Agent():
         self.gamma          = config.gamma
         self.entropy_beta   = config.entropy_beta
         self.batch_size     = config.batch_size
-        self.bellman_steps  = config.bellman_steps
        
         self.observation_shape = self.env.observation_space.shape
         self.actions_count     = self.env.action_space.n
 
         
-
-
         self.model          = model.Model(self.observation_shape, self.actions_count)
-
         self.optimizer      = torch.optim.Adam(self.model.parameters(), lr= config.learning_rate)
 
         self.observation    = env.reset()
