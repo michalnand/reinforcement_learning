@@ -5,3 +5,4 @@ python3 atari_enduro_a2c.py
 python3 atari_invaders_a2c.py
 python3 atari_kungfumaster_a2c.py
 python3 atari_qbert_a2c.py
+python3 atari_seaquest_a2c.py
