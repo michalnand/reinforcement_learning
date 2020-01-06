@@ -84,8 +84,6 @@ class Agent():
 
         self.iterations+= 1
         self.score+= self.reward
-
-        print("reward = ", self.reward)
         
         
     def train_model(self):

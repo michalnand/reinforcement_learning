@@ -19,6 +19,7 @@ class Agent():
         self.alpha          = config.alpha
         self.beta1          = config.beta1
         self.beta2          = config.beta2
+        self.beta3          = config.beta3
         self.gamma          = config.gamma
 
         self.update_frequency = config.update_frequency
@@ -105,44 +106,25 @@ class Agent():
         loss_forward    = curiosity.mean()
         loss_q_values   = ((q_target - q_values)**2).mean()
 
-        #loss = (1.0 - self.beta1)*loss_inverse + self.beta1*loss_forward + self.beta2*loss_q_values
+        loss = self.beta1*loss_inverse + self.beta2*loss_forward + self.beta3*loss_q_values
 
-        loss = loss_inverse  + 0*loss_forward + 0*loss_q_values
+        #loss = loss_inverse  + loss_forward + loss_q_values
         loss.backward()
 
         for param in self.model.parameters():
             param.grad.data.clamp_(-10.0, 10.0)
         self.optimizer.step()
 
+        '''
         print("loss_inverse = ", loss_inverse.detach().to("cpu").numpy())
         print("loss_forward = ", loss_forward.detach().to("cpu").numpy())
         print("loss_q_values = ", loss_q_values.detach().to("cpu").numpy())
         print("loss = ", loss.detach().to("cpu").numpy())
         print("curiosity = ", curiosity.detach().to("cpu").numpy())
         print("\n\n\n")
-
-
-        idx_actions_target      = torch.argmax(actions_target, dim = 1).detach()
-        idx_actions_predicted   = torch.argmax(actions_predicted, dim = 1).detach()
-
-        match = idx_actions_target == idx_actions_predicted
-
-        print(match)
-        print("\n\n\n")
-
-        
+        '''
 
         '''
-        
-        loss = ((actions_target - actions_predicted)**2.0).mean()
-         
-        loss.backward()
-
-        
-        for param in self.model.parameters():
-            param.grad.data.clamp_(-10.0, 10.0)
-        self.optimizer.step()
-
         idx_actions_target      = torch.argmax(actions_target, dim = 1).detach()
         idx_actions_predicted   = torch.argmax(actions_predicted, dim = 1).detach()
 
@@ -151,7 +133,6 @@ class Agent():
         print(match)
         print("\n\n\n")
         '''
-
 
 
         

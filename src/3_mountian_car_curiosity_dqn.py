@@ -1,14 +1,20 @@
 import gym
 import numpy
-import agents.a2c
+import agents.dqn_curiosity
 
-import models.lunar_lander_a2c.src.model
-import models.lunar_lander_a2c.src.config
+import models.mountain_car_curiosity_dqn.src.model
+import models.mountain_car_curiosity_dqn.src.config
 
 import time
+ 
 
+gym.envs.register(
+    id='MountainCarCustom-v0',
+    entry_point='gym.envs.classic_control:MountainCarEnv',
+    max_episode_steps=4096      # MountainCar-v0 uses 200
+)
 
-env = gym.make("LunarLander-v2")
+env = gym.make("MountainCarCustom-v0")
 
 
 class SetRewardRange(gym.RewardWrapper):
@@ -17,21 +23,16 @@ class SetRewardRange(gym.RewardWrapper):
 
     def step(self, action):
         obs, reward, done, info = self.env.step(action)
+        if reward < 0:
+            reward = -0.001
 
-        reward = reward / 10.0
-
-        if reward < -1.0:
-            reward = -1.0
-
-        if reward > 1.0:
+        if done: 
             reward = 1.0
-
+        
         return obs, reward, [done, done], info
 
 
 env = SetRewardRange(env)
-
-
 env.reset()
 
 obs             = env.observation_space
@@ -40,19 +41,18 @@ actions_count   = env.action_space.n
 
 
 
-model  = models.lunar_lander_a2c.src.model
-config = models.lunar_lander_a2c.src.config.Config()
- 
-agent = agents.a2c.Agent(env, model, config)
+model  = models.mountain_car_curiosity_dqn.src.model
+config = models.mountain_car_curiosity_dqn.src.config.Config()
+
+agent = agents.dqn_curiosity.Agent(env, model, config)
 
 
-while agent.iterations < 1000000:
+while agent.iterations < 200000:
     agent.main()
 
     if agent.iterations%100 == 0:
-        env.render()
+        env.render() 
         print(agent.iterations, agent.score)
-
 
 agent.disable_training()
 agent.iterations = 0
