@@ -5,9 +5,9 @@ class Config():
         
         self.gamma          = 0.99
         
-        self.learning_rate  = 0.001 
+        self.learning_rate  = 0.0005
 
-        self.entropy_beta   = 0.001
+        self.entropy_beta   = 0.0005
         self.batch_size     = 256 
 
         
