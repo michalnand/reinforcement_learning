@@ -8,7 +8,7 @@ class Config():
         self.learning_rate  = 0.001
 
         self.entropy_beta   = 0.001
-        self.batch_size     = 128 #256 
+        self.batch_size     = 256 
 
         
  
