@@ -5,7 +5,7 @@ class Config():
     def __init__(self):
         self.type   = "dqn curiosity"
 
-        self.alpha  = 0.5       #(1.0 - alpha)*q_reward + alpha*curiosity
+        self.alpha  = 1.0       #(1.0 - alpha)*q_reward + alpha*curiosity
 
         self.beta1  = 0.8       #inverse model loss multiplier
         self.beta2  = 0.2       #forward model loss multiplier

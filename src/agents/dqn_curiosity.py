@@ -108,7 +108,6 @@ class Agent():
 
         loss = self.beta1*loss_inverse + self.beta2*loss_forward + self.beta3*loss_q_values
 
-        #loss = loss_inverse  + loss_forward + loss_q_values
         loss.backward()
 
         for param in self.model.parameters():

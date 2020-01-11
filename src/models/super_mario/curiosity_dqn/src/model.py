@@ -11,6 +11,7 @@ class Model(torch.nn.Module):
         super(Model, self).__init__()
 
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self.actions_count = actions_count
         
         input_channels  = input_shape[0]
         fc_input_height = input_shape[1]
@@ -24,39 +25,40 @@ class Model(torch.nn.Module):
  
         self.layers_features = [ 
                                 nn.Conv2d(input_channels, 32, kernel_size=3, stride=1, padding=1),
-                                nn.ELU(), 
+                                nn.ReLU(), 
                                 nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
 
                                 nn.Conv2d(32, 32, kernel_size=3, stride=1, padding=1),
-                                nn.ELU(),
+                                nn.ReLU(),
                                 nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
         
                                 nn.Conv2d(32, 64, kernel_size=3, stride=1, padding=1),
-                                nn.ELU(),
+                                nn.ReLU(),
                                 nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
                     
                                 nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=1),
-                                nn.ELU(),
+                                nn.ReLU(),
                                 nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
                                 
                                 Flatten()
                             ]
 
-        self.layers_q_values  = [
+        self.layers_q_values  = [ 
                                     nn.Linear(features_outputs_count, 512),
-                                    nn.ELU(),                      
+                                    nn.ReLU(),                      
                                     nn.Linear(512, actions_count) 
                                 ]
 
+        inverse_hidden_count = (inverse_inputs_count + actions_count)//2
         self.layers_inverse = [
-                                nn.Linear(inverse_inputs_count, inverse_inputs_count//8),
-                                nn.ELU(),                      
-                                nn.Linear(inverse_inputs_count//8, actions_count) 
+                                nn.Linear(inverse_inputs_count, inverse_hidden_count),
+                                nn.ReLU(),                      
+                                nn.Linear(inverse_hidden_count, actions_count) 
                             ]
 
         self.layers_forward = [
                                 nn.Linear(forward_inputs_count, forward_inputs_count),
-                                nn.ELU(),                      
+                                nn.ReLU(),                      
                                 nn.Linear(forward_inputs_count, features_outputs_count) 
                             ]
 
@@ -94,11 +96,13 @@ class Model(torch.nn.Module):
 
     def get_q_values(self, state):
         with torch.no_grad():
-            state_dev       = torch.tensor(state, dtype=torch.float32).detach().to(self.device).unsqueeze(0)
-            features_now    = self.model_features.forward(state_dev)
-            q_values        = self.model_q_values.forward(features_now)
+            state_dev   = torch.tensor(state, dtype=torch.float32).detach().to(self.device).unsqueeze(0)
+            action      = torch.zeros(self.actions_count,  dtype=torch.float32).to(self.device).unsqueeze(0)
+
+            q_values, _, _, = self.forward(state_dev, state_dev, action)
 
             return q_values[0].to("cpu").detach().numpy() 
+
 
     def forward(self, state_now, state_next, action):
         features_now  = self.model_features.forward(state_now)
@@ -108,8 +112,7 @@ class Model(torch.nn.Module):
         action_predicted        = self.model_inverse.forward(torch.cat((features_now, features_next), dim = 1))
         features_next_predicted = self.model_forward.forward(torch.cat((features_now, action), dim = 1))
 
-        curiosity = ((features_next - features_next_predicted)**2).sum(dim=1)
-
+        curiosity = ((features_next - features_next_predicted)**2).mean(dim=1)
 
         return q_values, curiosity, action_predicted
     
