@@ -15,7 +15,7 @@ config = models.super_mario.a2c.src.config.Config()
 
 save_path = "./models/super_mario/a2c/"
 
-env = gym_super_mario_bros.make('SuperMarioBros-v0')
+env = gym_super_mario_bros.make('SuperMarioBrosRandomStages-v0')
 env = common.super_mario_wrapper.Create(env)
 
 env.reset()

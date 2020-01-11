@@ -1,3 +1,5 @@
 python3 super_mario_dqn.py
 python3 super_mario_curiosity_dqn.py
 python3 super_mario_curiosity_dqn_b.py
+python3 super_mario_a2c.py
+python3 super_mario_dueling_dqn.py

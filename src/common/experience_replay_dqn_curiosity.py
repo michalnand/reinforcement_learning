@@ -97,7 +97,10 @@ class Buffer():
             q_values    = self.buffer[n].q_values.copy()
             action      = self.buffer[n].action
 
-            reward = (1.0 - alpha)*self.buffer[n].reward + alpha*curiosity[i]
+            if self.buffer[n].done:
+                reward = (1.0 - alpha)*self.buffer[n].reward
+            else:
+                reward = (1.0 - alpha)*self.buffer[n].reward + alpha*curiosity[i]
 
             q_values[action] = reward + gamma_*numpy.max(self.buffer[n+1].q_values)
 
