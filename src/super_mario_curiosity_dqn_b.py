@@ -15,8 +15,8 @@ config = models.super_mario.curiosity_dqn_b.src.config.Config()
 
 save_path = "./models/super_mario/curiosity_dqn_b/"
 
-#env = gym_super_mario_bros.make('SuperMarioBros-v0')
-env = gym_super_mario_bros.make('SuperMarioBrosRandomStages-v0')
+env = gym_super_mario_bros.make('SuperMarioBros-v0')
+#env = gym_super_mario_bros.make('SuperMarioBrosRandomStages-v0')
 env = common.super_mario_wrapper.Create(env)
 
 env.reset()
