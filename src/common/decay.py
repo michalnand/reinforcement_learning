@@ -1,5 +1,38 @@
 
 
+class Step():
+    def __init__(self, iterations = 1000000, start_value = 1.0, end_value = 0.1, testing_value = 0.02):
+        self.iterations     = iterations
+        self.start_value    = start_value
+        self.end_value      = end_value
+        self.testing_value  = testing_value
+
+        self.steps = 0 
+
+        self.epsilon = self.start_value
+
+    def process(self):
+        if self.steps > self.iterations:
+            self.epsilon = self.end_value
+        else:
+            self.epsilon = self.start_value
+        
+        self.steps+= 1
+
+        return self.epsilon
+
+    def get(self):
+        return self.epsilon
+
+    def get_start(self):
+        return self.start_value
+
+    def get_end(self):
+        return self.end_value
+
+    def get_testing(self):
+        return self.testing_value
+
 
 class Linear():
     def __init__(self, iterations = 1000000, start_value = 1.0, end_value = 0.1, testing_value = 0.02):

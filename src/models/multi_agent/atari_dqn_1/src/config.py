@@ -9,7 +9,7 @@ class Config():
         self.update_frequency = 4
 
         self.batch_size     = 32 
-        self.learning_rate  = 0.0002
+        self.learning_rate  = 0.0001
         
         self.exploration    = common.decay.Linear(4000000, 1.0, 0.05, 0.02)
 

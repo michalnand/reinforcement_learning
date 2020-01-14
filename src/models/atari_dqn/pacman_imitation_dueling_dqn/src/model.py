@@ -7,22 +7,6 @@ class Flatten(nn.Module):
         return input.view(input.size(0), -1)
 
 
-class NoiseLayer(torch.nn.Module):
-    def __init__(self, inputs_count, init_range = 0.0001):
-        super(NoiseLayer, self).__init__()
-        
-        self.inputs_count   = inputs_count
-        self.device         = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
-        w_initial   = init_range*(2.0*torch.rand(self.inputs_count, device = self.device) - 1.0)
-        self.w      = torch.nn.Parameter(w_initial, requires_grad = True)     
-
-    def forward(self, x):
-        noise = (torch.rand(self.inputs_count, device = self.device)*2.0 - 1.0).detach()
-        return x + self.w*noise
-
-
-
 class Model(torch.nn.Module):
 
     def __init__(self, input_shape, outputs_count):
@@ -58,8 +42,7 @@ class Model(torch.nn.Module):
                         nn.ReLU(),
                         nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
                         
-                        Flatten(), 
-                        NoiseLayer(fc_inputs_count)
+                        Flatten()
                     ]
 
 

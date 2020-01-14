@@ -18,9 +18,6 @@ config = models.multi_agent.atari_dqn_1.src.config.Config()
 
 save_path = "./models/multi_agent/atari_dqn_1/" 
 
-env = gym.make("MsPacmanNoFrameskip-v4") 
-env = common.atari_wrapper.Create(env, 96, 96, 4) 
-
 width  = 96
 height = 96
 frame_stacking = 4

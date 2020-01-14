@@ -12,32 +12,20 @@ class ResidualBlock(torch.nn.Module):
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
         self.layers = [ 
-                        nn.BatchNorm2d(input_channels),
                         nn.Conv2d(input_channels, input_channels, kernel_size=3, stride=1, padding=1),
+                        nn.BatchNorm2d(input_channels),
                         nn.ReLU(), 
-                        nn.BatchNorm2d(input_channels),
                         nn.Conv2d(input_channels, input_channels, kernel_size=3, stride=1, padding=1),
-                        nn.ReLU()
+                        nn.BatchNorm2d(input_channels),
                     ]
+
+        self.activation = nn.ReLU()
 
         self.model = nn.Sequential(*self.layers)
         
     def forward(self, x):
-        return x + self.model(x)
+        return self.activation(x + self.model(x))
 
-class NoiseLayer(torch.nn.Module):
-    def __init__(self, inputs_count, init_range = 0.001):
-        super(NoiseLayer, self).__init__()
-        
-        self.inputs_count   = inputs_count
-        self.device         = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
-        w_initial   = init_range*(2.0*torch.rand(self.inputs_count, device = self.device) - 1.0)
-        self.w      = torch.nn.Parameter(w_initial, requires_grad = True)     
-
-    def forward(self, x):
-        noise = (torch.rand(self.inputs_count, device = self.device)*2.0 - 1.0).detach()
-        return x + self.w*noise
 
 
 
@@ -86,7 +74,6 @@ class Model(torch.nn.Module):
                                 ResidualBlock(layer_3_kernels_count),
 
                                 Flatten(),
-                                NoiseLayer(fc_inputs_count, 0.001)
                             ]
                             
         self.layers_value = [
