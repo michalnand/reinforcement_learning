@@ -21,7 +21,13 @@ class ResidualBlock(torch.nn.Module):
 
         self.activation = nn.ReLU()
 
+        for i in range(len(self.layers)):
+            if hasattr(self.layers[i], "weight"):
+                torch.nn.init.xavier_uniform_(self.layers[i].weight)
+
         self.model = nn.Sequential(*self.layers)
+        self.model.to(self.device)
+
         
     def forward(self, x):
         return self.activation(x + self.model(x))
@@ -31,14 +37,18 @@ class AttentionLayer(torch.nn.Module):
     def __init__(self, input_channels):
         super(AttentionLayer, self).__init__()
 
-        self.input_channels = input_channels
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
+        self.input_channels = input_channels
+ 
         self.layers = [ 
                         nn.Conv2d(self.input_channels, 1, kernel_size=1, stride=1),
                         nn.Sigmoid()
                     ]
 
         self.model = nn.Sequential(*self.layers)
+        self.model.to(self.device)
+
         
     def forward(self, x):
         attention = self.model(x).repeat(1, self.input_channels, 1, 1)        

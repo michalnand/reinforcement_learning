@@ -9,16 +9,17 @@ import agents.dqn
 import numpy
 import time
 
-import models.multi_agent.atari_dqn_0.src.model
-import models.multi_agent.atari_dqn_0.src.config
-
 from matplotlib import pyplot as plt
 
+import models.multi_agent.atari_dqn_2.src.model
+import models.multi_agent.atari_dqn_2.src.config
 
-model  = models.multi_agent.atari_dqn_0.src.model
-config = models.multi_agent.atari_dqn_0.src.config.Config()
 
-save_path = "./models/multi_agent/atari_dqn_0/" 
+
+model  = models.multi_agent.atari_dqn_2.src.model
+config = models.multi_agent.atari_dqn_2.src.config.Config()
+
+save_path = "./models/multi_agent/atari_dqn_2/" 
 
 
 
