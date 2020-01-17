@@ -16,14 +16,10 @@ class ResidualBlock(torch.nn.Module):
                         nn.BatchNorm2d(input_channels),
                         nn.ReLU(), 
                         nn.Conv2d(input_channels, input_channels, kernel_size=3, stride=1, padding=1),
-                        nn.BatchNorm2d(input_channels),
+                        nn.BatchNorm2d(input_channels)
                     ]
 
         self.activation = nn.ReLU()
-
-        for i in range(len(self.layers)):
-            if hasattr(self.layers[i], "weight"):
-                torch.nn.init.xavier_uniform_(self.layers[i].weight)
 
         self.model = nn.Sequential(*self.layers)
         self.model.to(self.device)
