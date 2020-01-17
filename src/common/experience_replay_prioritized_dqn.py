@@ -17,6 +17,7 @@ class Buffer():
         self.actions_count = actions_count
         
         self.ptr = 0
+        self.compute_ptr = 0
         self.buffer = []
 
     def _init_zeros(self):
@@ -49,27 +50,35 @@ class Buffer():
             print("\n")
 
     def compute(self):
-        for n in range(self.length() - 1 - self.bellman_steps):    
+        
+        while self.compute_ptr != self.ptr:    
+
             q_target = 0.0
 
             gamma_ = self.gamma
             for k in range(self.bellman_steps):
-                if self.buffer[n + k].done:
+                idx = (self.compute_ptr + k)%self.length()
+                if self.buffer[idx].done:
                     gamma_ = 0.0
             
-                q_target+= self.buffer[n + k].reward*(gamma_**k)
+                q_target+= self.buffer[idx].reward*(gamma_**k)
 
-            if self.buffer[n + self.bellman_steps - 1].done:
+            idx = (self.compute_ptr + self.bellman_steps - 1)%self.length()
+
+            if self.buffer[idx].done:
                 gamma_ = 0.0
             
             gamma_ = gamma_**self.bellman_steps
             
-            q_values    = self.buffer[n].q_values.copy()
-            action      = self.buffer[n].action 
+            q_values    = self.buffer[idx].q_values.copy()
+            action      = self.buffer[idx].action 
 
-            target_q_value = q_target + gamma_*numpy.max(self.buffer[n + self.bellman_steps - 1].q_values)
+            target_q_value = q_target + gamma_*numpy.max(self.buffer[idx].q_values)
             
-            self.buffer[n].q_target_values[action] = target_q_value
+            self.buffer[idx].q_target_values[action] = target_q_value
+
+            self.compute_ptr = (self.compute_ptr + 1)%self.length()
+        
 
         self.probs = numpy.zeros(self.length())
 
