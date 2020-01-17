@@ -84,8 +84,7 @@ class Agent():
             self.env.reset()
 
         self.iterations+= 1
-        self.score+= self.reward
-        
+        self.score+= self.reward        
         
     def train_model(self):
         input, q_target = self.experience_replay.get_random_batch(self.batch_size, self.model.device)
@@ -99,9 +98,7 @@ class Agent():
         for param in self.model.parameters():
             param.grad.data.clamp_(-10.0, 10.0)
         self.optimizer.step()
-
-
-        
+  
     def choose_action_e_greedy(self, q_values, epsilon):
         result = numpy.argmax(q_values)
         
