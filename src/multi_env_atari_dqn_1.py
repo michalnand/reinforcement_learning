@@ -19,7 +19,7 @@ config = models.multi_agent.atari_dqn_1.src.config.Config()
 save_path = "./models/multi_agent/atari_dqn_1/" 
 
 width  = 96
-height = 96
+height = 96 
 frame_stacking = 4
 
 envs = []

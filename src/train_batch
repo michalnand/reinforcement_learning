@@ -1,2 +1,2 @@
-python3 multi_env_atari_dqn_2.py 
+python3 multi_env_atari_dqn_2.py  
 python3 multi_env_atari_dqn_1.py

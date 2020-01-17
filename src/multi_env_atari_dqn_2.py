@@ -17,7 +17,7 @@ model  = models.multi_agent.atari_dqn_2.src.model
 config = models.multi_agent.atari_dqn_2.src.config.Config()
 
 save_path = "./models/multi_agent/atari_dqn_2/" 
-
+ 
 
 width  = 96
 height = 96

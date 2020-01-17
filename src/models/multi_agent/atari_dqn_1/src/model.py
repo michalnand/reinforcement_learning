@@ -21,7 +21,13 @@ class ResidualBlock(torch.nn.Module):
 
         self.activation = nn.ReLU()
 
+        for i in range(len(self.layers)):
+            if hasattr(self.layers[i], "weight"):
+                torch.nn.init.xavier_uniform_(self.layers[i].weight)
+
         self.model = nn.Sequential(*self.layers)
+        self.model.to(self.device)
+
         
     def forward(self, x):
         return self.activation(x + self.model(x))
