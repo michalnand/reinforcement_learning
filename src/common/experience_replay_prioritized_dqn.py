@@ -30,19 +30,16 @@ class Buffer():
         self.q_errors = numpy.zeros(self.size)
 
 
-    def length(self):
-        return len(self.buffer)
-
 
     def add(self, observation, q_values, action, reward, done):
-        if self.length() == 0:
+        if self.size == 0:
             self._init_zeros()
 
         self.buffer[self.ptr] = Transition(observation.copy(), q_values.copy(), q_values.copy(), action, reward, done)
         self.ptr = (self.ptr+1)%self.size
 
     def _print(self):
-        for i in range(self.length()):
+        for i in range(self.size):
             #print(self.buffer[i].observation, end = " ")
             print(self.buffer[i].q_values, end = " ")
             print(self.buffer[i].q_target_values, end = " ")
@@ -52,37 +49,34 @@ class Buffer():
             print("\n")
 
     def compute(self):
-        
-        buffer_size = self.length()
         while self.compute_ptr != self.ptr:    
 
             q_target = 0.0
 
             gamma_ = self.gamma
             for k in range(self.bellman_steps):
-                idx = (self.compute_ptr + k)%buffer_size
+                idx = (self.compute_ptr + k)%self.size
                 if self.buffer[idx].done:
                     gamma_ = 0.0
             
                 q_target+= self.buffer[idx].reward*(gamma_**k)
 
-            next_idx = (self.compute_ptr + self.bellman_steps)%buffer_size
+            next_idx = (self.compute_ptr + self.bellman_steps)%self.size
 
             if self.buffer[next_idx].done:
                 gamma_ = 0.0
             
             gamma_ = gamma_**self.bellman_steps
             
-            q_values    = self.buffer[next_idx].q_values
-            action      = self.buffer[next_idx].action 
+            action      = self.buffer[self.compute_ptr].action 
 
-            target_q_value = q_target + gamma_*numpy.max(q_values)
+            target_q_value = q_target + gamma_*numpy.max(self.buffer[next_idx].q_values)
             
             self.buffer[self.compute_ptr].q_target_values[action] = target_q_value
 
             self.q_errors[self.compute_ptr] = numpy.mean((self.buffer[self.compute_ptr].q_target_values - self.buffer[self.compute_ptr].q_values)**2)
 
-            self.compute_ptr = (self.compute_ptr + 1)%buffer_size
+            self.compute_ptr = (self.compute_ptr + 1)%self.size
 
         self.probs = self.q_errors/numpy.sum(self.q_errors)
         
@@ -99,11 +93,11 @@ class Buffer():
         input       = torch.zeros(state_shape, dtype=torch.float32).to(device)
         target      = torch.zeros(q_values_shape, dtype=torch.float32).to(device)
 
-        indices = numpy.random.choice(self.length(), batch_size, p=self.probs)
+        indices = numpy.random.choice(self.size, batch_size, p=self.probs)
 
         for i in range(0, batch_size):
             #todo - use self.probs for priority selection
-            #n      = numpy.random.randint(self.length() - 1 - self.bellman_steps)
+            #n      = numpy.random.randint(self.size - 1 - self.bellman_steps)
 
             n = indices[i]
 
