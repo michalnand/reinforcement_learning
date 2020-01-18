@@ -32,7 +32,7 @@ class Buffer():
 
 
     def add(self, observation, q_values, action, reward, done):
-        if self.size == 0:
+        if len(self.buffer) == 0:
             self._init_zeros()
 
         self.buffer[self.ptr] = Transition(observation.copy(), q_values.copy(), q_values.copy(), action, reward, done)
