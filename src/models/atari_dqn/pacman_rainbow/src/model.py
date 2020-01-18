@@ -57,7 +57,7 @@ class Model(torch.nn.Module):
                         nn.ReLU(),
                         nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
                         
-                        Flatten(), 
+                        Flatten() 
                     ]
 
 

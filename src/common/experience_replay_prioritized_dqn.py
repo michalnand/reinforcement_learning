@@ -51,6 +51,7 @@ class Buffer():
 
     def compute(self):
         
+        '''
         while self.compute_ptr != self.ptr:    
 
             q_target = 0.0
@@ -78,15 +79,17 @@ class Buffer():
             self.buffer[idx].q_target_values[action] = target_q_value
 
             self.compute_ptr = (self.compute_ptr + 1)%self.length()
-        
+        '''
 
-        self.probs = numpy.zeros(self.length())
+        self.probs = numpy.ones(self.length())
 
+        '''
         for n in range(self.length()):
             p = numpy.mean(((self.buffer[n].q_values - self.buffer[n].q_target_values)**2.0))
             self.probs[n] = p
-        
+        '''
         self.probs = self.probs/numpy.sum(self.probs)
+        
    
     def get_random_batch(self, batch_size, device):
         self.compute()
