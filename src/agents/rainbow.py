@@ -3,7 +3,7 @@ import torch
 
 import agents.agent_stats
 
-import common.experience_replay_prioritized_dqn
+import common.experience_replay_dqn_n_step
 
 
 class Agent():
@@ -25,7 +25,7 @@ class Agent():
         self.observation_shape = self.env.observation_space.shape
         self.actions_count     = self.env.action_space.n
 
-        self.experience_replay = common.experience_replay_prioritized_dqn.Buffer(config.experience_replay_size, self.gamma, self.bellman_steps, self.observation_shape,  self.actions_count)
+        self.experience_replay = common.experience_replay_dqn_n_step.Buffer(config.experience_replay_size, self.gamma, self.bellman_steps, self.observation_shape,  self.actions_count)
 
         self.model      = model.Model(self.observation_shape, self.actions_count)
 
