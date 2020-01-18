@@ -66,19 +66,19 @@ class Buffer():
             
                 q_target+= self.buffer[idx].reward*(gamma_**k)
 
-            idx = (self.compute_ptr + self.bellman_steps - 1)%buffer_size
+            next_idx = (self.compute_ptr + self.bellman_steps)%buffer_size
 
-            if self.buffer[idx].done:
+            if self.buffer[next_idx].done:
                 gamma_ = 0.0
             
             gamma_ = gamma_**self.bellman_steps
             
-            q_values    = self.buffer[idx].q_values
-            action      = self.buffer[idx].action 
+            q_values    = self.buffer[next_idx].q_values
+            action      = self.buffer[next_idx].action 
 
             target_q_value = q_target + gamma_*numpy.max(q_values)
             
-            self.buffer[idx].q_target_values[action] = target_q_value
+            self.buffer[self.compute_ptr].q_target_values[action] = target_q_value
 
             self.q_errors[self.compute_ptr] = numpy.mean((self.buffer[self.compute_ptr].q_target_values - self.buffer[self.compute_ptr].q_values)**2)
 
