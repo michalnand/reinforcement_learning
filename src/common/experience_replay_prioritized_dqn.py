@@ -53,7 +53,7 @@ class Buffer():
 
     def compute(self):
         
-        buffer_size = self.lenght()
+        buffer_size = self.length()
         while self.compute_ptr != self.ptr:    
 
             q_target = 0.0
