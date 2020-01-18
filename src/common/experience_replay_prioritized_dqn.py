@@ -27,6 +27,8 @@ class Buffer():
             q_target_values    = numpy.zeros(self.actions_count)
             self.buffer.append(Transition(observation, q_values, q_target_values, 0, 0.0, True))
 
+        self.q_errors = numpy.zeros(self.size)
+
 
     def length(self):
         return len(self.buffer)
@@ -51,44 +53,38 @@ class Buffer():
 
     def compute(self):
         
-        '''
+        buffer_size = self.lenght()
         while self.compute_ptr != self.ptr:    
 
             q_target = 0.0
 
             gamma_ = self.gamma
             for k in range(self.bellman_steps):
-                idx = (self.compute_ptr + k)%self.length()
+                idx = (self.compute_ptr + k)%buffer_size
                 if self.buffer[idx].done:
                     gamma_ = 0.0
             
                 q_target+= self.buffer[idx].reward*(gamma_**k)
 
-            idx = (self.compute_ptr + self.bellman_steps - 1)%self.length()
+            idx = (self.compute_ptr + self.bellman_steps - 1)%buffer_size
 
             if self.buffer[idx].done:
                 gamma_ = 0.0
             
             gamma_ = gamma_**self.bellman_steps
             
-            q_values    = self.buffer[idx].q_values.copy()
+            q_values    = self.buffer[idx].q_values
             action      = self.buffer[idx].action 
 
-            target_q_value = q_target + gamma_*numpy.max(self.buffer[idx].q_values)
+            target_q_value = q_target + gamma_*numpy.max(q_values)
             
             self.buffer[idx].q_target_values[action] = target_q_value
 
-            self.compute_ptr = (self.compute_ptr + 1)%self.length()
-        '''
+            self.q_errors[self.compute_ptr] = numpy.mean((self.buffer[self.compute_ptr].q_target_values - self.buffer[self.compute_ptr].q_values)**2)
 
-        self.probs = numpy.ones(self.length())
+            self.compute_ptr = (self.compute_ptr + 1)%buffer_size
 
-        '''
-        for n in range(self.length()):
-            p = numpy.mean(((self.buffer[n].q_values - self.buffer[n].q_target_values)**2.0))
-            self.probs[n] = p
-        '''
-        self.probs = self.probs/numpy.sum(self.probs)
+        self.probs = self.q_errors/numpy.sum(self.q_errors)
         
    
     def get_random_batch(self, batch_size, device):
