@@ -239,7 +239,14 @@
 
 
 
-\begin{frame}{\bf Naive solution}
+\begin{frame}{\bf naive solution}
+
+approximate $Q(s, a)$ using deep neural network as $\hat{Q}(s, a; w)$, where $w$ are learnable network parameters
+
+\begin{align*}
+  Q(s, a) &= R + \gamma \max \limits_{\alpha'} Q(s', \alpha') \\
+  \hat{Q}(s, a; w) &= R + \gamma \max \limits_{\alpha'} \hat{Q}(s', \alpha'; w)
+\end{align*}
 
 \begin{figure}
   \includegraphics[scale=0.25]{./diagrams/dqn_naive.png}
@@ -247,7 +254,7 @@
 
 \end{frame}
 
-\begin{frame}{\bf Deep Q network - DQN}
+\begin{frame}{\bf deep Q network - DQN}
 
 \begin{itemize}
 \item {\bf \color{red} correlated states} : experience replay buffer \\
@@ -273,42 +280,57 @@
 
 \end{frame}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 \begin{frame}{\bf deep Q network - DQN}
-
-$Q(s, a)$ : what is the potential reward in state $s$ and action $a$
 
 \begin{figure}
   \includegraphics[scale=0.3]{./diagrams/dqn_detail.png}
 \end{figure}
 
 \begin{align*}
-\mathcal{L}= &\left( \underset{\bf \color{green} target\ value}{ R + \gamma \max \limits_{\alpha'} Q(s', \alpha'; w') } - \underset{\bf \color{red} predicted\ value}{Q(s, a; w)} \right) ^2
+\mathcal{L}= &\left( \underset{\bf \color{green} target\ value}{ R + \gamma \max \limits_{\alpha'} \hat{Q}(s', \alpha'; w') } - \underset{\bf \color{red} predicted\ value}{\hat{Q}(s, a; w)} \right) ^2
 \end{align*}
 
 \end{frame}
 
 
-\begin{frame}{\bf be more specific}
+\begin{frame}{\bf neural network architecture}
+a long time ago in a galaxy far far away
+\begin{itemize}
+\item 2012 : Krizhevsky AlexNet : {\bf 11x11, 5x5, 3x3 kernels}   \footnote{\href{https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf}{https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf}}
+\item 2013 : Playing Atari with Deep Reinforcement Learning, Mnih et. al. : {\bf 8x8, 4x4 kernels} Krizhevsky framework \footnote{\href{https://arxiv.org/abs/1312.5602}{https://arxiv.org/abs/1312.5602}}
+\end{itemize}
+
+\begin{figure}
+  \includegraphics[scale=0.18]{./diagrams/dqn_mnih_atari.png}
+\end{figure}
+
+\end{frame}
+
+
+\begin{frame}{\bf neural network architecture}
+
+
+\begin{itemize}
+\item state 96x96, $3*2^5$ - allows deeper architecture
+\item only 3x3 kernels, less computations costs
+\item deeper architecture
+\item compare with recent MuZero paper - Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model \footnote{\href{https://arxiv.org/abs/1911.08265}{https://arxiv.org/abs/1911.08265}}
+\end{itemize}
+
+\begin{figure}
+  \includegraphics[scale=0.11]{./diagrams/dqn_my_atari.png}
+\end{figure}
+
+\end{frame}
+
+
+\begin{frame}{\bf neural network architecture}
+\begin{figure}
+  \includegraphics[scale=0.08]{./diagrams/attention_dueling_dqn_my_atari.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}{\bf parameters details}
 \begin{itemize}
   \item state  : \begin{itemize}
                   \item  grayscale frames, 
