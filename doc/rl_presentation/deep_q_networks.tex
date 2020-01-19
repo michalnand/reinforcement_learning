@@ -238,6 +238,61 @@
 
 
 
+
+\begin{frame}{\bf Naive solution}
+
+\begin{figure}
+  \includegraphics[scale=0.25]{./diagrams/dqn_naive.png}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{\bf Deep Q network - DQN}
+
+\begin{itemize}
+\item {\bf \color{red} correlated states} : experience replay buffer \\
+\item {\bf \color{red} unstable training} : non-stationary target value $\hat{Q}(s, a; w)$, depends on $w$, use temporary fixed weights w' \\
+\item {\bf \color{red} unknow gradients values} : clip or normalise gradients and Q values
+\end{itemize}
+{\bf DQN equation}
+\begin{align*}
+  \hat{Q}(s, a; w) &= R + \gamma \max \limits_{\alpha'} \hat{Q}(s', \alpha'; w') \\
+  \mathcal{L}(w) &= (R + \gamma \max \limits_{\alpha'} \hat{Q}(s', \alpha'; w') - \hat{Q}(s, a; w))^2
+  \label{eq:dqn}
+\end{align*}
+
+%E &= R + \gamma \max \limits_{\alpha'} \hat{Q}(s', \alpha'; w') - \hat{Q}(s, a; w)
+
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[scale=0.16]{./diagrams/dqn.png}
+  \label{img:dqn}
+\end{figure}
+
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \begin{frame}{\bf deep Q network - DQN}
 
 $Q(s, a)$ : what is the potential reward in state $s$ and action $a$
