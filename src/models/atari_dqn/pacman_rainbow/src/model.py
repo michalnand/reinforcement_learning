@@ -5,7 +5,6 @@ class Flatten(nn.Module):
     def forward(self, input):
         return input.view(input.size(0), -1)
 
-
 class NoiseLayer(torch.nn.Module):
     def __init__(self, inputs_count, init_range = 0.0001):
         super(NoiseLayer, self).__init__()
@@ -19,8 +18,6 @@ class NoiseLayer(torch.nn.Module):
     def forward(self, x):
         noise = (torch.rand(self.inputs_count, device = self.device)*2.0 - 1.0).detach()
         return x + self.w*noise
-
-
 
 class Model(torch.nn.Module):
 
@@ -62,21 +59,20 @@ class Model(torch.nn.Module):
 
 
         self.layers_value = [
-                            nn.Linear(fc_inputs_count, 512),
+                            nn.Linear(fc_inputs_count, 128),
                             nn.ReLU(),                      
-                            nn.Linear(512, 1)
+                            nn.Linear(128, 1) 
                         ]
 
         self.layers_advantage = [
-                                nn.Linear(fc_inputs_count, 512),
+                                nn.Linear(fc_inputs_count, 128),
                                 nn.ReLU(),                      
-                                nn.Linear(512, outputs_count)
+                                nn.Linear(128, outputs_count)
                             ]
   
         for i in range(len(self.layers_features)):
             if hasattr(self.layers_features[i], "weight"):
                 torch.nn.init.xavier_uniform_(self.layers_features[i].weight)
-
 
         self.model_features = nn.Sequential(*self.layers_features)
         self.model_features.to(self.device)
@@ -90,8 +86,6 @@ class Model(torch.nn.Module):
         print(self.model_features)
         print(self.model_value)
         print(self.model_advantage)
-
-
 
     def forward(self, state):
         features    = self.model_features(state)
