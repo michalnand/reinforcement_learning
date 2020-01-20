@@ -9,7 +9,7 @@ from matplotlib import pyplot as plt
 env = gym.make("MsPacmanNoFrameskip-v4") 
 env = common.atari_wrapper.Create(env, 96, 96, 4) 
 
-
+'''
 #Pacman DQN
 import agents.dqn
 import models.atari_dqn.pacman.src.model
@@ -21,7 +21,7 @@ save_path = "./models/atari_dqn/pacman/"
 agent = agents.dqn.Agent(env, model, config, save_path, save_stats=False)
 agent.load()
 agent.disable_training()
-
+'''
 
 '''
 #Pacman Dueling
@@ -51,7 +51,7 @@ agent.load()
 agent.disable_training()
 '''
 
-'''
+
 #Pacman DQN Rainbow
 import agents.rainbow
 import models.atari_dqn.pacman_rainbow.src.model
@@ -63,7 +63,7 @@ save_path = "./models/atari_dqn/pacman_rainbow/"
 agent = agents.rainbow.Agent(env, model, config, save_path, save_stats=False)
 agent.load()
 agent.disable_training()
-'''
+
 
 '''
 #Pacman imitation
