@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.12.28)  19 JAN 2020 19:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.12.28)  21 JAN 2020 06:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1572,8 +1572,17 @@ Package pdftex.def Info: ./pictures/breakout.png  used on input line 155.
 File: ./diagrams/rl_mechanism.png Graphic file (type png)
 <use ./diagrams/rl_mechanism.png>
 Package pdftex.def Info: ./diagrams/rl_mechanism.png  used on input line 155.
-(pdftex.def)             Requested size: 113.36269pt x 77.79515pt.
- [2
+(pdftex.def)             Requested size: 170.04837pt x 116.69568pt.
+
+Overfull \hbox (16.40344pt too wide) in paragraph at lines 155--155
+ [] 
+ []
+
+
+Overfull \vbox (3.64726pt too high) detected at line 155
+ []
+
+[2
 
  <./pictures/breakout.png> <./diagrams/rl_mechanism.png>]
 Overfull \hbox (9.11334pt too wide) detected at line 188
@@ -1731,7 +1740,7 @@ Package rerunfilecheck Info: File `deep_q_networks.out' has not changed.
 Here is how much of TeX's memory you used:
  23877 strings out of 492982
  429359 string characters out of 6134895
- 664211 words of memory out of 5000000
+ 664210 words of memory out of 5000000
  26829 multiletter control sequences out of 15000+600000
  104084 words of font info for 79 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1748,7 +1757,7 @@ s/type1/public/lm/lmss17.pfb></usr/share/texmf/fonts/type1/public/lm/lmss8.pfb>
 sr/share/texmf/fonts/type1/public/lm/lmsso8.pfb></usr/share/texmf/fonts/type1/p
 ublic/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy6.pfb></usr/sha
 re/texmf/fonts/type1/public/lm/lmsy8.pfb>
-Output written on deep_q_networks.pdf (11 pages, 4827383 bytes).
+Output written on deep_q_networks.pdf (11 pages, 4827389 bytes).
 PDF statistics:
  184 PDF objects out of 1000 (max. 8388607)
  128 compressed objects within 2 object streams
