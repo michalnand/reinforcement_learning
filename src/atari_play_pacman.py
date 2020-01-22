@@ -54,14 +54,14 @@ agent.disable_training()
 
 #Pacman DQN Rainbow
 import agents.rainbow
-import models.atari_dqn.pacman_rainbow_orig.src.model
-import models.atari_dqn.pacman_rainbow_orig.src.config
+import models.atari_dqn.pacman_rainbow.src.model
+import models.atari_dqn.pacman_rainbow.src.config
 
-model  = models.atari_dqn.pacman_rainbow_orig.src.model
-config = models.atari_dqn.pacman_rainbow_orig.src.config.Config()
-save_path = "./models/atari_dqn/pacman_rainbow_orig/"
+model  = models.atari_dqn.pacman_rainbow.src.model
+config = models.atari_dqn.pacman_rainbow.src.config.Config()
+save_path = "./models/atari_dqn/pacman_rainbow/"
 agent = agents.rainbow.Agent(env, model, config, save_path, save_stats=False)
-agent.load()
+agent.load() 
 agent.disable_training()
 
 
