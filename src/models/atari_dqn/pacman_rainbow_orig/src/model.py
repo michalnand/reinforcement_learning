@@ -57,7 +57,7 @@ class Model(torch.nn.Module):
                         nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
                         
                         Flatten(),
-                        NoiseLayer(fc_inputs_count, 0.001)
+                        NoiseLayer(fc_inputs_count)
                     ]
 
 
