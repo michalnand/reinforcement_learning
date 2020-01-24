@@ -47,7 +47,7 @@ save_path = "./models/atari_a2c/pacman/"
 env = gym.make("MsPacmanNoFrameskip-v4") 
 '''
 
-'''
+
 #Pong
 import models.atari_a2c.pong.src.model
 import models.atari_a2c.pong.src.config
@@ -56,7 +56,7 @@ model  = models.atari_a2c.pong.src.model
 config = models.atari_a2c.pong.src.config.Config()
 save_path = "./models/atari_a2c/pong/"
 env = gym.make("PongNoFrameskip-v4") 
-'''
+
 
 '''
 #QBert
@@ -69,6 +69,7 @@ save_path = "./models/atari_a2c/qbert/"
 env = gym.make("QbertNoFrameskip-v4") 
 '''
 
+'''
 #Seaquest
 import models.atari_a2c.seaquest.src.model
 import models.atari_a2c.seaquest.src.config
@@ -77,7 +78,7 @@ model  = models.atari_a2c.seaquest.src.model
 config = models.atari_a2c.seaquest.src.config.Config()
 save_path = "./models/atari_a2c/seaquest/"
 env = gym.make("SeaquestNoFrameskip-v4") 
-
+'''
 
 env = common.atari_wrapper.Create(env, 96, 96, 4) 
 

@@ -124,3 +124,21 @@ class Model(torch.nn.Module):
         self.model_advantage.eval() 
 
 
+    def get_activity_map(self, state):
+        with torch.no_grad():
+            x  = torch.tensor(state, dtype=torch.float32).detach().to(self.device).unsqueeze(0)
+
+            for i in range(12): 
+                x = self.layers_features[i].forward(x)
+
+            upsample = nn.Upsample(size=(self.input_shape[1], self.input_shape[2]), mode='bicubic')
+
+            x = upsample(x)
+            x = x.sum(dim = 1)
+            result = x[0].to("cpu").detach().numpy()
+
+            k = 1.0/(result.max() - result.min())
+            q = 1.0 - k*result.max()
+            result = k*result + q
+            
+            return result

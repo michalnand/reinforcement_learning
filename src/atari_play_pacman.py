@@ -121,10 +121,11 @@ while True:
     env.render()
     time.sleep(1.0/50.0)
 
+    
+    
     '''
-    activity = agent.model.get_activity_map(agent.observation)
-
     if iteration%10 == 0:
+        activity = agent.model.get_activity_map(agent.observation)
         activity_show(agent.observation, activity, 0.7)
     '''
     iteration+= 1
