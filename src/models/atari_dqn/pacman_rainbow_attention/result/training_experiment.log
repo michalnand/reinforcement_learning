@@ -1,0 +1,22 @@
+iterations                = 442
+game_id                   = 1
+score                     = 11.0
+game_iterations           = 442
+game_iterations_smooth    = 442.0
+game_score                = 11.0
+game_score_smooth         = 11.0
+fps_smooth                = 91.8935927524239
+
+
+
+iterations                = 959
+game_id                   = 2
+score                     = 28.0
+game_iterations           = 517
+game_iterations_smooth    = 442.75
+game_score                = 17.0
+game_score_smooth         = 11.06
+fps_smooth                = 57.45837817347362
+
+
+

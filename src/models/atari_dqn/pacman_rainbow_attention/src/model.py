@@ -16,10 +16,52 @@ class NoiseLayer(torch.nn.Module):
         
         self.w      = torch.nn.Parameter(w_initial, requires_grad = True)     
         self.distribution = torch.distributions.normal.Normal(0.0, 1.0)
- 
+
     def forward(self, x):
         noise =  self.distribution.sample((self.inputs_count, )).detach().to(self.device)
         return x + self.w*noise
+
+class ResidualBlock(torch.nn.Module):
+    def __init__(self, input_channels):
+        super(ResidualBlock, self).__init__()
+
+        self.layers = [ 
+                        nn.Conv2d(input_channels, input_channels, kernel_size=3, stride=1, padding=1),
+                        nn.BatchNorm2d(input_channels),
+                        nn.ReLU(), 
+                        nn.Conv2d(input_channels, input_channels, kernel_size=3, stride=1, padding=1),
+                        nn.BatchNorm2d(input_channels)
+                    ]
+
+        self.activation = nn.ReLU()
+        self.model = nn.Sequential(*self.layers)
+
+    def forward(self, x):
+        return self.activation(x + self.model(x))
+
+
+class AttentionLayer(torch.nn.Module):
+    def __init__(self, input_channels):
+        super(AttentionLayer, self).__init__()
+
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+        self.input_channels = input_channels
+ 
+        self.layers = [ 
+                        nn.Conv2d(self.input_channels, 1, kernel_size=1, stride=1),
+                        nn.Sigmoid()
+                    ]
+
+        self.model = nn.Sequential(*self.layers)
+        self.model.to(self.device)
+
+        
+    def forward(self, x):
+        attention = self.model(x).repeat(1, self.input_channels, 1, 1)        
+        return x + x*attention
+
+
 
 class Model(torch.nn.Module):
 
@@ -28,37 +70,51 @@ class Model(torch.nn.Module):
 
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-        self.input_shape    = input_shape
+        self.input_shape    = input_shape 
         self.outputs_count  = outputs_count
         
         input_channels  = self.input_shape[0]
-        fc_input_height = self.input_shape[1]
-        fc_input_width  = self.input_shape[2]    
+        input_height    = self.input_shape[1]
+        input_width     = self.input_shape[2]    
 
-        ratio           = 2**4
 
-        fc_inputs_count = 64*((fc_input_width)//ratio)*((fc_input_height)//ratio)
+        layer_0_kernels_count = 32
+        layer_1_kernels_count = 32
+        layer_2_kernels_count = 64 
+        layer_3_kernels_count = 64
+
+        scale_ratio           = 2**4
  
+        fc_inputs_count = ((input_width)//scale_ratio)*((input_height)//scale_ratio)*layer_3_kernels_count
+        
         self.layers_features = [ 
-                        nn.Conv2d(input_channels, 32, kernel_size=3, stride=1, padding=1),
-                        nn.ReLU(), 
-                        nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
+                                nn.Conv2d(input_channels, layer_0_kernels_count, kernel_size=3, stride=2, padding=1),
+                                nn.ReLU(), 
+                                ResidualBlock(layer_0_kernels_count),
+                                ResidualBlock(layer_0_kernels_count),
+                                AttentionLayer(layer_0_kernels_count),
 
-                        nn.Conv2d(32, 32, kernel_size=3, stride=1, padding=1),
-                        nn.ReLU(),
-                        nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
- 
-                        nn.Conv2d(32, 64, kernel_size=3, stride=1, padding=1),
-                        nn.ReLU(),
-                        nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
-            
-                        nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=1),
-                        nn.ReLU(),
-                        nn.MaxPool2d(kernel_size=2, stride=2, padding=0),
+                                nn.Conv2d(layer_0_kernels_count, layer_1_kernels_count, kernel_size=3, stride=2, padding=1),
+                                nn.ReLU(), 
+                                ResidualBlock(layer_1_kernels_count),
+                                ResidualBlock(layer_1_kernels_count),
+                                AttentionLayer(layer_1_kernels_count),
+
+                                nn.Conv2d(layer_1_kernels_count, layer_2_kernels_count, kernel_size=3, stride=2, padding=1),
+                                nn.ReLU(), 
+                                ResidualBlock(layer_2_kernels_count),
+                                ResidualBlock(layer_2_kernels_count),
+                                AttentionLayer(layer_2_kernels_count),
+
+                                nn.Conv2d(layer_2_kernels_count, layer_3_kernels_count, kernel_size=3, stride=2, padding=1),
+                                nn.ReLU(), 
+                                ResidualBlock(layer_3_kernels_count),
+                                ResidualBlock(layer_3_kernels_count),
+                                AttentionLayer(layer_3_kernels_count),
                         
-                        Flatten(),
-                        NoiseLayer(fc_inputs_count, 0.001)
-                    ]
+                                Flatten(),
+                                NoiseLayer(fc_inputs_count, 0.001)
+                            ]
 
 
         self.layers_value = [

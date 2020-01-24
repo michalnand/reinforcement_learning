@@ -1,0 +1,39 @@
+set   autoscale                        # scale axes automatically
+unset log                              # remove any log-scaling
+unset label                            # remove any previous labels
+set xtic auto                         	# set xtics automatically
+set ytic auto                         # set ytics automatically
+set ztic auto
+
+
+set grid ytics lt 0.1 lw 0.1 lc rgb "#bbbbbb"
+set grid xtics lt 0.1 lw 0.1 lc rgb "#bbbbbb"
+
+#set terminal png size 2048,1356 enhanced font "Helvetica,20"
+set terminal png size 1024,768 enhanced font "Helvetica,20"
+
+set key left top
+
+# set style fill solid 1.0
+
+
+
+set ylabel "score per game"
+
+
+set xlabel "iterations"
+set output 'training_score_per_game_iterations.png'
+set xtic 1000000
+
+plot '../atari_dqn/pacman/result/training_progress.log' using 1:7 title 'DQN'  with lines lw 3 lc 'blue', \
+     '../atari_a2c/pacman/result/training_progress.log' using 1:7 title 'A2C'  with lines lw 3 lc 'green', \
+     '../atari_dqn/pacman_rainbow/result/training_progress.log' using 1:7 title 'rainbow'  with lines lw 3 lc 'red', \
+
+
+set xlabel "iterations"
+set output 'testing_score_per_game_iterations.png'
+
+set xtic 200000
+plot '../atari_dqn/pacman/result/testing_progress.log' using 1:7 title 'DQN'  with lines lw 3 lc 'blue', \
+     '../atari_a2c/pacman/result/testing_progress.log' using 1:7 title 'A2C'  with lines lw 3 lc 'green', \
+     '../atari_dqn/pacman_rainbow/result/testing_progress.log' using 1:7 title 'rainbow'  with lines lw 3 lc 'red', \
