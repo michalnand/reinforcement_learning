@@ -90,26 +90,18 @@ class Model(torch.nn.Module):
         self.layers_features = [ 
                                 nn.Conv2d(input_channels, layer_0_kernels_count, kernel_size=3, stride=2, padding=1),
                                 nn.ReLU(), 
-                                ResidualBlock(layer_0_kernels_count),
-                                ResidualBlock(layer_0_kernels_count),
                                 AttentionLayer(layer_0_kernels_count),
 
                                 nn.Conv2d(layer_0_kernels_count, layer_1_kernels_count, kernel_size=3, stride=2, padding=1),
                                 nn.ReLU(), 
-                                ResidualBlock(layer_1_kernels_count),
-                                ResidualBlock(layer_1_kernels_count),
                                 AttentionLayer(layer_1_kernels_count),
 
                                 nn.Conv2d(layer_1_kernels_count, layer_2_kernels_count, kernel_size=3, stride=2, padding=1),
                                 nn.ReLU(), 
-                                ResidualBlock(layer_2_kernels_count),
-                                ResidualBlock(layer_2_kernels_count),
                                 AttentionLayer(layer_2_kernels_count),
 
                                 nn.Conv2d(layer_2_kernels_count, layer_3_kernels_count, kernel_size=3, stride=2, padding=1),
                                 nn.ReLU(), 
-                                ResidualBlock(layer_3_kernels_count),
-                                ResidualBlock(layer_3_kernels_count),
                                 AttentionLayer(layer_3_kernels_count),
                         
                                 Flatten(),
