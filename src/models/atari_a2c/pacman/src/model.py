@@ -44,15 +44,15 @@ class Model(torch.nn.Module):
                             ]
 
         self.layers_policy = [
-                                nn.Linear(fc_inputs_count*64, 512),
+                                nn.Linear(fc_inputs_count*64, 128),
                                 nn.ReLU(),                      
-                                nn.Linear(512, outputs_count)
+                                nn.Linear(128, outputs_count)
                             ]
 
         self.layers_value = [
-                                nn.Linear(fc_inputs_count*64, 512),
+                                nn.Linear(fc_inputs_count*64, 128),
                                 nn.ReLU(),                      
-                                nn.Linear(512, 1)
+                                nn.Linear(128, 1)
                             ]
 
         for i in range(len(self.layers_features)):
