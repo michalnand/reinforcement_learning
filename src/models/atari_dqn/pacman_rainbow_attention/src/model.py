@@ -64,9 +64,6 @@ class AttentionLayer(torch.nn.Module):
 
         
     def forward(self, x):
-
-        print("weights weight init : ", self.layers[0].weight)
-
         attention = self.model(x).repeat(1, self.input_channels, 1, 1)        
         return x + x*attention
 
