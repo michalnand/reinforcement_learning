@@ -128,7 +128,7 @@ class Model(torch.nn.Module):
         with torch.no_grad():
             x  = torch.tensor(state, dtype=torch.float32).detach().to(self.device).unsqueeze(0)
 
-            last_layer = len(self.layers_features) - 1
+            last_layer = len(self.layers_features) - 2
             for i in range(last_layer): 
                 x = self.layers_features[i].forward(x)
 

@@ -51,6 +51,7 @@ agent.load()
 agent.disable_training()
 '''
 
+
 #Pacman DQN Rainbow Attention
 import agents.rainbow
 import models.atari_dqn.pacman_rainbow_attention.src.model
@@ -62,6 +63,7 @@ save_path = "./models/atari_dqn/pacman_rainbow_attention/"
 agent = agents.rainbow.Agent(env, model, config, save_path, save_stats=False)
 agent.load() 
 agent.disable_training()
+
 
 '''
 #Pacman imitation
@@ -119,9 +121,10 @@ while True:
     env.render()
     time.sleep(1.0/50.0)
 
-
+    '''
     if iteration%10 == 0:
         activity = agent.model.get_activity_map(agent.observation)
         activity_show(agent.observation, activity, 0.7)
- 
+    '''
+
     iteration+= 1
