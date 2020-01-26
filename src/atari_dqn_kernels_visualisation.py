@@ -11,11 +11,11 @@ import common.image
 import models.atari_dqn.pacman.src.model
 import models.atari_dqn.pacman.src.config
 
-load_path = "./models/multi_agent/atari_dqn_0/"
+load_path = "./models/atari_dqn/pacman/"
 
 
 input_shape     = (4,96,96)
-outputs_count   = 18
+outputs_count   = 9
 
 model  = models.atari_dqn.pacman.src.model.Model(input_shape, outputs_count)
 
