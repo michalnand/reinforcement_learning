@@ -24,20 +24,6 @@ agent.disable_training()
 '''
 
 '''
-#Pacman Dueling
-import agents.dqn
-import models.atari_dqn.pacman_dueling_dqn.src.model
-import models.atari_dqn.pacman_dueling_dqn.src.config
-
-model  = models.atari_dqn.pacman_dueling_dqn.src.model
-config = models.atari_dqn.pacman_dueling_dqn.src.config.Config()
-save_path = "./models/atari_dqn/pacman_dueling_dqn/"
-agent = agents.dqn.Agent(env, model, config, save_path, save_stats=False)
-agent.load()
-agent.disable_training()
-'''
-
-'''
 #Pacman A2C
 import agents.a2c
 import models.atari_a2c.pacman.src.model
@@ -51,7 +37,7 @@ agent.load()
 agent.disable_training()
 '''
 
-
+'''
 #Pacman DQN Rainbow
 import agents.rainbow
 import models.atari_dqn.pacman_rainbow.src.model
@@ -63,7 +49,19 @@ save_path = "./models/atari_dqn/pacman_rainbow/"
 agent = agents.rainbow.Agent(env, model, config, save_path, save_stats=False)
 agent.load() 
 agent.disable_training()
+'''
 
+#Pacman DQN Rainbow Attention
+import agents.rainbow
+import models.atari_dqn.pacman_rainbow_attention.src.model
+import models.atari_dqn.pacman_rainbow_attention.src.config
+
+model  = models.atari_dqn.pacman_rainbow_attention.src.model
+config = models.atari_dqn.pacman_rainbow_attention.src.config.Config()
+save_path = "./models/atari_dqn/pacman_rainbow_attention/"
+agent = agents.rainbow.Agent(env, model, config, save_path, save_stats=False)
+agent.load() 
+agent.disable_training()
 
 '''
 #Pacman imitation
@@ -110,7 +108,7 @@ def activity_show(observation, activity, alpha = 0.3):
     plt.imshow(image, interpolation='bicubic')
     
     plt.draw()
-    plt.pause(0.001)
+    plt.pause(0.1)
     #plt.show() 
 
 
@@ -121,12 +119,9 @@ while True:
     env.render()
     time.sleep(1.0/50.0)
 
-    
-    
-    '''
+
     if iteration%10 == 0:
         activity = agent.model.get_activity_map(agent.observation)
         activity_show(agent.observation, activity, 0.7)
-    '''
+ 
     iteration+= 1
-    
