@@ -55,7 +55,7 @@ class AttentionLayer(torch.nn.Module):
 
         for i in range(len(self.layers)):
             if hasattr(self.layers[i], "weight"):
-                torch.nn.init.xavier_uniform_(self.layers[i].weight, 1.0/self.input_channels)
+                torch.nn.init.xavier_uniform_(self.layers[i].weight, 0.01*1.0/self.input_channels)
 
         self.model = nn.Sequential(*self.layers)
         self.model.to(self.device)
