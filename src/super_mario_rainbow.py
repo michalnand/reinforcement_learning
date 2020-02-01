@@ -1,23 +1,28 @@
-import gym
-import common.atari_wrapper
-import agents.rainbow
+import gym_super_mario_bros
+import common.super_mario_wrapper
+
+import agents.dqn
 
 import numpy
 import time
 
-import models.atari_dqn.pacman_rainbow_attention_b.src.model
-import models.atari_dqn.pacman_rainbow_attention_b.src.config
+import models.super_mario.dqn.src.model
+import models.super_mario.dqn.src.config
 
 
-model  = models.atari_dqn.pacman_rainbow_attention_b.src.model
-config = models.atari_dqn.pacman_rainbow_attention_b.src.config.Config()
+model  = models.super_mario.dqn.src.model
+config = models.super_mario.dqn.src.config.Config()
 
-save_path = "./models/atari_dqn/pacman_rainbow_attention_b/"
+save_path = "./models/super_mario/dqn/"
 
-env = gym.make("MsPacmanNoFrameskip-v4") 
-env = common.atari_wrapper.Create(env, 96, 96, 4) 
+env = gym_super_mario_bros.make('SuperMarioBros-v0')
+env = common.super_mario_wrapper.Create(env)
 
-agent = agents.rainbow.Agent(env, model, config, save_path)
+env.reset()
+
+
+
+agent = agents.dqn.Agent(env, model, config, save_path)
 
 score_best = -10000.0
 while agent.iterations < 10000000:

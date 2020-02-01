@@ -38,3 +38,4 @@ set xtic 200000
 plot '../atari_dqn/pacman/result/testing_progress.log' using 1:7 title 'DQN'  with lines lw 3 lc 'blue', \
      '../atari_a2c/pacman/result/testing_progress.log' using 1:7 title 'A2C'  with lines lw 3 lc 'green', \
      '../atari_dqn/pacman_rainbow/result/testing_progress.log' using 1:7 title 'rainbow'  with lines lw 3 lc 'red', \
+     '../atari_dqn/pacman_rainbow_attention/result/testing_progress.log' using 1:7 title 'rainbow with attention'  with lines lw 3
