@@ -1,7 +1,7 @@
 import gym_super_mario_bros
 import common.super_mario_wrapper
 
-import agents.rainbow_attention
+import agents.rainbow
 
 import numpy
 import time
