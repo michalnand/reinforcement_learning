@@ -1,3 +1,4 @@
 python3 super_mario_dqn.py  
 python3 super_mario_rainbow.py
 python3 super_mario_rainbow_attention.py
+python3 super_mario_a2c.py

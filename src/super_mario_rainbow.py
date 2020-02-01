@@ -1,28 +1,28 @@
 import gym_super_mario_bros
 import common.super_mario_wrapper
 
-import agents.dqn
+import agents.rainbow
 
 import numpy
 import time
 
-import models.super_mario.dqn.src.model
-import models.super_mario.dqn.src.config
+import models.super_mario.rainbow.src.model
+import models.super_mario.rainbow.src.config
 
 
-model  = models.super_mario.dqn.src.model
-config = models.super_mario.dqn.src.config.Config()
+model  = models.super_mario.rainbow.src.model
+config = models.super_mario.rainbow.src.config.Config()
 
-save_path = "./models/super_mario/dqn/"
+save_path = "./models/super_mario/rainbow/"
 
 env = gym_super_mario_bros.make('SuperMarioBros-v0')
 env = common.super_mario_wrapper.Create(env)
 
 env.reset()
+ 
 
 
-
-agent = agents.dqn.Agent(env, model, config, save_path)
+agent = agents.rainbow.Agent(env, model, config, save_path)
 
 score_best = -10000.0
 while agent.iterations < 10000000:
