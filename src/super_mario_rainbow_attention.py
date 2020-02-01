@@ -22,7 +22,7 @@ env.reset()
 
 
 
-agent = agents.rainbow_attention.Agent(env, model, config, save_path)
+agent = agents.rainbow.Agent(env, model, config, save_path)
 
 score_best = -10000.0
 while agent.iterations < 10000000:
