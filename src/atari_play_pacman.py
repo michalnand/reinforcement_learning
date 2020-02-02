@@ -63,7 +63,7 @@ save_path = "./models/atari_dqn/pacman_rainbow_attention/"
 agent = agents.rainbow.Agent(env, model, config, save_path, save_stats=False)
 agent.load() 
 agent.disable_training()
-
+ 
 
 '''
 #Pacman imitation
