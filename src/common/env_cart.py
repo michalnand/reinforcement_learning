@@ -11,11 +11,11 @@ class EnvCart:
     def __init__(self, random_params = False):
         
         self.random_params  = random_params
-        self.threshold      = 0.05
+        
 
         self.shape = (3,)
 
-        self.actions            = [0.0, 1.0, -1.0, 0.1, -0.1]
+        self.actions            = [0.0, -1.0, 1.0, -0.1, 0.1]
         
 
         self.action_space       = ActionSpace(len(self.actions))
@@ -25,24 +25,32 @@ class EnvCart:
     
 
     def reset(self):
-        self.dt              = 0.01
+        self.dt             = 0.01
+        self.threshold      = 2.0*self.dt
 
         self.target_position = 0.9
-        self.cart_position   = 0.1
-        self.cart_velocity   = -0.01
-        self.friction        = 0.05
-
+        
+        self.cart_position   = 0.0
+        self.cart_velocity   = 0.0
+      
+        self.inertia         = 0.9
         self.cart_mass       = 1.0
 
         self.steps           = 0
 
         if self.random_params:
             self.target_position = numpy.random.rand()
-            self.cart_position   = 1.0 - self.target_position
-            self.cart_velocity   = 0.0 #(2.0*numpy.random.rand() - 1.0)*0.01
-            self.friction        = 0.01 #0.05*numpy.random.rand()
 
-            self.cart_mass = 1.0 #+ numpy.random.rand()
+            self.cart_velocity   = (2.0*numpy.random.rand() - 1.0)*0.1
+
+            inertia_min          = 0.3
+            inertia_max          = 0.9
+
+            mass_min             = 0.1
+            mass_max             = 1.0
+
+            self.inertia         = (inertia_max - inertia_min)*numpy.random.rand()  + inertia_min
+            self.cart_mass       = (mass_max - mass_min)*numpy.random.rand()        + mass_min
 
         self.done   = [False, False]
         self.reward = 0.0
@@ -54,10 +62,10 @@ class EnvCart:
     def step(self, action):
 
         force = self.actions[action]
+        
+        acceleration = force/self.cart_mass
 
-        acceleration = (force - self.cart_velocity*self.friction)/self.cart_mass
-
-        self.cart_velocity = self._saturate(self.cart_velocity + acceleration*self.dt, -1.0, 1.0)
+        self.cart_velocity = self.cart_velocity + self.inertia*(acceleration - self.cart_velocity)*self.dt      
         self.cart_position = self._saturate(self.cart_position + self.cart_velocity*self.dt, 0.0, 1.0)
 
         dist = numpy.abs(self.cart_position - self.target_position)
@@ -65,16 +73,16 @@ class EnvCart:
 
         self.steps+= 1
 
-        self.reward = -0.001
+        self.reward = -0.0001
 
         self.done   = [False, False]
 
         if self.steps >= 1024:
             self.done = [True, True]
             self.reward = -1.0
-            self.steps = 0
-        elif dist < self.threshold and velocity < self.threshold:
-            self.reward = 1.0
+            self.steps  = 0
+        elif dist < self.threshold:
+            self.reward = 1.0 - 0.9*velocity
             self.done   = [True, True]
         
         self._compute_observation()
@@ -103,8 +111,11 @@ class EnvCart:
 
         points = 100
 
-        cart_position   = round((points-1)*self.cart_position)
-        target_position = round((points-1)*self.target_position)
+        cart_position   = (self.cart_position   + 1.0) /2.0
+        target_position = (self.target_position + 1.0) /2.0
+
+        cart_position   = round((points-1)*cart_position)
+        target_position = round((points-1)*target_position)
 
         for i in range(points):
             if i == cart_position:

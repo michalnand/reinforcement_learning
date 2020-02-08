@@ -18,10 +18,10 @@ class Model(torch.nn.Module):
         self.layers = [                  
                         nn.Linear(inputs_count, 64),
                         nn.ReLU(), 
-                        nn.Linear(64, 64),
-                        nn.ReLU(),                      
-                        nn.Linear(64, outputs_count)
-                    ]
+                        nn.Linear(64, 32),
+                        nn.ReLU(), 
+                        nn.Linear(32, outputs_count)
+                    ] 
 
         for i in range(len(self.layers)):
             if hasattr(self.layers[i], "weight"):
