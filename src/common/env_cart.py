@@ -13,7 +13,9 @@ class EnvCart:
         self.random_params  = random_params
         
 
-        self.shape = (3,)
+        self.shape = (5,)
+
+        
 
         self.actions            = [0.0, -1.0, 1.0, -0.1, 0.1]
         
@@ -36,6 +38,8 @@ class EnvCart:
         self.inertia         = 0.9
         self.cart_mass       = 1.0
 
+        
+
         self.steps           = 0
 
         if self.random_params:
@@ -54,6 +58,12 @@ class EnvCart:
 
         self.done   = [False, False]
         self.reward = 0.0
+
+        self.position0       = self.cart_position
+        self.position1       = self.cart_position
+        self.position2       = self.cart_position
+        self.position3       = self.cart_position
+
 
         self._compute_observation()
 
@@ -100,10 +110,24 @@ class EnvCart:
         return result
 
     def _compute_observation(self):
+        '''
         self.observation = numpy.zeros(3)
         self.observation[0] = self.target_position
         self.observation[1] = self.cart_position
         self.observation[2] = self.cart_velocity
+        '''
+        self.observation = numpy.zeros(5)
+        self.observation[0] = self.target_position
+        self.observation[1] = self.position0
+        self.observation[2] = self.position1
+        self.observation[3] = self.position2
+        self.observation[4] = self.position3
+
+        self.position3 = self.position2
+        self.position2 = self.position1
+        self.position1 = self.position0
+        self.position0 = self.cart_position
+        
 
     def render(self):
         dist = numpy.abs(self.cart_position - self.target_position)

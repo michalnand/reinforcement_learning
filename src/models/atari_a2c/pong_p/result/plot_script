@@ -1,0 +1,55 @@
+set   autoscale                        # scale axes automatically
+unset log                              # remove any log-scaling
+unset label                            # remove any previous labels
+set xtic auto                         	# set xtics automatically
+set ytic auto                         # set ytics automatically
+set ztic auto
+
+
+set grid ytics lt 0.1 lw 0.1 lc rgb "#bbbbbb"
+set grid xtics lt 0.1 lw 0.1 lc rgb "#bbbbbb"
+
+#set terminal png size 2048,1356 enhanced font "Helvetica,20"
+set terminal png size 1024,768 enhanced font "Helvetica,20"
+
+set key left top
+
+# set style fill solid 1.0
+
+
+
+set ylabel "score"
+
+set xlabel "iterations"
+set output 'training_score_iterations.png'
+plot 'training_progress.log' using 1:3 notitle  with lines lw 2 lc 'red'
+
+set xlabel "games"
+set output 'training_score_games.png'
+plot 'training_progress.log' using 2:3 notitle  with lines lw 2 lc 'red'
+
+
+set xlabel "iterations"
+set output 'training_score_per_game_iterations.png'
+plot 'training_progress.log' using 1:6 title 'raw'  with lines lw 2 lc 'red', \
+     'training_progress.log' using 1:7 title 'smoothed'  with lines lw 3 lc 'blue'
+
+
+set xlabel "games"
+set output 'training_score_per_game.png'
+plot 'training_progress.log' using 2:6 title 'raw'  with lines lw 2 lc 'red', \
+     'training_progress.log' using 2:7 title 'smoothed'  with lines lw 3 lc 'blue'
+
+
+set ylabel "iterations per game"
+set xlabel "games"
+set output 'training_iterations_per_game.png'
+plot 'training_progress.log' using 2:4 title 'raw'  with lines lw 2 lc 'red', \
+     'training_progress.log' using 2:5 title 'smoothed'  with lines lw 2 lc 'blue'
+     
+
+
+set ylabel "speed [fps]"
+set xlabel "iterations"
+set output 'training_fps.png'
+plot 'training_progress.log' using 1:8 notitle with lines lw 2 lc 'red'
