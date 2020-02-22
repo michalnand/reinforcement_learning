@@ -50,7 +50,7 @@ agent = agents.dqn.Agent(env, model, config)
 while agent.iterations < 1000000:
     agent.main()
 
-    if agent.iterations%100 == 0:
+    if agent.iterations%256 == 0:
         env.render()
         print(agent.iterations, agent.score)
 

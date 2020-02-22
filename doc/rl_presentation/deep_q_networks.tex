@@ -316,7 +316,58 @@ a long time ago in a galaxy far far away
 \end{frame}
 
 
-\begin{frame}{\bf neural network architecture}
+\begin{frame}{\bf advantage DQN}
+
+
+\begin{columns}
+
+  \begin{column}{0.5\textwidth}
+        
+    basic DQN
+
+    \includegraphics[scale=0.06]{./diagrams/dqn_simple.png}
+
+
+  \end{column}
+
+  \begin{column}{0.5\textwidth}
+  
+    dueling DQN
+
+    \includegraphics[scale=0.1]{./diagrams/dqn_dueling.png}
+  
+  \end{column}
+
+\end{columns}
+
+    
+\begin{columns}
+
+  \begin{column}{0.5\textwidth}
+    
+    rainbow DQN
+
+    \includegraphics[scale=0.1]{./diagrams/dqn_rainbow.png}
+
+  \end{column}
+
+  \begin{column}{0.5\textwidth}
+
+    rainbow DQN + attention
+
+    \includegraphics[scale=0.09]{./diagrams/dqn_rainbow_attention.png}
+ 
+  \end{column}
+
+
+\end{columns}
+
+
+
+\end{frame}
+
+
+\begin{frame}{\bf advantage DQN}
 
 \begin{itemize}
   \item residual and spatial attention block
@@ -328,6 +379,10 @@ a long time ago in a galaxy far far away
   \includegraphics[scale=0.08]{./diagrams/attention_dueling_dqn_my_atari.png}
 \end{figure}
 \end{frame}
+
+
+
+
 
 \begin{frame}{\bf parameters details}
 \begin{itemize}
@@ -343,12 +398,19 @@ a long time ago in a galaxy far far away
 
 
 \begin{figure}
-  \includegraphics[scale=0.4]{./pictures/breakout_state.png}
+  \includegraphics[scale=0.35]{./pictures/breakout_state.png}
 \end{figure}
 
 \end{frame}
 
 
+\begin{frame}{\bf training progress}
+
+    \begin{figure}
+      \includegraphics[scale=0.3]{./pictures/training_score_per_game_iterations.png}
+    \end{figure}
+
+\end{frame}
 
 
 
@@ -407,6 +469,11 @@ a long time ago in a galaxy far far away
 
 
 
+
+
+
+
+
 \begin{frame}{\bf what is it looking for}
 
     \begin{figure}
@@ -426,6 +493,44 @@ a long time ago in a galaxy far far away
     \begin{figure}
       \includegraphics[scale=0.3]{./pictures/kernel_visualisation_pacman/6.png}
     \end{figure}
+
+\end{frame}
+
+
+\begin{frame}{\bf examples for workshop}
+
+
+
+\begin{columns}
+
+  \begin{column}{0.5\textwidth}
+        
+      \begin{figure}
+        \includegraphics[scale=0.2]{./pictures/mountain_car.png}
+      \end{figure}
+
+      \begin{figure}
+        \includegraphics[scale=0.2]{./pictures/lunar_lander.png}
+      \end{figure}
+
+    \end{column}
+
+    \begin{column}{0.5\textwidth}
+
+      \begin{itemize}
+        \item mountain car
+        \item lunar lander
+        \item small state vector, less than 32 elements
+        \item full connected net as DQN - CPU training
+        \item \href{https://github.com/michalnand/reinforcement_learning_tutorial}{reinforcement learning tutorial link}
+      \end{itemize}
+      
+
+    \end{column}
+
+  \end{columns}
+
+
 
 \end{frame}
 
