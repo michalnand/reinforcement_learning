@@ -155,6 +155,23 @@
 \end{frame}
 
 
+\begin{frame}{\bf reinforcement learning}
+
+  \begin{itemize}
+    \item supervised - learning from dataset : classification, detection, segmentation \\ 
+      $\mathcal{L} = (Y_{target} - \hat{Y}_{predicted})^2$, (RMS, crossentropy ...)\\
+      \includegraphics[scale=0.05]{./pictures/image_supervised.jpg}
+    \item reinforcement - learning from experiences and active interactions
+      \begin{itemize} 
+        \item expected reward, $Q(s, a)$, value based methods
+        \item actions probability, $\pi(a|s)$, policy based methods
+      \end{itemize}
+  \end{itemize}
+
+\end{frame}
+
+
+
 \begin{frame}{\bf Q-learning}
 
 
@@ -522,7 +539,7 @@ a long time ago in a galaxy far far away
         \item lunar lander
         \item small state vector, less than 32 elements
         \item full connected net as DQN - CPU training
-        \item \href{https://github.com/michalnand/reinforcement_learning_tutorial}{reinforcement learning tutorial link}
+        \item \href{https://github.com/michalnand/reinforcement_learning_tutorial}{reinforcement learning tutorial github link}
       \end{itemize}
       
 
