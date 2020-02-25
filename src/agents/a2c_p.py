@@ -89,7 +89,7 @@ class Agent():
 
         return reward
         
-    def process_loss(self, env_id = 0):
+    def compute_loss(self, env_id = 0):
         target_values_b = self._calc_q_values(self.rewards_b[env_id], self.values_b[env_id].detach().cpu().numpy(), self.done_b[env_id])
 
         target_values_b = torch.FloatTensor(target_values_b).to(self.model.device)
@@ -137,11 +137,11 @@ class Agent():
         if self.idx >= self.batch_size:      
             loss = 0
             for env_id in range(self.envs_count):
-                loss+= self.process_loss(env_id)
+                loss+= self.compute_loss(env_id)
 
             self.optimizer.zero_grad()
             loss.backward()
-            torch.nn.utils.clip_grad_norm_(self.model.parameters(), 0.1)
+            torch.nn.utils.clip_grad_norm_(self.model.parameters(), 1.0)
             self.optimizer.step() 
 
             #clear batch buffer
