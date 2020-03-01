@@ -82,10 +82,11 @@ class Agent():
             self.envs[env_id].reset()
 
         if hasattr(self, "training_stats") and hasattr(self, "testing_stats"):
-            if self.enabled_training:
-                self.training_stats.add(reward, game_done)
-            else:
-                self.testing_stats.add(reward, game_done)
+            if env_id == 0:
+                if self.enabled_training:
+                    self.training_stats.add(reward, game_done)
+                else:
+                    self.testing_stats.add(reward, game_done)
 
         return reward
         
@@ -101,7 +102,7 @@ class Agent():
         compute critic loss, as MSE
         L = (T - V(s))^2
         '''
-        loss_value = (target_values_b - self.values_b[[env_id]])**2
+        loss_value = (target_values_b - self.values_b[env_id])**2
         loss_value = loss_value.mean()
 
 
@@ -109,7 +110,7 @@ class Agent():
         compute actor loss 
         L = log(pi(s, a))*(T - V(s)) = log(pi(s, a))*A
         '''
-        advantage   = (target_values_b - self.values_b[[env_id]]).detach()
+        advantage   = (target_values_b - self.values_b[env_id]).detach()
         loss_policy = -log_probs[range(len(log_probs)), self.action_b[env_id]]*advantage
         loss_policy = loss_policy.mean()
 
@@ -131,10 +132,11 @@ class Agent():
         for env_id in range(self.envs_count):
             rewards+= self.process_env(env_id)
 
+
         if self.enabled_training:
             self.idx+= 1
         
-        if self.idx >= self.batch_size:      
+        if self.idx > self.batch_size-1:      
             loss = 0
             for env_id in range(self.envs_count):
                 loss+= self.compute_loss(env_id)
@@ -156,6 +158,7 @@ class Agent():
 
         self.iterations+= self.envs_count
         self.score+= rewards
+
             
     def save(self):
         self.model.save(self.save_path)
@@ -163,7 +166,8 @@ class Agent():
     def load(self):
         self.model.load(self.save_path)
     
-    def _calc_q_values(self, rewards, values, done):
+
+    def _calc_q_values(self, rewards, critic_value, done):
         size = len(rewards)
         result = numpy.zeros((size, 1))
 
@@ -178,3 +182,4 @@ class Agent():
             result[n][0] = q
 
         return result
+   

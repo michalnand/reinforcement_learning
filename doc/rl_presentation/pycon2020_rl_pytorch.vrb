@@ -1,0 +1,30 @@
+\frametitle{\bf open AI gym - usage example}
+
+
+    \begin{figure}
+      \includegraphics[scale=0.2]{./pictures/lunar_lander.png}
+    \end{figure}
+
+
+    {\tiny
+      \begin{lstlisting}[frame=none, language=Python]
+      import numpy
+      import time
+      import gym
+
+      env = gym.make("LunarLander-v2")
+      state = env.reset()
+
+      actions_count   = env.action_space.n
+
+
+      while True:
+          action = numpy.random.randint(actions_count)
+          state, reward, done, info = env.step(action)
+          env.render()
+          time.sleep(0.01)
+
+      \end{lstlisting}
+    }
+
+

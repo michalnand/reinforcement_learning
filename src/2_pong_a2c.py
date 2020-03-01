@@ -14,10 +14,11 @@ paralel_envs_count = 16
 
 envs = [] 
 
-for _ in range(paralel_envs_count):
+for i in range(paralel_envs_count):
     env = gym.make("PongNoFrameskip-v4")
     env = common.atari_wrapper.Create(env)
     env.reset()
+    env.seed(i)
 
     envs.append(env)
 

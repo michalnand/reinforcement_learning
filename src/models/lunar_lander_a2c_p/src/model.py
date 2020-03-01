@@ -1,10 +1,6 @@
 import torch
 import torch.nn as nn
 
-class Flatten(nn.Module):
-    def forward(self, input):
-        return input.view(input.size(0), -1)
-
 class Model(torch.nn.Module):
 
     def __init__(self, input_shape, outputs_count):

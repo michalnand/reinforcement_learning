@@ -29,11 +29,12 @@ class SetRewardRange(gym.RewardWrapper):
 
 envs = [] 
 
-for _ in range(paralel_envs_count):
+for i in range(paralel_envs_count):
     env = gym.make("LunarLander-v2")
 
     env = SetRewardRange(env)
     env.reset()
+    env.seed(i)
 
     envs.append(env)
 
