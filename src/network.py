@@ -92,7 +92,8 @@ import numpy
 import time
 import gym
 
-env = gym.make("LunarLander-v2")
+env = gym.make("MsPacman-v0")
+
 env.reset()
 
 actions_count   = env.action_space.n

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.12.28)  23 FEB 2020 21:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.12.28)  2 MAR 2020 17:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1610,17 +1610,13 @@ LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <5> not available
  [3
 
  <./pictures/image_supervised.jpg>]
-Overfull \hbox (9.11334pt too wide) detected at line 205
-[]
- []
-
 <diagrams/q_learning_detail.png, id=59, 708.52942pt x 478.96588pt>
 File: diagrams/q_learning_detail.png Graphic file (type png)
 <use diagrams/q_learning_detail.png>
 Package pdftex.def Info: diagrams/q_learning_detail.png  used on input line 205
 .
 (pdftex.def)             Requested size: 177.13191pt x 119.74117pt.
-[4
+ [4
 
  <./diagrams/q_learning_detail.png>]
 <pictures/chess.jpg, id=68, 2544.50626pt x 1550.79375pt>
@@ -1645,21 +1641,18 @@ Overfull \vbox (1.49065pt too high) detected at line 252
 [5
 
  <./pictures/chess.jpg> <./pictures/alphago.png> <./pictures/alphastar.jpg>]
-<./diagrams/dqn_naive.png, id=77, 972.63374pt x 523.9575pt>
+<./diagrams/dqn_naive.png, id=77, 1786.675pt x 963.6pt>
 File: ./diagrams/dqn_naive.png Graphic file (type png)
 <use ./diagrams/dqn_naive.png>
 Package pdftex.def Info: ./diagrams/dqn_naive.png  used on input line 272.
-(pdftex.def)             Requested size: 243.15784pt x 130.98904pt.
-
-Overfull \vbox (4.74371pt too high) detected at line 272
- []
+(pdftex.def)             Requested size: 214.39175pt x 115.627pt.
 
 [6
 
  <./diagrams/dqn_naive.png>] [7
 
 ]
-<./diagrams/dqn_detail.png, id=93, 576.1525pt x 501.875pt>
+<./diagrams/dqn_detail.png, id=94, 576.1525pt x 501.875pt>
 File: ./diagrams/dqn_detail.png Graphic file (type png)
 <use ./diagrams/dqn_detail.png>
 Package pdftex.def Info: ./diagrams/dqn_detail.png  used on input line 303.
@@ -1671,7 +1664,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <9> on input line 317.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <9> not available
 (Font)              Font shape `T1/lmss/m/sl' tried instead on input line 317.
-<./diagrams/dqn_mnih_atari.png, id=103, 1707.178pt x 481.8pt>
+<./diagrams/dqn_mnih_atari.png, id=104, 1707.178pt x 481.8pt>
 File: ./diagrams/dqn_mnih_atari.png Graphic file (type png)
 <use ./diagrams/dqn_mnih_atari.png>
 Package pdftex.def Info: ./diagrams/dqn_mnih_atari.png  used on input line 317.
@@ -1680,7 +1673,7 @@ Package pdftex.def Info: ./diagrams/dqn_mnih_atari.png  used on input line 317.
  [9
 
  <./diagrams/dqn_mnih_atari.png>]
-<./diagrams/dqn_my_atari.png, id=114, 2975.918pt x 481.8pt>
+<./diagrams/dqn_my_atari.png, id=115, 2975.918pt x 481.8pt>
 File: ./diagrams/dqn_my_atari.png Graphic file (type png)
 <use ./diagrams/dqn_my_atari.png>
 Package pdftex.def Info: ./diagrams/dqn_my_atari.png  used on input line 333.
@@ -1693,22 +1686,22 @@ Overfull \hbox (20.06212pt too wide) in paragraph at lines 333--333
 [10
 
  <./diagrams/dqn_my_atari.png>]
-<./diagrams/dqn_simple.png, id=122, 2218.689pt x 481.8pt>
+<./diagrams/dqn_simple.png, id=123, 2218.689pt x 481.8pt>
 File: ./diagrams/dqn_simple.png Graphic file (type png)
 <use ./diagrams/dqn_simple.png>
 Package pdftex.def Info: ./diagrams/dqn_simple.png  used on input line 384.
 (pdftex.def)             Requested size: 133.11559pt x 28.90674pt.
-<./diagrams/dqn_dueling.png, id=123, 1059.96pt x 481.8pt>
+<./diagrams/dqn_dueling.png, id=124, 1059.96pt x 481.8pt>
 File: ./diagrams/dqn_dueling.png Graphic file (type png)
 <use ./diagrams/dqn_dueling.png>
 Package pdftex.def Info: ./diagrams/dqn_dueling.png  used on input line 384.
 (pdftex.def)             Requested size: 106.0022pt x 48.18282pt.
-<./diagrams/dqn_rainbow.png, id=124, 1191.652pt x 481.8pt>
+<./diagrams/dqn_rainbow.png, id=125, 1191.652pt x 481.8pt>
 File: ./diagrams/dqn_rainbow.png Graphic file (type png)
 <use ./diagrams/dqn_rainbow.png>
 Package pdftex.def Info: ./diagrams/dqn_rainbow.png  used on input line 384.
 (pdftex.def)             Requested size: 119.17218pt x 48.18282pt.
-<./diagrams/dqn_rainbow_attention.png, id=125, 1834.052pt x 481.8pt>
+<./diagrams/dqn_rainbow_attention.png, id=126, 1834.052pt x 481.8pt>
 File: ./diagrams/dqn_rainbow_attention.png Graphic file (type png)
 <use ./diagrams/dqn_rainbow_attention.png>
 Package pdftex.def Info: ./diagrams/dqn_rainbow_attention.png  used on input li
@@ -1723,7 +1716,7 @@ Overfull \hbox (11.41263pt too wide) in paragraph at lines 384--384
 
  <./diagrams/dqn_simple.png> <./diagrams/dqn_dueling.png> <./diagrams/dqn_rainb
 ow.png> <./diagrams/dqn_rainbow_attention.png>]
-<./diagrams/attention_dueling_dqn_my_atari.png, id=136, 3892.141pt x 1606.0pt>
+<./diagrams/attention_dueling_dqn_my_atari.png, id=137, 3892.141pt x 1606.0pt>
 File: ./diagrams/attention_dueling_dqn_my_atari.png Graphic file (type png)
 <use ./diagrams/attention_dueling_dqn_my_atari.png>
 Package pdftex.def Info: ./diagrams/attention_dueling_dqn_my_atari.png  used on
@@ -1737,7 +1730,7 @@ Overfull \hbox (4.08777pt too wide) in paragraph at lines 398--398
 [12
 
  <./diagrams/attention_dueling_dqn_my_atari.png>]
-<./pictures/breakout_state.png, id=144, 462.528pt x 346.896pt>
+<./pictures/breakout_state.png, id=145, 462.528pt x 346.896pt>
 File: ./pictures/breakout_state.png Graphic file (type png)
 <use ./pictures/breakout_state.png>
 Package pdftex.def Info: ./pictures/breakout_state.png  used on input line 421.
@@ -1750,7 +1743,7 @@ Overfull \vbox (7.80196pt too high) detected at line 421
 [13
 
  <./pictures/breakout_state.png>]
-<./pictures/training_score_per_game_iterations.png, id=153, 770.88pt x 578.16pt
+<./pictures/training_score_per_game_iterations.png, id=154, 770.88pt x 578.16pt
 >
 File: ./pictures/training_score_per_game_iterations.png Graphic file (type png)
 
@@ -1761,25 +1754,25 @@ d on input line 430.
  [14
 
  <./pictures/training_score_per_game_iterations.png>]
-<./pictures/attention_breakout_dqn.png, id=161, 462.528pt x 346.896pt>
+<./pictures/attention_breakout_dqn.png, id=162, 462.528pt x 346.896pt>
 File: ./pictures/attention_breakout_dqn.png Graphic file (type png)
 <use ./pictures/attention_breakout_dqn.png>
 Package pdftex.def Info: ./pictures/attention_breakout_dqn.png  used on input l
 ine 484.
 (pdftex.def)             Requested size: 129.50694pt x 97.1302pt.
-<./pictures/attention_pacman_dqn.png, id=162, 462.528pt x 346.896pt>
+<./pictures/attention_pacman_dqn.png, id=163, 462.528pt x 346.896pt>
 File: ./pictures/attention_pacman_dqn.png Graphic file (type png)
 <use ./pictures/attention_pacman_dqn.png>
 Package pdftex.def Info: ./pictures/attention_pacman_dqn.png  used on input lin
 e 484.
 (pdftex.def)             Requested size: 129.50694pt x 97.1302pt.
-<./pictures/attention_seaquest_dqn.png, id=164, 462.528pt x 346.896pt>
+<./pictures/attention_seaquest_dqn.png, id=165, 462.528pt x 346.896pt>
 File: ./pictures/attention_seaquest_dqn.png Graphic file (type png)
 <use ./pictures/attention_seaquest_dqn.png>
 Package pdftex.def Info: ./pictures/attention_seaquest_dqn.png  used on input l
 ine 484.
 (pdftex.def)             Requested size: 129.50694pt x 97.1302pt.
-<./pictures/attention_qbert_dqn.png, id=165, 462.528pt x 346.896pt>
+<./pictures/attention_qbert_dqn.png, id=166, 462.528pt x 346.896pt>
 File: ./pictures/attention_qbert_dqn.png Graphic file (type png)
 <use ./pictures/attention_qbert_dqn.png>
 Package pdftex.def Info: ./pictures/attention_qbert_dqn.png  used on input line
@@ -1793,13 +1786,13 @@ Overfull \vbox (2.94417pt too high) detected at line 484
 
  <./pictures/attention_breakout_dqn.png> <./pictures/attention_pacman_dqn.png> 
 <./pictures/attention_seaquest_dqn.png> <./pictures/attention_qbert_dqn.png>]
-<./pictures/kernel_visualisation_pacman/0.png, id=177, 578.16pt x 289.08pt>
+<./pictures/kernel_visualisation_pacman/0.png, id=178, 578.16pt x 289.08pt>
 File: ./pictures/kernel_visualisation_pacman/0.png Graphic file (type png)
 <use ./pictures/kernel_visualisation_pacman/0.png>
 Package pdftex.def Info: ./pictures/kernel_visualisation_pacman/0.png  used on 
 input line 505.
 (pdftex.def)             Requested size: 173.44933pt x 86.72466pt.
-<./pictures/kernel_visualisation_pacman/3.png, id=178, 578.16pt x 289.08pt>
+<./pictures/kernel_visualisation_pacman/3.png, id=179, 578.16pt x 289.08pt>
 File: ./pictures/kernel_visualisation_pacman/3.png Graphic file (type png)
 <use ./pictures/kernel_visualisation_pacman/3.png>
 Package pdftex.def Info: ./pictures/kernel_visualisation_pacman/3.png  used on 
@@ -1809,7 +1802,7 @@ input line 505.
 
  <./pictures/kernel_visualisation_pacman/0.png> <./pictures/kernel_visualisatio
 n_pacman/3.png>]
-<./pictures/kernel_visualisation_pacman/6.png, id=187, 578.16pt x 578.16pt>
+<./pictures/kernel_visualisation_pacman/6.png, id=188, 578.16pt x 578.16pt>
 File: ./pictures/kernel_visualisation_pacman/6.png Graphic file (type png)
 <use ./pictures/kernel_visualisation_pacman/6.png>
 Package pdftex.def Info: ./pictures/kernel_visualisation_pacman/6.png  used on 
@@ -1818,12 +1811,12 @@ input line 514.
  [17
 
  <./pictures/kernel_visualisation_pacman/6.png>]
-<./pictures/mountain_car.png, id=196, 602.25pt x 431.6125pt>
+<./pictures/mountain_car.png, id=197, 602.25pt x 431.6125pt>
 File: ./pictures/mountain_car.png Graphic file (type png)
 <use ./pictures/mountain_car.png>
 Package pdftex.def Info: ./pictures/mountain_car.png  used on input line 552.
 (pdftex.def)             Requested size: 120.44786pt x 86.32097pt.
-<./pictures/lunar_lander.png, id=197, 602.25pt x 431.6125pt>
+<./pictures/lunar_lander.png, id=198, 602.25pt x 431.6125pt>
 File: ./pictures/lunar_lander.png Graphic file (type png)
 <use ./pictures/lunar_lander.png>
 Package pdftex.def Info: ./pictures/lunar_lander.png  used on input line 552.
@@ -1834,7 +1827,7 @@ Package pdftex.def Info: ./pictures/lunar_lander.png  used on input line 552.
  <./pictures/mountain_car.png> <./pictures/lunar_lander.png>] [19
 
 ]
-<./pictures/me_rysy.jpg, id=215, 616.704pt x 462.528pt>
+<./pictures/me_rysy.jpg, id=216, 616.704pt x 462.528pt>
 File: ./pictures/me_rysy.jpg Graphic file (type jpg)
 <use ./pictures/me_rysy.jpg>
 Package pdftex.def Info: ./pictures/me_rysy.jpg  used on input line 578.
@@ -1895,9 +1888,9 @@ s/type1/public/lm/lmss17.pfb></usr/share/texmf/fonts/type1/public/lm/lmss8.pfb>
 sr/share/texmf/fonts/type1/public/lm/lmsso8.pfb></usr/share/texmf/fonts/type1/p
 ublic/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy6.pfb></usr/sha
 re/texmf/fonts/type1/public/lm/lmsy8.pfb>
-Output written on deep_q_networks.pdf (20 pages, 12528623 bytes).
+Output written on deep_q_networks.pdf (20 pages, 12658370 bytes).
 PDF statistics:
- 281 PDF objects out of 1000 (max. 8388607)
+ 282 PDF objects out of 1000 (max. 8388607)
  185 compressed objects within 2 object streams
  44 named destinations out of 1000 (max. 500000)
  212 words of extra memory for PDF output out of 10000 (max. 10000000)

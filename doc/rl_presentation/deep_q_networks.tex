@@ -181,7 +181,7 @@
     $Q(s, a)$ : what is the potential reward in state {\bf s} and action {\bf a}
 
     \begin{align*}
-      Q'(s, a) = R(s, a) + \gamma \max \limits_{a'} Q(s', a')
+      Q'(s, a) = R + \gamma \max \limits_{a'} Q(s', a')
     \end{align*}
 
   \end{column}
@@ -192,7 +192,7 @@
     $a$ is action \\
     $s'$ is next state \\
     $a'$ is best action in next state \\
-    $R(s, a)$ is reward \\
+    $R$ is reward \\
     $\gamma \in \langle 0, 1 \rangle$ is discount factor \\
 
   \end{column}
@@ -266,7 +266,7 @@ approximate $Q(s, a)$ using deep neural network as $\hat{Q}(s, a; w)$, where $w$
 \end{align*}
 
 \begin{figure}
-  \includegraphics[scale=0.25]{./diagrams/dqn_naive.png}
+  \includegraphics[scale=0.12]{./diagrams/dqn_naive.png}
 \end{figure}
 
 \end{frame}

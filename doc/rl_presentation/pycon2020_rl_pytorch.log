@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.12.28)  1 MAR 2020 19:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.12.28)  2 MAR 2020 17:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1606,17 +1606,13 @@ LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <5> not available
  [3
 
  <./pictures/image_supervised.jpg>]
-Overfull \hbox (9.11334pt too wide) detected at line 207
-[]
- []
-
 <diagrams/q_learning_detail.png, id=55, 708.52942pt x 478.96588pt>
 File: diagrams/q_learning_detail.png Graphic file (type png)
 <use diagrams/q_learning_detail.png>
 Package pdftex.def Info: diagrams/q_learning_detail.png  used on input line 207
 .
 (pdftex.def)             Requested size: 177.13191pt x 119.74117pt.
-[4
+ [4
 
  <./diagrams/q_learning_detail.png>]
 <./pictures/pytorch_logo.png, id=64, 823.075pt x 164.615pt>
@@ -1727,26 +1723,78 @@ Package pdftex.def Info: ./diagrams/nn_crazy.png  used on input line 45.
 <./pictures/lunar_lander.png, id=97, 602.25pt x 431.6125pt>
 File: ./pictures/lunar_lander.png Graphic file (type png)
 <use ./pictures/lunar_lander.png>
-Package pdftex.def Info: ./pictures/lunar_lander.png  used on input line 5.
+Package pdftex.def Info: ./pictures/lunar_lander.png  used on input line 10.
 (pdftex.def)             Requested size: 120.44786pt x 86.32097pt.
+
+Overfull \hbox (28.25996pt too wide) in paragraph at lines 10--11
+ [] 
+ []
+
+<./pictures/pacman.png, id=98, 501.875pt x 622.325pt>
+File: ./pictures/pacman.png Graphic file (type png)
+<use ./pictures/pacman.png>
+Package pdftex.def Info: ./pictures/pacman.png  used on input line 17.
+(pdftex.def)             Requested size: 75.278pt x 93.34471pt.
+<./pictures/supermario.png, id=99, 665.48625pt x 509.905pt>
+File: ./pictures/supermario.png Graphic file (type png)
+<use ./pictures/supermario.png>
+Package pdftex.def Info: ./pictures/supermario.png  used on input line 26.
+(pdftex.def)             Requested size: 106.47997pt x 81.58646pt.
+
+Overfull \hbox (14.29207pt too wide) in paragraph at lines 26--27
+ [] 
+ []
+
 ) [9
 
- <./pictures/lunar_lander.png>]
-<./pictures/me_rysy.jpg, id=104, 616.704pt x 462.528pt>
+ <./pictures/lunar_lander.png> <./pictures/pacman.png> <./pictures/supermario.p
+ng>]
+\openout4 = `pycon2020_rl_pytorch.vrb'.
+
+ (./pycon2020_rl_pytorch.vrb
+<./diagrams/dqn_machism.png, id=109, 1373.933pt x 963.6pt>
+File: ./diagrams/dqn_machism.png Graphic file (type png)
+<use ./diagrams/dqn_machism.png>
+Package pdftex.def Info: ./diagrams/dqn_machism.png  used on input line 4.
+(pdftex.def)             Requested size: 164.86484pt x 115.627pt.
+
+Overfull \hbox (60.55661pt too wide) in paragraph at lines 16--18
+[][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (14.65628pt too wide) in paragraph at lines 18--20
+[][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (14.65628pt too wide) in paragraph at lines 22--23
+[][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (44.4182pt too wide) detected at line 38
+[]
+ []
+
+) [10
+
+ <./diagrams/dqn_machism.png>]
+<./pictures/me_rysy.jpg, id=117, 616.704pt x 462.528pt>
 File: ./pictures/me_rysy.jpg Graphic file (type jpg)
 <use ./pictures/me_rysy.jpg>
-Package pdftex.def Info: ./pictures/me_rysy.jpg  used on input line 434.
+Package pdftex.def Info: ./pictures/me_rysy.jpg  used on input line 509.
 (pdftex.def)             Requested size: 308.35124pt x 231.26343pt.
 
-Overfull \hbox (1.06137pt too wide) in paragraph at lines 434--434
+Overfull \hbox (1.06137pt too wide) in paragraph at lines 509--509
  [] 
  []
 
 
-Overfull \vbox (6.24919pt too high) detected at line 434
+Overfull \vbox (6.24919pt too high) detected at line 509
  []
 
-[10
+[11
 
  <./pictures/me_rysy.jpg>]
 \tf@nav=\write6
@@ -1765,11 +1813,11 @@ Package movie15 Warning: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 (movie15)                @@ superseded by `media9'.           @@
 (movie15)                @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 439.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 439.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 514.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 514.
 (./pycon2020_rl_pytorch.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 439.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 439.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 514.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 514.
 Package rerunfilecheck Info: File `pycon2020_rl_pytorch.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -1778,13 +1826,13 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 24346 strings out of 492982
- 433682 string characters out of 6134895
- 707003 words of memory out of 5000000
- 27295 multiletter control sequences out of 15000+600000
+ 24373 strings out of 492982
+ 434233 string characters out of 6134895
+ 707079 words of memory out of 5000000
+ 27315 multiletter control sequences out of 15000+600000
  81117 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 56i,15n,82p,811b,1583s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,15n,82p,811b,1591s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/en
 c/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/s
 hare/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texlive/texmf-dist/fonts/ty
@@ -1795,10 +1843,10 @@ pe1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10
 e1/public/lm/lmsso10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsso8.pfb></u
 sr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/p
 ublic/lm/lmsy6.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb>
-Output written on pycon2020_rl_pytorch.pdf (10 pages, 5861391 bytes).
+Output written on pycon2020_rl_pytorch.pdf (11 pages, 6153619 bytes).
 PDF statistics:
- 159 PDF objects out of 1000 (max. 8388607)
- 109 compressed objects within 2 object streams
- 22 named destinations out of 1000 (max. 500000)
- 110 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 171 PDF objects out of 1000 (max. 8388607)
+ 114 compressed objects within 2 object streams
+ 24 named destinations out of 1000 (max. 500000)
+ 125 words of extra memory for PDF output out of 10000 (max. 10000000)
 

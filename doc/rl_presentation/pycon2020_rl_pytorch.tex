@@ -159,10 +159,10 @@
 \begin{frame}{\bf reinforcement learning}
 
   \begin{itemize}
-    \item supervised - learning from dataset : classification, detection, segmentation \\ 
+    \item supervised - {\bf learning from dataset} : classification, detection, segmentation \\ 
       $\mathcal{L} = (Y_{target} - \hat{Y}_{predicted})^2$, (RMS, crossentropy ...)\\
       \includegraphics[scale=0.05]{./pictures/image_supervised.jpg}
-    \item reinforcement - learning from experiences and active interactions
+    \item reinforcement - {\bf learning from experiences} and active interactions
       \begin{itemize} 
         \item expected reward, $Q(s, a)$, value based methods
         \item actions probability, $\pi(a|s)$, policy based methods
@@ -183,7 +183,7 @@
     $Q(s, a)$ : what is the potential reward in state {\bf s} and action {\bf a}
 
     \begin{align*}
-      Q'(s, a) = R(s, a) + \gamma \max \limits_{a'} Q(s', a')
+      Q'(s, a) = R + \gamma \max \limits_{a'} Q(s', a')
     \end{align*}
 
   \end{column}
@@ -194,7 +194,7 @@
     $a$ is action \\
     $s'$ is next state \\
     $a'$ is best action in next state \\
-    $R(s, a)$ is reward \\
+    $R$ is reward \\
     $\gamma \in \langle 0, 1 \rangle$ is discount factor \\
 
   \end{column}
@@ -392,9 +392,34 @@
 \frametitle{\bf open AI gym - usage example}
 
 
+
+
+\begin{columns}
+  \begin{column}{0.3\textwidth}
+    
     \begin{figure}
       \includegraphics[scale=0.2]{./pictures/lunar_lander.png}
     \end{figure}
+
+  \end{column}
+  \begin{column}{0.3\textwidth}  %%<--- here
+
+    \begin{figure}
+      \includegraphics[scale=0.15]{./pictures/pacman.png}
+    \end{figure}
+
+  \end{column}
+
+
+  \begin{column}{0.3\textwidth}  %%<--- here
+
+    \begin{figure}
+      \includegraphics[scale=0.16]{./pictures/supermario.png}
+    \end{figure}
+
+  \end{column}
+\end{columns}
+
 
 
     {\tiny
@@ -421,6 +446,56 @@
 
 \end{frame}
 
+
+\begin{frame}[fragile]
+\frametitle{\bf deep Q network}
+
+  \begin{figure}
+      \includegraphics[scale=0.12]{./diagrams/dqn_machism.png}
+  \end{figure}
+
+
+  \begin{columns}
+
+
+  \begin{column}{0.5\textwidth}  %%<--- here
+
+  {\tiny
+      \begin{lstlisting}[frame=none, language=Python]
+       def train_model():
+          state, q_target = get_random_batch(batch_size)
+            
+          q_predicted = model.forward(state)
+
+          optimizer.zero_grad()
+
+          loss = (q_target - q_predicted)**2
+          loss = loss.mean() 
+          loss.backward()
+          optimizer.step()
+
+      \end{lstlisting}
+    }
+
+    \end{column}
+  
+
+  \begin{column}{0.5\textwidth}  %%<--- here
+
+    \begin{align*}
+      Q'(s, a) &= R + \gamma \max \limits_{a'} Q(s', a') \\
+      \mathcal{L} &= (R + \gamma \max \limits_{a'} \hat{Q}(s', a') - \hat{Q}(s, a))^2
+    \end{align*}
+
+  \end{column}
+
+
+  
+\end{columns}
+
+
+
+\end{frame}
 
 
 

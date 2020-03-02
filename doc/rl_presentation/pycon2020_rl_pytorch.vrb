@@ -1,30 +1,47 @@
-\frametitle{\bf open AI gym - usage example}
+\frametitle{\bf deep Q network}
+
+  \begin{figure}
+      \includegraphics[scale=0.12]{./diagrams/dqn_machism.png}
+  \end{figure}
 
 
-    \begin{figure}
-      \includegraphics[scale=0.2]{./pictures/lunar_lander.png}
-    \end{figure}
+  \begin{columns}
 
 
-    {\tiny
+  \begin{column}{0.5\textwidth}  %%<--- here
+
+  {\tiny
       \begin{lstlisting}[frame=none, language=Python]
-      import numpy
-      import time
-      import gym
+       def train_model():
+          state, q_target = get_random_batch(batch_size)
 
-      env = gym.make("LunarLander-v2")
-      state = env.reset()
+          q_predicted = model.forward(state)
 
-      actions_count   = env.action_space.n
+          optimizer.zero_grad()
 
-
-      while True:
-          action = numpy.random.randint(actions_count)
-          state, reward, done, info = env.step(action)
-          env.render()
-          time.sleep(0.01)
+          loss = (q_target - q_predicted)**2
+          loss = loss.mean()
+          loss.backward()
+          optimizer.step()
 
       \end{lstlisting}
     }
+
+    \end{column}
+
+
+  \begin{column}{0.5\textwidth}  %%<--- here
+
+    \begin{align*}
+      Q'(s, a) &= R + \gamma \max \limits_{a'} Q(s', a') \\
+      \mathcal{L} &= (R + \gamma \max \limits_{a'} \hat{Q}(s', a') - \hat{Q}(s, a))^2
+    \end{align*}
+
+  \end{column}
+
+
+
+\end{columns}
+
 
 
