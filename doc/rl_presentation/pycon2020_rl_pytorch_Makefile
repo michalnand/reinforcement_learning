@@ -2,11 +2,7 @@
 latexfile = pycon2020_rl_pytorch
 
 all :
-	rm bin/$(latexfile).pdf -rf
 	pdflatex $(latexfile).tex
 
-	cp $(latexfile).pdf bin/.
-
-
 clean:
-	rm -f bin/$(latexfile).pdf
+	rm  $(latexfile).pdf
