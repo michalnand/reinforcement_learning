@@ -76,6 +76,9 @@ class Model(torch.nn.Module):
         print("loading", name)
 
         self.model.load_state_dict(torch.load(name))
+
+        self.model.load_state_dict(torch.load(name, map_location = self.device))
+      
         self.model.eval() 
      
 

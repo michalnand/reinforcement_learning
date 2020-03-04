@@ -115,10 +115,10 @@ class Model(torch.nn.Module):
     def load(self, path):
         print("loading ", path) 
 
-        self.model_features.load_state_dict(torch.load(path + "trained/model_features.pt"))
-        self.model_value.load_state_dict(torch.load(path + "trained/model_value.pt"))
-        self.model_advantage.load_state_dict(torch.load(path + "trained/model_advantage.pt"))
-        
+        self.model_features.load_state_dict(torch.load(path + "trained/model_features.pt", map_location = self.device))
+        self.model_value.load_state_dict(torch.load(path + "trained/model_value.pt", map_location = self.device))
+        self.model_advantage.load_state_dict(torch.load(path + "trained/model_advantage.pt", map_location = self.device))
+    
         self.model_features.eval() 
         self.model_value.eval() 
         self.model_advantage.eval() 
