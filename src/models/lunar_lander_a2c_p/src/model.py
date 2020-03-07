@@ -13,7 +13,7 @@ class Model(torch.nn.Module):
         self.outputs_count  = outputs_count
         
         
-        neurons_count = 64
+        neurons_count = 32
  
         self.features_layers = [ 
                                     nn.Linear(input_shape[0], neurons_count),

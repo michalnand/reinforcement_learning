@@ -8,7 +8,7 @@ import models.lunar_lander_a2c_p.src.config
 import time
 
 
-paralel_envs_count = 16
+paralel_envs_count = 8
 
 class SetRewardRange(gym.RewardWrapper):
     def __init__(self, env):
