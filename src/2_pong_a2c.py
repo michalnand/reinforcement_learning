@@ -10,7 +10,7 @@ import time
 
 
 save_path = "./models/atari_a2c/pong_p/"
-paralel_envs_count = 4
+paralel_envs_count = 8
 
 envs = [] 
 
