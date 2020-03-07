@@ -54,7 +54,7 @@ class Model(torch.nn.Module):
                                 nn.ReLU(),                      
                                 nn.Linear(512, 1)
                             ]
-
+ 
         for i in range(len(self.layers_features)):
             if hasattr(self.layers_features[i], "weight"):
                 torch.nn.init.xavier_uniform_(self.layers_features[i].weight)

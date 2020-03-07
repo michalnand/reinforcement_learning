@@ -132,7 +132,6 @@ class Agent():
         for env_id in range(self.envs_count):
             rewards+= self.process_env(env_id)
 
-
         if self.enabled_training:
             self.idx+= 1
         
@@ -143,7 +142,7 @@ class Agent():
 
             self.optimizer.zero_grad()
             loss.backward()
-            torch.nn.utils.clip_grad_norm_(self.model.parameters(), 1.0)
+            torch.nn.utils.clip_grad_norm_(self.model.parameters(), 0.1)
             self.optimizer.step() 
 
             #clear batch buffer

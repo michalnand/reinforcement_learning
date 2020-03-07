@@ -19,7 +19,7 @@ class Model(torch.nn.Module):
         fc_input_height = self.input_shape[1]
         fc_input_width  = self.input_shape[2]    
 
-        ratio           = 2**4
+        ratio           = 2**4 
 
         fc_inputs_count = ((fc_input_width)//ratio)*((fc_input_height)//ratio)
  
@@ -85,20 +85,20 @@ class Model(torch.nn.Module):
     def save(self, path):
         print("saving to ", path)
 
-        torch.save(self.model_features.state_dict(), path + "trained/model_features.pt")
-        torch.save(self.model_policy.state_dict(), path + "trained/model_policy.pt")
-        torch.save(self.model_value.state_dict(), path + "trained/model_value.pt")
+        torch.save(self.model_features.state_dict(),    path + "trained/model_features.pt")
+        torch.save(self.model_policy.state_dict(),      path + "trained/model_policy.pt")
+        torch.save(self.model_value.state_dict(),       path + "trained/model_value.pt")
 
     def load(self, path):
         
         print("loading from ", path)
 
-        self.model_features.load_state_dict(torch.load(path + "trained/model_features.pt"))
+        self.model_features.load_state_dict(torch.load( path + "trained/model_features.pt"))
         self.model_features.eval() 
 
-        self.model_policy.load_state_dict(torch.load(path + "trained/model_policy.pt"))
+        self.model_policy.load_state_dict(torch.load(   path + "trained/model_policy.pt"))
         self.model_policy.eval() 
 
-        self.model_value.load_state_dict(torch.load(path + "trained/model_value.pt"))
+        self.model_value.load_state_dict(torch.load(    path + "trained/model_value.pt"))
         self.model_value.eval()  
     
