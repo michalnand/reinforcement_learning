@@ -85,20 +85,18 @@ class Model(torch.nn.Module):
     def save(self, path):
         print("saving to ", path)
 
-        torch.save(self.model_features.state_dict(),    path + "trained/model_features.pt")
-        torch.save(self.model_policy.state_dict(),      path + "trained/model_policy.pt")
-        torch.save(self.model_value.state_dict(),       path + "trained/model_value.pt")
+        torch.save(self.model_features.state_dict(), path + "trained/model_features.pt")
+        torch.save(self.model_policy.state_dict(), path + "trained/model_policy.pt")
+        torch.save(self.model_value.state_dict(), path + "trained/model_value.pt")
 
-    def load(self, path):
-        
+    def load(self, path):       
         print("loading from ", path)
 
-        self.model_features.load_state_dict(torch.load( path + "trained/model_features.pt"))
+        self.model_features.load_state_dict(torch.load(path + "trained/model_features.pt", map_location = self.device))
+        self.model_policy.load_state_dict(torch.load(path + "trained/model_policy.pt", map_location = self.device))
+        self.model_value.load_state_dict(torch.load(path + "trained/model_value.pt", map_location = self.device))
+
         self.model_features.eval() 
-
-        self.model_policy.load_state_dict(torch.load(   path + "trained/model_policy.pt"))
         self.model_policy.eval() 
-
-        self.model_value.load_state_dict(torch.load(    path + "trained/model_value.pt"))
         self.model_value.eval()  
     
