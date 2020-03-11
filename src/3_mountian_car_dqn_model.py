@@ -1,12 +1,12 @@
 import gym
 import numpy
-import agents.dqn_curiosity
+import agents.rainbow_model
 
-import models.mountain_car_curiosity_dqn.src.model
-import models.mountain_car_curiosity_dqn.src.config
+import models.mountain_car_dqn_model.src.model
+import models.mountain_car_dqn_model.src.config
 
 import time
- 
+
 
 gym.envs.register(
     id='MountainCarCustom-v0',
@@ -41,17 +41,17 @@ actions_count   = env.action_space.n
 
 
 
-model  = models.mountain_car_curiosity_dqn.src.model
-config = models.mountain_car_curiosity_dqn.src.config.Config()
+model  = models.mountain_car_dqn_model.src.model
+config     = models.mountain_car_dqn_model.src.config.Config()
 
-agent = agents.dqn_curiosity.Agent(env, model, config)
+agent = agents.rainbow_model.Agent(env, model, config)
 
 
-while agent.iterations < 200000:
+while agent.iterations < 1000000:
     agent.main()
 
-    if agent.iterations%100 == 0:
-        env.render() 
+    if agent.iterations%256 == 0:
+        env.render()
         print(agent.iterations, agent.score)
 
 agent.disable_training()

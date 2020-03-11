@@ -9,17 +9,12 @@ ObservationSpace = collections.namedtuple("ObservationSpace", "shape")
 class EnvCart:
 
     def __init__(self, random_params = False):
-        
         self.random_params  = random_params
         
-
-        self.shape = (5,)
-
-        
+        self.shape = (2, 8)
 
         self.actions            = [0.0, -1.0, 1.0, -0.1, 0.1]
         
-
         self.action_space       = ActionSpace(len(self.actions))
         self.observation_space  = ObservationSpace(shape = self.shape)
 
@@ -58,13 +53,8 @@ class EnvCart:
 
         self.done   = [False, False]
         self.reward = 0.0
-
-        self.position0       = self.cart_position
-        self.position1       = self.cart_position
-        self.position2       = self.cart_position
-        self.position3       = self.cart_position
-
-
+        
+        self.observation = numpy.zeros(self.shape)
         self._compute_observation()
 
         return self.observation
@@ -110,24 +100,19 @@ class EnvCart:
         return result
 
     def _compute_observation(self):
-        '''
-        self.observation = numpy.zeros(3)
-        self.observation[0] = self.target_position
-        self.observation[1] = self.cart_position
-        self.observation[2] = self.cart_velocity
-        '''
-        self.observation = numpy.zeros(5)
-        self.observation[0] = self.target_position
-        self.observation[1] = self.position0
-        self.observation[2] = self.position1
-        self.observation[3] = self.position2
-        self.observation[4] = self.position3
 
-        self.position3 = self.position2
-        self.position2 = self.position1
-        self.position1 = self.position0
-        self.position0 = self.cart_position
-        
+        for i in range(self.shape[1]):
+            self.observation[0][i] = self.target_position
+
+        self.observation[1][7] = self.observation[1][6]
+        self.observation[1][6] = self.observation[1][5]
+        self.observation[1][5] = self.observation[1][4]
+        self.observation[1][4] = self.observation[1][3]
+        self.observation[1][3] = self.observation[1][2]
+        self.observation[1][2] = self.observation[1][1]
+        self.observation[1][1] = self.observation[1][0]
+        self.observation[1][0] = self.cart_position
+       
 
     def render(self):
         dist = numpy.abs(self.cart_position - self.target_position)
