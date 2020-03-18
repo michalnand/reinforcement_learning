@@ -1,7 +1,7 @@
 import gym_super_mario_bros
 import common.super_mario_wrapper
 
-import agents.a2c
+import agents.a2c_p
 
 import numpy
 import time
@@ -10,28 +10,37 @@ import models.super_mario.a2c.src.model
 import models.super_mario.a2c.src.config
 
 
-model  = models.super_mario.a2c.src.model
-config = models.super_mario.a2c.src.config.Config() 
+
+
 
 save_path = "./models/super_mario/a2c/"
+paralel_envs_count = 8
 
-env = gym_super_mario_bros.make('SuperMarioBros-v0')
-#env = gym_super_mario_bros.make('SuperMarioBrosRandomStages-v0')
-env = common.super_mario_wrapper.Create(env)
+envs = [] 
 
-env.reset()
+for i in range(paralel_envs_count):
+    env = gym_super_mario_bros.make('SuperMarioBros-v0')
+    #env = gym_super_mario_bros.make('SuperMarioBrosRandomStages-v0')
+    env = common.super_mario_wrapper.Create(env)
+    env.reset()
+    env.seed(i)
+
+    envs.append(env)
+
+obs             = envs[0].observation_space
+actions_count   = envs[0].action_space.n
+
+model  = models.super_mario.a2c.src.model
+config = models.super_mario.a2c.src.config.Config()
+ 
+agent = agents.a2c_p.Agent(envs, model, config, save_path)
 
 
-
-agent = agents.a2c.Agent(env, model, config, save_path)
 
 score_best = -10000.0
 while agent.iterations < paralel_envs_count*10000000:
     agent.main()    
-    if agent.iterations%20 == 0:
-        env.render()
-        
-    if agent.iterations%100000 == 0:
+    if agent.iterations%65536 == 0:
         if agent.training_stats.game_score_smooth > score_best:
             score_best = agent.training_stats.game_score_smooth
             agent.save()
@@ -41,6 +50,7 @@ while agent.iterations < paralel_envs_count*10000000:
             print("iteration = ", agent.iterations)
             print("score_best = ", score_best)
             print("\n\n\n")
+            
 
 print("training done")
 
