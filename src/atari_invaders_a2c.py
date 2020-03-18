@@ -33,7 +33,7 @@ agent = agents.a2c_p.Agent(envs, model, config, save_path)
 
 
 score_best = -10000.0
-while agent.iterations < 10000000:
+while agent.iterations < paralel_envs_count*10000000:
     agent.main()    
     if agent.iterations%65536 == 0:
         if agent.training_stats.game_score_smooth > score_best:

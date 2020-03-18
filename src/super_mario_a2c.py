@@ -26,7 +26,7 @@ env.reset()
 agent = agents.a2c.Agent(env, model, config, save_path)
 
 score_best = -10000.0
-while agent.iterations < 10000000:
+while agent.iterations < paralel_envs_count*10000000:
     agent.main()    
     if agent.iterations%20 == 0:
         env.render()

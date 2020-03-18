@@ -128,9 +128,11 @@ class Agent():
 
     
     def main(self):
-        rewards = 0
+        reward = 0
         for env_id in range(self.envs_count):
-            rewards+= self.process_env(env_id)
+            tmp = self.process_env(env_id)
+            if env_id == 0:
+                reward = tmp
 
         if self.enabled_training:
             self.idx+= 1
@@ -155,7 +157,7 @@ class Agent():
             print("\n\n\n")
             '''
 
-        self.iterations+= self.envs_count
+        self.iterations+= 1
         self.score+= rewards
 
             
