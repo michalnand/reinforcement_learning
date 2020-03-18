@@ -158,7 +158,7 @@ class Agent():
             '''
 
         self.iterations+= 1
-        self.score+= rewards
+        self.score+= reward
 
             
     def save(self):
