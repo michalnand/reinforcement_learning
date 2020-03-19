@@ -1,7 +1,7 @@
 import gym
 import numpy
 import common.atari_wrapper
-import agents.a2c_p
+import agents.a2c
 
 import models.atari_a2c.invaders.src.model
 import models.atari_a2c.invaders.src.config
@@ -28,7 +28,7 @@ actions_count   = envs[0].action_space.n
 model  = models.atari_a2c.invaders.src.model
 config = models.atari_a2c.invaders.src.config.Config()
  
-agent = agents.a2c_p.Agent(envs, model, config, save_path)
+agent = agents.a2c.Agent(envs, model, config, save_path)
 
 
 

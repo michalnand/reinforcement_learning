@@ -1,10 +1,6 @@
 import torch
 import torch.nn as nn
 
-class Flatten(nn.Module):
-    def forward(self, input):
-        return input.view(input.size(0), -1)
-
 class Model(torch.nn.Module):
 
     def __init__(self, input_shape, outputs_count):
@@ -16,24 +12,23 @@ class Model(torch.nn.Module):
         self.input_shape    = input_shape
         self.outputs_count  = outputs_count
         
-        
-        neurons_count = 64
- 
+         
         self.features_layers = [ 
-                                    nn.Linear(input_shape[0], neurons_count),
+                                    nn.Linear(input_shape[0], 64),
                                     nn.ReLU(),                      
                             ]
 
         self.layers_policy = [
-                                nn.Linear(neurons_count, neurons_count),
-                                nn.ReLU(),
-                                nn.Linear(neurons_count, outputs_count)
+                                nn.Linear(64, 32),
+                    
+                                nn.ReLU(), 
+                                nn.Linear(32, outputs_count)
                             ]
 
         self.layers_critic = [      
-                                nn.Linear(neurons_count, neurons_count),
+                                nn.Linear(64, 32),
                                 nn.ReLU(),                
-                                nn.Linear(neurons_count, 1)
+                                nn.Linear(32, 1)
                             ]
 
 
@@ -73,16 +68,14 @@ class Model(torch.nn.Module):
         torch.save(self.model_policy.state_dict(), path + "trained/model_policy.pt")
         torch.save(self.model_critic.state_dict(), path + "trained/model_critic.pt")
 
-    def load(self, path):
-        
+    def load(self, path):       
         print("loading from ", path)
 
-        self.model_features.load_state_dict(torch.load(path + "trained/model_features.pt"))
+        self.model_features.load_state_dict(torch.load(path + "trained/model_features.pt", map_location = self.device))
+        self.model_value.load_state_dict(torch.load(path + "trained/model_policy.pt", map_location = self.device))
+        self.model_advantage.load_state_dict(torch.load(path + "trained/model_critic.pt", map_location = self.device))
+    
         self.model_features.eval() 
-
-        self.model_policy.load_state_dict(torch.load(path + "trained/model_policy.pt"))
         self.model_policy.eval() 
-
-        self.model_critic.load_state_dict(torch.load(path + "trained/model_critic.pt"))
         self.model_critic.eval()  
     

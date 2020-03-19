@@ -1,7 +1,7 @@
 import gym_super_mario_bros
 import common.super_mario_wrapper
 
-import agents.a2c_p
+import agents.a2c
 
 import numpy
 import time
@@ -33,7 +33,7 @@ actions_count   = envs[0].action_space.n
 model  = models.super_mario.a2c.src.model
 config = models.super_mario.a2c.src.config.Config()
  
-agent = agents.a2c_p.Agent(envs, model, config, save_path)
+agent = agents.a2c.Agent(envs, model, config, save_path)
 
 
 
