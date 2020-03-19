@@ -52,7 +52,7 @@ config = models.lunar_lander_a2c_p.src.config.Config()
 agent = agents.a2c_p.Agent(envs, model, config)
 
 
-while agent.iterations < 1000000:
+while agent.iterations < 100000:
     agent.main()
 
     if agent.iterations%128 == 0:
