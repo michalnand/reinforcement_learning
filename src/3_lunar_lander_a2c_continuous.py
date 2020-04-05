@@ -1,14 +1,14 @@
 import gym
 import numpy
-import agents.a2c
+import agents.a2c_continuous
 
-import models.cartpole_a2c.src.model
-import models.cartpole_a2c.src.config
+import models.lunar_lander_a2c_continuous.src.model
+import models.lunar_lander_a2c_continuous.src.config
 
 import time
 
 
-paralel_envs_count = 16
+paralel_envs_count = 8
 
 class SetRewardRange(gym.RewardWrapper):
     def __init__(self, env):
@@ -17,10 +17,12 @@ class SetRewardRange(gym.RewardWrapper):
     def step(self, action):
         obs, reward, done, info = self.env.step(action)
 
+        reward = reward / 10.0
+
         if reward < -1.0:
             reward = -1.0
 
-        if reward > 1.0:
+        if reward > 1.0: 
             reward = 1.0
 
         return obs, reward, [done, done], info
@@ -28,7 +30,7 @@ class SetRewardRange(gym.RewardWrapper):
 envs = [] 
 
 for i in range(paralel_envs_count):
-    env = gym.make("CartPole-v0")
+    env = gym.make("LunarLanderContinuous-v2")
 
     env = SetRewardRange(env)
     obs = env.reset()
@@ -37,18 +39,16 @@ for i in range(paralel_envs_count):
     envs.append(env)
 
 obs             = envs[0].observation_space
-actions_count   = envs[0].action_space.n
+actions_size    = envs[0].action_space.shape[0]
 
 
-
-
-model  = models.cartpole_a2c.src.model
-config = models.cartpole_a2c.src.config.Config()
+model  = models.lunar_lander_a2c_continuous.src.model
+config = models.lunar_lander_a2c_continuous.src.config.Config()
  
-agent = agents.a2c.Agent(envs, model, config)
+agent = agents.a2c_continuous.Agent(envs, model, config)
 
 
-while agent.iterations < 1000000:
+while agent.iterations < 100000:
     agent.main()
 
     if agent.iterations%128 == 0:

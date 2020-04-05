@@ -33,12 +33,10 @@ for i in range(paralel_envs_count):
     env = gym.make("LunarLander-v2")
 
     env = SetRewardRange(env)
-    env.reset()
+    obs = env.reset()
     env.seed(i)
 
     envs.append(env)
-
-
 
 obs             = envs[0].observation_space
 actions_count   = envs[0].action_space.n
