@@ -73,7 +73,7 @@ class Model(torch.nn.Module):
 
         torch.save(self.model_features.state_dict(), path + "trained/model_features.pt")
         torch.save(self.model_mu.state_dict(), path + "trained/model_mu.pt")
-        torch.save(self.model_sigme.state_dict(), path + "trained/model_sigme.pt")
+        torch.save(self.model_sigma.state_dict(), path + "trained/model_sigma.pt")
         torch.save(self.model_critic.state_dict(), path + "trained/model_critic.pt")
  
     def load(self, path):       
