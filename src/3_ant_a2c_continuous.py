@@ -23,7 +23,6 @@ class SetRewardRange(gym.RewardWrapper):
 
 save_path = "./models/ant_a2c_continuous/"
 
-'''
 
 paralel_envs_count = 8
 
@@ -31,7 +30,7 @@ envs = []
 
 for i in range(paralel_envs_count):
     env = gym.make("AntPyBulletEnv-v0")
-    env = SetRewardRange(env)
+    #env = SetRewardRange(env)
     obs = env.reset()
     env.seed(i)
 
@@ -110,3 +109,4 @@ agent.disable_training()
 while True:
     agent.main()
 
+'''
