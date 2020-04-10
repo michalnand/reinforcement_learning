@@ -1,0 +1,33 @@
+iterations                = 89
+game_id                   = 1
+score                     = 40.2021945290413
+game_iterations           = 89
+game_iterations_smooth    = 89.0
+game_score                = 40.2021945290413
+game_score_smooth         = 40.2021945290413
+fps_smooth                = 45.5526704173116
+
+
+
+iterations                = 188
+game_id                   = 2
+score                     = 78.7321216812023
+game_iterations           = 99
+game_iterations_smooth    = 89.1
+game_score                = 38.529927152160965
+game_score_smooth         = 40.185471855272496
+fps_smooth                = 65.11671335425739
+
+
+
+iterations                = 1188
+game_id                   = 3
+score                     = 585.769068002312
+game_iterations           = 1000
+game_iterations_smooth    = 98.20899999999999
+game_score                = 507.03694632111046
+game_score_smooth         = 44.85398659993088
+fps_smooth                = 78.3406741140453
+
+
+
