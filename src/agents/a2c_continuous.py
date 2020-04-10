@@ -52,7 +52,7 @@ class Agent():
         self.mu_b               = torch.zeros((self.envs_count, self.batch_size, self.action_size)).to(self.model.device)
         self.var_b              = torch.zeros((self.envs_count, self.batch_size, self.action_size)).to(self.model.device)
         self.values_b           = torch.zeros((self.envs_count, self.batch_size, 1)).to(self.model.device)
-        self.action_b           = torch.zeros((self.envs_count, self.batch_size, self.action_size))
+        self.action_b           = torch.zeros((self.envs_count, self.batch_size, self.action_size)).to(self.model.device)
         self.rewards_b          = numpy.zeros((self.envs_count, self.batch_size))
         self.done_b             = numpy.zeros((self.envs_count, self.batch_size), dtype=bool)
 
