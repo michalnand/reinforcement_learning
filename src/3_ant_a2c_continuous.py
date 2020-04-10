@@ -30,7 +30,7 @@ envs = []
 
 for i in range(paralel_envs_count):
     env = gym.make("AntPyBulletEnv-v0")
-    #env = SetRewardRange(env)
+    env = SetRewardRange(env)
     obs = env.reset()
     env.seed(i)
 
