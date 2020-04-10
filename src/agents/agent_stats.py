@@ -16,7 +16,7 @@ class AgentStats():
 
         self.game_score_ = 0
         self.game_score  = 0
-        self.game_score_smooth = None
+        self.game_score_smooth = 0.0
         
         self.game_id     = 0
 
@@ -59,9 +59,6 @@ class AgentStats():
 
             self.game_score  = self.game_score_
             self.game_score_ = 0
-
-            if self.game_score_smooth == None:
-                self.game_score_smooth = self.game_score
 
             self.game_score_smooth = (1.0 - k)*self.game_score_smooth + k*self.game_score
 
