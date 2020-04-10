@@ -22,6 +22,7 @@ class SetRewardRange(gym.RewardWrapper):
         return obs, reward, [done, done], info
 
 save_path = "./models/ant_a2c_continuous/"
+
 paralel_envs_count = 8
 
 envs = [] 
@@ -49,7 +50,7 @@ agent = agents.a2c_continuous.Agent(envs, model, config, save_path)
 
 
 score_best = -10000.0
-while agent.iterations < 10000000:
+while agent.iterations < 2000000:
     agent.main()    
     if agent.iterations%10000 == 0:
         if agent.training_stats.game_score_smooth > score_best:
@@ -69,7 +70,7 @@ agent.load()
 agent.disable_training()
 
 agent.iterations = 0
-while agent.iterations  < 1000000:
+while agent.iterations  < 100000:
     agent.main()
 
 print("testing done")
@@ -86,13 +87,14 @@ envs = []
 
 for _ in range(paralel_envs_count):
     env = gym.make("AntPyBulletEnv-v0")
-    env = common.atari_wrapper.Create(env)
+    env = SetRewardRange(env)
+    env.render()
     env.reset()
 
     envs.append(env)
 
 obs             = envs[0].observation_space
-actions_count   = envs[0].action_space.n
+actions_size    = envs[0].action_space.shape[0]
 
 model  = models.ant_a2c_continuous.src.model
 config = models.ant_a2c_continuous.src.config.Config()
@@ -105,7 +107,6 @@ agent.disable_training()
 
 while True:
     agent.main()
-    env.render()
-    time.sleep(1.0/50.0)
+
 
 '''
