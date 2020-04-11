@@ -69,6 +69,7 @@ class Agent():
         action_np          = action.to("cpu").numpy()
 
         self.observations[env_id], reward, done, _ = self.envs[env_id].step(action_np)
+
         
         round_done = done[0]
         game_done  = done[1] 
