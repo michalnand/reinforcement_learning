@@ -47,7 +47,7 @@ config = models.ant_a2c_continuous.src.config.Config()
  
 agent = agents.a2c_continuous.Agent(envs, model, config, save_path)
 
-
+'''
 
 score_best = -10000.0
 while agent.iterations < 10000000:
@@ -107,5 +107,3 @@ agent.disable_training()
 
 while True:
     agent.main()
-
-'''
