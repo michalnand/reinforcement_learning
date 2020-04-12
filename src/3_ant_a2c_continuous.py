@@ -5,32 +5,14 @@ import agents.a2c_continuous
 import models.ant_a2c_continuous.src.model
 import models.ant_a2c_continuous.src.config
 
-
-class SetRewardRange(gym.RewardWrapper):
-    def __init__(self, env):
-        gym.RewardWrapper.__init__(self, env)
-
-    def step(self, action):
-        obs, reward, done, info = self.env.step(action)
-
-        if reward < -1.0:
-            reward = -1.0
-
-        if reward > 1.0: 
-            reward = 1.0
-
-        return obs, reward, [done, done], info
-
 save_path = "./models/ant_a2c_continuous/"
 
 paralel_envs_count = 8
-
 
 envs = [] 
 
 for i in range(paralel_envs_count):
     env = gym.make("AntPyBulletEnv-v0")
-    env = SetRewardRange(env)
     obs = env.reset()
     env.seed(i)
 
@@ -87,7 +69,6 @@ envs = []
 
 for _ in range(paralel_envs_count):
     env = gym.make("AntPyBulletEnv-v0")
-    env = SetRewardRange(env)
     env.render()
     env.reset()
 

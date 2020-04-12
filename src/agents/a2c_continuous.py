@@ -65,16 +65,13 @@ class Agent():
         mu, var, value     = self.model.forward(observation_t)
 
         dist               = torch.distributions.Normal(mu, var)
+        
         action             = dist.sample()[0].detach().clamp(-1.0, 1.0)
         action_np          = action.to("cpu").numpy()
 
-        #print(mu, var, action, "\n\n")
+        #print(mu, var, action_np, "\n\n")
 
         self.observations[env_id], reward, done, _ = self.envs[env_id].step(action_np)
-
-        
-        round_done = done[0]
-        game_done  = done[1] 
 
         if self.enabled_training:
             self.mu_b[env_id][self.idx]         = mu.squeeze(0)
@@ -82,17 +79,17 @@ class Agent():
             self.values_b[env_id][self.idx]     = value.squeeze(0)
             self.action_b[env_id][self.idx]     = action
             self.rewards_b[env_id][self.idx]    = reward
-            self.done_b[env_id][self.idx]       = round_done
+            self.done_b[env_id][self.idx]       = done
 
-        if game_done:
+        if done:
             self.envs[env_id].reset()
 
         if hasattr(self, "training_stats") and hasattr(self, "testing_stats"):
             if env_id == 0:
                 if self.enabled_training:
-                    self.training_stats.add(reward, game_done)
+                    self.training_stats.add(reward, done)
                 else:
-                    self.testing_stats.add(reward, game_done)
+                    self.testing_stats.add(reward, done)
 
         return reward
         
