@@ -122,7 +122,7 @@ class Agent():
         '''
         compute entropy loss, to avoid greedy strategy
         '''
-        loss_entropy = (1.0 + torch.log(2.0*3.141592654*self.var_b[env_id]))*0.5
+        loss_entropy = -(1.0 + torch.log(2.0*3.141592654*self.var_b[env_id]))*0.5
         loss_entropy = self.entropy_beta*loss_entropy.mean()
 
         #final loss
