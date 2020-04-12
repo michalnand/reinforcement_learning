@@ -25,6 +25,7 @@ save_path = "./models/ant_a2c_continuous/"
 
 paralel_envs_count = 8
 
+'''
 envs = [] 
 
 for i in range(paralel_envs_count):
@@ -106,5 +107,3 @@ agent.disable_training()
 
 while True:
     agent.main()
-
-'''
