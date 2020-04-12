@@ -68,8 +68,6 @@ class Agent():
         action             = dist.sample()[0].detach().clamp(-1.0, 1.0)
         action_np          = action.to("cpu").numpy()
 
-        print(mu, var)
-
         self.observations[env_id], reward, done, _ = self.envs[env_id].step(action_np)
 
         

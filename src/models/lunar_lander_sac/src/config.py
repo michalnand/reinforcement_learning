@@ -8,7 +8,7 @@ class Config():
 
         self.entropy_beta   = 0.01
 
-        self.batch_size     = 32
+        self.batch_size     = 64
         
 
 

@@ -89,4 +89,3 @@ class Model(torch.nn.Module):
         self.model_mu.eval() 
         self.model_var.eval() 
         self.model_critic.eval()  
-    
