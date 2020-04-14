@@ -18,7 +18,7 @@ class Model(torch.nn.Module):
                                     nn.ReLU(),
                                     nn.Linear(256, features_count),
                                     nn.ReLU()                    
-                            ]
+                            ] 
 
         self.layers_mu = [
                             nn.Linear(features_count, outputs_count),
