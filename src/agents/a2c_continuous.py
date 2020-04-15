@@ -145,7 +145,7 @@ class Agent():
 
             self.optimizer.zero_grad()
             loss.backward()
-            torch.nn.utils.clip_grad_norm_(self.model.parameters(), 0.1)
+            torch.nn.utils.clip_grad_norm_(self.model.parameters(), 0.2)
             self.optimizer.step() 
 
             #clear batch buffer

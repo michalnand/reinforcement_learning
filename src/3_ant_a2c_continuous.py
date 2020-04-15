@@ -9,7 +9,7 @@ save_path = "./models/ant_a2c_continuous/"
 
 
 
-paralel_envs_count = 8
+paralel_envs_count = 16
 
 envs = [] 
 
