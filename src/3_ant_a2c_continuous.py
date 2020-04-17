@@ -7,7 +7,7 @@ import models.ant_a2c_continuous.src.config
 
 save_path = "./models/ant_a2c_continuous/"
 
-
+'''
 paralel_envs_count = 8
 
 envs = [] 
@@ -89,5 +89,3 @@ agent.disable_training()
 
 while True:
     agent.main()
-
-'''
