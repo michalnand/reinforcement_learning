@@ -7,7 +7,6 @@ import models.ant_a2c_continuous.src.config
 
 save_path = "./models/ant_a2c_continuous/"
 
-'''
 paralel_envs_count = 8
 
 envs = [] 
@@ -53,7 +52,7 @@ agent.load()
 agent.disable_training()
 
 agent.iterations = 0
-while agent.iterations  < 1000000:
+while agent.iterations  < 200000:
     agent.main()
 
 print("testing done")
@@ -89,3 +88,5 @@ agent.disable_training()
 
 while True:
     agent.main()
+
+'''
