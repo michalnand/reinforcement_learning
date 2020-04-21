@@ -7,6 +7,7 @@ import models.ant_a2c_continuous.src.config
 
 save_path = "./models/ant_a2c_continuous/"
 
+
 paralel_envs_count = 8
 
 envs = [] 
@@ -32,7 +33,7 @@ agent = agents.a2c_continuous.Agent(envs, model, config, save_path)
 
 
 score_best = -10000.0
-while agent.iterations < 2000000:
+while agent.iterations < 4000000:
     agent.main()    
     if agent.iterations%10000 == 0:
         if agent.training_stats.game_score_smooth > score_best:
@@ -88,5 +89,4 @@ agent.disable_training()
 
 while True:
     agent.main()
-
 '''

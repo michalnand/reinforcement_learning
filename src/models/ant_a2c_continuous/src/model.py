@@ -11,51 +11,48 @@ class Model(torch.nn.Module):
         self.input_shape    = input_shape
         self.outputs_count  = outputs_count
         
-        features_count = 128
+        features_count = 64
 
-        self.features_layers = [ 
-                                    nn.Linear(input_shape[0], features_count),
-                                    nn.ReLU()                  
+     
+        self.actor_features_layers = [
+                                        nn.Linear(input_shape[0], features_count),
+                                        nn.ReLU(),
+                                        nn.Linear(features_count, features_count),
+                                        nn.ReLU()
+                                    ]
+
+        self.actor_mu_layers = [                                    
+                                    nn.Linear(features_count, outputs_count),
+                                    nn.Tanh()     
+                                ] 
+
+        self.actor_var_layers = [ 
+                                    nn.Linear(features_count, outputs_count),
+                                    nn.Softplus()     
+                                ]
+
+        
+        self.critic_layers = [ 
+                                nn.Linear(input_shape[0], features_count),
+                                nn.ReLU(),  
+                                nn.Linear(features_count, features_count),
+                                nn.ReLU(),      
+                                
+                                nn.Linear(features_count, 1)
                             ] 
 
-        self.layers_mu = [
-                            nn.Linear(features_count, 64),
-                            nn.ReLU(),
-                            nn.Linear(64, outputs_count),
-                            nn.Tanh()
-                        ]
 
-        self.layers_var = [
-                                nn.Linear(features_count, 64),
-                                nn.ReLU(),
-                                nn.Linear(64, outputs_count),
-                                nn.Softplus() 
-                            ]
-
-        self.layers_critic = [           
-                                nn.Linear(features_count, 64),
-                                nn.ReLU(),          
-                                nn.Linear(64, 1)
-                            ]
-
-
-        for i in range(len(self.features_layers)):
-            if hasattr(self.features_layers[i], "weight"):
-                torch.nn.init.xavier_uniform_(self.features_layers[i].weight)
-
-
-        self.model_features = nn.Sequential(*self.features_layers)
+        self.model_features = nn.Sequential(*self.actor_features_layers) 
         self.model_features.to(self.device)
 
-        self.model_mu = nn.Sequential(*self.layers_mu) 
+        self.model_mu = nn.Sequential(*self.actor_mu_layers) 
         self.model_mu.to(self.device)
 
-        self.model_var = nn.Sequential(*self.layers_var)
+        self.model_var = nn.Sequential(*self.actor_var_layers)
         self.model_var.to(self.device)
 
-        self.model_critic = nn.Sequential(*self.layers_critic)
+        self.model_critic = nn.Sequential(*self.critic_layers)
         self.model_critic.to(self.device)
-
 
         print(self.model_features)
         print(self.model_mu)
@@ -64,14 +61,12 @@ class Model(torch.nn.Module):
 
 
     def forward(self, state):
-        features_output =  self.model_features(state)
+        features        = self.model_features(state)
+        mu_output       = self.model_mu(features)
+        var_output      = self.model_var(features)
 
-        mu_output     = self.model_mu(features_output)
-        var_output    = self.model_var(features_output)
+        critic_output   = self.model_critic(state)
 
-        critic_output   = self.model_critic(features_output)
-
-      
         return mu_output, var_output, critic_output
     
     def save(self, path):

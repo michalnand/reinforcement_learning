@@ -14,24 +14,28 @@ class Model(torch.nn.Module):
         features_count = 128
 
         self.features_layers = [ 
-                                    nn.Linear(input_shape[0], 128),
-                                    nn.ReLU(),
-                                    nn.Linear(128, features_count),
-                                    nn.ReLU()                    
+                                    nn.Linear(input_shape[0], features_count),
+                                    nn.ReLU()                  
                             ] 
 
         self.layers_mu = [
-                            nn.Linear(features_count, outputs_count),
+                            nn.Linear(features_count, 64),
+                            nn.ReLU(),
+                            nn.Linear(64, outputs_count),
                             nn.Tanh()
                         ]
 
         self.layers_var = [
-                                nn.Linear(features_count, outputs_count),
+                                nn.Linear(features_count, 64),
+                                nn.ReLU(),
+                                nn.Linear(64, outputs_count),
                                 nn.Softplus() 
                             ]
 
-        self.layers_critic = [                     
-                                nn.Linear(features_count, 1)
+        self.layers_critic = [           
+                                nn.Linear(features_count, 64),
+                                nn.ReLU(),          
+                                nn.Linear(64, 1)
                             ]
 
 
