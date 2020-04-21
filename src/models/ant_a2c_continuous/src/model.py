@@ -11,34 +11,34 @@ class Model(torch.nn.Module):
         self.input_shape    = input_shape
         self.outputs_count  = outputs_count
         
-        features_count = 64
 
-     
         self.actor_features_layers = [
-                                        nn.Linear(input_shape[0], features_count),
+                                        nn.Linear(input_shape[0], 128),
                                         nn.ReLU(),
-                                        nn.Linear(features_count, features_count),
-                                        nn.ReLU()
                                     ]
 
-        self.actor_mu_layers = [                                    
-                                    nn.Linear(features_count, outputs_count),
+        self.actor_mu_layers = [        
+                                    nn.Linear(128, 64),
+                                    nn.ReLU(),                            
+                                    nn.Linear(64, outputs_count),
                                     nn.Tanh()     
                                 ] 
 
         self.actor_var_layers = [ 
-                                    nn.Linear(features_count, outputs_count),
+                                    nn.Linear(128, 64),
+                                    nn.ReLU(),  
+                                    nn.Linear(64, outputs_count),
                                     nn.Softplus()     
                                 ]
 
         
         self.critic_layers = [ 
-                                nn.Linear(input_shape[0], features_count),
+                                nn.Linear(input_shape[0], 64),
                                 nn.ReLU(),  
-                                nn.Linear(features_count, features_count),
+                                nn.Linear(64, 64),
                                 nn.ReLU(),      
                                 
-                                nn.Linear(features_count, 1)
+                                nn.Linear(64, 1)
                             ] 
 
 
