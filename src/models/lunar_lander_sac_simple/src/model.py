@@ -3,7 +3,7 @@ import torch.nn as nn
 
 
 class SoftQNetwork(torch.nn.Module):
-    def __init__(self, input_dim, output_dim, hidden_count = 256, init_weight_range = 0.003):
+    def __init__(self, input_dim, output_dim, hidden_count = 64, init_weight_range = 0.003):
         super(SoftQNetwork, self).__init__()
 
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -30,7 +30,7 @@ class SoftQNetwork(torch.nn.Module):
         self.model = nn.Sequential(*self.layers)
         self.model.to(self.device)
 
-    def forward(self, state, action)
+    def forward(self, state, action):
         x = torch.cat([state, action], dim = 1)
         return self.model(x) 
 
@@ -43,7 +43,7 @@ class SoftQNetwork(torch.nn.Module):
 
 
 class PolicyNetwork(torch.nn.Module):
-    def __init__(self, input_dim, output_dim, hidden_count = 256, init_weight_range = 0.003, log_std_min = -20.0, log_std_max=2:
+    def __init__(self, input_dim, output_dim, hidden_count = 64, init_weight_range = 0.003, log_std_min = -20.0, log_std_max=2):
         super(PolicyNetwork, self).__init__()
 
         self.log_std_min = log_std_min
@@ -74,7 +74,7 @@ class PolicyNetwork(torch.nn.Module):
         self.mu_model = nn.Sequential(*self.mu_layers)
         self.mu_model.to(self.device)
 
-
+ 
         torch.nn.init.uniform_(self.log_std_layers[0].weight, -init_weight_range, init_weight_range)
         self.log_std_model = nn.Sequential(*self.log_std_layers)
         self.log_std_model.to(self.device)
@@ -88,7 +88,7 @@ class PolicyNetwork(torch.nn.Module):
         log_std = self.log_std_model(features)
         log_std = torch.clamp(log_std, self.log_std_min, self.log_std_max)
 
-        return mean, log_std
+        return mu, log_std
 
     def sample(self, state, eps=10.0**-6):
         mu, log_std = self.forward(state)
