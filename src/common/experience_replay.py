@@ -15,6 +15,12 @@ class Buffer():
     def length(self):
         return len(self.buffer)
 
+    def is_full(self):
+        if self.length() == self.size:
+            return True
+            
+        return False
+
     def add(self, state, action, reward, done):
 
         if done != 0:

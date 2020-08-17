@@ -64,7 +64,7 @@ class Agent:
         if enabled_training:
             self.replay_buffer.add(self.state, action_np, reward, done)
 
-            if self.iterations > self.replay_buffer_size:    
+            if self.replay_buffer.is_full():
                 self.train()
 
         self.iterations+= 1

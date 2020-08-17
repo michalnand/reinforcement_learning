@@ -3,11 +3,11 @@ import torch
 
 import agents.agent_stats
 
-import common.experience_replay_dqn_curiosity
+import common.experience_replay_dqn
 
 
 class Agent():
-    def __init__(self, env, model, config, save_path = None, save_stats = True):
+    def __init__(self, env, model, curiosity_model, config, save_path = None, save_stats = True):
         self.env = env
         self.save_path = save_path
 
@@ -16,10 +16,6 @@ class Agent():
         self.batch_size     = config.batch_size
 
         self.exploration    = config.exploration
-        self.alpha          = config.alpha
-        self.beta1          = config.beta1
-        self.beta2          = config.beta2
-        self.beta3          = config.beta3
         self.gamma          = config.gamma
 
         self.update_frequency = config.update_frequency
@@ -28,13 +24,13 @@ class Agent():
         self.observation_shape = self.env.observation_space.shape
         self.actions_count     = self.env.action_space.n
 
-        self.experience_replay = common.experience_replay_dqn_curiosity.Buffer(config.experience_replay_size, self.gamma, self.observation_shape,  self.actions_count)
+        self.experience_replay = common.experience_replay_dqn.Buffer(config.experience_replay_size, self.gamma, self.observation_shape,  self.actions_count)
 
         self.model      = model.Model(self.observation_shape, self.actions_count)
 
         self.optimizer  = torch.optim.Adam(self.model.parameters(), lr= config.learning_rate)
 
-        self.observation        = env.reset()
+        self.observation    = env.reset()
         self.enable_training()
 
         self.iterations = 0
@@ -91,47 +87,17 @@ class Agent():
         
         
     def train_model(self):
+        input, q_target = self.experience_replay.get_random_batch(self.batch_size, self.model.device)
+            
+        q_predicted = self.model.forward(input)
+
         self.optimizer.zero_grad()
 
-        self.experience_replay.create_indices(self.batch_size)
-
-        input, input_next, actions_target = self.experience_replay.get_icm_input(self.model.device)
-
-
-        q_values, curiosity, actions_predicted = self.model.forward(input, input_next, actions_target)
-        q_target = self.experience_replay.get_q_target(curiosity.detach().to("cpu").numpy(), self.alpha, self.model.device)
-
-
-        loss_inverse    = ((actions_target - actions_predicted)**2).mean()
-        loss_forward    = curiosity.mean()
-        loss_q_values   = ((q_target - q_values)**2).mean()
-
-        loss = self.beta1*loss_inverse + self.beta2*loss_forward + self.beta3*loss_q_values
-
+        loss = ((q_target - q_predicted)**2).mean() 
         loss.backward()
-
         for param in self.model.parameters():
             param.grad.data.clamp_(-10.0, 10.0)
         self.optimizer.step()
-
-        '''
-        print("loss_inverse = ", loss_inverse.detach().to("cpu").numpy())
-        print("loss_forward = ", loss_forward.detach().to("cpu").numpy())
-        print("loss_q_values = ", loss_q_values.detach().to("cpu").numpy())
-        print("loss = ", loss.detach().to("cpu").numpy())
-        print("curiosity = ", curiosity.detach().to("cpu").numpy())
-        print("\n\n\n")
-        '''
-
-        '''
-        idx_actions_target      = torch.argmax(actions_target, dim = 1).detach()
-        idx_actions_predicted   = torch.argmax(actions_predicted, dim = 1).detach()
-
-        match = idx_actions_target == idx_actions_predicted
-
-        print(match)
-        print("\n\n\n")
-        '''
 
 
         

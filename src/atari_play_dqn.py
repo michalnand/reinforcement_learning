@@ -6,7 +6,6 @@ import agents.dqn
 import numpy
 from matplotlib import pyplot as plt
 
-'''
 #Breakout
 import models.atari_dqn.breakout.src.model
 import models.atari_dqn.breakout.src.config
@@ -15,10 +14,9 @@ model  = models.atari_dqn.breakout.src.model
 config = models.atari_dqn.breakout.src.config.Config()
 save_path = "./models/atari_dqn/breakout/"
 env = gym.make("BreakoutNoFrameskip-v4") 
+
+
 '''
-
-
-
 #Enduro
 import models.atari_dqn.enduro.src.model
 import models.atari_dqn.enduro.src.config
@@ -27,7 +25,7 @@ model  = models.atari_dqn.enduro.src.model
 config = models.atari_dqn.enduro.src.config.Config()
 save_path = "./models/atari_dqn/enduro/"
 env = gym.make("EnduroNoFrameskip-v4")  
-
+'''
 
 '''
 #Invaders
