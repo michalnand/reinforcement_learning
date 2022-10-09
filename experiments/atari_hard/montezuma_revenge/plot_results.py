@@ -102,7 +102,7 @@ plot_summary_score(files_runs, labels, colors, result_path + "rnd_models.png")
 '''
 
 
-
+'''
 labels = []
 agents = []
 colors = []
@@ -130,4 +130,33 @@ for agent in agents:
 
 print(files_runs)
 plot_summary_score(files_runs, labels, colors, result_path + "cnd_scaling.png")
+'''
 
+
+labels = []
+agents = []
+colors = []
+
+labels.append("without normalization, c = 0.25")
+labels.append("mean normalization, c = 1.0")
+labels.append("mean+std normalization, c = 0.5")
+
+agents.append("ppo_cnd_0")
+agents.append("ppo_cnd_12")
+agents.append("ppo_cnd_21")
+
+colors.append("deepskyblue") 
+colors.append("royalblue")
+colors.append("blueviolet")
+
+files_runs  = []
+
+for agent in agents:
+    runs = []
+    for i in range(runs_count):
+        runs.append("./models/" + agent + "_" + str(i) + "/result/result.log")
+    files_runs.append(runs)
+
+
+print(files_runs)
+plot_summary_score(files_runs, labels, colors, result_path + "cnd_normalization.png")
