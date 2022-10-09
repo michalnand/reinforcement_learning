@@ -1,0 +1,12 @@
+cd coinrun
+./batch
+cd ..
+
+cd jumper
+./batch
+cd ..
+
+cd caveflyer
+./batch
+cd ..
+
