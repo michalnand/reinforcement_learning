@@ -30,7 +30,7 @@ MANIFEST
 
 pitfall/
 private_eye/
-procgen_exploration/climber/
+procgen_exploration/climber/ppo_cnd_*
 
 
 old_results/
