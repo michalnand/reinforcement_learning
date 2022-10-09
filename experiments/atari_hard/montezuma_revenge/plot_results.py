@@ -22,11 +22,17 @@ for name in names:
         files.append("./models/" + name + "_" + str(run) + "/result/result.log")
     
     plot_rnd(files, result_path, name)
+'''
 
-
-
+'''
 names = []
 
+names.append("ppo_cnd_0")
+names.append("ppo_cnd_1")
+names.append("ppo_cnd_2")
+names.append("ppo_cnd_10")
+names.append("ppo_cnd_11")
+names.append("ppo_cnd_12")
 names.append("ppo_cnd_20")
 names.append("ppo_cnd_21")
 names.append("ppo_cnd_22")
@@ -38,9 +44,9 @@ for name in names:
         files.append("./models/" + name + "_" + str(run) + "/result/result.log")
     
     plot_cnd(files, result_path, name)
+'''
 
-
-
+'''
 labels = []
 agents = []
 colors = []
@@ -68,7 +74,7 @@ plot_summary_score(files_runs, labels, colors, result_path + "rnd_vs_cnd.png")
 '''
 
 
-
+'''
 labels = []
 agents = []
 colors = []
@@ -93,8 +99,10 @@ for agent in agents:
 
 print(files_runs)
 plot_summary_score(files_runs, labels, colors, result_path + "rnd_models.png")
-
 '''
+
+
+
 labels = []
 agents = []
 colors = []
@@ -123,4 +131,3 @@ for agent in agents:
 print(files_runs)
 plot_summary_score(files_runs, labels, colors, result_path + "cnd_scaling.png")
 
-'''

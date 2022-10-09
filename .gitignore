@@ -28,9 +28,10 @@ MANIFEST
   
 *.avi
 
+adventure/
 pitfall/
 private_eye/
-
+tutankham/
 
 
 old_results/
