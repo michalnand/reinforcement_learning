@@ -16,7 +16,6 @@ names = ["climber", "coinrun"]
 
 for name in names:
     
-
     files = []
     for run in range(1):
         files.append("./" + name + "/models/ppo_baseline_" + str(run) + "/result/result.log")
@@ -64,9 +63,9 @@ for name in names:
     plot_summary_score(files_runs, labels, colors, result_path + name + "_score.png", extended_names = [])
 
 
-'''
+
 #names  = ["caveflyer",  "climber",      "coinrun",      "jumper"]
-agents = ["ppo_cnd_1",  "ppo_cnd_2",    "ppo_cnd_0",    "ppo_cnd_0"]
+agents = ["ppo_cnd_2",  "ppo_cnd_1",    "ppo_cnd_0"]
 colors = ["blue",       "green",        "red",          "purple"]
 
 files_runs  = []
@@ -79,18 +78,13 @@ for i in range(len(names)):
     
     runs = []
     
-    if "cnd" in agent:
-        runs_count_ = runs_count
-    else:
-        runs_count_ = 1
-
-    for run in range(runs_count_):
+    for run in range(runs_count):
         runs.append("./" + name + "/models/" + agent + "_" + str(run) + "/result/result.log")
     files_runs.append(runs)
 
 
 plot_summary_score(files_runs, names, colors, result_path + "all_score.png", extended_names = [])
-'''
+
 
 print("done")
 
