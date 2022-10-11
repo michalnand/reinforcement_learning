@@ -34,7 +34,7 @@ private_eye/
 tutankham/
 
 
-procgen_exploration/models/ppo_cnd_*
+procgen_exploration/coinrun/models/ppo_cnd_*
 
 
 old_results/
