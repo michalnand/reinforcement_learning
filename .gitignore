@@ -28,10 +28,13 @@ MANIFEST
   
 *.avi
 
-adventure/
+adventure/ 
 pitfall/
 private_eye/
 tutankham/
+
+
+procgen_exploration/models/ppo_cnd_*
 
 
 old_results/

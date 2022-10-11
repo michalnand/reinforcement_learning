@@ -1,8 +1,8 @@
-python3 ppo_cnd_23_0.py &
+python3 ppo_cnd_3_0.py &
 sleep 100
-python3 ppo_cnd_24_0.py &
+python3 ppo_cnd_4_0.py &
 sleep 100
-python3 ppo_cnd_25_0.py &
+python3 ppo_cnd_5_0.py &
 sleep 100
 
 wait

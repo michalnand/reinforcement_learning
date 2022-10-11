@@ -33,18 +33,21 @@ def _add_plot(axs, labels, colors, stats, idx, from_extended = False):
         axs.legend()
 
 
-def plot_summary_score(files_runs, labels, colors, output_file_name):
+def plot_summary_score(files_runs, labels, colors, output_file_name, extended_names = ["explored_rooms"]):
 
     stats = []
 
     for files in files_runs:
         print("processing stats for ", files)
-        stat = RLAgents.RLStatsCompute(files, extended_names = ["explored_rooms"])
+        stat = RLAgents.RLStatsCompute(files, extended_names = extended_names)
         stats.append(stat)
 
     plt.clf()
 
-    fig, axs = plt.subplots(3, 1, figsize=(10, 10))
+    if len(extended_names) > 0:
+        fig, axs = plt.subplots(3, 1, figsize=(10, 10))
+    else:
+        fig, axs = plt.subplots(2, 1, figsize=(10, 10))
 
     _add_plot(axs[0], labels, colors, stats, 3)
 
@@ -63,15 +66,15 @@ def plot_summary_score(files_runs, labels, colors, output_file_name):
     axs[1].xaxis.set_major_locator(MaxNLocator(integer=True))
     axs[1].grid(True)
 
-    
-    _add_plot(axs[2], labels, colors, stats, 0, True)
+    if len(extended_names) > 0:
+        _add_plot(axs[2], labels, colors, stats, 0, True)
 
-    axs[2].legend(loc="upper left")
-    axs[2].set_xlabel("samples [milions]", fontweight='bold')
-    axs[2].set_ylabel("explored rooms", fontweight='bold')
-    axs[2].xaxis.set_major_locator(MaxNLocator(integer=True))
-    axs[2].grid(True)
-    
+        axs[2].legend(loc="upper left")
+        axs[2].set_xlabel("samples [milions]", fontweight='bold')
+        axs[2].set_ylabel("explored rooms", fontweight='bold')
+        axs[2].xaxis.set_major_locator(MaxNLocator(integer=True))
+        axs[2].grid(True)
+        
 
     fig.tight_layout()
     fig.savefig(output_file_name, dpi = 300, bbox_inches='tight', pad_inches=0.1)
@@ -155,8 +158,8 @@ def plot_baseline(files, output_path, output_prefix):
 
 
 
-def plot_rnd(files, output_path, output_prefix):
-    stats = RLAgents.RLStatsCompute(files, extended_names = ["explored_rooms"])
+def plot_rnd(files, output_path, output_prefix, extended_names = ["explored_rooms"]):
+    stats = RLAgents.RLStatsCompute(files, extended_names = extended_names)
 
     plt.clf()
 
@@ -254,8 +257,8 @@ def plot_rnd(files, output_path, output_prefix):
 
 
 
-def plot_cnd(files, output_path, output_prefix):
-    stats = RLAgents.RLStatsCompute(files, extended_names = ["explored_rooms"])
+def plot_cnd(files, output_path, output_prefix, extended_names = ["explored_rooms"]):
+    stats = RLAgents.RLStatsCompute(files, extended_names = extended_names)
 
     plt.clf()
 

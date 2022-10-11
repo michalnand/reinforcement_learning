@@ -138,8 +138,8 @@ agents = []
 colors = []
 
 labels.append("without normalization, c = 0.25")
-labels.append("mean normalization, c = 1.0")
-labels.append("mean+std normalization, c = 0.5")
+labels.append("mean+std normalization, c = 1.0")
+labels.append("mean+std normalization + dropout, c = 0.5")
 
 agents.append("ppo_cnd_0")
 agents.append("ppo_cnd_12")
