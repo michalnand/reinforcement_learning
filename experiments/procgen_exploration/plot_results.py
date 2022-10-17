@@ -10,7 +10,7 @@ runs_count  = 3
 
 #names = ["climber", "coinrun", "jumper", "caveflyer"]
 
-names = ["climber", "coinrun"]
+names = ["climber", "coinrun", "jumper"]
 
 
 
@@ -60,7 +60,7 @@ for name in names:
         files_runs.append(runs)
 
 
-    plot_summary_score(files_runs, labels, colors, result_path + name + "_score.png", extended_names = [])
+    plot_summary_score(files_runs, labels, colors, result_path + name + "_score.png", extended_names = [], raw_score_only = True)
 
 
 

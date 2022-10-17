@@ -59,72 +59,52 @@ class ModelSymmetry(torch.nn.Module):
             torch.nn.Conv2d(hidden_count, 1, kernel_size=1, stride=1, padding=0)
         ] 
 
-        self.layers_im = [
+        self.layers_action = [
             torch.nn.Conv2d(2*in_ch, hidden_count, kernel_size=1, stride=1, padding=0),
             torch.nn.ReLU(),
             torch.nn.Conv2d(hidden_count, actions_count, kernel_size=1, stride=1, padding=0)
         ]
 
-        self.layers_features_a = [
+        self.layers_symmetry = [
             torch.nn.Conv2d(2*in_ch, hidden_count, kernel_size=1, stride=1, padding=0),
             torch.nn.ReLU(),
             torch.nn.Conv2d(hidden_count, hidden_count, kernel_size=1, stride=1, padding=0)
         ]
-
-        self.layers_features_b = [
-            torch.nn.Conv2d(2*in_ch, hidden_count, kernel_size=1, stride=1, padding=0),
-            torch.nn.ReLU(),
-            torch.nn.Conv2d(hidden_count, hidden_count, kernel_size=1, stride=1, padding=0)
-        ] 
-
+ 
         torch.nn.init.orthogonal_(self.layers_attention[0].weight, 0.01)
         torch.nn.init.zeros_(self.layers_attention[0].bias)
         torch.nn.init.orthogonal_(self.layers_attention[2].weight, 0.01)
         torch.nn.init.zeros_(self.layers_attention[2].bias)
 
-        torch.nn.init.orthogonal_(self.layers_im[0].weight, 0.01)
-        torch.nn.init.zeros_(self.layers_im[0].bias)
-        torch.nn.init.orthogonal_(self.layers_im[2].weight, 0.01)
-        torch.nn.init.zeros_(self.layers_im[2].bias)
+        torch.nn.init.orthogonal_(self.layers_action[0].weight, 0.01)
+        torch.nn.init.zeros_(self.layers_action[0].bias)
+        torch.nn.init.orthogonal_(self.layers_action[2].weight, 0.01)
+        torch.nn.init.zeros_(self.layers_action[2].bias)
 
-        torch.nn.init.orthogonal_(self.layers_features_a[0].weight, 0.01)
-        torch.nn.init.zeros_(self.layers_features_a[0].bias)
-        torch.nn.init.orthogonal_(self.layers_features_a[2].weight, 0.01)
-        torch.nn.init.zeros_(self.layers_features_a[2].bias) 
-
-        torch.nn.init.orthogonal_(self.layers_features_b[0].weight, 0.01)
-        torch.nn.init.zeros_(self.layers_features_b[0].bias)
-        torch.nn.init.orthogonal_(self.layers_features_b[2].weight, 0.01)
-        torch.nn.init.zeros_(self.layers_features_b[2].bias) 
+        torch.nn.init.orthogonal_(self.layers_symmetry[0].weight, 0.01)
+        torch.nn.init.zeros_(self.layers_symmetry[0].bias)
+        torch.nn.init.orthogonal_(self.layers_symmetry[2].weight, 0.01)
+        torch.nn.init.zeros_(self.layers_symmetry[2].bias) 
 
 
         self.model_attention    = nn.Sequential(*self.layers_attention)
-        self.model_im           = nn.Sequential(*self.layers_im)
-        self.model_features_a   = nn.Sequential(*self.layers_features_a)
-        self.model_features_b   = nn.Sequential(*self.layers_features_b)
-
-
+        self.model_action       = nn.Sequential(*self.layers_action)
+        self.model_symmetry     = nn.Sequential(*self.layers_symmetry)
 
      
     def forward(self, features_now, features_next):
-        f_tmp   = torch.cat([features_now, features_next], dim=1)
+        features = torch.cat([features_now, features_next], dim=1)
         
         attn    = self.model_attention(features_now)
-        attn    = torch.nn.functional.sigmoid(attn)
+        attn    = torch.sigmoid(attn)
 
-        action  = self.model_im(f_tmp)*attn
+        action  = self.model_action(features)*attn
         action  = action.sum(dim=(2, 3))
 
-        features= self.model_features(f_tmp)*attn
-        features= features.reshape((features.shape[0], features.shape[1], features.shape[2]*features.shape[3]))
+        features= self.model_symmetry(features)*attn
+        features= features.sum(dim=(2, 3))
 
-        similarity = torch.bmm(torch.transpose(features, 1, 2), features)
-        #similarity = similarity.sum(dim=(1, 2))
-        
-        print(action.shape, features.shape, similarity.shape)
-
-
-        return action, similarity
+        return features, action
  
 class Model(torch.nn.Module):
 
@@ -223,7 +203,10 @@ if __name__ == "__main__":
 
     state           = torch.randn((batch_size, ) + state_shape)
 
-    model(state, state)
+    features, action = model(state, state)
+
+    print(">>> ", features.shape, action.shape)
+
 
     '''
     model           = Model(state_shape, actions_count)

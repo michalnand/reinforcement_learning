@@ -33,7 +33,7 @@ def _add_plot(axs, labels, colors, stats, idx, from_extended = False):
         axs.legend()
 
 
-def plot_summary_score(files_runs, labels, colors, output_file_name, extended_names = ["explored_rooms"]):
+def plot_summary_score(files_runs, labels, colors, output_file_name, extended_names = ["explored_rooms"], raw_score_only = False):
 
     stats = []
 
@@ -44,36 +44,53 @@ def plot_summary_score(files_runs, labels, colors, output_file_name, extended_na
 
     plt.clf()
 
+    axis_count = 1
+
+    if raw_score_only == False:
+        axis_count+= 1
     if len(extended_names) > 0:
-        fig, axs = plt.subplots(3, 1, figsize=(10, 10))
+        axis_count+= 1
+
+    
+ 
+    if raw_score_only == True:
+        fig, axs = plt.subplots(axis_count, 1, figsize=(10, 5))
+
+        _add_plot(axs, labels, colors, stats, 3)
+
+        axs.legend(loc="upper left")
+        axs.set_xlabel("samples [milions]", fontweight='bold')
+        axs.set_ylabel("score", fontweight='bold')
+        axs.xaxis.set_major_locator(MaxNLocator(integer=True))
+        axs.grid(True)
     else:
-        fig, axs = plt.subplots(2, 1, figsize=(10, 10))
+        fig, axs = plt.subplots(axis_count, 1, figsize=(10, 10))
 
-    _add_plot(axs[0], labels, colors, stats, 3)
+        _add_plot(axs[0], labels, colors, stats, 3)
 
-    axs[0].legend(loc="upper left")
-    axs[0].set_xlabel("samples [milions]", fontweight='bold')
-    axs[0].set_ylabel("score", fontweight='bold')
-    axs[0].xaxis.set_major_locator(MaxNLocator(integer=True))
-    axs[0].grid(True)
+        axs[0].legend(loc="upper left")
+        axs[0].set_xlabel("samples [milions]", fontweight='bold')
+        axs[0].set_ylabel("score", fontweight='bold')
+        axs[0].xaxis.set_major_locator(MaxNLocator(integer=True))
+        axs[0].grid(True)
 
 
-    _add_plot(axs[1], labels, colors, stats, 4)
+        _add_plot(axs[1], labels, colors, stats, 4)
 
-    axs[1].legend(loc="upper left")
-    axs[1].set_xlabel("samples [milions]", fontweight='bold')
-    axs[1].set_ylabel("external reward", fontweight='bold')
-    axs[1].xaxis.set_major_locator(MaxNLocator(integer=True))
-    axs[1].grid(True)
+        axs[1].legend(loc="upper left")
+        axs[1].set_xlabel("samples [milions]", fontweight='bold')
+        axs[1].set_ylabel("external reward", fontweight='bold')
+        axs[1].xaxis.set_major_locator(MaxNLocator(integer=True))
+        axs[1].grid(True)
 
-    if len(extended_names) > 0:
-        _add_plot(axs[2], labels, colors, stats, 0, True)
+        if len(extended_names) > 0:
+            _add_plot(axs[2], labels, colors, stats, 0, True)
 
-        axs[2].legend(loc="upper left")
-        axs[2].set_xlabel("samples [milions]", fontweight='bold')
-        axs[2].set_ylabel("explored rooms", fontweight='bold')
-        axs[2].xaxis.set_major_locator(MaxNLocator(integer=True))
-        axs[2].grid(True)
+            axs[2].legend(loc="upper left")
+            axs[2].set_xlabel("samples [milions]", fontweight='bold')
+            axs[2].set_ylabel("explored rooms", fontweight='bold')
+            axs[2].xaxis.set_major_locator(MaxNLocator(integer=True))
+            axs[2].grid(True)
         
 
     fig.tight_layout()

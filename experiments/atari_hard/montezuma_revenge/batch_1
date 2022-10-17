@@ -6,3 +6,21 @@ python3 ppo_cnd_5_0.py &
 sleep 100
 
 wait
+
+python3 ppo_cnd_3_1.py &
+sleep 100
+python3 ppo_cnd_4_1.py &
+sleep 100
+python3 ppo_cnd_5_1.py &
+sleep 100
+
+wait
+
+python3 ppo_cnd_3_2.py &
+sleep 100
+python3 ppo_cnd_4_2.py &
+sleep 100
+python3 ppo_cnd_5_2.py &
+sleep 100
+
+wait
