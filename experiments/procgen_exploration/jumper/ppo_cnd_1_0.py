@@ -14,21 +14,21 @@ path = "models/ppo_cnd_1_0/"
 
 config  = Config.Config()   
 
-#config.envs_count = 1
+config.envs_count = 1
 
-envs = RLAgents.MultiEnvSeq("procgen-jumper-v0", RLAgents.WrapperProcgenExploration, config.envs_count)
-#envs = RLAgents.MultiEnvSeq("procgen-jumper-v0", RLAgents.WrapperProcgenExplorationRender, config.envs_count)
+#envs = RLAgents.MultiEnvSeq("procgen-jumper-v0", RLAgents.WrapperProcgenExploration, config.envs_count)
+envs = RLAgents.MultiEnvSeq("procgen-jumper-v0", RLAgents.WrapperProcgenExplorationRender, config.envs_count)
 
 agent = RLAgents.AgentPPOCND(envs, ModelPPO, ModelCNDTarget, ModelCND, config)
 
 
 max_iterations = 500000
 
-
+'''
 trainig = RLAgents.TrainingIterations(envs, agent, max_iterations, path, 128)
 trainig.run() 
-
 '''
+
 agent.load(path)
 agent.disable_training()
 
@@ -49,4 +49,3 @@ while True:
         total_score+= reward_sum
         reward_sum = 0
         print("DONE ", episodes, total_score/episodes)
-'''
