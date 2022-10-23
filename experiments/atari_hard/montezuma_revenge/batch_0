@@ -1,0 +1,16 @@
+python3 ppo_cnd_33_0.py &
+sleep 100
+python3 ppo_cnd_34_0.py &
+sleep 100
+python3 ppo_cnd_35_0.py &
+sleep 100
+
+wait
+
+python3 ppo_cnd_30_0.py &
+sleep 100
+python3 ppo_cnd_31_0.py &
+sleep 100
+python3 ppo_cnd_32_0.py &
+sleep 100
+

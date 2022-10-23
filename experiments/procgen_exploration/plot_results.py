@@ -10,10 +10,10 @@ runs_count  = 3
 
 #names = ["climber", "coinrun", "jumper", "caveflyer"]
 
-names = ["climber", "coinrun", "jumper"]
+names = ["climber", "coinrun", "jumper", "caveflyer"]
 
 
-
+'''
 for name in names:
     
     files = []
@@ -61,11 +61,10 @@ for name in names:
 
 
     plot_summary_score(files_runs, labels, colors, result_path + name + "_score.png", extended_names = [], raw_score_only = True)
+'''
 
 
-
-#names  = ["caveflyer",  "climber",      "coinrun",      "jumper"]
-agents = ["ppo_cnd_2",  "ppo_cnd_1",    "ppo_cnd_0"]
+agents = ["ppo_cnd_1",  "ppo_cnd_1",    "ppo_cnd_1", "ppo_cnd_1"]
 colors = ["blue",       "green",        "red",          "purple"]
 
 files_runs  = []

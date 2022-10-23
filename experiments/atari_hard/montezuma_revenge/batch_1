@@ -1,26 +1,17 @@
-python3 ppo_cnd_3_0.py &
+python3 ppo_cnd_40_0.py &
 sleep 100
-python3 ppo_cnd_4_0.py &
+python3 ppo_cnd_41_0.py &
 sleep 100
-python3 ppo_cnd_5_0.py &
-sleep 100
-
-wait
-
-python3 ppo_cnd_3_1.py &
-sleep 100
-python3 ppo_cnd_4_1.py &
-sleep 100
-python3 ppo_cnd_5_1.py &
+python3 ppo_cnd_42_0.py &
 sleep 100
 
 wait
 
-python3 ppo_cnd_3_2.py &
+python3 ppo_cnd_43_0.py &
 sleep 100
-python3 ppo_cnd_4_2.py &
+python3 ppo_cnd_44_0.py &
 sleep 100
-python3 ppo_cnd_5_2.py &
+python3 ppo_cnd_45_0.py &
 sleep 100
 
 wait

@@ -11,7 +11,7 @@ import models.ppo_cnd_31_0.src.config           as Config
 
 #torch.cuda.set_device("cuda:0")
   
-path = "models/ppo_cnd_31_0/"  
+path = "models/ppo_cnd_31_0/"
 
 config  = Config.Config() 
 
@@ -25,7 +25,7 @@ agent = RLAgents.AgentPPOCND(envs, ModelPPO, ModelCNDTarget, ModelCND, config)
  
 max_iterations = 1000000 
  
-
+ 
 trainig = RLAgents.TrainingIterations(envs, agent, max_iterations, path, 128)
 trainig.run() 
 
