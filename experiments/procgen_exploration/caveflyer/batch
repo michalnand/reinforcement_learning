@@ -1,57 +1,10 @@
-python3 ppo_baseline_0.py &
+python3 ppo_cnd_3_0.py &
 sleep 100
 
-python3 ppo_baseline_1.py &
+python3 ppo_cnd_3_1.py &
 sleep 100
 
-python3 ppo_baseline_2.py &
-sleep 100
-
-wait
-
-python3 ppo_rnd_0.py &
-sleep 100
-
-python3 ppo_rnd_1.py &
-sleep 100
-
-python3 ppo_rnd_2.py &
-sleep 100
-
-wait
-
-
-python3 ppo_cnd_0_0.py &
-sleep 100
-
-python3 ppo_cnd_0_1.py &
-sleep 100
-
-python3 ppo_cnd_0_2.py &
-sleep 100
-
-wait
-
-
-python3 ppo_cnd_1_0.py &
-sleep 100
-
-python3 ppo_cnd_1_1.py &
-sleep 100
-
-python3 ppo_cnd_1_2.py &
-sleep 100
-
-wait
-
-
-python3 ppo_cnd_2_0.py &
-sleep 100
-
-python3 ppo_cnd_2_1.py &
-sleep 100
-
-python3 ppo_cnd_2_2.py &
+python3 ppo_cnd_3_2.py &
 sleep 100
 
 wait

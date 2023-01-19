@@ -33,4 +33,4 @@ while True:
     reward, done, _ = agent.main()
 
     envs.render(0)
-    time.sleep(0.01)
+    #time.sleep(0.01)

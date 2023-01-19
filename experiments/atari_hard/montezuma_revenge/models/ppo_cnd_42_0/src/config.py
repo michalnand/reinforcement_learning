@@ -9,7 +9,7 @@ class Config():
 
         #in reward weight, ppo reg weight, cnd dropout rate 0..100%
         self.int_reward_coeff                   = 1.0
-        self.ppo_regularization_loss_coeff      = 0.1 
+        self.ppo_regularization_loss_coeff      = 0.0 
         self.cnd_dropout                        = 0.75
 
         self.entropy_beta           = 0.001
@@ -27,8 +27,8 @@ class Config():
         self.learning_rate_cnd_target   = 0.0001 
 
         #self supervised learning loss
-        self.ppo_regularization_loss    = "vicreg"
-        self.cnd_regularization_loss    = "mse"
+        self.ppo_regularization_loss    = None
+        self.cnd_regularization_loss    = "icreg"
         
         #state normalisation for CND internal motivation
         self.normalise_state_mean       = True
@@ -36,6 +36,6 @@ class Config():
 
         #used augmentations
         self.ppo_augmentations          = []
-        self.ppo_reg_augmentations      = ["conv", "mask", "noise"]
-        self.cnd_augmentations          = ["mask", "noise"]
+        self.ppo_reg_augmentations      = []
+        self.cnd_augmentations          = ["conv", "mask", "noise"]
     

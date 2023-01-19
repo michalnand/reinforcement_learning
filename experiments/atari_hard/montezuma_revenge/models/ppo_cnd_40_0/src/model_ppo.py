@@ -48,28 +48,6 @@ class ModelCritic(torch.nn.Module):
         
         return self.ext_value(y), self.int_value(y)
 
-
-
-class ModelSelfSupervised(torch.nn.Module):
-    def __init__(self, inputs_count, hidden_count):
-        super(ModelSelfSupervised, self).__init__()
-
-        self.layers = [
-            torch.nn.Linear(inputs_count, hidden_count),
-            torch.nn.ReLU(),
-            torch.nn.Linear(hidden_count, hidden_count)
-        ] 
-
-        torch.nn.init.orthogonal_(self.layers[0].weight, 0.01)
-        torch.nn.init.zeros_(self.layers[0].bias)
-
-        torch.nn.init.orthogonal_(self.layers[2].weight, 0.01)
-        torch.nn.init.zeros_(self.layers[2].bias)
-
-        self.model = nn.Sequential(*self.layers)
-     
-    def forward(self, x):
-        return self.model(x)
  
 class Model(torch.nn.Module):
 
@@ -122,15 +100,11 @@ class Model(torch.nn.Module):
         self.model_critic = ModelCritic(hidden_count, hidden_count)
         self.model_critic.to(self.device) 
 
-        self.model_self_supervised = ModelSelfSupervised(hidden_count, hidden_count)
-        self.model_self_supervised.to(self.device) 
-
 
         print("model_ppo")
         print(self.model_features)
         print(self.model_policy)
         print(self.model_critic)
-        print(self.model_self_supervised)
         print("\n\n")
 
     def forward(self, state):
@@ -139,10 +113,6 @@ class Model(torch.nn.Module):
         ext_value, int_value    = self.model_critic(features)
 
         return policy, ext_value, int_value
- 
-    def forward_features(self, state):
-        features = self.model_features(state)
-        return self.model_self_supervised(features)
 
        
     def save(self, path):
@@ -151,7 +121,6 @@ class Model(torch.nn.Module):
         torch.save(self.model_features.state_dict(), path + "model_features.pt")
         torch.save(self.model_policy.state_dict(), path + "model_policy.pt")
         torch.save(self.model_critic.state_dict(), path + "model_critic.pt")
-        torch.save(self.model_self_supervised.state_dict(), path + "model_self_supervised.pt")
 
     def load(self, path):
         print("loading ", path) 
@@ -159,12 +128,10 @@ class Model(torch.nn.Module):
         self.model_features.load_state_dict(torch.load(path + "model_features.pt", map_location = self.device))
         self.model_policy.load_state_dict(torch.load(path + "model_policy.pt", map_location = self.device))
         self.model_critic.load_state_dict(torch.load(path + "model_critic.pt", map_location = self.device))
-        self.model_self_supervised.load_state_dict(torch.load(path + "model_self_supervised.pt", map_location = self.device))
 
         self.model_features.eval()  
         self.model_policy.eval() 
         self.model_critic.eval()
-        self.model_self_supervised.eval()
 
 
 if __name__ == "__main__":

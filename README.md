@@ -3,7 +3,7 @@
 # dependences
 
 ```bash
-pip3 install numpy matplotlib sklearn, torch opencv-python, Pillow, pyglet
+pip3 install numpy matplotlib sklearn torch opencv-python Pillow pyglet
 ```
 
 for RTX3x GPUS : 

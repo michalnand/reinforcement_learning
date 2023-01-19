@@ -12,20 +12,23 @@ class Model(torch.nn.Module):
 
         self.layers = [
             nn.Conv2d(1, 16, kernel_size=3, stride=2, padding=1),
-            nn.ELU(),
+            nn.ReLU(),
 
             nn.Conv2d(16, 32, kernel_size=3, stride=2, padding=1),
-            nn.ELU(),
+            nn.ReLU(),
 
             nn.Conv2d(32, 64, kernel_size=3, stride=2, padding=1),
-            nn.ELU(),
+            nn.ReLU(),
 
             nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=1),
-            nn.ELU(),
+            nn.ReLU(),
           
             nn.Flatten(),   
 
-            nn.Linear(64*fc_size, 512)
+            nn.Linear(64*fc_size, 512),
+            nn.ReLU(),
+
+            nn.Linear(512, 512)
         ]
 
         for i in range(len(self.layers)):

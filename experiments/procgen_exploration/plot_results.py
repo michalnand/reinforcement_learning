@@ -82,7 +82,7 @@ for i in range(len(names)):
     files_runs.append(runs)
 
 
-plot_summary_score(files_runs, names, colors, result_path + "all_score.png", extended_names = [])
+plot_summary_score(files_runs, names, colors, result_path + "all_score.png", extended_names = [], raw_score_only = True)
 
 
 print("done")

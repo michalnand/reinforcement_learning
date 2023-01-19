@@ -8,7 +8,9 @@ import models.ppo_cnd_3_0.src.model_cnd_target as ModelCNDTarget
 import models.ppo_cnd_3_0.src.model_cnd        as ModelCND
 import models.ppo_cnd_3_0.src.config           as Config
 
-  
+torch.cuda.set_device("cuda:0")
+print("running on ", torch.cuda.get_device_name())
+
 path = "models/ppo_cnd_3_0/"
  
 config  = Config.Config()   
