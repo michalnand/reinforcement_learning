@@ -1,0 +1,16 @@
+cd private_eye
+./batch
+cd ..
+
+cd venture
+./batch
+cd ..
+
+cd gravitar
+./batch
+cd ..
+
+cd pitfall
+./batch
+cd ..
+
