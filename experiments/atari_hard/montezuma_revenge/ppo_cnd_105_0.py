@@ -12,7 +12,7 @@ import models.ppo_cnd_105_0.src.config           as Config
 #print("running on ", torch.cuda.get_device_name())
   
 path = "models/ppo_cnd_105_0/" 
-
+ 
 config  = Config.Config()   
 
 #config.envs_count = 1

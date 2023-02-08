@@ -132,7 +132,7 @@ print(files_runs)
 plot_summary_score(files_runs, labels, colors, result_path + "cnd_scaling.png")
 '''
 
-
+'''
 labels = []
 agents = []
 colors = []
@@ -160,3 +160,4 @@ for agent in agents:
 
 print(files_runs)
 plot_summary_score(files_runs, labels, colors, result_path + "cnd_normalization.png")
+'''

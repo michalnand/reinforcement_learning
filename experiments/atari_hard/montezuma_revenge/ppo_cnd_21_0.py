@@ -16,7 +16,7 @@ config  = Config.Config()
 config.envs_count = 1
  
 #envs = RLAgents.MultiEnvParallelOptimised("MontezumaRevengeNoFrameskip-v4", RLAgents.WrapperMontezuma, config.envs_count)
-envs = RLAgents.MultiEnvSeq("MontezumaRevengeNoFrameskip-v4", RLAgents.WrapperMontezuma, config.envs_count, True)
+envs = RLAgents.MultiEnvSeq("MontezumaRevengeNoFrameskip-v4", RLAgents.WrapperMontezuma, config.envs_count, False)
 #envs = RLAgents.MultiEnvSeq("MontezumaRevengeNoFrameskip-v4", RLAgents.WrapperMontezumaVideo, config.envs_count)
  
 agent = RLAgents.AgentPPOCND(envs, ModelPPO, ModelCNDTarget, ModelCND, config)
@@ -35,5 +35,6 @@ agent.disable_training()
 while True:
     reward, done, info = agent.main()
 
-    
+    if done:
+        break
     #time.sleep(0.01)

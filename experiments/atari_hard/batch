@@ -14,3 +14,6 @@ cd pitfall
 ./batch
 cd ..
 
+#cd solaris
+#./batch
+#cd ..
