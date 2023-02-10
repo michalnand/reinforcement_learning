@@ -1,0 +1,9 @@
+python3 ppo_cnd_3_0.py &
+sleep 100
+python3 ppo_cnd_3_1.py &
+sleep 100
+python3 ppo_cnd_3_2.py &
+sleep 100
+
+wait
+sleep 10

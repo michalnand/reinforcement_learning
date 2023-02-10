@@ -1,19 +1,22 @@
 cd private_eye
-./batch
-cd ..
-
-cd venture
-./batch
+./batch_0
 cd ..
 
 cd gravitar
-./batch
+./batch_0
 cd ..
 
-cd pitfall
-./batch
+cd private_eye
+./batch_1
 cd ..
 
-#cd solaris
-#./batch
-#cd ..
+cd gravitar
+./batch_1
+cd ..
+
+
+
+cd venture
+./batch_0
+./batch_1
+cd ..
