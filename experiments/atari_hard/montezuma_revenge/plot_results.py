@@ -35,9 +35,11 @@ names.append("ppo_cnd_10")
 names.append("ppo_cnd_11")
 names.append("ppo_cnd_12")
 names.append("ppo_cnd_20")
-'''
 names.append("ppo_cnd_21")
+'''
 
+names.append("ppo_cnd_110")
+names.append("ppo_cnd_111")
 
 for name in names:    
     files = []
