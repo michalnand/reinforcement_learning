@@ -29,7 +29,10 @@ MANIFEST
 *.avi
 
 
-montezuma_revenge/
+montezuma_revenge/models/ppo_cnd_106_*
+montezuma_revenge/models/ppo_cnd_107_*
+montezuma_revenge/models/ppo_cnd_110_*
+montezuma_revenge/models/ppo_cnd_111_*
 
 hero/ 
 adventure/
